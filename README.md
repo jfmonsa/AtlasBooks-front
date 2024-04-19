@@ -22,13 +22,18 @@ npm install
 npm run dev
 ```
 
-## Flujo de trabajo en Guithub, Guia para contribuir
+## Flujo de trabajo en Github, Guia para contribuir
 
 ### Idea global: 
 Por cada feature en la que trabajemos vamos a crear un Pull Request, todo ello implica que por cada feature (pej. crear un componente, una funcionalidad, arreglar un bug etc.) vamos a crear una rama `branch` sobre la cual vamos a hacer los cambios `commits` y cuando los tengamos listos (Todos los commits sobre dicha funcionalidad), vamos hacer la pull request. Esta metodología se conoce como Github Flow (No confundir con Git Flow), la cual es de las más sencillas para trabajar de manera colaborativa.
 
 > ***Nota importante***: Por nada del mundo debemos subir cambios directamente a la rama main
 
+### Importante antes de crear la rama
+Trae todos los cambios del repo de Github a tu local
+```
+git pull origin main
+```
 
 ### Pasos para hacer una pull Request
 > ***Nota***: Antes de contribuir, tener configurado el entorno (clonar e instalar las dependencias)
