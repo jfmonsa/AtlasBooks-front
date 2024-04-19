@@ -64,3 +64,17 @@ git push origin nombre-de-tu-rama
 ***4. Crea la Pull Request***: Ve a la página del repositorio en GitHub. Deberías ver un mensaje indicando que has hecho cambios recientes en tu rama y un botón para crear una nueva pull request. Haz clic en él, completa la descripción de tu pull request y sigue las instrucciones para crearla.
 
 Una vez creada la pull request, todos los colaboradores del repositorio podrán revisar tus cambios, hacer comentarios y, si todo está bien, fusionar tus cambios en el repositorio principal.
+
+***5. Eliminar rama (Ojo)***: Una vez se termine de trabajar por completo en una feature es conveniente eliminar esa rama ya que no la vamos a usar más (Esto se podría hacer al final del sprint para revisar todo antes de eliminarla)
+
+> Es importante tener en cuenta que la eliminación de ramas debe hacerse con precaución, especialmente si otros miembros del equipo están trabajando en ellas o si contienen cambios que aún no se han fusionado. Siempre es recomendable comunicarse con el equipo y asegurarse de que la eliminación de una rama no afectará negativamente el trabajo en curso.
+
+Eliminar la rama localmente
+```
+git branch -d nombre-de-tu-rama
+```
+
+Eliminar la rama del repo en Github
+```
+git push origin --delete nombre-de-tu-rama
+```
