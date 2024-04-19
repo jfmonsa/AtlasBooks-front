@@ -1,19 +1,26 @@
 import "./Header.sass"
+import logo_Atlas from "../../../assets/logo_Atlas.svg"
+import icon_menu from "../../../assets/icons/Icon-menu.svg"
+import icon_donar from "../../../assets/icons/Icon-donar.svg"
 
-function Header(){
+const Header = () => {
     return(
-        <header>
-            <h1>My website</h1>
-            <nav>
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-            </nav>
+        <header className = "navbar" >
+
+            <img src={logo_Atlas} alt="" className="logo" />
+
+            
+            <img src={icon_donar} alt="" className="donar" />
+            
+
+            <ul>
+                <li>Mi Perfil</li>
+            </ul>
+
+            <img src={icon_menu} alt="" className="burguer" />
+                
         </header>
-    );
+    )
 }
 
 export default Header
