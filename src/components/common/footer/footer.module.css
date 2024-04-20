@@ -1,5 +1,6 @@
 .footer{
     margin-top: 48px;
+    background-color: var(--compSurface-light);
 }
 
 .subContainer{
