@@ -24,7 +24,7 @@
     --ok: #199A46;
 
     /* others */
-    --font-family: "Inter, Helvetica, Arial, sans-serif";
+    --font-family: Inter, Helvetica, Arial, sans-serif;
     --border-rad-comp: 8px;
     --border-rad-surf: 12px;
 }
