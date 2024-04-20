@@ -5,7 +5,7 @@ function Footer(){
         <footer>
             <div className={styles.infoContainer}>
                 <h2 className={styles.infoContainer__title}>Atlas Books</h2>
-                <p>Disclaimer: Proyecto basado en z-library<a href="#">z-lib link</a>
+                <p>Disclaimer: Proyecto basado en z-library <a href="#">z-lib link</a>
                 </p>
                 <div className={styles.infoContainer__iconContainer}>
                     <a href="#">
