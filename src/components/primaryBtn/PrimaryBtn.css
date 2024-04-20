@@ -1,6 +1,6 @@
 .custom-button{
     width: 300px;
-    height: 52px;
+    height: 48px;
     border-radius: var(--border-rad-comp);
     cursor: pointer;
     font-size: 16px;
