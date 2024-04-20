@@ -2,6 +2,10 @@
 *, *::before, *::after{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 /* Gloabal styles */
+html{
+    min-height: 100vh;
+}

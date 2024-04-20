@@ -1,19 +1,14 @@
-import './InputText.css'
+import styles from './inputText.module.css'
 
 export function InputText({type,typecss, value, id, onChange, text}){
     
     return(
         <div>
-            <h2 style={{
-                fontSize: 20,
-                textAlign: "left",
-                fontFamily: 'Inter, system-ui, Avenir, Helvetica, Arial, sans-serif'
-            }}>
-              {text}  
-            </h2>
+            <label htmlFor={id} className={styles.input__label}>{text}</label>
             <input 
                 id = {id}
-                className={`text-area ${typecss}`}
+                // className={`text-area ${typecss}`}
+                className={styles.input}
                 type={type} 
                 value={value}
                 onChange={onChange}
