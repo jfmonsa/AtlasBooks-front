@@ -1,13 +1,15 @@
 import Header from "./components/common/header/Header.jsx"
 import Footer from "./components/common/footer/Footer.jsx"
 import "./app.sass"
+import { Login } from "./components/common/login/Login.jsx";
 
 const App = () => {
   return(
-    <div className = "container">
-    <Header ></Header>
-    <Footer></Footer>
-    </div>
+    <>
+      <Header ></Header>
+      <Footer></Footer>
+       <Login/>
+    </>
   );
 }
 

@@ -1,0 +1,18 @@
+.custom-button{
+    width: 300px;
+    height: 36px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.signin{
+    background-color: #7E42FF;
+    color-scheme: light dark;
+    border: 2px solid #5D11FF;
+}
+
+.signup{
+    background-color: #f1d7ff;
+    border: 2px solid black;
+    
+}

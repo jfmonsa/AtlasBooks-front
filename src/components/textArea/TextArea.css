@@ -1,0 +1,12 @@
+.text-area{
+    width: 300px;
+    height: 32px;
+    border-radius: 8px;
+    font-size: 16px; 
+}
+
+.access{
+    height: 30;
+    border-radius: 4;
+    border: 2px solid #5D11FF;
+}
