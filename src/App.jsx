@@ -6,9 +6,11 @@ import { Login } from "./components/common/login/Login.jsx";
 const App = () => {
   return(
     <>
+
       <Header ></Header>
+      <Login/>
       <Footer></Footer>
-       <Login/>
+
     </>
   );
 }

@@ -20,7 +20,7 @@ export function Login({ setUsuario }) {
   };
 
   return (
-    <section>
+    <section className="login">
       <h1
         style={{
           fontSize: 32,
@@ -30,7 +30,7 @@ export function Login({ setUsuario }) {
       >
         Iniciar Sesion
       </h1>
-      <form className="login" id="login" onSubmit={handleSubmit}>
+      <form  id="login" onSubmit={handleSubmit}>
         <TxtArea
           type={"text"}
           value={user}
@@ -45,9 +45,8 @@ export function Login({ setUsuario }) {
           typecss={"access"}
           text={"Contraseña"}
         />
-
-        <PrimaryBtn text="Iniciar Sesion" type={"signin"} id="1" />
       </form>
+      <PrimaryBtn text="Iniciar Sesion" type={"signin"} id="1" />
       <p>
         <a href="#">Olvidaste tu Contraseña?</a>
       </p>
