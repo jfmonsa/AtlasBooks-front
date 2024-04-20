@@ -7,8 +7,8 @@ const App = () => {
   return(
     <>
       <Header ></Header>
+      <Login/>
       <Footer></Footer>
-       <Login/>
     </>
   );
 }
