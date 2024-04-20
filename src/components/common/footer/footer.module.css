@@ -3,18 +3,28 @@
     background-color: var(--compSurface-light);
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
-
-.subContainer{
+.footer .subContainer{
+    font-size: var(--fs-2) !important;
 }
-
+.subContainer ul{
+    display: flex;
+    flex-direction: column;
+}
+.subContainer li{
+    margin: 0 0 0 var(--spacing-2);
+}
+.subContainer a{
+    text-decoration: none;
+    color: var(--black-light);
+}
 .subContainer__title{
     color: var(--bg-purple-light);
+    text-align: center;
+    font-size: var(--fs-2);
 }
 
-.subContainer__text{
-
-}
 
 .infoContainer{
 

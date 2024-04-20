@@ -25,48 +25,31 @@ function Footer(){
                     </a>
                 </div>
             </div>
-            <div>
-                <h2>Topic 1</h2>
+            <div className={styles.subContainer}>
+                <h2 className={styles.subContainer__title}>Topic 1</h2>
                 <ul>
-                    <a href="#">
-                        <li>Page 1</li>
-                    </a>
-                    <a href="#">
-                        <li>Page 2</li>
-                    </a>
-                    <a href="#">
-                        <li>Page 3</li>
-                    </a>
+                    <li><a href="#">Page 1</a></li>
+                    <li><a href="#">Page 2</a></li>
+                    <li><a href="#">Page 3</a></li>
                 </ul>
             </div>
-            <div>
-                <h2>Topic 2</h2>
+            <div className={styles.subContainer}>
+                <h2 className={styles.subContainer__title}>Topic 2</h2>
                 <ul>
-                    <a href="#">
-                        <li>Page 1</li>
-                    </a>
-                    <a href="#">
-                        <li>Page 2</li>
-                    </a>
-                    <a href="#">
-                        <li>Page 3</li>
-                    </a>
+                    <li><a href="#">Page 1</a></li>
+                    <li><a href="#">Page 2</a></li>
+                    <li><a href="#">Page 3</a></li>
                 </ul>
             </div>
-            <div>
-                <h2>Topic 3</h2>
+            <div className={styles.subContainer}>
+                <h2 className={styles.subContainer__title}>Topic 3</h2>
                 <ul>
-                    <a href="">
-                        <li>Page 1</li>
-                    </a>
-                    <a href="">
-                        <li>Page 2</li>
-                    </a>
-                    <a href="">
-                        <li>Page 3</li>
-                    </a>
+                    <li><a href="#">Page 1</a></li>
+                    <li><a href="#">Page 2</a></li>
+                    <li><a href="#">Page 3</a></li>
                 </ul>
             </div>
+            
         </footer>
     );
 }
