@@ -24,9 +24,13 @@ pero que se conserve la igualdad de magnitudes, cambiar los valores de las varia
     --bg-purple-light: #7E42FF;
     --bg-soft-purple-light: #EEE5FF;
     --border-pruple-light: #5D11FF;
+    --border-graySurfaces-light:#BFBFBF;
     --blue-1: #0040E0;
     --blue-2: #0071DA;
     --black-light: #000000;
+    --shadow: rgba(0, 0, 0, 0.274);
+    --shadow-spread:4px;
+    --shadow-radious:4px;
     /* for states */
     --error: #E20808;
     --warning: #F57600;
