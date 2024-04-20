@@ -17,5 +17,5 @@
     /* TODO: No se por que no sale el font family correcto en el navegador */
     font-family: var(--font-family);
     font-weight: 500;
-    font-size: 20px;
+    font-size: 16px;
 }

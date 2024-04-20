@@ -4,17 +4,16 @@
     border-radius: var(--border-rad-comp);
     cursor: pointer;
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .signin{
-    background-color: #7E42FF;
-    color-scheme: light dark;
-    border: 2px solid #5D11FF;
+    background-color: var(--bg-purple-light);
+    border: var(--border-1);
+    color: var(--compSurface-light);
 }
 
 .signup{
-    background-color: #f1d7ff;
+    background-color: var(--bg-soft-purple-light);
     border: 2px solid black;
-    
 }

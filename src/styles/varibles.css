@@ -14,6 +14,7 @@
     --compSurface-light: #FFFFFF;
     --iconSurface-light: #E4E6EB;
     --bg-purple-light: #7E42FF;
+    --bg-soft-purple-light: #EEE5FF;
     --border-pruple-light: #5D11FF;
     --blue-1: #0040E0;
     --blue-2: #0071DA;
@@ -27,4 +28,5 @@
     --font-family: Inter, Helvetica, Arial, sans-serif;
     --border-rad-comp: 8px;
     --border-rad-surf: 12px;
+    --border-1: 2px solid var(--border-pruple-light)
 }

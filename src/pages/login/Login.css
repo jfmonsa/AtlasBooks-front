@@ -8,9 +8,9 @@
 .login__title{
     margin-bottom: var(--spacing-5);
     font-family: var(--font-family);
-    font-size: 32px;
+    font-size: 20px;
     /* TODO: Escalar el font-weight mediante variables */
-    font-weight: 600;
+    font-weight: 700;
     text-align: center;
 }
 
