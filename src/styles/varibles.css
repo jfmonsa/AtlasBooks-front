@@ -1,0 +1,25 @@
+:root{
+    /*spacing*/
+    --spacing-1: 4px;
+    --spacing-2: 8px;
+    --spacing-3: 16px;
+    --spacing-4: 24px;
+    --spacing-5: 32px;
+    --spacing-6: 48px;
+    --spacing-7: 56px;
+    --spacing-8: 64px;
+
+    /*colors*/
+    --bg-light: #EDEFF2;
+    --compSurface-light: #FFFFFF;
+    --iconSurface-light: #E4E6EB;
+    --bg-purple-light: #7E42FF;
+    --border-pruple-light: #5D11FF;
+    --blue-1: #0040E0;
+    --blue-2: #0071DA;
+    --black-light: #000000;
+    /* for states */
+    --error: #E20808;
+    --warning: #F57600;
+    --ok: #199A46;
+}
