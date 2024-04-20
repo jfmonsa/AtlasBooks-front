@@ -13,3 +13,8 @@ html{
 body{
     background-color: var(--bg-light);
 }
+
+/* TODO: Revisar en que partes estoy repitiendo este estilo para eliminarlos ahí */
+p, a, li, h1, h2, h3, h4, h5, h6, label{
+    font-family: var(--font-family);
+}

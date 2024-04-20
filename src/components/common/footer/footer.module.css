@@ -1,14 +1,15 @@
 .footer{
     margin-top: 48px;
     background-color: var(--compSurface-light);
+    display: flex;
+    justify-content: space-between;
 }
 
 .subContainer{
-
 }
 
 .subContainer__title{
-
+    color: var(--bg-purple-light);
 }
 
 .subContainer__text{

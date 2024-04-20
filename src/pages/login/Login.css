@@ -7,7 +7,6 @@
 
 .login__title{
     margin-bottom: var(--spacing-5);
-    font-family: var(--font-family);
     font-size: 20px;
     /* TODO: Escalar el font-weight mediante variables */
     font-weight: 700;
@@ -18,7 +17,6 @@
     display: block;
     margin-top: var(--spacing-3);
     margin-bottom: var(--spacing-4);
-    font-family: var(--font-family);
     text-decoration: none;
     color: var(--blue-1);
 }
