@@ -1,7 +1,24 @@
 .login{
     display: flex;
-    justify-content: center;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    gap: 1rem;
+}
+
+.login__title{
+    margin-bottom: var(--spacing-5);
+    font-family: var(--font-family);
+    font-size: 32px;
+    /* TODO: Escalar el font-weight mediante variables */
+    font-weight: 600;
+    text-align: center;
+}
+
+.forgot-link{
+    display: block;
+    margin-top: var(--spacing-3);
+    margin-bottom: var(--spacing-4);
+    font-family: var(--font-family);
+    text-decoration: none;
+    color: var(--blue-1);
 }

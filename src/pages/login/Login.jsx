@@ -21,15 +21,7 @@ export function Login({ setUsuario }) {
 
   return (
     <section className="login">
-      <h1
-        style={{
-          fontSize: 32,
-          textAlign: "center",
-          fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif"
-        }}
-      >
-        Iniciar Sesion
-      </h1>
+      <h1 className="login__title">Iniciar Sesion</h1>
       <form  id="login" onSubmit={handleSubmit}>
         <InputText
           type={"text"}
@@ -48,11 +40,11 @@ export function Login({ setUsuario }) {
       </form>
       <PrimaryBtn text="Iniciar Sesion" type={"signin"} id="1" />
       <p>
-        <a href="#">Olvidaste tu Contraseña?</a>
+        <a className="forgot-link" href="#">Olvidaste tu Contraseña?</a>
       </p>
       <PrimaryBtn text="Crear Cuenta" type={"signup"} id="1" />
       {error && (
-        <p style={{ color: "red" }}>*Todos los campos son obligatorios</p>
+        <p style={{ color: "var(--error)" }}>*Todos los campos son obligatorios</p>
       )}
     </section>
   );
