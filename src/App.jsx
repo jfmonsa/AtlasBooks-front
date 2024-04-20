@@ -2,12 +2,12 @@ import Header from "./components/common/header/Header.jsx"
 import Footer from "./components/common/footer/Footer.jsx"
 import "./app.sass"
 
-function App() {
+const App = () => {
   return(
-    <>
-    <Header></Header>
+    <div className = "container">
+    <Header ></Header>
     <Footer></Footer>
-    </>
+    </div>
   );
 }
 
