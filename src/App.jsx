@@ -3,13 +3,12 @@ import Footer from "./components/common/footer/Footer.jsx"
 import "./app.sass"
 import { Login } from "./components/common/login/Login.jsx";
 
-function App() {
+const App = () => {
   return(
     <>
-    <Header></Header>
-    <Footer></Footer>
-    <div className="App"><Login/></div>
-    
+      <Header ></Header>
+      <Footer></Footer>
+       <Login/>
     </>
   );
 }
