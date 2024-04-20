@@ -1,7 +1,7 @@
 import "./Login.css";
-import { PrimaryBtn } from "../../primaryBtn/PrimaryBtn.jsx";
+import { PrimaryBtn } from "../components/primaryBtn/PrimaryBtn.jsx";
+import { InputText } from "../components/inputText/InputText.jsx";
 import { useState } from "react";
-import { InputText } from "../../inputText/InputText.jsx";
 
 export function Login({ setUsuario }) {
   const [user, setUser] = useState("");
