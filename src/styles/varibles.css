@@ -22,4 +22,7 @@
     --error: #E20808;
     --warning: #F57600;
     --ok: #199A46;
+
+    /* others */
+    --font-family: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif";
 }

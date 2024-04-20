@@ -1,7 +1,7 @@
 import "./Login.css";
 import { PrimaryBtn } from "../../primaryBtn/PrimaryBtn.jsx";
 import { useState } from "react";
-import { TxtArea } from "../../textArea/TextArea.jsx";
+import { InputText } from "../../inputText/InputText.jsx";
 
 export function Login({ setUsuario }) {
   const [user, setUser] = useState("");
@@ -25,20 +25,20 @@ export function Login({ setUsuario }) {
         style={{
           fontSize: 32,
           textAlign: "center",
-          fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif",
+          fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif"
         }}
       >
         Iniciar Sesion
       </h1>
       <form  id="login" onSubmit={handleSubmit}>
-        <TxtArea
+        <InputText
           type={"text"}
           value={user}
           onChange={(e) => setUser(e.target.value)}
           typecss={"access"}
           text={"Email "}
         />
-        <TxtArea
+        <InputText
           type={"password"}
           value={password}
           onChange={(e) => setPassword(e.target.value)}

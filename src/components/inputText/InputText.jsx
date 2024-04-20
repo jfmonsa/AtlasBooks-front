@@ -1,6 +1,6 @@
-import './TextArea.css'
+import './InputText.css'
 
-export function TxtArea({type,typecss, value, id, onChange, text}){
+export function InputText({type,typecss, value, id, onChange, text}){
     
     return(
         <div>
