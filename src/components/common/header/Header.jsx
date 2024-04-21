@@ -1,25 +1,36 @@
 import "./Header.sass"
 import logo_Atlas from "../../../assets/logo_Atlas.svg"
-import icon_menu from "../../../assets/icons/Icon-menu.svg"
-import icon_donar from "../../../assets/icons/Icon-donar.svg"
+import { useState } from "react"
 
 const Header = () => {
+
+    const[isOpen, setIsOpen] = useState(false)
+    
+    const setOpenedState = () => {
+        let reverseOpened = isOpen
+
+        setIsOpen(!reverseOpened)
+    }
+
     return(
-        <header className = "navbar" >
+        <div className = "navbar" >
 
             <img src={logo_Atlas} alt="" className="logo" />
 
-            
-            <img src={icon_donar} alt="" className="donar" />
-            
+            <div className="Elements-right">
 
-            <ul>
-                <li>Mi Perfil</li>
-            </ul>
+                <button className="button-donar">Donar</button>
+        
+                {/* <a>Registrarse</a> */}
+                {/* <a>Iniciar Sesion</a> */}
+                <a>Mi Perfil</a>
 
-            <img src={icon_menu} alt="" className="burguer" />
-                
-        </header>
+                <div className = {isOpen ? 'menu-button-opened' : 'menu-button'} onClick={() => setOpenedState()}> 
+                    <div className= 'menu-button-burger'>
+                    </div>
+                </div>
+            </div>
+        </div>
     )
 }
 

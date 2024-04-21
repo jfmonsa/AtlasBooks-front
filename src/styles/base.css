@@ -12,6 +12,7 @@ ul, ol{
 
 body{
     background-color: var(--bg-light);
+    overflow-x: hidden;
 }
 
 /* TODO: Revisar en que partes estoy repitiendo este estilo para eliminarlos ahí */
