@@ -1,35 +1,100 @@
 .navbar
-    width: 100%
-    display: flex
-    align-items: right
-    justify-content: space-between
     background: var(--compSurface-light)
-    padding: 1px 1%
     box-shadow: 0px var(--shadow-spread) var(--shadow-radious) var(--shadow)
     margin-bottom: var(--spacing-6)
+    display: flex
+    width: 100%
+    height: 60px
+    align-items: center
+    justify-content: space-between
+    padding: var(--spacing-3)
 
     /*
-        Dejar la indentación o cambiar los selectores por clases
-        ya que al ser etiquetas estaban generando conflictos con otros
-        componentes*/
-    ul
-        flex: 1
-        list-style: none
-        text-align: right
+     Dejar la indentación o cambiar los selectores por clases
+     ya que al ser etiquetas estaban generando conflictos con otros
+     componentes*/
 
-    ul li
-        display: inline-block
-        margin: 20px 40px
-        font-size: 20px
+    //Diseño del espacio de los elementos
+
+    a
+        cursor: pointer
+        margin-right: var(--spacing-3)
+        font-family: var(--font-family)
+        font-weight: 600
+        font-size: 16px
+
+    .Elements-right
+        display: flex
+        align-items: center
+
+    .logo
         cursor: pointer
 
-    .burguer
-        width: 60px
+    //Diseño boton donar
+    .button-donar
+        width: 62px
+        height: 40px
+        border-radius: var(--border-rad-comp)
+        border: var(--border-1)
+        background: var(--bg-button-donar)
+        font-family: var(--font-family)
+        font-size: 16px
+        color: var(--border-pruple-light)
+        font-weight: 600
+        margin-right: var(--spacing-4)
         cursor: pointer
-        margin-left: 10px
 
-    .donar
+    //Crear boton burger
+    .menu-button,
+    .menu-button-opened
+        position: relative
+        display: flex
+        justify-content: center
+        align-items: center
         width: 70px
+        height: 60px
         cursor: pointer
-        margin-left: 1350px
-        margin-right: 0
+        margin-left: var(--spacing-3)
+
+    .menu-button-burger
+        width: 40px
+        height: 6px
+        background: #000
+        border-radius: 5px
+        margin-left: auto
+        margin-right: auto
+        transition: all 0.3s ease-in-out
+
+    //Crear barras del boton
+
+    .menu-button-burger::before,
+    .menu-button-burger::after
+        content: ''
+        position: absolute
+        left: 0
+        right: 0
+        margin-left: auto
+        margin-right: auto
+        width: 40px
+        height: 6px
+        background: #000
+        border-radius: 5px
+        transition: all 0.3s ease-in-out
+
+    .menu-button-burger::before
+        transform: translateY(-14px)
+
+    .menu-button-burger::after
+        transform: translateY(14px)
+
+    //Crear animacion
+
+    .menu-button-opened .menu-button-burger
+        transform: translateX(-50px)
+        background: transparent
+
+    .menu-button-opened .menu-button-burger::before
+        transform: rotate(45deg) translate(35px, -35px)
+
+    .menu-button-opened .menu-button-burger::after
+        transform: rotate(-45deg) translate(35px, 35px)
