@@ -11,9 +11,11 @@
     background-color: var(--bg-purple-light);
     border: var(--border-1);
     color: var(--compSurface-light);
+    
 }
 
 .signup{
     background-color: var(--bg-soft-purple-light);
     border: 2px solid black;
+    margin-bottom: var(--spacing-3);
 }
