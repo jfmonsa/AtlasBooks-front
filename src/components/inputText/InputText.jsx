@@ -1,6 +1,6 @@
 import styles from './inputText.module.css'
 
-export function InputText({type,typecss, value, id, onChange, text}){
+export function InputText({type,typecss, value, id, onChange, text, holder}){
     
     return(
         <div>
@@ -9,7 +9,8 @@ export function InputText({type,typecss, value, id, onChange, text}){
                 id = {id}
                 // className={`text-area ${typecss}`}
                 className={styles.input}
-                type={type} 
+                type={type}
+                placeholder={holder}
                 value={value}
                 onChange={onChange}
             />

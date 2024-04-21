@@ -1,0 +1,46 @@
+.accountContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 566px;
+}
+
+.account__title{
+    margin-bottom: var(--spacing-5);
+    font-size: 20px;
+    /* TODO: Escalar el font-weight mediante variables */
+    font-weight: 700;
+    text-align: center;
+}
+
+.forgot-link{
+    display: block;
+    margin-top: var(--spacing-3);
+    margin-bottom: var(--spacing-4);
+    text-decoration: none;
+    color: var(--blue-1);
+    font-weight: 600;
+}
+
+.text{
+    display: block;
+    max-width: 300px;
+    margin-right: var(--spacing-2);
+    margin-top: var(--spacing-3);
+    margin-bottom: var(--spacing-4);
+    font-weight: 600;
+    line-height: 150%;
+    font-size: 16px;  
+}
+
+.text-link{
+    margin-top: var(--spacing-3);
+    margin-bottom: var(--spacing-4);
+    display: flex;
+    align-items: center;
+}
+ 
+.icon_mail{
+    margin-bottom: var(--spacing-3);
+}

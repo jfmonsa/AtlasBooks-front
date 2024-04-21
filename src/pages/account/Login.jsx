@@ -1,4 +1,4 @@
-import "./Login.css";
+import "./Account.css";
 import { PrimaryBtn } from "../../components/primaryBtn/PrimaryBtn.jsx";
 import { InputText } from "../../components/inputText/InputText.jsx";
 import { useState } from "react";
@@ -20,11 +20,12 @@ export function Login({ setUsuario }) {
   };
 
   return (
-    <section className="login">
-      <h1 className="login__title">Iniciar Sesion</h1>
-      <form  id="login" onSubmit={handleSubmit}>
+    <section className="accountContainer">
+      <h1 className="account__title">Iniciar Sesion</h1>
+      <form  id="accountContainer" onSubmit={handleSubmit}>
         <InputText
           type={"text"}
+          holder={"usuario@mail.com"}
           value={user}
           onChange={(e) => setUser(e.target.value)}
           typecss={"access"}
@@ -32,17 +33,20 @@ export function Login({ setUsuario }) {
         />
         <InputText
           type={"password"}
+          holder={"********"}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           typecss={"access"}
           text={"Contraseña"}
         />
+
+        <PrimaryBtn text="Iniciar Sesion" type={"signin"} id="1" />
       </form>
-      <PrimaryBtn text="Iniciar Sesion" type={"signin"} id="1" />
+      
       <p>
         <a className="forgot-link" href="#">Olvidaste tu Contraseña?</a>
       </p>
-      <PrimaryBtn text="Crear Cuenta" type={"signup"} id="1" />
+      <PrimaryBtn text="Crear Cuenta" type={"signup"} id="2" />
       {error && (
         <p style={{ color: "var(--error)" }}>*Todos los campos son obligatorios</p>
       )}
