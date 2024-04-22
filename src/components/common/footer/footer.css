@@ -1,51 +1,61 @@
-.footer{
+footer{
     width: 100%;
-    padding: 16px;
+    padding: var(--spacing-3);
     background-color: var(--compSurface-light);
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     flex-wrap: wrap;
     border-top: 2px solid var(--border-graySurfaces-light);
     /* TODO: Revisar bien como podemos estandarizar las sombras b */
     box-shadow: 0 -1px var(--shadow-spread) 1px var(--shadow);
 }
+
+.ft_right_conta{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
 /* Sub container */
-.subContainer{
+.topic{
     margin: var(--spacing-4);
 }
-.subContainer ul{
+.topic ul{
     display: flex;
     flex-direction: column;
 }
-.subContainer li{
+.topic li{
     margin: 0 0 var(--spacing-2);
 }
-.subContainer a{
+.topic a{
     color: var(--black-light);
 }
-.subContainer__title{
-    color: var(--bg-purple-light);
+.topic__title{
+    margin-bottom: var(--spacing-3);
     text-align: center;
     font-size: var(--fs-2);
-    margin-bottom: var(--spacing-3);
+    color: var(--bg-purple-light);
 }
 
 /* Info Container */
-.infoContainer{
+.ft_left_conta{
     display: flex;
     flex-direction: column;
 }
 
-.infoContainer__title{
+.ft_left_conta__title{
     font-size: var(--fs-3);
     margin-bottom: 24px;
 }
 
-.infoContainer p{
+.ft_left_conta__p{
     margin-bottom: 24px;
 }
 
-
-.infoContainer__icon{
+.icon_container{
+    display: flex;
+    align-items: center;
+}
+.icon{
     margin-right: 16px;
 }
