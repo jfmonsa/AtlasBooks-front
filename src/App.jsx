@@ -4,16 +4,19 @@ import Footer from "./components/common/footer/Footer.jsx"
 import { Login } from "./pages/account/Login.jsx"
 import RecoveryAccount from "./pages/account/RecoveryAccount.jsx"
 import SendEmail from "./pages/account/SendEmail.jsx"
+import NewAccount from "./pages/account/NewAccount.jsx"
 
 
 const App = () => {
   return(
     <>
-
+      
       <Header/>
-      <Login/>
+      <NewAccount/> 
+      {/* <Login/> */}
       {/* <RecoveryAccount/> */}
       {/* <SendEmail/> */}
+      
       <Footer/>
 
     </>

@@ -46,6 +46,7 @@ export function Login({ setUsuario }) {
       <p>
         <a className="forgot-link" href="#">Olvidaste tu Contraseña?</a>
       </p>
+
       <PrimaryBtn text="Crear Cuenta" type={"signup"} id="2" />
       {error && (
         <p style={{ color: "var(--error)" }}>*Todos los campos son obligatorios</p>
