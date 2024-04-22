@@ -10,12 +10,15 @@
     --spacing-8: 64px;
 
     /* font size */
-    /* TODO: Para todos los estilos del documento pasar las medidas de font-size de px a rem
-pero que se conserve la igualdad de magnitudes, cambiar los valores de las variables en rem*/
     --fs-1: 0.875rem; /*14px */
     --fs-2: 1rem; /*16px*/
     --fs-3: 1.25rem; /*20px*/
     --fs-4: 2rem; /*32px*/
+
+    /* font weight */
+    --fw-bold: ;
+    --fw-semibold: 700;
+    --fw-medium: 600;
 
     /*colors*/
     --bg-light: #EDEFF2;

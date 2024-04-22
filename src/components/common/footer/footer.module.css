@@ -21,7 +21,6 @@
     margin: 0 0 var(--spacing-2);
 }
 .subContainer a{
-    text-decoration: none;
     color: var(--black-light);
 }
 .subContainer__title{

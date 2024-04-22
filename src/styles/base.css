@@ -18,8 +18,12 @@ body{
 }
 
 /* TODO: Revisar en que partes estoy repitiendo este estilo para eliminarlos ahí */
-p, ul, ol, h1, h2, h3, h4, h5, h6, label{
+p, a, button, ul, ol, h1, h2, h3, h4, h5, h6, label{
     font-family: var(--font-family);
+}
+
+a, button{
+    cursor: pointer;
 }
 
 /* Sticky footer */

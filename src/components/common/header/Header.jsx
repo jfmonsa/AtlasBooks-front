@@ -13,24 +13,25 @@ const Header = () => {
     }
 
     return(
-        <div className = "navbar" >
+        <header className = "navbar" >
+            <a href="#">
+                <img src={logo_Atlas} alt="logo AtlassBook"/>
+            </a>
 
-            <img src={logo_Atlas} alt="" className="logo" />
+            <div className="right-elements">
 
-            <div className="Elements-right">
-
-                <button className="button-donar">Donar</button>
+                <a className="button-donar" href="#">Donar</a>
         
-                {/* <a>Registrarse</a> */}
-                {/* <a>Iniciar Sesion</a> */}
-                <a>Mi Perfil</a>
+                {/* <a className="right-elements__item" href="#">Registrarse</a> */}
+                {/* <a className="right-elements__item" href="#">Iniciar Sesion</a> */}
+                <a className="right-elements__item">Mi Perfil</a>
 
                 <div className = {isOpen ? 'menu-button-opened' : 'menu-button'} onClick={() => setOpenedState()}> 
                     <div className= 'menu-button-burger'>
                     </div>
                 </div>
             </div>
-        </div>
+        </header>
     )
 }
 
