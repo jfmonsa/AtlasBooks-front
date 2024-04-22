@@ -1,4 +1,4 @@
-import "./Account.css"
+import "./account.css"
 import {NAME, EMAIL, PASSWD} from "../../utils/placeholder.js"
 import { PrimaryBtn } from "../../components/primaryBtn/PrimaryBtn.jsx";
 import { InputText } from "../../components/inputText/InputText.jsx";
@@ -21,13 +21,10 @@ function NewAccount({ setUsuario }) {
     }
 
 
-
-
-
 return (
   <>
     <h1 className="account__title">Crear una cuenta nueva</h1>
-    <form  id="accountContainer" onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit}>
       <InputText
         type={"text"}
         holder={NAME}

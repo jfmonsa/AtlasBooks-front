@@ -1,4 +1,4 @@
-import "./Account.css"
+import "./account.css"
 import {EMAIL} from "../../utils/placeholder.js"
 import { PrimaryBtn } from "../../components/primaryBtn/PrimaryBtn.jsx";
 import { InputText } from "../../components/inputText/InputText.jsx";
@@ -22,12 +22,10 @@ const recoveryAccount = ({setUsuario}) => {
 
   return (
     <>
-
       <h1 className="account__title">Recuperación de contraseña</h1>
 
-      <p className="text" >Ingresa el email usado para crear tu cuenta</p>
-
-      <form  id="accountContainer" onSubmit={handleSubmit}>
+      <p className="account__subtitle" >Ingresa el email usado para crear tu cuenta</p>
+      <form  onSubmit={handleSubmit}>
         <InputText
           type={"text"}
           holder= {EMAIL}
@@ -41,11 +39,7 @@ const recoveryAccount = ({setUsuario}) => {
         <PrimaryBtn text="Enviar" type={"signin"} id="3" />
       </form>
 
-      
-
-      <p>
-        <a className="forgot-link" href="#">Volver a iniciar sesión</a>
-      </p>
+      <a className="account__forgot-link" href="#">Volver al inicio de sesión</a>
       
       {error && (
         <p style={{ color: "var(--error)" }}>*Llenar el campo es obligatorios</p>

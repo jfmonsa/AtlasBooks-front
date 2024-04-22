@@ -1,4 +1,4 @@
-import "./Account.css"
+import "./account.css"
 import {PASSWD} from "../../utils/placeholder.js"
 import { PrimaryBtn } from "../../components/primaryBtn/PrimaryBtn.jsx";
 import { InputText } from "../../components/inputText/InputText.jsx";
@@ -30,11 +30,10 @@ const ChangePass = ({setUsuario}) => {
 
   return (
     <>
-      <h1 className="account__title">Crear una nueva contraseña</h1>
+      <h1 className="account__title account__title--useSubtitle">Crear una nueva contraseña</h1>
+      <p className="account__subtitle">Ingresa una nueva contraseña para su cuenta</p>
 
-      <p className="text" >Ingresa una nueva contraseña para su cuenta</p>
-
-      <form  id="accountContainer" onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <InputText
           type={"password"}
           holder= {PASSWD}

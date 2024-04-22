@@ -1,4 +1,4 @@
-import "./Account.css";
+import "./account.css";
 import {EMAIL, PASSWD} from "../../utils/placeholder.js"
 import { PrimaryBtn } from "../../components/primaryBtn/PrimaryBtn.jsx";
 import { InputText } from "../../components/inputText/InputText.jsx";
@@ -44,7 +44,7 @@ export function Login({ setUsuario }) {
         <PrimaryBtn text="Iniciar Sesion" type={"signin"} id="1" />
       </form>
       
-      <a className="forgot-link" href="#">Olvidaste tu Contraseña?</a>
+      <a className="account__forgot-link" href="#">Olvidaste tu Contraseña?</a>
 
       <PrimaryBtn text="Crear Cuenta" type={"signup"} id="2" />
       {error && (
