@@ -7,25 +7,29 @@
 ul, ol{
     list-style-type: none;
 }
+a {
+    text-decoration: none;
+}
 
 /* Gloabal styles */
-
 body{
     background-color: var(--bg-light);
     overflow-x: hidden;
 }
 
 /* TODO: Revisar en que partes estoy repitiendo este estilo para eliminarlos ahí */
-p, a, li, h1, h2, h3, h4, h5, h6, label{
+p, ul, ol, h1, h2, h3, h4, h5, h6, label{
     font-family: var(--font-family);
 }
 
 /* Sticky footer */
-body{
-    min-height: 100%;
+#root{
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
-html{
-    height: 100%;
+main{
+    flex: 1;
+    margin-top: var(--spacing-6);
+    margin-bottom: var(--spacing-6);
 }

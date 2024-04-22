@@ -3,7 +3,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 566px;
 }
 
 .account__title{
@@ -30,7 +29,7 @@
     margin-top: var(--spacing-3);
     margin-bottom: var(--spacing-4);
     font-weight: 600;
-    line-height: 150%;
+    /* line-height: 150%; */
     font-size: 16px;  
 }
 

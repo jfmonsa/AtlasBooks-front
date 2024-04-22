@@ -18,11 +18,13 @@ const App = () => {
   return(
     <>
       <Header/>
-      <Login/>
-      {/* <NewAccount/>  */}
-      {/* <RecoveryAccount/> */}
-      {/* <SendEmail/> */}
-      {/* <ChangePass/> */}
+      <main>
+        <Login/>
+        {/* <NewAccount/>  */}
+        {/* <RecoveryAccount/> */}
+        {/* <SendEmail/> */}
+        {/* <ChangePass/> */}
+      </main>
       <Footer/>
 
     </>
