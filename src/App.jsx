@@ -5,18 +5,17 @@ import { Login } from "./pages/account/Login.jsx"
 import RecoveryAccount from "./pages/account/RecoveryAccount.jsx"
 import SendEmail from "./pages/account/SendEmail.jsx"
 import NewAccount from "./pages/account/NewAccount.jsx"
-
+import ChangePass from "./pages/account/ChangePass.jsx"
 
 const App = () => {
   return(
     <>
-      
       <Header/>
-      <NewAccount/> 
-      {/* <Login/> */}
+      <Login/>
+      {/* <NewAccount/>  */}
       {/* <RecoveryAccount/> */}
       {/* <SendEmail/> */}
-      
+      {/* <ChangePass/> */}
       <Footer/>
 
     </>
