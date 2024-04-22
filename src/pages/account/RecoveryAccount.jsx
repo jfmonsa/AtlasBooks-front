@@ -21,7 +21,7 @@ const recoveryAccount = ({setUsuario}) => {
   };
 
   return (
-    <section className="accountContainer">
+    <>
 
       <h1 className="account__title">Recuperación de contraseña</h1>
 
@@ -51,7 +51,7 @@ const recoveryAccount = ({setUsuario}) => {
         <p style={{ color: "var(--error)" }}>*Llenar el campo es obligatorios</p>
       )}
 
-    </section>
+    </>
   )
 }
 

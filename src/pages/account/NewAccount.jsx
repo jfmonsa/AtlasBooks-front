@@ -25,7 +25,7 @@ function NewAccount({ setUsuario }) {
 
 
 return (
-    <section className="accountContainer">
+  <>
     <h1 className="account__title">Crear una cuenta nueva</h1>
     <form  id="accountContainer" onSubmit={handleSubmit}>
       <InputText
@@ -60,7 +60,7 @@ return (
     {error && (
       <p style={{ color: "var(--error)" }}>*Todos los campos son obligatorios</p>
     )}
-  </section>
+  </>
 
 );
 }

@@ -1,5 +1,5 @@
 import "./Account.css";
-import {EMAIL, PASSWD} from "./placeholder.js"
+import {EMAIL, PASSWD} from "../../utils/placeholder.js"
 import { PrimaryBtn } from "../../components/primaryBtn/PrimaryBtn.jsx";
 import { InputText } from "../../components/inputText/InputText.jsx";
 import { useState } from "react";
@@ -21,7 +21,7 @@ export function Login({ setUsuario }) {
   };
 
   return (
-    <section className="accountContainer">
+    <>
       <h1 className="account__title">Iniciar Sesion</h1>
       <form  onSubmit={handleSubmit}>
         <InputText
@@ -50,6 +50,6 @@ export function Login({ setUsuario }) {
       {error && (
         <p style={{ color: "var(--error)" }}>*Todos los campos son obligatorios</p>
       )}
-    </section>
+    </>
   );
 }

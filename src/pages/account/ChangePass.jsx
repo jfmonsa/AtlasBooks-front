@@ -29,8 +29,7 @@ const ChangePass = ({setUsuario}) => {
   };
 
   return (
-    <section className="accountContainer">
-
+    <>
       <h1 className="account__title">Crear una nueva contraseña</h1>
 
       <p className="text" >Ingresa una nueva contraseña para su cuenta</p>
@@ -60,8 +59,7 @@ const ChangePass = ({setUsuario}) => {
       {error && (
         <p style={{ color: "var(--error)" }}>*Llenar el campo es obligatorios</p>
       )}
-
-    </section>
+  </>
   )
 }
 

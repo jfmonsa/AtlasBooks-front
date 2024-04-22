@@ -7,7 +7,7 @@ import { PrimaryBtn } from "../../components/primaryBtn/PrimaryBtn.jsx";
 const SendEmail = () => {
 
   return (
-    <section className="accountContainer">
+    <>
 
       <h1 className="account__title">Un correo ha sido enviado</h1>
 
@@ -22,7 +22,7 @@ const SendEmail = () => {
         <a className="forgot-link" href="#">Volver a enviar</a>
       </p>
 
-    </section>
+    </>
   )
 }
 
