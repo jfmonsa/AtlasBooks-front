@@ -1,4 +1,4 @@
-.accountContainer{
+main{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -17,6 +17,7 @@
     display: block;
     margin-top: var(--spacing-3);
     margin-bottom: var(--spacing-4);
+    text-align: center;
     text-decoration: none;
     color: var(--blue-1);
     font-weight: 600;

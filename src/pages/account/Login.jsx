@@ -1,4 +1,5 @@
 import "./Account.css";
+import {EMAIL, PASSWD} from "./placeholder.js"
 import { PrimaryBtn } from "../../components/primaryBtn/PrimaryBtn.jsx";
 import { InputText } from "../../components/inputText/InputText.jsx";
 import { useState } from "react";
@@ -22,18 +23,18 @@ export function Login({ setUsuario }) {
   return (
     <section className="accountContainer">
       <h1 className="account__title">Iniciar Sesion</h1>
-      <form  id="accountContainer" onSubmit={handleSubmit}>
+      <form  onSubmit={handleSubmit}>
         <InputText
           type={"text"}
-          holder={"usuario@mail.com"}
+          holder={EMAIL}
           value={user}
           onChange={(e) => setUser(e.target.value)}
           typecss={"access"}
-          text={"Email "}
+          text={"Email"}
         />
         <InputText
           type={"password"}
-          holder={"********"}
+          holder={PASSWD}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           typecss={"access"}
@@ -43,9 +44,7 @@ export function Login({ setUsuario }) {
         <PrimaryBtn text="Iniciar Sesion" type={"signin"} id="1" />
       </form>
       
-      <p>
-        <a className="forgot-link" href="#">Olvidaste tu Contraseña?</a>
-      </p>
+      <a className="forgot-link" href="#">Olvidaste tu Contraseña?</a>
 
       <PrimaryBtn text="Crear Cuenta" type={"signup"} id="2" />
       {error && (

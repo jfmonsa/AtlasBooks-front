@@ -1,4 +1,5 @@
 import "./Account.css"
+import {NAME, EMAIL, PASSWD} from "../../utils/placeholder.js"
 import { PrimaryBtn } from "../../components/primaryBtn/PrimaryBtn.jsx";
 import { InputText } from "../../components/inputText/InputText.jsx";
 import { useState } from "react";
@@ -29,14 +30,14 @@ return (
     <form  id="accountContainer" onSubmit={handleSubmit}>
       <InputText
         type={"text"}
-        holder={"pepito perez"}
+        holder={NAME}
         
         typecss={"access"}
         text={"Nombre "}
       />
       <InputText
         type={"text"}
-        holder={"email"}
+        holder={EMAIL}
         value={user}
         onChange={(e) => setUser(e.target.value)}
         typecss={"access"}
@@ -45,7 +46,7 @@ return (
 
     <InputText
         type={"password"}
-        holder={"********"}
+        holder={PASSWD}
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         typecss={"access"}

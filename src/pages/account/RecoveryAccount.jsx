@@ -1,4 +1,5 @@
 import "./Account.css"
+import {EMAIL} from "../../utils/placeholder.js"
 import { PrimaryBtn } from "../../components/primaryBtn/PrimaryBtn.jsx";
 import { InputText } from "../../components/inputText/InputText.jsx";
 import { useState } from "react";
@@ -29,7 +30,7 @@ const recoveryAccount = ({setUsuario}) => {
       <form  id="accountContainer" onSubmit={handleSubmit}>
         <InputText
           type={"text"}
-          holder= {'usuario@mail.com'}
+          holder= {EMAIL}
           value={user}
           onChange={(e) => setUser(e.target.value)}
           typecss={"access"}
