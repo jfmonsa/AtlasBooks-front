@@ -1,43 +1,58 @@
 /* small reset */
-*, *::before, *::after{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-ul, ol{
-    list-style-type: none;
+ul,
+ol {
+  list-style-type: none;
 }
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 /* Gloabal styles */
-body{
-    background-color: var(--bg-light);
-    overflow-x: hidden;
+body {
+  background-color: var(--bg-light);
+  overflow-x: hidden;
 }
 
 /* TODO: Revisar en que partes estoy repitiendo este estilo para eliminarlos ahí */
-p, a, button, ul, ol, h1, h2, h3, h4, h5, h6, label{
-    font-family: var(--font-family);
+p,
+a,
+button,
+ul,
+ol,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+label {
+  font-family: var(--font-family);
 }
 
-p{
-    max-width: 70ch;
+p {
+  max-width: 70ch;
 }
 
-a, button{
-    cursor: pointer;
+a,
+button {
+  cursor: pointer;
 }
 
 /* Sticky footer */
-#root{
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
-main{
-    flex: 1;
-    margin-top: var(--spacing-6);
-    margin-bottom: var(--spacing-6);
+main {
+  flex: 1;
+  margin-top: var(--spacing-6);
+  margin-bottom: var(--spacing-6);
 }

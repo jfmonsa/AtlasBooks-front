@@ -1,49 +1,49 @@
-main{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.account__title{
-    margin-bottom: var(--spacing-5);
-    font-size: var(--fs-3);
-    font-weight: var(--fw-semibold);
-    text-align: center;
+.account__title {
+  margin-bottom: var(--spacing-5);
+  font-size: var(--fs-3);
+  font-weight: var(--fw-semibold);
+  text-align: center;
 }
 
-.account__title--useSubtitle{
-    margin-bottom: var(--spacing-5);
+.account__title--useSubtitle {
+  margin-bottom: var(--spacing-5);
 }
 
-.account__subtitle{
-    max-width: 300px;
-    margin-bottom: var(--spacing-4);
-    font-weight: var(--fw-medium);
-    font-size: var(--fs-1);
-    color: var(--black-text-light);
+.account__subtitle {
+  max-width: 300px;
+  margin-bottom: var(--spacing-4);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-1);
+  color: var(--black-text-light);
 }
 
-.account__forgot-link{
-    display: block;
-    margin-top: var(--spacing-3);
-    margin-bottom: var(--spacing-4);
-    text-align: center;
-    text-decoration: none;
-    color: var(--blue-1);
-    font-weight: var(--fw-medium);
+.account__forgot-link {
+  display: block;
+  margin-top: var(--spacing-3);
+  margin-bottom: var(--spacing-4);
+  text-align: center;
+  text-decoration: none;
+  color: var(--blue-1);
+  font-weight: var(--fw-medium);
 }
 
-.text-link{
-    color: var(--black-text-light);
-    font-weight: var(--fw-medium);
-    margin-top: var(--spacing-3);
+.text-link {
+  color: var(--black-text-light);
+  font-weight: var(--fw-medium);
+  margin-top: var(--spacing-3);
 }
-.text-link a{
-    display: inline;
-    color: var(--blue-1);
+.text-link a {
+  display: inline;
+  color: var(--blue-1);
 }
- 
-.icon_mail{
-    margin-bottom: var(--spacing-3);
+
+.icon_mail {
+  margin-bottom: var(--spacing-3);
 }

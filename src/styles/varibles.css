@@ -1,49 +1,49 @@
-:root{
-    /*spacing*/
-    --spacing-1: 4px;
-    --spacing-2: 8px;
-    --spacing-3: 16px;
-    --spacing-4: 24px;
-    --spacing-5: 32px;
-    --spacing-6: 48px;
-    --spacing-7: 56px;
-    --spacing-8: 64px;
+:root {
+  /*spacing*/
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 16px;
+  --spacing-4: 24px;
+  --spacing-5: 32px;
+  --spacing-6: 48px;
+  --spacing-7: 56px;
+  --spacing-8: 64px;
 
-    /* font size */
-    --fs-1: 0.875rem; /*14px */
-    --fs-2: 1rem; /*16px*/
-    --fs-3: 1.25rem; /*20px*/
-    --fs-4: 2rem; /*32px*/
+  /* font size */
+  --fs-1: 0.875rem; /*14px */
+  --fs-2: 1rem; /*16px*/
+  --fs-3: 1.25rem; /*20px*/
+  --fs-4: 2rem; /*32px*/
 
-    /* font weight */
-    --fw-bold: ;
-    --fw-semibold: 700;
-    --fw-medium: 600;
+  /* font weight */
+  --fw-bold: ;
+  --fw-semibold: 700;
+  --fw-medium: 600;
 
-    /*colors*/
-    --bg-light: #EDEFF2;
-    --compSurface-light: #FFF;
-    --iconSurface-light: #E4E6EB;
-    --bg-purple-light: #7E42FF;
-    --bg-soft-purple-light: #EEE5FF;
-    --bg-button-donar: #FFEBEF;
-    --border-pruple-light: #5D11FF;
-    --border-graySurfaces-light:#BFBFBF;
-    --blue-1: #0040E0;
-    --blue-2: #0071DA;
-    --black-light: #000;
-    --black-text-light: #191B29;
-    --shadow: rgba(0, 0, 0, 0.274);
-    --shadow-spread:4px;
-    --shadow-radious:4px;
-    /* for states */
-    --error: #E20808;
-    --warning: #F57600;
-    --ok: #199A46;
+  /*colors*/
+  --bg-light: #edeff2;
+  --compSurface-light: #fff;
+  --iconSurface-light: #e4e6eb;
+  --bg-purple-light: #7e42ff;
+  --bg-soft-purple-light: #eee5ff;
+  --bg-button-donar: #ffebef;
+  --border-pruple-light: #5d11ff;
+  --border-graySurfaces-light: #bfbfbf;
+  --blue-1: #0040e0;
+  --blue-2: #0071da;
+  --black-light: #000;
+  --black-text-light: #191b29;
+  --shadow: rgba(0, 0, 0, 0.274);
+  --shadow-spread: 4px;
+  --shadow-radious: 4px;
+  /* for states */
+  --error: #e20808;
+  --warning: #f57600;
+  --ok: #199a46;
 
-    /* others */
-    --font-family: Inter, Helvetica, Arial, sans-serif;
-    --border-rad-comp: 8px;
-    --border-rad-surf: 12px;
-    --border-1: 2px solid var(--border-pruple-light)
+  /* others */
+  --font-family: Inter, Helvetica, Arial, sans-serif;
+  --border-rad-comp: 8px;
+  --border-rad-surf: 12px;
+  --border-1: 2px solid var(--border-pruple-light);
 }
