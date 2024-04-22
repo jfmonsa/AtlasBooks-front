@@ -7,6 +7,11 @@ import SendEmail from "./pages/account/SendEmail.jsx"
 import NewAccount from "./pages/account/NewAccount.jsx"
 import ChangePass from "./pages/account/ChangePass.jsx"
 
+/*
+TODO:
++ Estadarizar codigo, configurar una configuración comun para el formatedo del codigo
++ Una hu para revisar ciertos estilos del css, impresisiones respecto al diseño del figma
+*/
 const App = () => {
   return(
     <>
