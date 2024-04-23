@@ -4,7 +4,7 @@ import {PrimaryBtn} from "../../components/primaryBtn/PrimaryBtn.jsx";
 import {InputText} from "../../components/inputText/InputText.jsx";
 import {useState} from "react";
 
-const recoveryAccount = ({setUsuario}) => {
+export const recoveryAccount = ({setUsuario}) => {
   const [user, setUser] = useState("");
   const [error, setError] = useState(false);
 
@@ -49,5 +49,3 @@ const recoveryAccount = ({setUsuario}) => {
     </>
   );
 };
-
-export default recoveryAccount;

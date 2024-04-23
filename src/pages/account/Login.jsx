@@ -4,7 +4,7 @@ import {PrimaryBtn} from "../../components/primaryBtn/PrimaryBtn.jsx";
 import {InputText} from "../../components/inputText/InputText.jsx";
 import {useState} from "react";
 
-export function Login({setUsuario}) {
+export const Login = ({setUsuario}) => {
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
@@ -56,4 +56,4 @@ export function Login({setUsuario}) {
       )}
     </>
   );
-}
+};

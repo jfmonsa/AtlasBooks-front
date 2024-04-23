@@ -4,18 +4,11 @@ import {PrimaryBtn} from "../../components/primaryBtn/PrimaryBtn.jsx";
 import {InputText} from "../../components/inputText/InputText.jsx";
 import {useState} from "react";
 
-const ChangePass = ({setUsuario}) => {
+export const ChangePass = ({setUsuario}) => {
   const [user, setUser] = useState("");
   const [error, setError] = useState(false);
   const [password, setPassword] = useState("");
 
-  /*
-  TODO:
-
-  Esta función que la usamos repetidamente en varios archivos la podríamos
-  meterla en una carpeta llamada utils que contenga funciones repetidas a lo
-  largo de la app
-  */
   const handleSubmit = e => {
     e.preventDefault();
     if (user == "") {
@@ -64,5 +57,3 @@ const ChangePass = ({setUsuario}) => {
     </>
   );
 };
-
-export default ChangePass;

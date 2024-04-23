@@ -1,6 +1,14 @@
 import styles from "./inputText.module.css";
 
-export function InputText({type, typecss, value, id, onChange, text, holder}) {
+export const InputText = ({
+  type,
+  typecss,
+  value,
+  id,
+  onChange,
+  text,
+  holder,
+}) => {
   return (
     <div>
       <label htmlFor={id} className={styles.input__label}>
@@ -17,4 +25,4 @@ export function InputText({type, typecss, value, id, onChange, text, holder}) {
       />
     </div>
   );
-}
+};

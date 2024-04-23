@@ -1,6 +1,6 @@
 import "./footer.css";
 
-function Footer() {
+export const Footer = () => {
   return (
     <footer>
       <div className="ft_left_conta">
@@ -100,6 +100,4 @@ function Footer() {
       </div>
     </footer>
   );
-}
-
-export default Footer;
+};

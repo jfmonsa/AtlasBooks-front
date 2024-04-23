@@ -4,7 +4,7 @@ import {PrimaryBtn} from "../../components/primaryBtn/PrimaryBtn.jsx";
 import {InputText} from "../../components/inputText/InputText.jsx";
 import {useState} from "react";
 
-function NewAccount({setUsuario}) {
+export const NewAccount = ({setUsuario}) => {
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
@@ -59,6 +59,6 @@ function NewAccount({setUsuario}) {
       )}
     </>
   );
-}
+};
 
 export default NewAccount;

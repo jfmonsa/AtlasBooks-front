@@ -1,12 +1,9 @@
-import './PrimaryBtn.css'
+import "./PrimaryBtn.css";
 
-export function PrimaryBtn({text,  id, onClick, type}){
-    
-    return(
-        <button className={`custom-button ${type}`} 
-            id={id} 
-            onClick={onClick}>
-            {text}
-        </button>
-    )
-}
+export const PrimaryBtn = ({text, id, onClick, type}) => {
+  return (
+    <button className={`custom-button ${type}`} id={id} onClick={onClick}>
+      {text}
+    </button>
+  );
+};
