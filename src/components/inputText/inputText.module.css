@@ -1,20 +1,18 @@
 .input {
   width: 300px;
   height: 36px;
-  padding: 4px 8px;
+  padding: var(--spacing-1) var(--spacing-2);
   margin-bottom: var(--spacing-4);
-  border: 2px solid var(--border-pruple-light);
+  border: var(--border-1);
   border-radius: var(--border-rad-comp);
-  font-family: var(--font-family);
-  font-size: 16px;
+  font-size: var(--fs-2);
 }
 
 .input__label {
   display: block;
   margin-bottom: var(--spacing-2);
-
-  /* TODO: No se por que no sale el font family correcto en el navegador */
   font-family: var(--font-family);
-  font-weight: 600;
-  font-size: 16px;
+  font-size: var(--fs-2);
+  font-weight: var(--fw-medium);
+  color: var(--black-text-light);
 }
