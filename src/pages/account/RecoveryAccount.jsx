@@ -1,10 +1,10 @@
 import "./account.css";
 import {EMAIL} from "../../utils/placeholder.js";
-import {PrimaryBtn} from "../../components/primaryBtn/PrimaryBtn.jsx";
-import {InputText} from "../../components/inputText/InputText.jsx";
+import PrimaryBtn from "../../components/primaryBtn/PrimaryBtn.jsx";
+import InputText from "../../components/inputText/InputText.jsx";
 import {useState} from "react";
 
-export const recoveryAccount = ({setUsuario}) => {
+const RecoveryAccount = ({setUsuario}) => {
   const [user, setUser] = useState("");
   const [error, setError] = useState(false);
 
@@ -49,3 +49,4 @@ export const recoveryAccount = ({setUsuario}) => {
     </>
   );
 };
+export default RecoveryAccount;

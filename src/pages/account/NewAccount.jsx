@@ -1,10 +1,10 @@
 import "./account.css";
 import {NAME, EMAIL, PASSWD} from "../../utils/placeholder.js";
-import {PrimaryBtn} from "../../components/primaryBtn/PrimaryBtn.jsx";
-import {InputText} from "../../components/inputText/InputText.jsx";
+import PrimaryBtn from "../../components/primaryBtn/PrimaryBtn.jsx";
+import InputText from "../../components/inputText/InputText.jsx";
 import {useState} from "react";
 
-export const NewAccount = ({setUsuario}) => {
+const NewAccount = ({setUsuario}) => {
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);

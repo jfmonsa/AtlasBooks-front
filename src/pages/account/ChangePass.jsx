@@ -1,10 +1,10 @@
 import "./account.css";
 import {PASSWD} from "../../utils/placeholder.js";
-import {PrimaryBtn} from "../../components/primaryBtn/PrimaryBtn.jsx";
-import {InputText} from "../../components/inputText/InputText.jsx";
+import PrimaryBtn from "../../components/primaryBtn/PrimaryBtn.jsx";
+import InputText from "../../components/inputText/InputText.jsx";
 import {useState} from "react";
 
-export const ChangePass = ({setUsuario}) => {
+const ChangePass = ({setUsuario}) => {
   const [user, setUser] = useState("");
   const [error, setError] = useState(false);
   const [password, setPassword] = useState("");
@@ -57,3 +57,5 @@ export const ChangePass = ({setUsuario}) => {
     </>
   );
 };
+
+export default ChangePass;
