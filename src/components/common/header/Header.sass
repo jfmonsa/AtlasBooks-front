@@ -8,29 +8,6 @@
     background: var(--compSurface-light)
     box-shadow: 0px var(--shadow-spread) var(--shadow-radious) var(--shadow)
 
-    .right-elements
-        display: flex
-        align-items: center
-
-    .right-elements__item
-        margin-right: var(--spacing-3)
-        font-size: var(--fs-2)
-        font-weight: var(--fw-medium)
-
-    .button-donar
-        height: 40px
-        margin-right: var(--spacing-4)
-        padding: var(--spacing-2)
-        border-radius: var(--border-rad-comp)
-        border: var(--border-1)
-        display: flex
-        justify-content: center
-        align-items: center
-        background: var(--bg-button-donar)
-        font-size: var(--fs-2)
-        font-weight: var(--fw-medium)
-        color: var(--border-pruple-light)
-
     //buttom burguer menu
     .menu-button,
     .menu-button-opened
@@ -76,10 +53,31 @@
     .menu-button-opened .menu-button-burger::after
         transform: rotate(-45deg) translate(35px, 35px)
 
+.navbar-right
+    display: flex
+    align-items: center
+
+.navbar-right__item
+    margin-right: var(--spacing-3)
+    font-size: var(--fs-2)
+    font-weight: var(--fw-medium)
+    color: var(--black-light)
+
+.navbar-right__item--donar
+    height: 40px
+    margin-right: var(--spacing-4)
+    padding: var(--spacing-2)
+    border-radius: var(--border-rad-comp)
+    border: var(--border-1)
+    display: flex
+    justify-content: center
+    align-items: center
+    background: var(--bg-button-donar)
+    color: var(--border-pruple-light)
+
 @media only screen and (max-width: 600px)
-    .navbar
-        .right-elements__item
-            display: none
-        .button-donar
-            margin-right: 0
-            height: 32px
+    .navbar-right__item:not(.navbar-right__item--donar)
+        display: none
+    .navbar-right__item--donar
+        margin-right: 0
+        height: 32px
