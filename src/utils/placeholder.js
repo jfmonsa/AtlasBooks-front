@@ -3,5 +3,6 @@
 const NAME = "Pepito Perez";
 const EMAIL = "usuario@mail.com";
 const PASSWD = "********";
+const SEARCH = "Buscar por título, autor, ISBN, editor, ...";
 
-export {NAME, EMAIL, PASSWD};
+export {NAME, EMAIL, PASSWD,SEARCH};
