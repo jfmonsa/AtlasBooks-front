@@ -48,9 +48,9 @@ const Header = () => {
           onClick={() => setOpenedState()}
         >
           <div className="menu-button-burger"></div>
-          <DropdownMenu></DropdownMenu>
         </div>
       </div>
+      {isOpen && <DropdownMenu />}
     </header>
   );
 };
