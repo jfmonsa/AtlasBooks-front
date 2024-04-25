@@ -4,6 +4,7 @@ import {EMAIL, PASSWD, SEARCH} from "../../utils/placeholder.js";
 import PrimaryBtn from "../../components/primaryBtn/PrimaryBtn.jsx";
 import InputText from "../../components/inputText/InputText.jsx";
 import {useState} from "react";
+import RateStars from "../../components/rate-stars/RateStars.jsx";
 
 const Login = ({setUsuario}) => {
   const [user, setUser] = useState("");
