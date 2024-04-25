@@ -7,6 +7,8 @@ import SendEmail from "./pages/account/SendEmail.jsx";
 import NewAccount from "./pages/account/NewAccount.jsx";
 import ChangePass from "./pages/account/ChangePass.jsx";
 import RateStars from "./components/rate-stars/RateStars.jsx";
+import { Card } from "./components/card/Card.jsx";
+import { Comentarios } from "./components/commentarySection/Comentarios.jsx";
 
 const App = () => {
   return (
@@ -25,6 +27,9 @@ const App = () => {
 
         {/*<RateStars/> */}
         {/* <Searcher type={"text"} holder={SEARCH} /> */}
+        <Card>
+          <Comentarios userId={'1'} userName={"Jose Luis"}></Comentarios>
+        </Card>
       </main>
       <Footer />
     </>
