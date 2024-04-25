@@ -75,6 +75,31 @@
     background: var(--bg-button-donar)
     color: var(--border-pruple-light)
 
+.dropmenu
+    position: absolute
+    top: 58px
+    width: 300px
+    transform: translateX(-45%)
+    background-color: var(--compSurface-light)
+    border: 2px solid var(--border-graySurfaces-light)
+    border-radius: 8px
+    padding: 1rem
+    overflow: hidden
+
+.dropmenu__item
+    height: 50px
+    display: flex
+    align-items: center
+    border-radius: 8px
+    transition: background 500ms
+    padding: 0.5rem
+
+    &:hover
+        background-color: #525357
+
+.icon-right
+    margin-left: auto
+
 @media only screen and (max-width: 600px)
     .navbar-right__item:not(.navbar-right__item--donar)
         display: none

@@ -1,5 +1,15 @@
 import "./Header.sass";
 import logo_Atlas from "../../../assets/logo_Atlas.svg";
+import MenuProfileIcon from "../../../assets/icons/menu-profile.svg";
+import MenuCategoriesIcon from "../../../assets/icons/menu-categories.svg";
+import MenuControlpanelIcon from "../../../assets/icons/menu-controlPanel.svg";
+import MenuDiscoverlistsIcon from "../../../assets/icons/menu-discoverLists.svg";
+import MenuLoginIcon from "../../../assets/icons/menu-login.svg";
+import MenuLogoutIcon from "../../../assets/icons/menu-logout.svg";
+import MenuMylistsIcon from "../../../assets/icons/menu-myLists.svg";
+import MenuRecommendedIcon from "../../../assets/icons/menu-recommended.svg";
+import MenuSearchIcon from "../../../assets/icons/menu-search.svg";
+import MenuSingupIcon from "../../../assets/icons/menu-singup.svg";
 import {useState} from "react";
 
 const Header = () => {
@@ -15,7 +25,7 @@ const Header = () => {
         <img src={logo_Atlas} alt="logo AtlassBook" />
       </a>
 
-      <div>
+      <div className="navbar-right">
         <ul className="navbar-right">
           <li href="#">
             <a
@@ -32,36 +42,50 @@ const Header = () => {
               Mi Perfil
             </a>
           </li>
-
-          <ul
-            className={isOpen ? "menu-button-opened" : "menu-button"}
-            onClick={() => setOpenedState()}
-          >
-            <ul className="menu-button-burger"></ul>
-          </ul>
         </ul>
-
-        {/* <div
+        <div
           className={isOpen ? "menu-button-opened" : "menu-button"}
           onClick={() => setOpenedState()}
         >
           <div className="menu-button-burger"></div>
-        </div> */}
+          <DropdownMenu></DropdownMenu>
+        </div>
       </div>
     </header>
   );
 };
 
 const DropdownItem = props => {
+  const alticon = "Icono de";
   return (
-    <a href="#" className="menu-item">
-      <span className="icon-button">{props.leftIcon}</span>
-      {props.children}
-      <span className="icon-right">{props.rightIcon}</span>
-    </a>
+    <li>
+      <a href="#" className="dropmenu__item">
+        <span className="dropmenu__item__icon">
+          <img src={props.icon} alt={alticon + " " + props.text}></img>
+        </span>
+        <span className="dropmenu__item__text">{props.text}</span>
+      </a>
+    </li>
   );
 };
 
-const DropdownMenu = () => {};
+const DropdownMenu = () => {
+  return (
+    <ul className="dropmenu">
+      <DropdownItem icon={ProfileIcon} text="Mi cuenta"></DropdownItem>
+      {/* Si no ha iniciado sesión */}
+      {/* <DropdownItem icon="🤭" text="Iniciar sesión"></DropdownItem>
+      <DropdownItem icon="🤭" text="Registrarse"></DropdownItem> */}
+      {/* Si es admin: */}
+      {/* <DropdownItem icon="🤭" text="Panel de control"></DropdownItem> */}
+      <DropdownItem icon={ProfileIcon} text="Buscar libro"></DropdownItem>
+      <DropdownItem icon="🤭" text="Categorias"></DropdownItem>
+      <DropdownItem icon="🤭" text="Recomendados"></DropdownItem>
+      <DropdownItem icon="🤭" text="Explorar listas"></DropdownItem>
+      <DropdownItem icon="🤭" text="Mis listas"></DropdownItem>
+      <DropdownItem icon="🤭" text="Salir"></DropdownItem>
+    </ul>
+  );
+};
 
 export default Header;
