@@ -6,9 +6,7 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const setOpenedState = () => {
-    let reverseOpened = isOpen;
-
-    setIsOpen(!reverseOpened);
+    setIsOpen(!isOpen);
   };
 
   return (
