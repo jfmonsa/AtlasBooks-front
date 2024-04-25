@@ -6,6 +6,7 @@ import RecoveryAccount from "./pages/account/RecoveryAccount.jsx";
 import SendEmail from "./pages/account/SendEmail.jsx";
 import NewAccount from "./pages/account/NewAccount.jsx";
 import ChangePass from "./pages/account/ChangePass.jsx";
+import RateStars from "./components/rate-stars/RateStars.jsx";
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
           <Route path="/change-pass" element={<ChangePass />} />
         </Routes>
 
+        {/*<RateStars/> */}
         {/* <Searcher type={"text"} holder={SEARCH} /> */}
       </main>
       <Footer />

@@ -5,6 +5,7 @@ import PrimaryBtnLink from "../../components/primaryBtn/PrimaryBtnLink.jsx";
 import InputText from "../../components/inputText/InputText.jsx";
 import {Link} from "react-router-dom";
 import {useState} from "react";
+import RateStars from "../../components/rate-stars/RateStars.jsx";
 
 const Login = ({setUsuario}) => {
   const [user, setUser] = useState("");
