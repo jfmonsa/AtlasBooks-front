@@ -1,5 +1,4 @@
 import "./account.css";
-import Searcher from "../../components/searcher/Searcher.jsx";
 import {EMAIL, PASSWD, SEARCH} from "../../utils/placeholder.js";
 import PrimaryBtn from "../../components/primaryBtn/PrimaryBtn.jsx";
 import InputText from "../../components/inputText/InputText.jsx";
