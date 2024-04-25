@@ -12,6 +12,7 @@ const App = () => {
       <Header />
       <main>
         <Login />
+        {/* <Searcher type={"text"} holder={SEARCH} /> */}
         {/* <NewAccount />
         <RecoveryAccount />
         <SendEmail />

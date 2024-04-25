@@ -5,7 +5,6 @@ import PrimaryBtn from "../../components/primaryBtn/PrimaryBtn.jsx";
 import InputText from "../../components/inputText/InputText.jsx";
 import {useState} from "react";
 
-
 const Login = ({setUsuario}) => {
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
@@ -25,15 +24,7 @@ const Login = ({setUsuario}) => {
   return (
     <>
       <h1 className="account__title">Iniciar Sesion</h1>
-      <Searcher 
-      type={"text"}
-      holder={SEARCH}
-      />
-
       <form onSubmit={handleSubmit}>
-
-       
-
         <InputText
           type={"text"}
           holder={EMAIL}
