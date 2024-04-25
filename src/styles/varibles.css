@@ -46,4 +46,5 @@
   --border-rad-comp: 8px;
   --border-rad-surf: 12px;
   --border-1: 2px solid var(--border-pruple-light);
+  --speed: 0.3s /*500ms; ?*/;
 }

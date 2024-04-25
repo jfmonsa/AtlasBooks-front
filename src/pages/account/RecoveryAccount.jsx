@@ -1,7 +1,8 @@
 import "./account.css";
 import {EMAIL} from "../../utils/placeholder.js";
-import PrimaryBtn from "../../components/primaryBtn/PrimaryBtn.jsx";
+import PrimaryBtnForm from "../../components/primaryBtn/PrimaryBtnForm.jsx";
 import InputText from "../../components/inputText/InputText.jsx";
+import {Link} from "react-router-dom";
 import {useState} from "react";
 
 const RecoveryAccount = ({setUsuario}) => {
@@ -36,12 +37,12 @@ const RecoveryAccount = ({setUsuario}) => {
           text={"Email "}
         />
 
-        <PrimaryBtn text="Enviar" type={"signin"} id="3" />
+        <PrimaryBtnForm text="Enviar" type={"purpleBtn"} id="3" />
       </form>
 
-      <a className="account__forgot-link" href="#">
+      <Link tolink="/send-email" className="account__forgot-link">
         Volver al inicio de sesión
-      </a>
+      </Link>
 
       {error && (
         <p style={{color: "var(--error)"}}>*Llenar el campo es obligatorios</p>

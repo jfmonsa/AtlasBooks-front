@@ -1,13 +1,13 @@
 import "./account.css";
-import {PASSWD} from "../../utils/placeholder.js";
-import PrimaryBtn from "../../components/primaryBtn/PrimaryBtn.jsx";
+import PrimaryBtnForm from "../../components/primaryBtn/PrimaryBtnForm.jsx";
 import InputText from "../../components/inputText/InputText.jsx";
+import {PASSWD} from "../../utils/placeholder.js";
+import {Link} from "react-router-dom";
 import {useState} from "react";
 
 const ChangePass = ({setUsuario}) => {
   const [user, setUser] = useState("");
   const [error, setError] = useState(false);
-  const [password, setPassword] = useState("");
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -48,7 +48,7 @@ const ChangePass = ({setUsuario}) => {
           text={"Repite tu nueva contraseña"}
         />
 
-        <PrimaryBtn text="Enviar" type={"signin"} id="3" />
+        <PrimaryBtnForm text="Enviar" type={"purpleBtn"} id="3" />
       </form>
 
       {error && (

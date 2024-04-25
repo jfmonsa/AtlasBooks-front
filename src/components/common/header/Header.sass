@@ -8,78 +8,111 @@
     background: var(--compSurface-light)
     box-shadow: 0px var(--shadow-spread) var(--shadow-radious) var(--shadow)
 
-    .right-elements
-        display: flex
-        align-items: center
+.navbar-right
+    display: flex
+    align-items: center
 
-    .right-elements__item
-        margin-right: var(--spacing-3)
-        font-size: var(--fs-2)
-        font-weight: var(--fw-medium)
+.navbar-right__item
+    margin-right: var(--spacing-3)
+    font-size: var(--fs-2)
+    font-weight: var(--fw-medium)
+    color: var(--black-light)
 
-    .button-donar
-        height: 40px
-        margin-right: var(--spacing-4)
-        padding: var(--spacing-2)
-        border-radius: var(--border-rad-comp)
-        border: var(--border-1)
-        display: flex
-        justify-content: center
-        align-items: center
-        background: var(--bg-button-donar)
-        font-size: var(--fs-2)
-        font-weight: var(--fw-medium)
-        color: var(--border-pruple-light)
+.navbar-right__item--donar
+    height: 40px
+    margin-right: var(--spacing-4)
+    padding: var(--spacing-2)
+    border-radius: var(--border-rad-comp)
+    border: var(--border-1)
+    display: flex
+    justify-content: center
+    align-items: center
+    background: var(--bg-button-donar)
+    color: var(--border-pruple-light)
 
-    //buttom burguer menu
-    .menu-button,
-    .menu-button-opened
-        position: relative
-        margin-left: var(--spacing-4)
-        display: flex
-        justify-content: center
-        align-items: center
-        height: 40px
-        cursor: pointer
+//buttom burguer menu
+.menu-button,
+.menu-button-opened
+    position: relative
+    margin-left: var(--spacing-4)
+    display: flex
+    justify-content: center
+    align-items: center
+    height: 40px
+    cursor: pointer
 
-    //Crear barras del boton
-    .menu-button-burger,
-    .menu-button-burger::before,
-    .menu-button-burger::after
-        width: 40px
-        height: 6px
-        background: var(--black-light)
-        border-radius: 4px
-        transition: all 0.3s ease-in-out
+.menu-button-burger,
+.menu-button-burger::before,
+.menu-button-burger::after
+    width: 40px
+    height: 6px
+    background: var(--black-light)
+    border-radius: 4px
+    transition: all var(--speed) ease-in-out
 
-    .menu-button-burger::before,
-    .menu-button-burger::after
-        content: ''
-        position: absolute
-        left: 0
-        right: 0
+.menu-button-burger::before,
+.menu-button-burger::after
+    content: ''
+    position: absolute
+    left: 0
+    right: 0
 
-    .menu-button-burger::before
-        transform: translateY(-14px)
+.menu-button-burger::before
+    transform: translateY(-14px)
 
-    .menu-button-burger::after
-        transform: translateY(14px)
+.menu-button-burger::after
+    transform: translateY(14px)
 
-    //Crear animacion
-    .menu-button-opened .menu-button-burger
-        transform: translateX(-50px)
-        background: transparent
+.menu-button-opened .menu-button-burger
+    transform: translateX(-50px)
+    background: transparent
 
-    .menu-button-opened .menu-button-burger::before
-        transform: rotate(45deg) translate(35px, -35px)
+.menu-button-opened .menu-button-burger::before
+    transform: rotate(45deg) translate(35px, -35px)
 
-    .menu-button-opened .menu-button-burger::after
-        transform: rotate(-45deg) translate(35px, 35px)
+.menu-button-opened .menu-button-burger::after
+    transform: rotate(-45deg) translate(35px, 35px)
+
+//Drop down menu
+.dropmenu
+    position: absolute
+    top: 56px
+    right: -120px
+    width: 280px
+    transform: translateX(-45%)
+    background-color: var(--compSurface-light)
+    // Hacer una variable para este borde
+    border: 2px solid var(--border-graySurfaces-light)
+    border-radius: var(--border-rad-comp)
+    padding: var(--spacing-3)
+
+.dropmenu__item
+    height: 48px
+    display: flex
+    align-items: center
+    border-radius: var(--border-rad-comp)
+    transition: background var(--speed)
+    padding: var(--spacing-2)
+
+    &:hover
+        background-color: var(--border-graySurfaces-light)
+
+.dropmenu__item__icon
+    width: var(--spacing-5)
+    height: var(--spacing-5)
+    margin-right: var(--spacing-3)
+    display: flex
+    justify-content: center
+    align-items: center
+    border-radius: var(--border-rad-comp)
+    background-color: var(--iconSurface-light)
+
+.dropmenu__item__text
+    color: var(--black-light)
 
 @media only screen and (max-width: 600px)
-    .navbar
-        .right-elements__item
-            display: none
-        .button-donar
-            margin-right: 0
-            height: 32px
+    .navbar-right__item:not(.navbar-right__item--donar)
+        display: none
+    .navbar-right__item--donar
+        margin-right: 0
+        height: 32px
