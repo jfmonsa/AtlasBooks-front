@@ -72,18 +72,24 @@ const DropdownItem = props => {
 const DropdownMenu = () => {
   return (
     <ul className="dropmenu">
-      <DropdownItem icon={ProfileIcon} text="Mi cuenta"></DropdownItem>
+      <DropdownItem icon={MenuProfileIcon} text="Mi cuenta"></DropdownItem>
       {/* Si no ha iniciado sesión */}
-      {/* <DropdownItem icon="🤭" text="Iniciar sesión"></DropdownItem>
-      <DropdownItem icon="🤭" text="Registrarse"></DropdownItem> */}
+      {/* <DropdownItem icon={MenuLoginIcon} text="Iniciar sesión"></DropdownItem>
+      <DropdownItem icon={MenuSingupIcon} text="Registrarse"></DropdownItem> */}
       {/* Si es admin: */}
-      {/* <DropdownItem icon="🤭" text="Panel de control"></DropdownItem> */}
-      <DropdownItem icon={ProfileIcon} text="Buscar libro"></DropdownItem>
-      <DropdownItem icon="🤭" text="Categorias"></DropdownItem>
-      <DropdownItem icon="🤭" text="Recomendados"></DropdownItem>
-      <DropdownItem icon="🤭" text="Explorar listas"></DropdownItem>
-      <DropdownItem icon="🤭" text="Mis listas"></DropdownItem>
-      <DropdownItem icon="🤭" text="Salir"></DropdownItem>
+      {/* <DropdownItem icon={MenuControlpanelIcon} text="Panel de control"></DropdownItem> */}
+      <DropdownItem icon={MenuSearchIcon} text="Buscar libro"></DropdownItem>
+      <DropdownItem icon={MenuCategoriesIcon} text="Categorias"></DropdownItem>
+      <DropdownItem
+        icon={MenuRecommendedIcon}
+        text="Recomendados"
+      ></DropdownItem>
+      <DropdownItem
+        icon={MenuDiscoverlistsIcon}
+        text="Explorar listas"
+      ></DropdownItem>
+      <DropdownItem icon={MenuMylistsIcon} text="Mis listas"></DropdownItem>
+      <DropdownItem icon={MenuLogoutIcon} text="Salir"></DropdownItem>
     </ul>
   );
 };
