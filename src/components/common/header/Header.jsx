@@ -12,49 +12,7 @@ import MenuSearchIcon from "../../../assets/icons/menu-search.svg";
 import MenuSingupIcon from "../../../assets/icons/menu-singup.svg";
 import {useState} from "react";
 
-const Header = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const setOpenedState = () => {
-    setIsOpen(!isOpen);
-  };
-
-  return (
-    <header className="navbar">
-      <a href="#">
-        <img src={logo_Atlas} alt="logo AtlassBook" />
-      </a>
-
-      <div className="navbar-right">
-        <ul className="navbar-right">
-          <li href="#">
-            <a
-              href="#"
-              className="navbar-right__item navbar-right__item--donar"
-            >
-              Donar
-            </a>
-          </li>
-          {/* <li><a href="#" className="navbar-right__item">Registrarse</a></li>
-          <li"><a href="#" className="navbar-right__item>Iniciar Sesion</a></li> */}
-          <li>
-            <a href="#" className="navbar-right__item">
-              Mi Perfil
-            </a>
-          </li>
-        </ul>
-        <div
-          className={isOpen ? "menu-button-opened" : "menu-button"}
-          onClick={() => setOpenedState()}
-        >
-          <div className="menu-button-burger"></div>
-        </div>
-      </div>
-      {isOpen && <DropdownMenu />}
-    </header>
-  );
-};
-
+// Auxiliary components for dropdownmenu
 const DropdownItem = props => {
   const alticon = "Icono de";
   return (
@@ -94,4 +52,47 @@ const DropdownMenu = () => {
   );
 };
 
+// Main header component
+const Header = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const setOpenedState = () => {
+    setIsOpen(!isOpen);
+  };
+
+  return (
+    <header className="navbar">
+      <a href="#">
+        <img src={logo_Atlas} alt="logo AtlassBook" />
+      </a>
+
+      <div className="navbar-right">
+        <ul className="navbar-right">
+          <li href="#">
+            <a
+              href="#"
+              className="navbar-right__item navbar-right__item--donar"
+            >
+              Donar
+            </a>
+          </li>
+          {/* Si no ha iniciado sección
+          <li><a href="#" className="navbar-right__item">Registrarse</a></li>
+          <li"><a href="#" className="navbar-right__item>Iniciar Sesion</a></li> */}
+          <li>
+            <a href="#" className="navbar-right__item">
+              Mi Perfil
+            </a>
+          </li>
+        </ul>
+        <div
+          className={isOpen ? "menu-button-opened" : "menu-button"}
+          onClick={() => setOpenedState()}
+        >
+          <div className="menu-button-burger"></div>
+        </div>
+      </div>
+      {isOpen && <DropdownMenu />}
+    </header>
+  );
+};
 export default Header;

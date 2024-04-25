@@ -8,51 +8,6 @@
     background: var(--compSurface-light)
     box-shadow: 0px var(--shadow-spread) var(--shadow-radious) var(--shadow)
 
-    //buttom burguer menu
-    .menu-button,
-    .menu-button-opened
-        position: relative
-        margin-left: var(--spacing-4)
-        display: flex
-        justify-content: center
-        align-items: center
-        height: 40px
-        cursor: pointer
-
-    //Crear barras del boton
-    .menu-button-burger,
-    .menu-button-burger::before,
-    .menu-button-burger::after
-        width: 40px
-        height: 6px
-        background: var(--black-light)
-        border-radius: 4px
-        transition: all 0.3s ease-in-out
-
-    .menu-button-burger::before,
-    .menu-button-burger::after
-        content: ''
-        position: absolute
-        left: 0
-        right: 0
-
-    .menu-button-burger::before
-        transform: translateY(-14px)
-
-    .menu-button-burger::after
-        transform: translateY(14px)
-
-    //Crear animacion
-    .menu-button-opened .menu-button-burger
-        transform: translateX(-50px)
-        background: transparent
-
-    .menu-button-opened .menu-button-burger::before
-        transform: rotate(45deg) translate(35px, -35px)
-
-    .menu-button-opened .menu-button-burger::after
-        transform: rotate(-45deg) translate(35px, 35px)
-
 .navbar-right
     display: flex
     align-items: center
@@ -75,28 +30,71 @@
     background: var(--bg-button-donar)
     color: var(--border-pruple-light)
 
+//buttom burguer menu
+.menu-button,
+.menu-button-opened
+    position: relative
+    margin-left: var(--spacing-4)
+    display: flex
+    justify-content: center
+    align-items: center
+    height: 40px
+    cursor: pointer
+
+.menu-button-burger,
+.menu-button-burger::before,
+.menu-button-burger::after
+    width: 40px
+    height: 6px
+    background: var(--black-light)
+    border-radius: 4px
+    transition: all var(--speed) ease-in-out
+
+.menu-button-burger::before,
+.menu-button-burger::after
+    content: ''
+    position: absolute
+    left: 0
+    right: 0
+
+.menu-button-burger::before
+    transform: translateY(-14px)
+
+.menu-button-burger::after
+    transform: translateY(14px)
+
+.menu-button-opened .menu-button-burger
+    transform: translateX(-50px)
+    background: transparent
+
+.menu-button-opened .menu-button-burger::before
+    transform: rotate(45deg) translate(35px, -35px)
+
+.menu-button-opened .menu-button-burger::after
+    transform: rotate(-45deg) translate(35px, 35px)
+
+//Drop down menu
 .dropmenu
     position: absolute
     top: 56px
-    right: calc(-120px )
+    right: -120px
     width: 280px
     transform: translateX(-45%)
     background-color: var(--compSurface-light)
+    // Hacer una variable para este borde
     border: 2px solid var(--border-graySurfaces-light)
-    border-radius: 8px
+    border-radius: var(--border-rad-comp)
     padding: var(--spacing-3)
 
 .dropmenu__item
     height: 48px
     display: flex
     align-items: center
-    border-radius: 8px
-    transition: background 500ms
-    padding: 0.5rem
-    // transition: filter 300ms
+    border-radius: var(--border-rad-comp)
+    transition: background var(--speed)
+    padding: var(--spacing-2)
 
     &:hover
-        // filter: brightness(1.2)
         background-color: var(--border-graySurfaces-light)
 
 .dropmenu__item__icon
