@@ -1,0 +1,23 @@
+.formCustomBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 48px;
+  border-radius: var(--border-rad-comp);
+  cursor: pointer;
+  font-size: var(--fs-2);
+  font-weight: var(--fw-medium);
+}
+
+.purpleBtn {
+  background-color: var(--bg-purple-light);
+  border: var(--border-1);
+  color: var(--compSurface-light);
+}
+.black1Btn {
+  background-color: var(--bg-soft-purple-light);
+  border: 2px solid black;
+  color: var(--black-light);
+  margin-bottom: var(--spacing-3);
+}

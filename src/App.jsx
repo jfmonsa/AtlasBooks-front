@@ -1,3 +1,4 @@
+import {Route, Routes} from "react-router-dom";
 import Header from "./components/common/header/Header.jsx";
 import Footer from "./components/common/footer/Footer.jsx";
 import Login from "./pages/account/Login.jsx";
@@ -12,13 +13,18 @@ const App = () => {
     <>
       <Header />
       <main>
-        <RateStars/>
-        {/* <Login /> */}
+        <Routes>
+          {/* <Route path="/" element={<Home />} /> */}
+          <Route path="/" element={<Login />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/new-account" element={<NewAccount />} />
+          <Route path="/recovery-account" element={<RecoveryAccount />} />
+          <Route path="/send-email" element={<SendEmail />} />
+          <Route path="/change-pass" element={<ChangePass />} />
+        </Routes>
+
+        {/*<RateStars/> */}
         {/* <Searcher type={"text"} holder={SEARCH} /> */}
-        {/* <NewAccount />
-        <RecoveryAccount />
-        <SendEmail />
-        <ChangePass /> */}
       </main>
       <Footer />
     </>

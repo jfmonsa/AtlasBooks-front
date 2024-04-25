@@ -1,6 +1,7 @@
 import "./account.css";
 import icon_mail from "../../assets/icons/icon-mail.svg";
-import PrimaryBtn from "../../components/primaryBtn/PrimaryBtn.jsx";
+import PrimaryBtnForm from "../../components/primaryBtn/PrimaryBtnForm.jsx";
+import {Link} from "react-router-dom";
 
 const SendEmail = () => {
   return (
@@ -14,13 +15,13 @@ const SendEmail = () => {
 
       <img src={icon_mail} alt="" className="icon_mail" />
 
-      <PrimaryBtn text="Iniciar Sesion" type={"signin"} id="4" />
+      <PrimaryBtnForm text="Iniciar Sesion" type="purpleBtn" id="4" />
 
       <p className="text-link">
         No recibió el email?
-        <a className="forgot-link" href="#">
+        <Link tolink="/send-email" className="forgot-link">
           Volver a enviar
-        </a>
+        </Link>
       </p>
     </>
   );

@@ -1,8 +1,9 @@
 import "./account.css";
-import Searcher from "../../components/searcher/Searcher.jsx";
 import {EMAIL, PASSWD, SEARCH} from "../../utils/placeholder.js";
-import PrimaryBtn from "../../components/primaryBtn/PrimaryBtn.jsx";
+import PrimaryBtnForm from "../../components/primaryBtn/PrimaryBtnForm.jsx";
+import PrimaryBtnLink from "../../components/primaryBtn/PrimaryBtnLink.jsx";
 import InputText from "../../components/inputText/InputText.jsx";
+import {Link} from "react-router-dom";
 import {useState} from "react";
 import RateStars from "../../components/rate-stars/RateStars.jsx";
 
@@ -43,14 +44,18 @@ const Login = ({setUsuario}) => {
           text={"Contraseña"}
         />
 
-        <PrimaryBtn text="Iniciar Sesion" type={"signin"} id="1" />
+        <PrimaryBtnForm text="Iniciar Sesion" type={"purpleBtn"} id="1" />
       </form>
 
-      <a className="account__forgot-link" href="#">
+      <Link tolink="/recovery-account" className="account__forgot-link">
         Olvidaste tu Contraseña?
-      </a>
+      </Link>
 
-      <PrimaryBtn text="Crear Cuenta" type={"signup"} id="2" />
+      <PrimaryBtnLink
+        tolink="/new-account"
+        text="Crear Cuenta"
+        type={"black1Btn"}
+      />
       {error && (
         <p style={{color: "var(--error)"}}>
           *Todos los campos son obligatorios

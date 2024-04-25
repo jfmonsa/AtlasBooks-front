@@ -1,6 +1,6 @@
 import "./account.css";
 import {NAME, EMAIL, PASSWD} from "../../utils/placeholder.js";
-import PrimaryBtn from "../../components/primaryBtn/PrimaryBtn.jsx";
+import PrimaryBtnForm from "../../components/primaryBtn/PrimaryBtnForm.jsx";
 import InputText from "../../components/inputText/InputText.jsx";
 import {useState} from "react";
 
@@ -48,7 +48,7 @@ const NewAccount = ({setUsuario}) => {
           text={"Contraseña"}
         />
 
-        <PrimaryBtn text="Crear cuenta" type={"signin"} id="1" />
+        <PrimaryBtnForm text="Crear cuenta" type={"purpleBtn"} id="1" />
       </form>
 
       {/* <PrimaryBtn text="Crear Cuenta" type={"signup"} id="2" /> */}
