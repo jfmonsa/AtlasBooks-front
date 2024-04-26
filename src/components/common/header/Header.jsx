@@ -51,7 +51,7 @@ const DropdownMenu = () => {
       {/* Si es admin: */}
       {/* <DropdownItem toLink="/" icon={MenuControlpanelIcon} text="Panel de control"></DropdownItem> */}
       <DropdownItem
-        toLink="/"
+        toLink="/book-information"
         icon={MenuSearchIcon}
         text="Buscar libro"
       ></DropdownItem>
