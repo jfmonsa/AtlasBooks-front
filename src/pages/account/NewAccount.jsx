@@ -3,6 +3,7 @@ import {NAME, EMAIL, PASSWD} from "../../utils/placeholder.js";
 import PrimaryBtnForm from "../../components/primaryBtn/PrimaryBtnForm.jsx";
 import InputText from "../../components/inputText/InputText.jsx";
 import {useState} from "react";
+import Recommended from "../../components/recommended/Recommended.jsx";
 
 const NewAccount = ({setUsuario}) => {
   const [user, setUser] = useState("");
@@ -22,6 +23,7 @@ const NewAccount = ({setUsuario}) => {
 
   return (
     <>
+      
       <h1 className="account__title">Crear una cuenta nueva</h1>
       <form onSubmit={handleSubmit}>
         <InputText
@@ -57,6 +59,7 @@ const NewAccount = ({setUsuario}) => {
           *Todos los campos son obligatorios
         </p>
       )}
+      
     </>
   );
 };
