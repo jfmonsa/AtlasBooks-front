@@ -2,6 +2,7 @@ import "./myaccount.css";
 import PrimaryBtnLink from "../../components/buttons/primaryBtn/PrimaryBtnLink.jsx";
 import BtnAdd from "../../components/buttons/BtnAdd/BtnAdd.jsx";
 import Card from "../../components/card/Card.jsx";
+import {Link} from "react-router-dom";
 
 // Aux functions
 const MyAccountMyData = () => {
@@ -69,8 +70,14 @@ const MyAccountOtherOpts = () => {
     <Card h1_text="Otras Opciones" h1_center={false}>
       <ul>
         <li>Donar </li>
-        <li>Cerrar sesión</li>
-        <li>Cambiar email</li>
+        <li>
+          <Link to="/Login">Cerrar sesión</Link>
+        </li>
+        <li>
+          <Link to="/my-account" className="navbar-right__item">
+            Cambiar email
+          </Link>
+        </li>
         <li>Cambiar contraseña</li>
         <li>Eliminar cuenta</li>
       </ul>
