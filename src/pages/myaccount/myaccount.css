@@ -9,3 +9,10 @@
 .card-myData__left {
   margin-right: var(--spacing-3);
 }
+
+.btn-add {
+  height: 48px;
+  margin-top: var(--spacing-2);
+  border: var(--border-1);
+  background-color: var(--bg-soft-purple-light);
+}

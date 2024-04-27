@@ -6,7 +6,7 @@ main {
   width: 100%;
   background-color: var(--compSurface-light);
   padding: var(--spacing-3);
-  border: 2px solid var(--border-graySurfaces-light);
+  border: var(--border-2);
   border-radius: 12px;
 }
 .cardSection:not(.cardSection:last-child) {
@@ -15,7 +15,7 @@ main {
 
 .card__h1 {
   margin-bottom: var(--spacing-4);
-  font-size: 24px;
+  font-size: var(--fs-3);
   font-weight: var(--fw-semibold);
   color: var(--black-light);
 }

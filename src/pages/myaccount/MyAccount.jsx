@@ -1,4 +1,5 @@
 import "./myaccount.css";
+import BtnIconAdd from "../../assets/icons/btnIcon-add.svg";
 import PrimaryBtnLink from "../../components/primaryBtn/PrimaryBtnLink.jsx";
 import Card from "../../components/card/Card.jsx";
 
@@ -28,6 +29,21 @@ const MyAccountMyData = () => {
   );
 };
 
+const MyAccountUploadABook = () => {
+  return (
+    <Card h1_text="Subir un libro" h1_center={false}>
+      <p>
+        Contribuye con la comunidad añadiendo nuevos libros, click al boton para
+        hacerlo
+      </p>
+      {/* TODO: el link para este */}
+      <PrimaryBtnLink tolink="" cssClasses="btn-add">
+        <img src={BtnIconAdd} alt="Add a book icon for button" />
+      </PrimaryBtnLink>
+    </Card>
+  );
+};
+
 const MyAccountOtherOpts = () => {
   return (
     <Card h1_text="Otras Opciones" h1_center={false}>
@@ -42,24 +58,12 @@ const MyAccountOtherOpts = () => {
   );
 };
 
-const MyAccountUploadABook = () => {
-  return (
-    <Card h1_text="Subir un libro" h1_center={false}>
-      <p>
-        Contribuye con la comunidad añadiendo nuevos libros, click al boton para
-        hacerlo
-      </p>
-      {/* TODO: el link para este */}
-      <PrimaryBtnLink tolink="" cssClasses=""></PrimaryBtnLink>
-    </Card>
-  );
-};
-
 // Main page
 const MyAccount = () => {
   return (
     <>
       <MyAccountMyData />
+      <MyAccountUploadABook />
       <MyAccountOtherOpts />
     </>
   );
