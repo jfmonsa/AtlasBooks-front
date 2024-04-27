@@ -1,6 +1,7 @@
 import "./myaccount.css";
 import BtnIconAdd from "../../assets/icons/btnIcon-add.svg";
-import PrimaryBtnLink from "../../components/primaryBtn/PrimaryBtnLink.jsx";
+import PrimaryBtnLink from "../../components/buttons/primaryBtn/PrimaryBtnLink.jsx";
+import BtnAdd from "../../components/buttons/BtnAdd/BtnAdd.jsx";
 import Card from "../../components/card/Card.jsx";
 
 // Aux functions
@@ -29,6 +30,28 @@ const MyAccountMyData = () => {
   );
 };
 
+const MyAccountListCard = () => {
+  return (
+    <div className="listCard">
+      <div></div>
+      <div className="listCard__icons"></div>
+    </div>
+  );
+};
+
+const MyAccountLits = () => {
+  return (
+    <Card h1_text="Mis listas">
+      {/* TODO: el link para este */}
+      <BtnAdd tolink="" />
+    </Card>
+  );
+};
+
+const MyAccountDownloadsHistory = () => {
+  return <Card h1_text="Historial de descargas"></Card>;
+};
+
 const MyAccountUploadABook = () => {
   return (
     <Card h1_text="Subir un libro" h1_center={false}>
@@ -37,9 +60,7 @@ const MyAccountUploadABook = () => {
         hacerlo
       </p>
       {/* TODO: el link para este */}
-      <PrimaryBtnLink tolink="" cssClasses="btn-add">
-        <img src={BtnIconAdd} alt="Add a book icon for button" />
-      </PrimaryBtnLink>
+      <BtnAdd tolink="" />
     </Card>
   );
 };
@@ -63,6 +84,8 @@ const MyAccount = () => {
   return (
     <>
       <MyAccountMyData />
+      <MyAccountLits />
+      <MyAccountDownloadsHistory />
       <MyAccountUploadABook />
       <MyAccountOtherOpts />
     </>

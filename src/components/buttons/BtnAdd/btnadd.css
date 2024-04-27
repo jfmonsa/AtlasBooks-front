@@ -1,0 +1,6 @@
+.btn-add {
+  height: 48px;
+  margin-top: var(--spacing-2);
+  border: var(--border-1);
+  background-color: var(--bg-soft-purple-light);
+}
