@@ -9,6 +9,7 @@ const Card = props => {
         className={
           props.h1_center ? h1_className + "card__h1--center" : h1_className
         }
+        id={props.id}
       >
         {props.h1_text}
       </h1>

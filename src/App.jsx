@@ -16,7 +16,7 @@ const App = () => {
       <main>
         <Routes>
           {/* <Route path="/" element={<Home />} /> */}
-          <Route path="/" element={<MyAccount />} />
+          <Route path="/" element={<Login />} />
           <Route path="/login" element={<Login />} />
           <Route path="/new-account" element={<NewAccount />} />
           <Route path="/recovery-account" element={<RecoveryAccount />} />
@@ -24,7 +24,7 @@ const App = () => {
           <Route path="/change-pass" element={<ChangePass />} />
           <Route path="/my-account" element={<MyAccount />} />
         </Routes>
-
+        {/* <Recommended /> */}
         {/* <MyAccount /> */}
         {/*<RateStars/> */}
         {/* <Searcher type={"text"} holder={SEARCH} /> */}

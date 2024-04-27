@@ -38,9 +38,9 @@ const MyAccountListCard = () => {
   );
 };
 
-const MyAccountLits = () => {
+const MyAccountLists = () => {
   return (
-    <Card h1_text="Mis listas">
+    <Card h1_text="Mis listas" id="my-lists">
       {/* TODO: el link para este */}
       <BtnAdd tolink="" />
     </Card>
@@ -83,7 +83,7 @@ const MyAccount = () => {
   return (
     <>
       <MyAccountMyData />
-      <MyAccountLits />
+      <MyAccountLists />
       <MyAccountDownloadsHistory />
       <MyAccountUploadABook />
       <MyAccountOtherOpts />

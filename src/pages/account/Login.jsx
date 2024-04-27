@@ -6,9 +6,6 @@ import InputText from "../../components/inputText/InputText.jsx";
 import {Link} from "react-router-dom";
 import {useState} from "react";
 import RateStars from "../../components/rate-stars/RateStars.jsx";
-import Book from "../../components/book/Book.jsx";
-import image1 from "../../assets/img/image1.png";
-import Recommended from "../../components/recommended/Recommended.jsx";
 
 const Login = ({setUsuario}) => {
   const [user, setUser] = useState("");
@@ -28,8 +25,6 @@ const Login = ({setUsuario}) => {
 
   return (
     <>
-      <Recommended />
-
       <h1 className="account__title">Iniciar Sesion</h1>
       <form onSubmit={handleSubmit}>
         <InputText
