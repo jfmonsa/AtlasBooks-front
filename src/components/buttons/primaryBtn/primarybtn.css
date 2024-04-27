@@ -23,3 +23,7 @@
   color: var(--black-light);
   margin-bottom: var(--spacing-3);
 }
+.black2Btn {
+  background-color: var(--black-light);
+  color: var(--compSurface-light);
+}
