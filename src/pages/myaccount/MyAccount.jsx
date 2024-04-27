@@ -1,4 +1,5 @@
 import "./myaccount.css";
+import PrimaryBtnLink from "../../components/primaryBtn/PrimaryBtnLink.jsx";
 import Card from "../../components/card/Card.jsx";
 
 // Aux functions
@@ -48,6 +49,8 @@ const MyAccountUploadABook = () => {
         Contribuye con la comunidad añadiendo nuevos libros, click al boton para
         hacerlo
       </p>
+      {/* TODO: el link para este */}
+      <PrimaryBtnLink tolink="" cssClasses=""></PrimaryBtnLink>
     </Card>
   );
 };
