@@ -9,6 +9,7 @@ import ChangePass from "./pages/account/ChangePass.jsx";
 import BookInformation from "./pages/bookInformation/BookInformation.jsx";
 import RateStars from "./components/rate-stars/RateStars.jsx";
 import MyAccount from "./pages/myaccount/MyAccount.jsx";
+import ChangeUserDetails from "./pages/account/ChangeUserDetails.jsx";
 
 const App = () => {
   return (
@@ -26,7 +27,7 @@ const App = () => {
           <Route path="/my-account" element={<MyAccount />} />
           <Route
             path="/my-account/change-users-details"
-            element={<MyAccount />}
+            element={<ChangeUserDetails />}
           />
           <Route path="/book-information" element={<BookInformation />} />
         </Routes>

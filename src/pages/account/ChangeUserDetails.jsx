@@ -9,18 +9,27 @@ const ChangeUserDetails = () => {
     <Card h1_text="Edita tus detalles" h1_center={true}>
       <form method="post" action="/my-account">
         <InputText
+          text="Nombre de usuario"
+          type="text"
+          holder={NAME}
+          typecss="access"
+        />
+        <InputText
           text="Nuevo email"
           type="email"
           holder={EMAIL}
           typecss="access"
-        ></InputText>
+        />
         <InputText
           text="Nuevo email"
           type="email"
           typecss="access"
           holder={EMAIL}
-        ></InputText>
-        <PrimaryBtnForm cssClasses="black1Btn" />
+        />
+        <PrimaryBtnForm
+          text="Editar detalles"
+          cssClasses="formCustomBtn black2Btn"
+        />
       </form>
     </Card>
   );

@@ -74,7 +74,10 @@ const MyAccountOtherOpts = () => {
           <Link to="/Login">Cerrar sesión</Link>
         </li>
         <li>
-          <Link to="/my-account" className="navbar-right__item">
+          <Link
+            to="/my-account/change-users-details"
+            className="navbar-right__item"
+          >
             Cambiar email
           </Link>
         </li>
