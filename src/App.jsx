@@ -24,6 +24,10 @@ const App = () => {
           <Route path="/send-email" element={<SendEmail />} />
           <Route path="/change-pass" element={<ChangePass />} />
           <Route path="/my-account" element={<MyAccount />} />
+          <Route
+            path="/my-account/change-users-details"
+            element={<MyAccount />}
+          />
           <Route path="/book-information" element={<BookInformation />} />
         </Routes>
         {/* <Recommended /> */}
