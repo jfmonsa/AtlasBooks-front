@@ -7,8 +7,8 @@ main {
 
 .account__title {
   margin-bottom: var(--spacing-5);
-  font-size: var(--fs-3);
   font-weight: var(--fw-semibold);
+  font-size: var(--fs-3);
   text-align: center;
 }
 

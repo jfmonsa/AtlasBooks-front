@@ -1,6 +1,6 @@
 import "./account.css";
 import {NAME, EMAIL, PASSWD} from "../../utils/placeholder.js";
-import PrimaryBtnForm from "../../components/primaryBtn/PrimaryBtnForm.jsx";
+import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm.jsx";
 import InputText from "../../components/inputText/InputText.jsx";
 import {useState} from "react";
 import Recommended from "../../components/recommended/Recommended.jsx";
@@ -23,7 +23,6 @@ const NewAccount = ({setUsuario}) => {
 
   return (
     <>
-      
       <h1 className="account__title">Crear una cuenta nueva</h1>
       <form onSubmit={handleSubmit}>
         <InputText
@@ -50,16 +49,18 @@ const NewAccount = ({setUsuario}) => {
           text={"Contraseña"}
         />
 
-        <PrimaryBtnForm text="Crear cuenta" type={"purpleBtn"} id="1" />
+        <PrimaryBtnForm
+          text="Crear cuenta"
+          cssClasses="formCustomBtn purpleBtn"
+          id="1"
+        />
       </form>
 
-      {/* <PrimaryBtn text="Crear Cuenta" type={"signup"} id="2" /> */}
       {error && (
         <p style={{color: "var(--error)"}}>
           *Todos los campos son obligatorios
         </p>
       )}
-      
     </>
   );
 };

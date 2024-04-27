@@ -1,6 +1,6 @@
 import "./account.css";
 import icon_mail from "../../assets/icons/icon-mail.svg";
-import PrimaryBtnForm from "../../components/primaryBtn/PrimaryBtnForm.jsx";
+import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm.jsx";
 import {Link} from "react-router-dom";
 
 const SendEmail = () => {
@@ -15,7 +15,11 @@ const SendEmail = () => {
 
       <img src={icon_mail} alt="" className="icon_mail" />
 
-      <PrimaryBtnForm text="Iniciar Sesion" type="purpleBtn" id="4" />
+      <PrimaryBtnForm
+        text="Iniciar Sesion"
+        cssClasses="formCustomBtn purpleBtn"
+        id="4"
+      />
 
       <p className="text-link">
         No recibió el email?

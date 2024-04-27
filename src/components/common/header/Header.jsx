@@ -31,9 +31,8 @@ const DropdownItem = props => {
 const DropdownMenu = () => {
   return (
     <ul className="dropmenu">
-      {/* TODO: fix this link when Account page is ready */}
       <DropdownItem
-        toLink="/"
+        toLink="/my-account"
         icon={MenuProfileIcon}
         text="Mi cuenta"
       ></DropdownItem>
@@ -71,7 +70,7 @@ const DropdownMenu = () => {
         text="Explorar listas"
       ></DropdownItem>
       <DropdownItem
-        toLink="/"
+        toLink="/my-account#my-lists"
         icon={MenuMylistsIcon}
         text="Mis listas"
       ></DropdownItem>

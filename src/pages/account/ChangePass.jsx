@@ -1,5 +1,5 @@
 import "./account.css";
-import PrimaryBtnForm from "../../components/primaryBtn/PrimaryBtnForm.jsx";
+import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm.jsx";
 import InputText from "../../components/inputText/InputText.jsx";
 import {PASSWD} from "../../utils/placeholder.js";
 import {Link} from "react-router-dom";
@@ -48,7 +48,11 @@ const ChangePass = ({setUsuario}) => {
           text={"Repite tu nueva contraseña"}
         />
 
-        <PrimaryBtnForm text="Enviar" type={"purpleBtn"} id="3" />
+        <PrimaryBtnForm
+          text="Enviar"
+          cssClasses="formCustomBtn purpleBtn"
+          id="3"
+        />
       </form>
 
       {error && (

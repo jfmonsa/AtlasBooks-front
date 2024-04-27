@@ -7,13 +7,13 @@ import SendEmail from "./pages/account/SendEmail.jsx";
 import NewAccount from "./pages/account/NewAccount.jsx";
 import ChangePass from "./pages/account/ChangePass.jsx";
 import RateStars from "./components/rate-stars/RateStars.jsx";
+import MyAccount from "./pages/myaccount/MyAccount.jsx";
 
 const App = () => {
   return (
     <>
       <Header />
       <main>
-    
         <Routes>
           {/* <Route path="/" element={<Home />} /> */}
           <Route path="/" element={<Login />} />
@@ -22,8 +22,10 @@ const App = () => {
           <Route path="/recovery-account" element={<RecoveryAccount />} />
           <Route path="/send-email" element={<SendEmail />} />
           <Route path="/change-pass" element={<ChangePass />} />
+          <Route path="/my-account" element={<MyAccount />} />
         </Routes>
-
+        {/* <Recommended /> */}
+        {/* <MyAccount /> */}
         {/*<RateStars/> */}
         {/* <Searcher type={"text"} holder={SEARCH} /> */}
       </main>
