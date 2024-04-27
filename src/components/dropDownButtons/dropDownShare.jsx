@@ -4,7 +4,6 @@ import Instagram from "../../assets/icons/Icon-instagram.svg";
 import Telegram from "../../assets/icons/Icon-telegram.svg"
 import Whatasapp from "../../assets/icons/Icon-whatsapp.svg"
 import Enlace from "../../assets/icons/Icon-link.svg"
-import Mega from "../../assets/icons/Icon-mega.svg"
 import { FaChevronLeft } from 'react-icons/fa';
 import { FaChevronDown } from 'react-icons/fa';
 import {useState} from "react";
