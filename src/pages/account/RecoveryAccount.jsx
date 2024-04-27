@@ -1,6 +1,6 @@
 import "./account.css";
 import {EMAIL} from "../../utils/placeholder.js";
-import PrimaryBtnForm from "../../components/primaryBtn/PrimaryBtnForm.jsx";
+import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm.jsx";
 import InputText from "../../components/inputText/InputText.jsx";
 import {Link} from "react-router-dom";
 import {useState} from "react";

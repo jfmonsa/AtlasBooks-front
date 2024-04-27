@@ -1,6 +1,6 @@
 import "./account.css";
 import icon_mail from "../../assets/icons/icon-mail.svg";
-import PrimaryBtnForm from "../../components/primaryBtn/PrimaryBtnForm.jsx";
+import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm.jsx";
 import {Link} from "react-router-dom";
 
 const SendEmail = () => {

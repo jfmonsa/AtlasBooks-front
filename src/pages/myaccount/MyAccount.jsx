@@ -1,5 +1,4 @@
 import "./myaccount.css";
-import BtnIconAdd from "../../assets/icons/btnIcon-add.svg";
 import PrimaryBtnLink from "../../components/buttons/primaryBtn/PrimaryBtnLink.jsx";
 import BtnAdd from "../../components/buttons/BtnAdd/BtnAdd.jsx";
 import Card from "../../components/card/Card.jsx";

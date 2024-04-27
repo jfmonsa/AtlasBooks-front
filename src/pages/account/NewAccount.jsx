@@ -1,6 +1,6 @@
 import "./account.css";
 import {NAME, EMAIL, PASSWD} from "../../utils/placeholder.js";
-import PrimaryBtnForm from "../../components/primaryBtn/PrimaryBtnForm.jsx";
+import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm.jsx";
 import InputText from "../../components/inputText/InputText.jsx";
 import {useState} from "react";
 import Recommended from "../../components/recommended/Recommended.jsx";
