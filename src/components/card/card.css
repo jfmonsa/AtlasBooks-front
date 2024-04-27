@@ -1,0 +1,12 @@
+.cardSection {
+  width: 80%;
+  background-color: var(--compSurface-light);
+  padding: var(--spacing-3);
+}
+.card__h1 {
+  font-size: 24px;
+  color: var(--black-light);
+}
+.card__h1--center {
+  text-align: center;
+}
