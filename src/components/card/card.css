@@ -1,11 +1,20 @@
+main {
+  padding: var(--spacing-4);
+}
+
 .cardSection {
-  width: 80%;
+  width: 100%;
   background-color: var(--compSurface-light);
   padding: var(--spacing-3);
+  border: 2px solid var(--border-graySurfaces-light);
+  border-radius: 12px;
 }
 .card__h1 {
+  margin-bottom: var(--spacing-4);
   font-size: 24px;
+  font-weight: var(--fw-semibold);
   color: var(--black-light);
+  /* margin-bottom: var(--spacing-5); */
 }
 .card__h1--center {
   text-align: center;
