@@ -1,4 +1,5 @@
 import "./Header.sass";
+import PrimaryBtnLink from "../../buttons/primaryBtn/PrimaryBtnLink.jsx";
 import logo_Atlas from "../../../assets/logo_Atlas.svg";
 import MenuProfileIcon from "../../../assets/icons/menu-profile.svg";
 import MenuCategoriesIcon from "../../../assets/icons/menu-categories.svg";
@@ -98,13 +99,13 @@ const Header = () => {
 
       <div className="navbar-right">
         <ul className="navbar-right">
-          <li href="#">
-            <a
-              href="#"
-              className="navbar-right__item navbar-right__item--donar"
+          <li>
+            <PrimaryBtnLink
+              to="/"
+              cssClasses="navbar-right__item navbar-right__item--donar"
             >
               Donar
-            </a>
+            </PrimaryBtnLink>
           </li>
           {/* Si no ha iniciado sección */}
           {/* <li>
@@ -121,7 +122,7 @@ const Header = () => {
           TODO: fix this link when the Account page is ready
            */}
           <li>
-            <Link href="/" className="navbar-right__item">
+            <Link to="/my-account" className="navbar-right__item">
               Mi Perfil
             </Link>
           </li>

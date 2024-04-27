@@ -4,7 +4,7 @@
 .card-myData__left,
 .card-myData__right {
   display: inline-block;
-  min-width: 100px;
+  width: 100px;
 }
 .card-myData__left {
   margin-right: var(--spacing-3);
