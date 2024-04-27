@@ -6,6 +6,7 @@ import RecoveryAccount from "./pages/account/RecoveryAccount.jsx";
 import SendEmail from "./pages/account/SendEmail.jsx";
 import NewAccount from "./pages/account/NewAccount.jsx";
 import ChangePass from "./pages/account/ChangePass.jsx";
+import BookInformation from "./pages/bookInformation/BookInformation.jsx";
 import RateStars from "./components/rate-stars/RateStars.jsx";
 import MyAccount from "./pages/myaccount/MyAccount.jsx";
 
@@ -23,6 +24,7 @@ const App = () => {
           <Route path="/send-email" element={<SendEmail />} />
           <Route path="/change-pass" element={<ChangePass />} />
           <Route path="/my-account" element={<MyAccount />} />
+          <Route path="/book-information" element={<BookInformation />} />
         </Routes>
         {/* <Recommended /> */}
         {/* <MyAccount /> */}
