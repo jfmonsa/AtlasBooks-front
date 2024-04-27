@@ -54,6 +54,4 @@ button {
 }
 main {
   flex: 1;
-  margin-top: var(--spacing-6);
-  margin-bottom: var(--spacing-6);
 }

@@ -1,0 +1,26 @@
+.bookContainer{
+width:166px;
+height:303px;
+float:left;
+margin: 32px;
+}
+
+.tittleContainer{
+width:166px;
+height: 24px;
+font-size:var(--fs-2);
+font-weight: var(--fw-medium);
+}
+
+.autorContainer{
+width: 166px;
+height:21px;
+font-size:var(--fs-1);
+font-weight: 400px;
+color: rgba(69, 69, 69, 1);
+}
+
+.img{
+width: 166px;
+height: 250px;
+}
