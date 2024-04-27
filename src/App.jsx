@@ -10,6 +10,7 @@ import BookInformation from "./pages/bookInformation/BookInformation.jsx";
 import RateStars from "./components/rate-stars/RateStars.jsx";
 import MyAccount from "./pages/myaccount/MyAccount.jsx";
 import ChangeUserDetails from "./pages/account/ChangeUserDetails.jsx";
+import UserPassConf from "./pages/account/UserPassConf.jsx";
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
           <Route path="/recovery-account" element={<RecoveryAccount />} />
           <Route path="/send-email" element={<SendEmail />} />
           <Route path="/change-pass" element={<ChangePass />} />
+          <Route path="/confirm-password" element={<UserPassConf />} />
           <Route path="/my-account" element={<MyAccount />} />
           <Route
             path="/my-account/change-users-details"

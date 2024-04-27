@@ -81,7 +81,9 @@ const MyAccountOtherOpts = () => {
             Cambiar email
           </Link>
         </li>
-        <li>Cambiar contraseña</li>
+        <li>
+          <Link to="/confirm-password">Cambiar contraseña</Link>
+        </li>
         <li>Eliminar cuenta</li>
       </ul>
     </Card>
