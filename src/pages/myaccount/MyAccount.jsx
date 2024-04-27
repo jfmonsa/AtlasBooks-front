@@ -28,7 +28,28 @@ const MyAccountMyData = () => {
 };
 
 const MyAccountOtherOpts = () => {
-  return <Card></Card>;
+  return (
+    <Card h1_text="Otras Opciones" h1_center={false}>
+      <ul>
+        <li>Donar </li>
+        <li>Cerrar sesión</li>
+        <li>Cambiar email</li>
+        <li>Cambiar contraseña</li>
+        <li>Eliminar cuenta</li>
+      </ul>
+    </Card>
+  );
+};
+
+const MyAccountUploadABook = () => {
+  return (
+    <Card h1_text="Subir un libro" h1_center={false}>
+      <p>
+        Contribuye con la comunidad añadiendo nuevos libros, click al boton para
+        hacerlo
+      </p>
+    </Card>
+  );
 };
 
 // Main page
@@ -36,6 +57,7 @@ const MyAccount = () => {
   return (
     <>
       <MyAccountMyData />
+      <MyAccountOtherOpts />
     </>
   );
 };

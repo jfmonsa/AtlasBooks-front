@@ -1,5 +1,5 @@
 main {
-  padding: var(--spacing-4);
+  padding: var(--spacing-7) var(--spacing-4);
 }
 
 .cardSection {
@@ -9,12 +9,15 @@ main {
   border: 2px solid var(--border-graySurfaces-light);
   border-radius: 12px;
 }
+.cardSection:not(.cardSection:last-child) {
+  margin-bottom: var(--spacing-7);
+}
+
 .card__h1 {
   margin-bottom: var(--spacing-4);
   font-size: 24px;
   font-weight: var(--fw-semibold);
   color: var(--black-light);
-  /* margin-bottom: var(--spacing-5); */
 }
 .card__h1--center {
   text-align: center;

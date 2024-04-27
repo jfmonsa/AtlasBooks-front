@@ -7,7 +7,7 @@ import {Link} from "react-router-dom";
 import {useState} from "react";
 import RateStars from "../../components/rate-stars/RateStars.jsx";
 import Book from "../../components/book/Book.jsx";
-import image1 from "../../assets/img/image1.png"
+import image1 from "../../assets/img/image1.png";
 import Recommended from "../../components/recommended/Recommended.jsx";
 
 const Login = ({setUsuario}) => {
@@ -27,10 +27,9 @@ const Login = ({setUsuario}) => {
   };
 
   return (
-    
     <>
-    <Recommended/>
-      
+      <Recommended />
+
       <h1 className="account__title">Iniciar Sesion</h1>
       <form onSubmit={handleSubmit}>
         <InputText
@@ -50,7 +49,11 @@ const Login = ({setUsuario}) => {
           text={"Contraseña"}
         />
 
-        <PrimaryBtnForm text="Iniciar Sesion" type={"purpleBtn"} id="1" />
+        <PrimaryBtnForm
+          text="Iniciar Sesion"
+          cssClasses="formCustomBtn purpleBtn"
+          id="1"
+        />
       </form>
 
       <Link tolink="/recovery-account" className="account__forgot-link">
@@ -60,7 +63,7 @@ const Login = ({setUsuario}) => {
       <PrimaryBtnLink
         tolink="/new-account"
         text="Crear Cuenta"
-        type={"black1Btn"}
+        cssClasses="formCustomBtn black1Btn"
       />
       {error && (
         <p style={{color: "var(--error)"}}>

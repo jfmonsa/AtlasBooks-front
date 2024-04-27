@@ -37,7 +37,11 @@ const RecoveryAccount = ({setUsuario}) => {
           text={"Email "}
         />
 
-        <PrimaryBtnForm text="Enviar" type={"purpleBtn"} id="3" />
+        <PrimaryBtnForm
+          text="Enviar"
+          cssClasses="formCustomBtn purpleBtn"
+          id="3"
+        />
       </form>
 
       <Link tolink="/send-email" className="account__forgot-link">

@@ -1,9 +1,10 @@
 import "./primarybtn.css";
 
-const PrimaryBtnForm = ({text, id, onClick, type}) => {
+const PrimaryBtnForm = props => {
   return (
-    <button className={`formCustomBtn ${type}`} id={id} onClick={onClick}>
-      {text}
+    <button className={props.cssClases} id={props.id} onClick={props.onClick}>
+      {props.text}
+      {props.children}
     </button>
   );
 };

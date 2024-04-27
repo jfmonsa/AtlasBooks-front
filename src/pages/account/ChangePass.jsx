@@ -48,7 +48,11 @@ const ChangePass = ({setUsuario}) => {
           text={"Repite tu nueva contraseña"}
         />
 
-        <PrimaryBtnForm text="Enviar" type={"purpleBtn"} id="3" />
+        <PrimaryBtnForm
+          text="Enviar"
+          cssClasses="formCustomBtn purpleBtn"
+          id="3"
+        />
       </form>
 
       {error && (

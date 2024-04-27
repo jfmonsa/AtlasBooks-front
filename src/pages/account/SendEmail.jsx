@@ -15,7 +15,11 @@ const SendEmail = () => {
 
       <img src={icon_mail} alt="" className="icon_mail" />
 
-      <PrimaryBtnForm text="Iniciar Sesion" type="purpleBtn" id="4" />
+      <PrimaryBtnForm
+        text="Iniciar Sesion"
+        cssClasses="formCustomBtn purpleBtn"
+        id="4"
+      />
 
       <p className="text-link">
         No recibió el email?
