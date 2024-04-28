@@ -1,12 +1,12 @@
 import Card from "../../components/card/Card.jsx";
 import InputText from "../../components/inputText/InputText.jsx";
 import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm.jsx";
-import {Link} from "react-router-dom";
+import {Link, Form} from "react-router-dom";
 
 const ConfPassUs = () => {
   return (
     <Card cardDialog h1_text="Confirma tu contraseña">
-      <form>
+      <Form method="post" action="">
         <InputText
           holder="Contraseña actual"
           type={"password"}
@@ -16,7 +16,7 @@ const ConfPassUs = () => {
         <Link to="/change-pass">
           <PrimaryBtnForm text="Enviar" cssClasses="formCustomBtn black2Btn" />
         </Link>
-      </form>
+      </Form>
     </Card>
   );
 };

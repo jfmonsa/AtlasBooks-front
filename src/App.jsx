@@ -28,16 +28,16 @@ const router = createBrowserRouter(
       <Route path="login" element={<Login />} />
       <Route path="new-account" element={<NewAccount />} />
 
-      <Route path="recovery-account" element={<RecoveryAccount />}>
-        {/* TODO: falta esta pagina ._. */}
-        {/* <Route path="enter-your-email" element={} /> */}
-        <Route path="send-email" element={<SendEmail />} />
-      </Route>
+      {/* Routing de recovery account */}
+      <Route path="recovery-account" element={<RecoveryAccount />} />
+      {/* TODO: falta esta pagina ._. */}
+      {/* <Route path="enter-your-email" element={} /> */}
+      <Route path="send-email" element={<SendEmail />} />
       <Route path="change-pass" element={<ChangePass />} />
-      {/* Paginas del usuario */}
+
+      {/* Routing for edit details in my account */}
       {/* TODO: change path for user/id_del_user */}
       <Route path="my-account" element={<MyAccount />} />
-
       <Route path="confirm-password" element={<UserPassConf />} />
       <Route path="users-details" element={<ChangeUserDetails />} />
       {/* <Route path="recommended" /> */}
