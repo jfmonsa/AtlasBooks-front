@@ -1,5 +1,6 @@
 import { useState } from "react";
-
+import DefaultUser from "../../assets/icons/user-svgrepo-com.svg"
+ 
 export function NewComentario({
   handleSubmit,
   submitLabel,
@@ -18,7 +19,7 @@ export function NewComentario({
   return (
     <div className="comment">
       <div className="comment-image-container">
-        <img src="/Star.svg" alt="userIcon" />
+        <img src={DefaultUser} alt="userIcon" />
       </div>
       <div className="comment-right-part">
         <div className="comment-content">

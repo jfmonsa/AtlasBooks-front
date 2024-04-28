@@ -9,7 +9,7 @@ import { Comentario } from "./Comentario";
 import "./Comentarios.css";
 import { NewComentario } from "./NewComentario.jsx";
 
-export function Comentarios({ userId, userName }) {
+const Comentarios = ({ userId, userName }) => {
   const [backendComents, setBackendComents] = useState([]);
   const [activeComent, setActiveComent] = useState(null);
   const rootComments = backendComents.filter(
@@ -77,3 +77,4 @@ export function Comentarios({ userId, userName }) {
     
   );
 }
+export default Comentarios;

@@ -11,8 +11,8 @@
 
 .slick-slide > div {
   display: grid;
-  place-items: center;
-  width: 80%;
+  place-items: center; 
+  width: 60%;
   height: 100%;
   margin: auto;
   padding: 0px;

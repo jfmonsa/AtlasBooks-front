@@ -1,5 +1,6 @@
 import {deleteComment, updateComment} from "../../api";
 import {NewComentario} from "./NewComentario";
+import DefaultUser from "../../assets/icons/user-svgrepo-com.svg"
 
 export function Comentario({
   comment,
@@ -22,7 +23,7 @@ export function Comentario({
   return (
     <div className="comment">
       <div className="comment-image-container">
-        <img src="../../assets/icons/user-svgrepo-com.svg" alt="userIcon" />
+        <img src={DefaultUser} alt="userIcon" />
       </div>
       <div className="comment-right-part">
         <div className="comment-content">

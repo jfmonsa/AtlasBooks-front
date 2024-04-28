@@ -13,8 +13,8 @@ import NewAccount from "./pages/account/NewAccount.jsx";
 import ChangePass from "./pages/account/ChangePass.jsx";
 
 import RateStars from "./components/rate-stars/RateStars.jsx";
-import { Card } from "./components/card/Card.jsx";
-import { Comentarios } from "./components/commentarySection/Comentarios.jsx";
+import Card from "./components/card/Card.jsx";
+import Comentarios from "./components/commentarySection/Comentarios.jsx"
 
 import BookInformation from "./pages/bookInformation/BookInformation.jsx";
 import MyAccount from "./pages/myaccount/MyAccount.jsx";

@@ -6,6 +6,7 @@ import Card from "../../components/card/Card.jsx";
 import SliderRelacionados from "../../components/sliderRelacionados/SliderRelacionados.jsx";
 import {Link} from "react-router-dom";
 import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm.jsx";
+import Comentarios from "../../components/commentarySection/Comentarios.jsx"
 
 const BookInformation = () => {
   return (
@@ -25,6 +26,9 @@ const BookInformation = () => {
       </Card>
       <Card h1_text="Relacionados" id="Books-relacionados">
         <SliderRelacionados />
+      </Card>
+      <Card>
+        <Comentarios></Comentarios>
       </Card>
     </>
   );
