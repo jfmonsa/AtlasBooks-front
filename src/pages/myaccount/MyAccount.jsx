@@ -1,6 +1,8 @@
 import "./myaccount.css";
 import IconPaypal from "../../assets/icons/icon-paypal.svg";
 import IconLogout from "../../assets/icons/menu-logout.svg";
+import IconEditEmail from "../../assets/icons/icon-edit-email.svg";
+import IconEditDetails from "../../assets/icons/icon-edit-details.svg";
 import IconShieldPass from "../../assets/icons/icon-shieldpass.svg";
 import IconDelAccount from "../../assets/icons/icon-delaccount.svg";
 import PrivateListIcon from "./../../assets/icons/icon-privatelist.svg";
@@ -11,26 +13,23 @@ import Card from "../../components/card/Card.jsx";
 import {Link} from "react-router-dom";
 
 // Aux functions
+const MyAccountMyDataDatum = props => {
+  return (
+    <li className="card-myData">
+      <span className="card-myData__left">{props.left}</span>
+      <span className="card-myData__right">{props.right}</span>
+    </li>
+  );
+};
+
 const MyAccountMyData = () => {
   return (
     <Card h1_text="Mis datos" h1_center={false}>
       <ul>
-        <li className="card-myData">
-          <span className="card-myData__left">Nombre</span>
-          <span className="card-myData__right">Pepito Perez</span>
-        </li>
-        <li className="card-myData">
-          <span className="card-myData__left">Email</span>
-          <span className="card-myData__right">pepito@p.com</span>
-        </li>
-        <li className="card-myData">
-          <span className="card-myData__left">País</span>
-          <span className="card-myData__right">Palestina</span>
-        </li>
-        <li className="card-myData">
-          <span className="card-myData__left">Fecha de Registro</span>
-          <span className="card-myData__right">11/09/2001</span>
-        </li>
+        <MyAccountMyDataDatum left="Nombre" right="Pepito Perez" />
+        <MyAccountMyDataDatum left="Email" right="pepito@p.com" />
+        <MyAccountMyDataDatum left="País" right="Palestina" />
+        <MyAccountMyDataDatum left="Fecha de Registro" right="11/03/2003" />
       </ul>
     </Card>
   );
@@ -45,11 +44,15 @@ const MyAccountListCard = props => {
   return (
     <Link to={props.path} className="listCard navHover">
       <span>
-        <span>{props.listName}</span>
-        <img className="listCard-icon" src={iconpath} alt={alticon} />
+        <span className="listCard--itemss">{props.listName}</span>
+        <img
+          className="listCard-icon listCard--item"
+          src={iconpath}
+          alt={alticon}
+        />
       </span>
-      <span>{props.desc}</span>
-      <span>{props.num + " Libros"}</span>
+      <span className="listCard--item">{props.desc}</span>
+      <span className="listCard--item">{props.num + " Libros"}</span>
     </Link>
   );
 };
@@ -101,51 +104,51 @@ const MyAccountUploadABook = () => {
     </Card>
   );
 };
+const MyAccountOpt = props => {
+  return (
+    <li>
+      <Link to={props.toLink} className="options navHover">
+        <img
+          src={props.iconSrc}
+          alt={`icono opción ${props.text}`}
+          className="options__icon"
+        />
+        <span>{props.text}</span>
+      </Link>
+    </li>
+  );
+};
 
 const MyAccountOtherOpts = () => {
   return (
-    <Card h1_text="Otras Opciones" h1_center={false}>
+    <Card h1_text="Opciones" h1_center={false}>
       <ul>
-        <li>
-          <Link to="#" className="options navHover">
-            <img
-              src={IconPaypal}
-              alt="icono opción donar"
-              className="options__icon"
-            />
-            <span>Donar</span>
-          </Link>
-        </li>
-        <li>
-          <Link to="/Login" className="options navHover">
-            <img
-              src={IconLogout}
-              alt="icono de cerrar sesión"
-              className="options__icon"
-            />
-            <span>Cerrar sesión</span>
-          </Link>
-        </li>
-        <li>
-          <Link to="/confirm-password" className="options navHover">
-            <img
-              src={IconShieldPass}
-              alt="icono de inicio de sesión"
-              className="options__icon"
-            />
-            <span>Cambiar contraseña</span>
-          </Link>
-        </li>
-        <li>
-          <Link to="/PassDel" className="options navHover">
-            <img
-              src={IconDelAccount}
-              alt="icono de eliminar cuenta"
-              className="options__icon"
-            />
-            <span>Eliminar cuenta</span>
-          </Link>
-        </li>
+        <MyAccountOpt text="Donar" iconSrc={IconPaypal} toLink="#" />
+        <MyAccountOpt
+          text="Cerrar sesión"
+          iconSrc={IconLogout}
+          toLink="/login"
+        />
+        <MyAccountOpt
+          text="Editar mi información"
+          iconSrc={IconEditDetails}
+          toLink="/login"
+        />
+        <MyAccountOpt
+          text="Cambiar email"
+          iconSrc={IconEditEmail}
+          toLink="/login"
+        />
+        <MyAccountOpt
+          text="Cambiar contraseña"
+          iconSrc={IconShieldPass}
+          toLink="/confirm-password"
+        />
+        <MyAccountOpt
+          text="Eliminar cuenta"
+          iconSrc={IconDelAccount}
+          toLink="/confirm-password"
+        />
       </ul>
     </Card>
   );

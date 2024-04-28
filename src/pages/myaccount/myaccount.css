@@ -11,15 +11,20 @@
 }
 
 .listCard {
-  height: 48px;
-  padding: var(--spacing-3);
+  /* height: 48px; */
+  padding: var(--spacing-2) var(--spacing-3);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
   background-color: var(--bg-surf-subtle-light);
   border-radius: var(--border-rad-comp);
   border-bottom: var(--border-2);
   color: var(--black-light);
+}
+
+.listCard-icon {
+  margin-bottom: var(--spacing-1);
 }
 
 .listCard:not(.listCard:last-child) {

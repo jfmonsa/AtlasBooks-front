@@ -13,6 +13,8 @@ import NewAccount from "./pages/account/NewAccount.jsx";
 import ChangePass from "./pages/account/ChangePass.jsx";
 import BookInformation from "./pages/bookInformation/BookInformation.jsx";
 import MyAccount from "./pages/myaccount/MyAccount.jsx";
+import ChangeUserDetails from "./pages/myaccount/ChangeUserDetails.jsx";
+import UserPassConf from "./pages/myaccount/UserPassConf.jsx";
 import ChangeUserDetails from "./pages/account/ChangeUserDetails.jsx";
 import UserPassConf from "./pages/account/UserPassConf.jsx";
 import Report from "./pages/account/Report.jsx";
