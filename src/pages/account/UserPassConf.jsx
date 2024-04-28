@@ -4,7 +4,7 @@ import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm.j
 
 const ConfPassUs = () => {
   return (
-    <Card h1_text="Confirma tu contraseña">
+    <Card cardDialog h1_text="Confirma tu contraseña">
       <form method="post" action="/change-pass">
         <InputText
           holder="Contraseña antigua"
