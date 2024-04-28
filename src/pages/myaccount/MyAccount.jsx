@@ -43,7 +43,7 @@ const MyAccountListCard = props => {
     : "icono de lista de libros privada";
 
   return (
-    <Link to={props.path} className="listCard">
+    <Link to={props.path} className="listCard navHover">
       <span>
         <span>{props.listName}</span>
         <img className="listCard-icon" src={iconpath} alt={alticon} />
