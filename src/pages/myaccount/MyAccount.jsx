@@ -10,7 +10,7 @@ import PublicListIcon from "./../../assets/icons/icon-publiclist.svg";
 import PrimaryBtnLink from "../../components/buttons/primaryBtn/PrimaryBtnLink.jsx";
 import BtnAdd from "../../components/buttons/BtnAdd/BtnAdd.jsx";
 import Card from "../../components/card/Card.jsx";
-import {Link} from "react-router-dom";
+import {Link, Outlet} from "react-router-dom";
 
 // Aux functions
 const MyAccountMyDataDatum = props => {
@@ -147,9 +147,10 @@ const MyAccountOtherOpts = () => {
         <MyAccountOpt
           text="Eliminar cuenta"
           iconSrc={IconDelAccount}
-          toLink="/confirm-password"
+          toLink="/my-account/confirm-password"
         />
       </ul>
+      <Outlet />
     </Card>
   );
 };

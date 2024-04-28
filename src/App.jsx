@@ -15,8 +15,6 @@ import BookInformation from "./pages/bookInformation/BookInformation.jsx";
 import MyAccount from "./pages/myaccount/MyAccount.jsx";
 import ChangeUserDetails from "./pages/myaccount/ChangeUserDetails.jsx";
 import UserPassConf from "./pages/myaccount/UserPassConf.jsx";
-import ChangeUserDetails from "./pages/account/ChangeUserDetails.jsx";
-import UserPassConf from "./pages/account/UserPassConf.jsx";
 import Report from "./pages/account/Report.jsx";
 import ConfPassDel from "./pages/account/confPassDel.jsx";
 
@@ -37,8 +35,8 @@ const router = createBrowserRouter(
       </Route>
       {/* TODO: change path for user/id_del_user */}
       <Route path="my-account" element={<MyAccount />}>
-        <Route path="edit/confirm-password" element={<UserPassConf />} />
-        <Route path="edit/users-details" element={<ChangeUserDetails />} />
+        <Route path="confirm-password" element={<UserPassConf />} />
+        <Route path="users-details" element={<ChangeUserDetails />} />
         {/* <Route path="recommended" /> */}
         {/* <Route path="lists">
           Aquí iría cada lista que tenga el usuario
