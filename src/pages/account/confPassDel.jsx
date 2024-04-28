@@ -3,7 +3,7 @@ import InputText from "../../components/inputText/InputText.jsx";
 import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm.jsx";
 import {Link} from "react-router-dom";
 
-const ConfPassUs = () => {
+const ConfPassDel = () => {
   return (
     <Card cardDialog h1_text="Confirma tu contraseña">
       <form>
@@ -13,7 +13,7 @@ const ConfPassUs = () => {
           typecss={"access"}
           text="Contraseña actual"
         />
-        <Link to="/change-pass">
+        <Link to="/Login">
           <PrimaryBtnForm text="Enviar" cssClasses="formCustomBtn black2Btn" />
         </Link>
       </form>
@@ -21,4 +21,4 @@ const ConfPassUs = () => {
   );
 };
 
-export default ConfPassUs;
+export default ConfPassDel;

@@ -15,6 +15,10 @@ import BookInformation from "./pages/bookInformation/BookInformation.jsx";
 import MyAccount from "./pages/myaccount/MyAccount.jsx";
 import ChangeUserDetails from "./pages/myaccount/ChangeUserDetails.jsx";
 import UserPassConf from "./pages/myaccount/UserPassConf.jsx";
+import ChangeUserDetails from "./pages/account/ChangeUserDetails.jsx";
+import UserPassConf from "./pages/account/UserPassConf.jsx";
+import Report from "./pages/account/Report.jsx";
+import ConfPassDel from "./pages/account/confPassDel.jsx";
 
 //layouts
 import RootLayout from "./RootLayout.jsx";
