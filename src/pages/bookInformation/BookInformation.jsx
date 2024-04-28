@@ -8,17 +8,17 @@ import SliderRelacionados from "../../components/sliderRelacionados/SliderRelaci
 const BookInformation = () => {
   return (
     <>
-      <Card>
-        <div>BookInformation</div>
+      <Card h1_text="Inicio/Libro" id="Books-info">
+        
         <div className="Buttons">
           <DropDownButtonDescarga/>
           <DropDownButtonCompartir/>
           <DropDownButtonListUser/>
         </div>
       </Card>
-      
-        <p>Proximo slider</p>
+      <Card h1_text="Relacionados" id="Books-relacionados">
         <SliderRelacionados/>
+      </Card>
     </>
   )
 }
