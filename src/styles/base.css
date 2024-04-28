@@ -55,3 +55,8 @@ button {
 main {
   flex: 1;
 }
+
+/* Other styles */
+.navHover:hover {
+  background-color: var(--border-graySurfaces-light);
+}

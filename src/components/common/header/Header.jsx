@@ -19,7 +19,7 @@ const DropdownItem = props => {
   const alticon = "Icono de";
   return (
     <li>
-      <Link to={props.toLink} className="dropmenu__item">
+      <Link to={props.toLink} className="dropmenu__item navHover">
         <span className="dropmenu__item__icon">
           <img src={props.icon} alt={alticon + " " + props.text}></img>
         </span>

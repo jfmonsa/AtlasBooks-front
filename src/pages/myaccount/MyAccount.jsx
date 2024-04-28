@@ -1,4 +1,8 @@
 import "./myaccount.css";
+import IconPaypal from "../../assets/icons/icon-paypal.svg";
+import IconLogout from "../../assets/icons/menu-logout.svg";
+import IconShieldPass from "../../assets/icons/icon-shieldpass.svg";
+import IconDelAccount from "../../assets/icons/icon-delaccount.svg";
 import PrivateListIcon from "./../../assets/icons/icon-privatelist.svg";
 import PublicListIcon from "./../../assets/icons/icon-publiclist.svg";
 import PrimaryBtnLink from "../../components/buttons/primaryBtn/PrimaryBtnLink.jsx";
@@ -102,22 +106,46 @@ const MyAccountOtherOpts = () => {
   return (
     <Card h1_text="Otras Opciones" h1_center={false}>
       <ul>
-        <li>Donar </li>
         <li>
-          <Link to="/Login">Cerrar sesión</Link>
-        </li>
-        <li>
-          <Link
-            to="/my-account/change-users-details"
-            className="navbar-right__item"
-          >
-            Cambiar email
+          <Link to="#" className="options navHover">
+            <img
+              src={IconPaypal}
+              alt="icono opción donar"
+              className="options__icon"
+            />
+            <span>Donar</span>
           </Link>
         </li>
         <li>
-          <Link to="/confirm-password">Cambiar contraseña</Link>
+          <Link to="/Login" className="options navHover">
+            <img
+              src={IconLogout}
+              alt="icono de cerrar sesión"
+              className="options__icon"
+            />
+            <span>Cerrar sesión</span>
+          </Link>
         </li>
-        <li>Eliminar cuenta</li>
+        <li>
+          <Link to="/confirm-password" className="options navHover">
+            <img
+              src={IconShieldPass}
+              alt="icono de inicio de sesión"
+              className="options__icon"
+            />
+            <span>Cambiar contraseña</span>
+          </Link>
+        </li>
+        <li>
+          <Link to="/confirm-password" className="options navHover">
+            <img
+              src={IconDelAccount}
+              alt="icono de eliminar cuenta"
+              className="options__icon"
+            />
+            <span>Eliminar cuenta</span>
+          </Link>
+        </li>
       </ul>
     </Card>
   );
