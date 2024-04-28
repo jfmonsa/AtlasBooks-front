@@ -1,4 +1,5 @@
 import Slider from "react-slick";
+import "./SliderRelacionados.css"
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Imagen1 from "../../assets/img/image1.png";
@@ -6,11 +7,29 @@ import Imagen2 from "../../assets/img/image2.png";
 import Imagen3 from "../../assets/img/image3.png";
 import Imagen4 from "../../assets/img/image4.png";
 import Imagen5 from "../../assets/img/image5.png";
-import Right from "../../assets/icons/icon-arrowRight.svg";
-import Left from "../../assets/icons/icon-arrowLeft.svg";
+import ArrowLeft from "../../assets/icons/icon-arrowLeft.svg";
+import ArrowRight from "../../assets/icons/icon-arrowRight.svg";
 
 
 const SliderRelacionados = () => {
+
+  const SamplePrevArrow = (props) => {
+    const { className, style, onClick } = props;
+    return(
+      <div onClick={onClick} className={`arrow ${className}`} >
+        <img src={ArrowRight} alt="" />
+      </div>
+    )
+  }
+
+  const SampleNextArrow = (props) => {
+    const { className, style, onClick } = props;
+    return(
+      <div onClick={onClick} className={`arrow ${className}`} >
+        <img src={ArrowLeft} alt="" />
+      </div>
+    )
+  }
 
   var settings = {
     dots: false,
@@ -18,8 +37,11 @@ const SliderRelacionados = () => {
     speed: 300,
     slidesToShow: 6,
     slidesToScroll: 6,
-    arrows: false,
+    centerPadding: 30,
     initialSlide: 0,
+    className: "slides",
+    prevArrow: <SampleNextArrow to="next" />,
+    nextArrow: <SamplePrevArrow to="prev"/>,
 
     responsive: [
       {
@@ -51,11 +73,12 @@ const SliderRelacionados = () => {
 
   return (
 
-    <div className="slider-container1">
+    <div>
       <Slider {...settings}>
         <div className="card">
           <img src={Imagen1} alt="" />
-          <h3>Autores</h3>
+          <h3>Titulo</h3>
+          <h4>Autores</h4>
         </div>
         <div className="card">
           <img src={Imagen2} alt="" />
@@ -143,10 +166,6 @@ const SliderRelacionados = () => {
           <h4>Autores</h4>
         </div>
       </Slider>
-      <div className="Buttons">
-        <a className="Left"><img src={Left} alt="" /></a>
-        <a className="Right"><img src={Right} alt="" /></a>
-      </div>
     </div>
 
   )
