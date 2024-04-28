@@ -1,6 +1,11 @@
-import {Route, Routes} from "react-router-dom";
-import Header from "./components/common/header/Header.jsx";
-import Footer from "./components/common/footer/Footer.jsx";
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
+} from "react-router-dom";
+
+//pages
 import Login from "./pages/account/Login.jsx";
 import RecoveryAccount from "./pages/account/RecoveryAccount.jsx";
 import SendEmail from "./pages/account/SendEmail.jsx";
@@ -13,37 +18,40 @@ import UserPassConf from "./pages/account/UserPassConf.jsx";
 import Report from "./pages/account/Report.jsx";
 import ConfPassDel from "./pages/account/confPassDel.jsx";
 
+//layouts
+import RootLayout from "./RootLayout.jsx";
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<RootLayout />}>
+      <Route index element={<Login /> /* <Home /> */} />
+      <Route path="login" element={<Login />} />
+      <Route path="new-account" element={<NewAccount />} />
+      <Route path="recovery-account" element={<RecoveryAccount />}>
+        {/* TODO: falta esta pagina ._. */}
+        {/* <Route path="enter-your-email" element={} /> */}
+        <Route path="send-email" element={<SendEmail />} />
+        <Route path="change-pass" element={<ChangePass />} />
+      </Route>
+      {/* TODO: change path for user/id_del_user */}
+      <Route path="my-account" element={<MyAccount />}>
+        <Route path="edit/confirm-password" element={<UserPassConf />} />
+        <Route path="edit/users-details" element={<ChangeUserDetails />} />
+        {/* <Route path="recommended" /> */}
+        {/* <Route path="lists">
+          Aquí iría cada lista que tenga el usuario
+        </Route>*/}
+      </Route>
+      {/* TODO: change path for book/id_del_libro */}
+      <Route path="book-information" element={<BookInformation />} />
+      {/* <Route path="categories" element={<BookInformation />} /> */}
+      {/* <Route path="*" element={<NoFound404 />} /> */}
+    </Route>,
+  ),
+);
+
 const App = () => {
-  return (
-    <>
-      <Header />
-      <main>
-        <Routes>
-          {/* <Route path="/" element={<Home />} /> */}
-          <Route path="/" element={<Login />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/new-account" element={<NewAccount />} />
-          <Route path="/recovery-account" element={<RecoveryAccount />} />
-          <Route path="/send-email" element={<SendEmail />} />
-          <Route path="/change-pass" element={<ChangePass />} />
-          <Route path="/confirm-password" element={<UserPassConf />} />
-          <Route path="/Report" element={<Report />} />
-          <Route path="/PassDel" element={<ConfPassDel />} />
-          <Route path="/my-account" element={<MyAccount />} />
-          <Route
-            path="/my-account/change-users-details"
-            element={<ChangeUserDetails />}
-          />
-          <Route path="/book-information" element={<BookInformation />} />
-        </Routes>
-        {/* <Recommended /> */}
-        {/* <MyAccount /> */}
-        {/*<RateStars/> */}
-        {/* <Searcher type={"text"} holder={SEARCH} /> */}
-      </main>
-      <Footer />
-    </>
-  );
+  return <RouterProvider router={router} />;
 };
 
 export default App;

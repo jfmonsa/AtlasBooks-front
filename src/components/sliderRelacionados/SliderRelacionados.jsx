@@ -17,7 +17,7 @@ const SliderRelacionados = () => {
     const { className, style, onClick } = props;
     return(
       <div onClick={onClick} className={`arrow ${className}`} >
-        <img src={ArrowRight} alt="" />
+        <img className="Right" src={ArrowRight} alt="" />
       </div>
     )
   }
@@ -26,7 +26,7 @@ const SliderRelacionados = () => {
     const { className, style, onClick } = props;
     return(
       <div onClick={onClick} className={`arrow ${className}`} >
-        <img src={ArrowLeft} alt="" />
+        <img className="Left" src={ArrowLeft} alt="" />
       </div>
     )
   }
