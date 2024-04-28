@@ -32,9 +32,8 @@ const router = createBrowserRouter(
         {/* TODO: falta esta pagina ._. */}
         {/* <Route path="enter-your-email" element={} /> */}
         <Route path="send-email" element={<SendEmail />} />
-        <Route path="change-pass" element={<ChangePass />} />
       </Route>
-
+      <Route path="change-pass" element={<ChangePass />} />
       {/* Paginas del usuario */}
       {/* TODO: change path for user/id_del_user */}
       <Route path="my-account" element={<MyAccount />} />
@@ -46,6 +45,8 @@ const router = createBrowserRouter(
           Aquí iría cada lista que tenga el usuario
         </Route>*/}
       {/* TODO: change path for book/id_del_libro */}
+      <Route path="Report" element={<Report />} />
+      <Route path="PassDel" element={<ConfPassDel />} />
       <Route path="book-information" element={<BookInformation />} />
       {/* <Route path="categories" element={<BookInformation />} /> */}
       {/* <Route path="*" element={<NoFound404 />} /> */}

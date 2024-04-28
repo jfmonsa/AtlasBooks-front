@@ -147,7 +147,7 @@ const MyAccountOtherOpts = () => {
         <MyAccountOpt
           text="Eliminar cuenta"
           iconSrc={IconDelAccount}
-          toLink="/my-account/confirm-password"
+          toLink="/PassDel"
         />
       </ul>
       <Outlet />
