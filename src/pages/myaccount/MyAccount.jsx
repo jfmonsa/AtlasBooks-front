@@ -1,6 +1,8 @@
 import "./myaccount.css";
 import IconPaypal from "../../assets/icons/icon-paypal.svg";
 import IconLogout from "../../assets/icons/menu-logout.svg";
+import IconEditEmail from "../../assets/icons/icon-edit-email.svg";
+import IconEditDetails from "../../assets/icons/icon-edit-details.svg";
 import IconShieldPass from "../../assets/icons/icon-shieldpass.svg";
 import IconDelAccount from "../../assets/icons/icon-delaccount.svg";
 import PrivateListIcon from "./../../assets/icons/icon-privatelist.svg";
@@ -11,26 +13,23 @@ import Card from "../../components/card/Card.jsx";
 import {Link} from "react-router-dom";
 
 // Aux functions
+const MyAccountMyDataDatum = props => {
+  return (
+    <li className="card-myData">
+      <span className="card-myData__left">{props.left}</span>
+      <span className="card-myData__right">{props.right}</span>
+    </li>
+  );
+};
+
 const MyAccountMyData = () => {
   return (
     <Card h1_text="Mis datos" h1_center={false}>
       <ul>
-        <li className="card-myData">
-          <span className="card-myData__left">Nombre</span>
-          <span className="card-myData__right">Pepito Perez</span>
-        </li>
-        <li className="card-myData">
-          <span className="card-myData__left">Email</span>
-          <span className="card-myData__right">pepito@p.com</span>
-        </li>
-        <li className="card-myData">
-          <span className="card-myData__left">País</span>
-          <span className="card-myData__right">Palestina</span>
-        </li>
-        <li className="card-myData">
-          <span className="card-myData__left">Fecha de Registro</span>
-          <span className="card-myData__right">11/09/2001</span>
-        </li>
+        <MyAccountMyDataDatum left="Nombre" right="Pepito Perez" />
+        <MyAccountMyDataDatum left="Email" right="pepito@p.com" />
+        <MyAccountMyDataDatum left="País" right="Palestina" />
+        <MyAccountMyDataDatum left="Fecha de Registro" right="11/03/2003" />
       </ul>
     </Card>
   );
@@ -118,7 +117,7 @@ const MyAccountOpt = props => {
 
 const MyAccountOtherOpts = () => {
   return (
-    <Card h1_text="Otras Opciones" h1_center={false}>
+    <Card h1_text="Opciones" h1_center={false}>
       <ul>
         <MyAccountOpt text="Donar" iconSrc={IconPaypal} toLink="#" />
         <MyAccountOpt
@@ -127,8 +126,13 @@ const MyAccountOtherOpts = () => {
           toLink="/login"
         />
         <MyAccountOpt
-          text="Editar otros detalles de usuario"
-          iconSrc={IconLogout}
+          text="Editar mi información"
+          iconSrc={IconEditDetails}
+          toLink="/login"
+        />
+        <MyAccountOpt
+          text="Cambiar email"
+          iconSrc={IconEditEmail}
           toLink="/login"
         />
         <MyAccountOpt
