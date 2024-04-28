@@ -10,6 +10,8 @@ import BookInformation from "./pages/bookInformation/BookInformation.jsx";
 import MyAccount from "./pages/myaccount/MyAccount.jsx";
 import ChangeUserDetails from "./pages/account/ChangeUserDetails.jsx";
 import UserPassConf from "./pages/account/UserPassConf.jsx";
+import Report from "./pages/account/Report.jsx";
+import ConfPassDel from "./pages/account/confPassDel.jsx";
 
 const App = () => {
   return (
@@ -25,6 +27,8 @@ const App = () => {
           <Route path="/send-email" element={<SendEmail />} />
           <Route path="/change-pass" element={<ChangePass />} />
           <Route path="/confirm-password" element={<UserPassConf />} />
+          <Route path="/Report" element={<Report />} />
+          <Route path="/PassDel" element={<ConfPassDel />} />
           <Route path="/my-account" element={<MyAccount />} />
           <Route
             path="/my-account/change-users-details"

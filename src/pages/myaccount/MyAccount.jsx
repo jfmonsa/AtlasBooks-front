@@ -137,7 +137,7 @@ const MyAccountOtherOpts = () => {
           </Link>
         </li>
         <li>
-          <Link to="/confirm-password" className="options navHover">
+          <Link to="/PassDel" className="options navHover">
             <img
               src={IconDelAccount}
               alt="icono de eliminar cuenta"
