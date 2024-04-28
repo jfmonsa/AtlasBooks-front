@@ -3,7 +3,7 @@
     margin-right: 50px !important; 
 }
 
-img {
+.Left,.Right{
     margin: auto;
     height: 100%;
     width: 100%;
