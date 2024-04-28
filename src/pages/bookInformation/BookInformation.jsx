@@ -16,9 +16,10 @@ const BookInformation = () => {
           <DropDownButtonListUser/>
         </div>
       </Card>
-      
-        <p>Proximo slider</p>
+      <Card>
+        <h2>Relacionados</h2>
         <SliderRelacionados/>
+      </Card>
     </>
   )
 }

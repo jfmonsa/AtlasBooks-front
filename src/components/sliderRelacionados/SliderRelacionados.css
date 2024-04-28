@@ -1,0 +1,25 @@
+.slider-container1{
+    position: relative;
+
+}
+.Buttons{
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+    border: none;
+    position: absolute;
+    top: 45%;
+    right: -1rem;
+  }
+
+.Left{ 
+    left: -1rem;
+    width: 10px;
+    height: 10px;
+}
+
+.Right{
+    width: 10px;
+    height: 10px;
+
+}
