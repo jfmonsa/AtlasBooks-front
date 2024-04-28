@@ -41,7 +41,7 @@ const router = createBrowserRouter(
         </Route>*/}
       </Route>
       {/* TODO: change path for book/id_del_libro */}
-      <Route path="bookinformation" element={<BookInformation />} />
+      <Route path="book-information" element={<BookInformation />} />
       {/* <Route path="categories" element={<BookInformation />} /> */}
       {/* <Route path="*" element={<NoFound404 />} /> */}
     </Route>,
