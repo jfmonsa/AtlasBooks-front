@@ -9,3 +9,23 @@
 .card-myData__left {
   margin-right: var(--spacing-3);
 }
+
+.listCard {
+  height: 48px;
+  padding: var(--spacing-3);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--bg-surf-subtle-light);
+  border-radius: var(--border-rad-comp);
+  border-bottom: var(--border-2);
+  color: var(--black-light);
+}
+
+.listCard:not(.listCard:last-child) {
+  margin-bottom: var(--spacing-2);
+}
+.listCard-icon {
+  width: 24px;
+  margin-left: var(--spacing-4);
+}
