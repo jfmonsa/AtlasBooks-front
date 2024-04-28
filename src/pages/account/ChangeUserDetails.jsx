@@ -6,7 +6,7 @@ import {EMAIL, NAME} from "../../utils/placeholder.js";
 
 const ChangeUserDetails = () => {
   return (
-    <Card h1_text="Edita tus detalles" h1_center={true}>
+    <Card cardDialog h1_text="Edita tus detalles" h1_center={true}>
       <form method="post" action="/my-account">
         <InputText
           text="Nombre de usuario"

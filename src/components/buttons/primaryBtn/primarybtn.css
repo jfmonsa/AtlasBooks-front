@@ -25,5 +25,6 @@
 }
 .black2Btn {
   background-color: var(--black-light);
+  border: 2px solid var(--black-light);
   color: var(--compSurface-light);
 }
