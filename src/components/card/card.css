@@ -1,27 +1,11 @@
-main {
-    padding: var(--spacing-7) var(--spacing-4);
-  }
-  /* Only selector for full-width cards */
-  .cardSection:not(.cardSection-dialog) {
-    width: 100%;
-  }
-  
-  .cardSection {
-    background-color: var(--compSurface-light);
-    padding: var(--spacing-3);
-    border: var(--border-2);
+.card {
+    padding-top: 4px;
+    padding-left: 32px;
+    padding-bottom: 4px;
+    padding-right: 32px;
+    
+    background-color: white;
+    margin: 32px;
     border-radius: 12px;
-  }
-  .cardSection:not(.cardSection:last-child) {
-    margin-bottom: var(--spacing-7);
-  }
-  
-  .card__h1 {
-    margin-bottom: var(--spacing-4);
-    font-size: var(--fs-3);
-    font-weight: var(--fw-semibold);
-    color: var(--black-light);
-  }
-  .card__h1--center {
-    text-align: center;
-  }
+    box-shadow: 1px 1px 10px rgb(202, 200, 200);
+}
