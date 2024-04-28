@@ -101,51 +101,46 @@ const MyAccountUploadABook = () => {
     </Card>
   );
 };
+const MyAccountOpt = props => {
+  return (
+    <li>
+      <Link to={props.toLink} className="options navHover">
+        <img
+          src={props.iconSrc}
+          alt={`icono opción ${props.text}`}
+          className="options__icon"
+        />
+        <span>{props.text}</span>
+      </Link>
+    </li>
+  );
+};
 
 const MyAccountOtherOpts = () => {
   return (
     <Card h1_text="Otras Opciones" h1_center={false}>
       <ul>
-        <li>
-          <Link to="#" className="options navHover">
-            <img
-              src={IconPaypal}
-              alt="icono opción donar"
-              className="options__icon"
-            />
-            <span>Donar</span>
-          </Link>
-        </li>
-        <li>
-          <Link to="/Login" className="options navHover">
-            <img
-              src={IconLogout}
-              alt="icono de cerrar sesión"
-              className="options__icon"
-            />
-            <span>Cerrar sesión</span>
-          </Link>
-        </li>
-        <li>
-          <Link to="/confirm-password" className="options navHover">
-            <img
-              src={IconShieldPass}
-              alt="icono de inicio de sesión"
-              className="options__icon"
-            />
-            <span>Cambiar contraseña</span>
-          </Link>
-        </li>
-        <li>
-          <Link to="/confirm-password" className="options navHover">
-            <img
-              src={IconDelAccount}
-              alt="icono de eliminar cuenta"
-              className="options__icon"
-            />
-            <span>Eliminar cuenta</span>
-          </Link>
-        </li>
+        <MyAccountOpt text="Donar" iconSrc={IconPaypal} toLink="#" />
+        <MyAccountOpt
+          text="Cerrar sesión"
+          iconSrc={IconLogout}
+          toLink="/login"
+        />
+        <MyAccountOpt
+          text="Editar otros detalles de usuario"
+          iconSrc={IconLogout}
+          toLink="/login"
+        />
+        <MyAccountOpt
+          text="Cambiar contraseña"
+          iconSrc={IconShieldPass}
+          toLink="/confirm-password"
+        />
+        <MyAccountOpt
+          text="Eliminar cuenta"
+          iconSrc={IconDelAccount}
+          toLink="/confirm-password"
+        />
       </ul>
     </Card>
   );
