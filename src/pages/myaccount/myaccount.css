@@ -26,6 +26,22 @@
   margin-bottom: var(--spacing-2);
 }
 .listCard-icon {
-  width: 24px;
   margin-left: var(--spacing-4);
+}
+
+.options {
+  height: var(--spacing-6);
+  padding: var(--spacing-2);
+  border-radius: var(--border-rad-comp);
+  display: flex;
+  align-items: center;
+  color: var(--black-light);
+}
+.options__icon {
+  width: var(--spacing-5);
+  height: var(--spacing-5);
+  padding: var(--spacing-1);
+  margin-right: var(--spacing-4);
+  background-color: var(--iconSurface-light);
+  border-radius: var(--border-rad-comp);
 }
