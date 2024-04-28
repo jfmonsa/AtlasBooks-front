@@ -1,39 +1,69 @@
-import {Route, Routes} from "react-router-dom";
-import Header from "./components/common/header/Header.jsx";
-import Footer from "./components/common/footer/Footer.jsx";
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
+} from "react-router-dom";
+
+//pages
 import Login from "./pages/account/Login.jsx";
 import RecoveryAccount from "./pages/account/RecoveryAccount.jsx";
 import SendEmail from "./pages/account/SendEmail.jsx";
 import NewAccount from "./pages/account/NewAccount.jsx";
 import ChangePass from "./pages/account/ChangePass.jsx";
+
 import RateStars from "./components/rate-stars/RateStars.jsx";
 import { Card } from "./components/card/Card.jsx";
 import { Comentarios } from "./components/commentarySection/Comentarios.jsx";
 
-const App = () => {
-  return (
-    <>
-      <Header />
-      <main>
-        <Routes>
-          {/* <Route path="/" element={<Home />} /> */}
-          <Route path="/" element={<Login />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/new-account" element={<NewAccount />} />
-          <Route path="/recovery-account" element={<RecoveryAccount />} />
-          <Route path="/send-email" element={<SendEmail />} />
-          <Route path="/change-pass" element={<ChangePass />} />
-        </Routes>
+import BookInformation from "./pages/bookInformation/BookInformation.jsx";
+import MyAccount from "./pages/myaccount/MyAccount.jsx";
+import ChangeUserDetails from "./pages/myaccount/ChangeUserDetails.jsx";
+import UserPassConf from "./pages/myaccount/UserPassConf.jsx";
+import Report from "./pages/account/Report.jsx";
+import ConfPassDel from "./pages/account/confPassDel.jsx";
 
-        {/*<RateStars/> */}
-        {/* <Searcher type={"text"} holder={SEARCH} /> */}
-        <Card>
-          <Comentarios userId={'1'} userName={"Jose Luis"}></Comentarios>
-        </Card>
-      </main>
-      <Footer />
-    </>
-  );
+
+//layouts
+import RootLayout from "./RootLayout.jsx";
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<RootLayout />}>
+      <Route index element={<Login /> /* <Home /> */} />
+      <Route path="login" element={<Login />} />
+      <Route path="new-account" element={<NewAccount />} />
+
+
+      {/* Routing de recovery account */}
+      <Route path="recovery-account" element={<RecoveryAccount />} />
+      {/* TODO: falta esta pagina ._. */}
+      {/* <Route path="enter-your-email" element={} /> */}
+      <Route path="send-email" element={<SendEmail />} />
+      <Route path="change-pass" element={<ChangePass />} />
+
+      {/* Routing for edit details in my account */}
+      {/* TODO: change path for user/id_del_user */}
+      <Route path="my-account" element={<MyAccount />} />
+      <Route path="confirm-password" element={<UserPassConf />} />
+      <Route path="users-details" element={<ChangeUserDetails />} />
+      {/* <Route path="recommended" /> */}
+      {/* <Route path="lists">
+          Aquí iría cada lista que tenga el usuario
+        </Route>*/}
+      {/* TODO: change path for book/id_del_libro */}
+      <Route path="Report" element={<Report />} />
+      <Route path="PassDel" element={<ConfPassDel />} />
+      <Route path="book-information" element={<BookInformation />} />
+      {/* <Route path="categories" element={<BookInformation />} /> */}
+      {/* <Route path="*" element={<NoFound404 />} /> */}
+    </Route>,
+  ),
+);
+
+const App = () => {
+  return <RouterProvider router={router} />;
+
 };
 
 export default App;

@@ -1,0 +1,26 @@
+.bookContainer {
+  display: inline-block;
+  width: clamp(80px, 80px + 3vw, 166px);
+  max-width: 166px;
+  margin: 32px;
+  /* float: left; */
+}
+
+.img {
+  height: clamp(122px, 6vw + 100px, 250px);
+  max-width: 100%;
+  object-fit: cover;
+  margin-bottom: var(--spacing-1);
+}
+
+.tittleContainer {
+  margin-bottom: var(--spacing-1);
+  font-size: var(--fs-2);
+  font-weight: var(--fw-medium);
+}
+
+.autorContainer {
+  font-size: var(--fs-1);
+  font-weight: 400;
+  color: #454545;
+}

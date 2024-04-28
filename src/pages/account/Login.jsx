@@ -1,7 +1,7 @@
 import "./account.css";
 import {EMAIL, PASSWD, SEARCH} from "../../utils/placeholder.js";
-import PrimaryBtnForm from "../../components/primaryBtn/PrimaryBtnForm.jsx";
-import PrimaryBtnLink from "../../components/primaryBtn/PrimaryBtnLink.jsx";
+import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm.jsx";
+import PrimaryBtnLink from "../../components/buttons/primaryBtn/PrimaryBtnLink.jsx";
 import InputText from "../../components/inputText/InputText.jsx";
 import {Link} from "react-router-dom";
 import {useState} from "react";
@@ -44,7 +44,11 @@ const Login = ({setUsuario}) => {
           text={"Contraseña"}
         />
 
-        <PrimaryBtnForm text="Iniciar Sesion" type={"purpleBtn"} id="1" />
+        <PrimaryBtnForm
+          text="Iniciar Sesion"
+          cssClasses="formCustomBtn purpleBtn"
+          id="1"
+        />
       </form>
 
       <Link tolink="/recovery-account" className="account__forgot-link">
@@ -54,7 +58,7 @@ const Login = ({setUsuario}) => {
       <PrimaryBtnLink
         tolink="/new-account"
         text="Crear Cuenta"
-        type={"black1Btn"}
+        cssClasses="formCustomBtn black1Btn"
       />
       {error && (
         <p style={{color: "var(--error)"}}>

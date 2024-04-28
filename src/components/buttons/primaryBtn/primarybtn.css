@@ -1,13 +1,15 @@
 .formCustomBtn {
+  width: 300px;
+  height: 48px;
+  font-size: var(--fs-2);
+  font-weight: var(--fw-medium);
+}
+
+.baseBtn {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 300px;
-  height: 48px;
   border-radius: var(--border-rad-comp);
-  cursor: pointer;
-  font-size: var(--fs-2);
-  font-weight: var(--fw-medium);
 }
 
 .purpleBtn {
@@ -20,4 +22,9 @@
   border: 2px solid black;
   color: var(--black-light);
   margin-bottom: var(--spacing-3);
+}
+.black2Btn {
+  background-color: var(--black-light);
+  border: 2px solid var(--black-light);
+  color: var(--compSurface-light);
 }

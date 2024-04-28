@@ -23,6 +23,7 @@
   /*colors*/
   --bg-light: #edeff2;
   --compSurface-light: #fff;
+  --bg-surf-subtle-light: #f2f3f7;
   --iconSurface-light: #e4e6eb;
   --bg-purple-light: #7e42ff;
   --bg-soft-purple-light: #eee5ff;
@@ -46,5 +47,6 @@
   --border-rad-comp: 8px;
   --border-rad-surf: 12px;
   --border-1: 2px solid var(--border-pruple-light);
+  --border-2: 2px solid var(--border-graySurfaces-light);
   --speed: 0.3s /*500ms; ?*/;
 }

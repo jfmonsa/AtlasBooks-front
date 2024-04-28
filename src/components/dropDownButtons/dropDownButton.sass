@@ -1,0 +1,134 @@
+//Diseño boton descargar ---------------------------------------------------------------------------
+
+.icon-buttonBookDownload
+    height: 43px
+    width: 150px
+    padding: 7px 15px
+    background-color: #000
+    color: white
+    border: none
+    border-radius: var(--border-rad-comp)
+    cursor: pointer
+    font-family: var(--font-family)
+    font-size: var(--fs-2)
+    font-weight: var(--fw-medium)
+    align-content: center
+    align-items: center
+    display: flex
+    justify-content: center
+
+.icon-buttonBookDownload:hover
+    background-color: #000000e1
+
+.icon-buttonBookDownload:active
+    background-color: #000
+
+//Diseño boton compartir -----------------------------------------------------------------------------
+
+.icon-buttonBookShare
+    height: 43px
+    width: 150px
+    padding: 7px 15px
+    background-color: var(--blue-2)
+    color: white
+    border: none
+    border-radius: var(--border-rad-comp)
+    cursor: pointer
+    font-family: var(--font-family)
+    font-size: var(--fs-2)
+    font-weight: var(--fw-medium)
+    align-content: center
+    align-items: center
+    display: flex
+    justify-content: center
+
+.icon-buttonBookShare:hover
+    background-color: #0011ffc2
+
+.icon-buttonBookShare:active
+    background-color: var(--blue-2)
+
+//Diseño boton lista de usuarios ------------------------------------------------------------------
+
+.icon-buttonBookListUser
+    height: 43px
+    padding: 7px 15px
+    background-color: var(--bg-purple-light)
+    color: white
+    border: none
+    border-radius: var(--border-rad-comp)
+    cursor: pointer
+    font-family: var(--font-family)
+    font-size: var(--fs-2)
+    font-weight: var(--fw-medium)
+    align-content: center
+    align-items: center
+    display: flex
+    justify-content: center
+
+.icon-buttonBookListUser:hover
+    background-color: var(--border-pruple-light)
+
+.icon-buttonBookListUser:active
+    background-color: var(--bg-purple-light)
+
+// Detalles globales -------------------------------------------------------------------------------
+
+.divide-button
+    margin-left: 7px
+    width: 2px
+    height: 25px
+    background-color: #fff
+
+.icon-chevron
+    margin-left: 7px
+    margin-top: 5px
+    padding: 2px 3px
+
+// Diseño dropdown menu
+
+.dropmenuBook
+    top: 0px
+    right: 0px
+    width: 150px
+    background-color: var(--compSurface-light)
+    // Hacer una variable para este borde
+    border: 2px solid var(--border-graySurfaces-light)
+    border-radius: var(--border-rad-comp)
+    padding: var(--spacing-1)
+
+.dropmenu__itemBook
+    height: 48px
+    display: flex
+    align-items: center
+    border-radius: var(--border-rad-comp)
+    transition: background var(--speed)
+    padding: var(--spacing-2)
+
+    &:hover
+        background-color: var(--border-graySurfaces-light)
+
+.dropmenu__item__iconBook
+    width: var(--spacing-5)
+    height: var(--spacing-5)
+    margin-right: var(--spacing-3)
+    display: flex
+    justify-content: center
+    align-items: center
+    border-radius: var(--border-rad-comp)
+    background-color: var(--iconSurface-light)
+
+.dropmenu__item__textBook
+    color: var(--black-light)
+
+// Diseño dropdown menu listUser
+
+.dropmenuBookList
+    top: 0px
+    right: 0px
+    width: 216px
+    background-color: var(--compSurface-light)
+    // Hacer una variable para este borde
+    border: 2px solid var(--border-graySurfaces-light)
+    border-radius: var(--border-rad-comp)
+    padding: var(--spacing-1)

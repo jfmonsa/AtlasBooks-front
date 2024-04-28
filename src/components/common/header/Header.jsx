@@ -1,4 +1,5 @@
 import "./Header.sass";
+import PrimaryBtnLink from "../../buttons/primaryBtn/PrimaryBtnLink.jsx";
 import logo_Atlas from "../../../assets/logo_Atlas.svg";
 import MenuProfileIcon from "../../../assets/icons/menu-profile.svg";
 import MenuCategoriesIcon from "../../../assets/icons/menu-categories.svg";
@@ -11,19 +12,19 @@ import MenuRecommendedIcon from "../../../assets/icons/menu-recommended.svg";
 import MenuSearchIcon from "../../../assets/icons/menu-search.svg";
 import MenuSingupIcon from "../../../assets/icons/menu-singup.svg";
 import {useState} from "react";
-import {Link} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 
 // Auxiliary components for dropdownmenu
 const DropdownItem = props => {
   const alticon = "Icono de";
   return (
     <li>
-      <Link to={props.toLink} className="dropmenu__item">
+      <NavLink to={props.toLink} className="dropmenu__item navHover">
         <span className="dropmenu__item__icon">
           <img src={props.icon} alt={alticon + " " + props.text}></img>
         </span>
         <span className="dropmenu__item__text">{props.text}</span>
-      </Link>
+      </NavLink>
     </li>
   );
 };
@@ -31,9 +32,8 @@ const DropdownItem = props => {
 const DropdownMenu = () => {
   return (
     <ul className="dropmenu">
-      {/* TODO: fix this link when Account page is ready */}
       <DropdownItem
-        toLink="/"
+        toLink="/my-account"
         icon={MenuProfileIcon}
         text="Mi cuenta"
       ></DropdownItem>
@@ -51,7 +51,7 @@ const DropdownMenu = () => {
       {/* Si es admin: */}
       {/* <DropdownItem toLink="/" icon={MenuControlpanelIcon} text="Panel de control"></DropdownItem> */}
       <DropdownItem
-        toLink="/"
+        toLink="/book-information"
         icon={MenuSearchIcon}
         text="Buscar libro"
       ></DropdownItem>
@@ -71,7 +71,7 @@ const DropdownMenu = () => {
         text="Explorar listas"
       ></DropdownItem>
       <DropdownItem
-        toLink="/"
+        toLink="/my-account#my-lists"
         icon={MenuMylistsIcon}
         text="Mis listas"
       ></DropdownItem>
@@ -93,38 +93,38 @@ const Header = () => {
 
   return (
     <header className="navbar">
-      <Link to="/">
+      <NavLink to="/">
         <img src={logo_Atlas} alt="logo AtlassBook" />
-      </Link>
+      </NavLink>
 
       <div className="navbar-right">
         <ul className="navbar-right">
-          <li href="#">
-            <a
-              href="#"
-              className="navbar-right__item navbar-right__item--donar"
+          <li>
+            <PrimaryBtnLink
+              to="/"
+              cssClasses="navbar-right__item navbar-right__item--donar"
             >
               Donar
-            </a>
+            </PrimaryBtnLink>
           </li>
           {/* Si no ha iniciado sección */}
           {/* <li>
-            <Link top="/new-account" className="navbar-right__item">
+            <NavLink top="/new-account" className="navbar-right__item">
               Registrarse
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link to="/login" className="navbar-right__item">
+            <NavLink to="/login" className="navbar-right__item">
               Iniciar Sesion
-            </Link>
+            </NavLink>
           </li> */}
           {/* 
           TODO: fix this link when the Account page is ready
            */}
           <li>
-            <Link href="/" className="navbar-right__item">
+            <NavLink to="/my-account" className="navbar-right__item">
               Mi Perfil
-            </Link>
+            </NavLink>
           </li>
         </ul>
         <div
