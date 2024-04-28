@@ -12,19 +12,19 @@ import MenuRecommendedIcon from "../../../assets/icons/menu-recommended.svg";
 import MenuSearchIcon from "../../../assets/icons/menu-search.svg";
 import MenuSingupIcon from "../../../assets/icons/menu-singup.svg";
 import {useState} from "react";
-import {Link} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 
 // Auxiliary components for dropdownmenu
 const DropdownItem = props => {
   const alticon = "Icono de";
   return (
     <li>
-      <Link to={props.toLink} className="dropmenu__item navHover">
+      <NavLink to={props.toLink} className="dropmenu__item navHover">
         <span className="dropmenu__item__icon">
           <img src={props.icon} alt={alticon + " " + props.text}></img>
         </span>
         <span className="dropmenu__item__text">{props.text}</span>
-      </Link>
+      </NavLink>
     </li>
   );
 };
@@ -93,9 +93,9 @@ const Header = () => {
 
   return (
     <header className="navbar">
-      <Link to="/">
+      <NavLink to="/">
         <img src={logo_Atlas} alt="logo AtlassBook" />
-      </Link>
+      </NavLink>
 
       <div className="navbar-right">
         <ul className="navbar-right">
@@ -109,22 +109,22 @@ const Header = () => {
           </li>
           {/* Si no ha iniciado sección */}
           {/* <li>
-            <Link top="/new-account" className="navbar-right__item">
+            <NavLink top="/new-account" className="navbar-right__item">
               Registrarse
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link to="/login" className="navbar-right__item">
+            <NavLink to="/login" className="navbar-right__item">
               Iniciar Sesion
-            </Link>
+            </NavLink>
           </li> */}
           {/* 
           TODO: fix this link when the Account page is ready
            */}
           <li>
-            <Link to="/my-account" className="navbar-right__item">
+            <NavLink to="/my-account" className="navbar-right__item">
               Mi Perfil
-            </Link>
+            </NavLink>
           </li>
         </ul>
         <div

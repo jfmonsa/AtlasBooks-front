@@ -1,20 +1,17 @@
-import "./book.css"
+import "./book.css";
 
-const Book = ({title,autor,img}) => {
-return (
-    <section className="bookContainer">
-        <img className="img" src={img}/>
-        <div>
-        <h1 className="tittleContainer">{title}</h1>
-        </div>
-        <div>
-        <h2 className="autorContainer">{autor}</h2>
-        </div>
-    </section>
-
-
-);
-
+const Book = ({title, autor, img}) => {
+  return (
+    <div className="bookContainer">
+      <img
+        className="img"
+        src={img}
+        alt={`Imagen de la portada del libro: ${title}, por ${autor}`}
+      />
+      <h2 className="tittleContainer">{title}</h2>
+      <p className="autorContainer">{autor}</p>
+    </div>
+  );
 };
 
 export default Book;
