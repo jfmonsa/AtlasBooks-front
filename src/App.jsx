@@ -23,18 +23,18 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
       <Route index element={<Login /> /* <Home /> */} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/new-account" element={<NewAccount />} />
-      <Route path="/recovery-account" element={<RecoveryAccount />} />
-      <Route path="/send-email" element={<SendEmail />} />
-      <Route path="/change-pass" element={<ChangePass />} />
-      <Route path="/confirm-password" element={<UserPassConf />} />
-      <Route path="/my-account" element={<MyAccount />} />
+      <Route path="login" element={<Login />} />
+      <Route path="new-account" element={<NewAccount />} />
+      <Route path="recovery-account" element={<RecoveryAccount />} />
+      <Route path="send-email" element={<SendEmail />} />
+      <Route path="change-pass" element={<ChangePass />} />
+      <Route path="confirm-password" element={<UserPassConf />} />
+      <Route path="my-account" element={<MyAccount />} />
       <Route
-        path="/my-account/change-users-details"
+        path="my-account/change-users-details"
         element={<ChangeUserDetails />}
       />
-      <Route path="/book-information" element={<BookInformation />} />
+      <Route path="book-information" element={<BookInformation />} />
     </Route>,
   ),
 );
