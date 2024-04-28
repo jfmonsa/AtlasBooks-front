@@ -1,3 +1,4 @@
+
 import "./card.css";
 
 const Card = props => {
@@ -25,3 +26,4 @@ const Card = props => {
   );
 };
 export default Card;
+

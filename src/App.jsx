@@ -11,12 +11,18 @@ import RecoveryAccount from "./pages/account/RecoveryAccount.jsx";
 import SendEmail from "./pages/account/SendEmail.jsx";
 import NewAccount from "./pages/account/NewAccount.jsx";
 import ChangePass from "./pages/account/ChangePass.jsx";
+
+import RateStars from "./components/rate-stars/RateStars.jsx";
+import { Card } from "./components/card/Card.jsx";
+import { Comentarios } from "./components/commentarySection/Comentarios.jsx";
+
 import BookInformation from "./pages/bookInformation/BookInformation.jsx";
 import MyAccount from "./pages/myaccount/MyAccount.jsx";
 import ChangeUserDetails from "./pages/myaccount/ChangeUserDetails.jsx";
 import UserPassConf from "./pages/myaccount/UserPassConf.jsx";
 import Report from "./pages/account/Report.jsx";
 import ConfPassDel from "./pages/account/confPassDel.jsx";
+
 
 //layouts
 import RootLayout from "./RootLayout.jsx";
@@ -27,6 +33,7 @@ const router = createBrowserRouter(
       <Route index element={<Login /> /* <Home /> */} />
       <Route path="login" element={<Login />} />
       <Route path="new-account" element={<NewAccount />} />
+
 
       {/* Routing de recovery account */}
       <Route path="recovery-account" element={<RecoveryAccount />} />
@@ -56,6 +63,7 @@ const router = createBrowserRouter(
 
 const App = () => {
   return <RouterProvider router={router} />;
+
 };
 
 export default App;
