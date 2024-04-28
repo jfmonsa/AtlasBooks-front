@@ -44,11 +44,15 @@ const MyAccountListCard = props => {
   return (
     <Link to={props.path} className="listCard navHover">
       <span>
-        <span>{props.listName}</span>
-        <img className="listCard-icon" src={iconpath} alt={alticon} />
+        <span className="listCard--itemss">{props.listName}</span>
+        <img
+          className="listCard-icon listCard--item"
+          src={iconpath}
+          alt={alticon}
+        />
       </span>
-      <span>{props.desc}</span>
-      <span>{props.num + " Libros"}</span>
+      <span className="listCard--item">{props.desc}</span>
+      <span className="listCard--item">{props.num + " Libros"}</span>
     </Link>
   );
 };
