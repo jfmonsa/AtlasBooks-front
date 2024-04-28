@@ -10,19 +10,11 @@ import BookInformation from "./pages/bookInformation/BookInformation.jsx";
 import MyAccount from "./pages/myaccount/MyAccount.jsx";
 import ChangeUserDetails from "./pages/account/ChangeUserDetails.jsx";
 import UserPassConf from "./pages/account/UserPassConf.jsx";
-import Book from "./components/book/Book.jsx";
-
-import Img from "./assets/img/image1.png";
 
 const App = () => {
   return (
     <>
       <Header />
-      <Book
-        img={Img}
-        autor="Pablito acosta"
-        title="Fernandito el maricón"
-      ></Book>
       <main>
         <Routes>
           {/* <Route path="/" element={<Home />} /> */}
