@@ -1,6 +1,6 @@
 import { useState } from "react";
 import DefaultUser from "../../assets/icons/user-svgrepo-com.svg"
- 
+import sendIcon from "../../assets/icons/send-icon.svg"
 export function NewComentario({
   handleSubmit,
   submitLabel,
@@ -36,7 +36,7 @@ export function NewComentario({
               className="comment-form-button"
               disabled={isTextAreaDisabled}
             >
-              {submitLabel}
+              <img src={sendIcon} alt="send" />
             </button>
             {hasCancelButton && (
               <button

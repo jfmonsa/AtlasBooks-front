@@ -1,7 +1,6 @@
-
-
 .comments {
     margin-top: 16px;
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
 .comments-title {
@@ -26,7 +25,6 @@
     margin-top: 8px;
     border: 1px solid rgba(206, 206, 206, 0.205);
     border-radius: 12px;
-    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
     margin-right: 16px;
     padding: 8px;
     height: 80px;
@@ -39,7 +37,6 @@
 }
 
 .comment-form-button {
-    font-size: 16px;
     padding: 8px 16px;
     background:black;
     border-radius: 8px;
@@ -56,11 +53,10 @@
 
 .comment-form-button:hover:enabled {
     cursor: pointer;
-    background: rgb(37, 99, 235);
+    background: #000000e1;
 }
 
 .comment-form-button:disabled {
-    opacity: 0.7;
     cursor: default;
 }
 
@@ -95,8 +91,7 @@
 }
 
 .comment-content {
-    display: flex;
-    
+    display: flex;  
 }
 
 .comment-author {
@@ -133,6 +128,3 @@
     text-decoration: underline;
 }
 
-.replies {
-    margin-top: 20px;
-}
