@@ -43,7 +43,7 @@ const DropDownButtonDescarga = () => {
     const [open, setOpen] = useState(false);
 
     return (
-        <section className="download-dropdown">
+        <section className="button-dropdown">
             <div className="icon-buttonBookDownload" onClick={() => setOpen(!open)}>
                 Descargar
                 <div className="divide-button"></div> 

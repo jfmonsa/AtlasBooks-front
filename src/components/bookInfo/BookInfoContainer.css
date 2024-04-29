@@ -13,6 +13,7 @@
 }
 
 .book-container-info-rigth-part{
+
     width: 85%;
     background: #F2F3F7;
     padding: var(--spacing-4);
@@ -86,4 +87,11 @@
 .column{
     flex: 1;
     padding: 10px;
+}
+
+
+
+.Elpepe{
+    position: relative;
+
 }

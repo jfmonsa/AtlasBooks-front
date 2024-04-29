@@ -1,3 +1,6 @@
+.button-dropdown
+    position: relative
+
 //Diseño boton descargar ---------------------------------------------------------------------------
 
 .icon-buttonBookDownload
@@ -52,6 +55,7 @@
 
 .icon-buttonBookListUser
     height: var(--spacing-5)
+    width: 216.36px
     padding: 7px 15px
     background-color: var(--bg-purple-light)
     color: white
@@ -72,6 +76,7 @@
 
 .icon-buttonBookListUser:active
     background-color: var(--bg-purple-light)
+    width: 216.36px
 
 // Detalles globales -------------------------------------------------------------------------------
 
@@ -89,8 +94,8 @@
 // Diseño dropdown menu
 
 .dropmenuBook
-    top: 0px
-    right: 0px
+    position: absolute
+    top: 42px
     width: 150px
     background-color: var(--compSurface-light)
     // Hacer una variable para este borde
@@ -125,9 +130,10 @@
 // Diseño dropdown menu listUser
 
 .dropmenuBookList
-    top: 0px
-    right: 0px
-    width: 216px
+    position: absolute
+    top: 32px
+    margin: 0px 15px
+    width: 216.36px
     background-color: var(--compSurface-light)
     // Hacer una variable para este borde
     border: 2px solid var(--border-graySurfaces-light)
