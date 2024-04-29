@@ -3,33 +3,21 @@
   margin-right: 50px !important;
 }
 
-.arrows img {
-    margin: auto;
-    height: 100%;
-    width: 100%;
-}
-
 .slick-slide > div {
-  display: grid;
-  place-items: center; 
-  width: 60%;
-  height: 100%;
-  margin: auto;
-  padding: 0px;
+  display: flex;
+  width: max-content;
 }
 
 .slick-arrow.slick-next,
 .slick-arrow.slick-prev {
-  height: 30px;
-  width: 30px;
-  display: flex;
+  /* display: flex;
   align-items: center;
-  justify-content: center;
-  border-radius: 50%;
+  justify-content: center; */
+  /* border-radius: 50%; */
   opacity: 0.8;
-  height: 50px;
-  width: 50px;
-  margin: 0px 20px;
+  height: 40px;
+  width: 40px;
+  margin: 0px 16px;
 }
 
 .slick-prev::before,
@@ -39,10 +27,4 @@
 
 .slick-dots {
   display: none !important;
-}
-
-.arrows {
-  height: 50px;
-  width: 50px;
-  margin: 1px;
 }
