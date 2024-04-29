@@ -3,10 +3,10 @@ import DropDownButtonCompartir from "../../components/dropDownButtons/dropDownSh
 import DropDownButtonDescarga from "../../components/dropDownButtons/dropDownDownload";
 import DropDownButtonListUser from "../../components/dropDownButtons/dropDownListUser";
 import Card from "../../components/card/Card.jsx";
-import SliderRelacionados from "../../components/sliderRelacionados/SliderRelacionados.jsx";
+import Slider from "../../components/sliderRelacionados/Slider.jsx";
 import {Link} from "react-router-dom";
 import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm.jsx";
-import Comentarios from "../../components/commentarySection/Comentarios.jsx"
+import Comentarios from "../../components/commentarySection/Comentarios.jsx";
 
 const BookInformation = () => {
   return (
@@ -25,7 +25,7 @@ const BookInformation = () => {
         </div>
       </Card>
       <Card h1_text="Relacionados" id="Books-relacionados">
-        <SliderRelacionados />
+        <Slider />
       </Card>
       <Card>
         <Comentarios></Comentarios>

@@ -1,5 +1,5 @@
 import Slider from "react-slick";
-import "./SliderRelacionados.css";
+import "./Slider.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Imagen1 from "../../assets/img/image1.png";
@@ -11,13 +11,17 @@ import ArrowLeft from "../../assets/icons/icon-arrowLeft.svg";
 import ArrowRight from "../../assets/icons/icon-arrowRight.svg";
 import Book from "../book/Book.jsx";
 
-const SliderRelacionados = () => {
+// TODO: le pasamos como props un objeto que contenga los libros, despues de la consulta a la bd
+const SliderRelacionados = props => {
   const SamplePrevArrow = props => {
     const {className, style, onClick} = props;
     return (
-      <div onClick={onClick} className={`arrow ${className}`}>
-        <img className="Right" src={ArrowRight} alt="" />
-      </div>
+      <img
+        onClick={onClick}
+        className={`arrow ${className}`}
+        src={ArrowRight}
+        alt="Slider arrow right"
+      />
     );
   };
 
@@ -47,12 +51,19 @@ const SliderRelacionados = () => {
 
     responsive: [
       {
+        breakpoint: 1224,
+        settings: {
+          slidesToShow: 6,
+          slidesToScroll: 6,
+          infinite: true,
+        },
+      },
+      {
         breakpoint: 1024,
         settings: {
           slidesToShow: 5,
           slidesToScroll: 5,
           infinite: true,
-          dots: true,
         },
       },
       {
@@ -61,7 +72,6 @@ const SliderRelacionados = () => {
           slidesToShow: 4,
           slidesToScroll: 4,
           infinite: true,
-          dots: true,
         },
       },
       {
