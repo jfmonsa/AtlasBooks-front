@@ -49,7 +49,7 @@ export const Login = () => {
         />
       </form>
 
-      <Link tolink="/recovery-account" className="account__forgot-link">
+      <Link to="/recovery-account" className="account__forgot-link">
         Olvidaste tu Contraseña?
       </Link>
 
