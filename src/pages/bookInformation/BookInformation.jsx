@@ -3,7 +3,7 @@ import DropDownButtonCompartir from "../../components/dropDownButtons/dropDownSh
 import DropDownButtonDescarga from "../../components/dropDownButtons/dropDownDownload";
 import DropDownButtonListUser from "../../components/dropDownButtons/dropDownListUser";
 import Card from "../../components/card/Card.jsx";
-import Slider from "../../components/sliderRelacionados/Slider.jsx";
+import Slider from "../../components/slider/Slider.jsx";
 import {Link} from "react-router-dom";
 import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm.jsx";
 import Comentarios from "../../components/commentarySection/Comentarios.jsx";
