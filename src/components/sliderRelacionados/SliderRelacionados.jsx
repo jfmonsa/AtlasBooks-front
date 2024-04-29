@@ -9,6 +9,7 @@ import Imagen4 from "../../assets/img/image4.png";
 import Imagen5 from "../../assets/img/image5.png";
 import ArrowLeft from "../../assets/icons/icon-arrowLeft.svg";
 import ArrowRight from "../../assets/icons/icon-arrowRight.svg";
+import Book from "../book/Book.jsx";
 
 const SliderRelacionados = () => {
   const SamplePrevArrow = props => {
@@ -23,9 +24,12 @@ const SliderRelacionados = () => {
   const SampleNextArrow = props => {
     const {className, style, onClick} = props;
     return (
-      <div onClick={onClick} className={`arrow ${className}`}>
-        <img className="Left" src={ArrowLeft} alt="" />
-      </div>
+      <img
+        onClick={onClick}
+        className={`arrow ${className}`}
+        src={ArrowLeft}
+        alt="Slider arrow left"
+      />
     );
   };
 
@@ -45,8 +49,17 @@ const SliderRelacionados = () => {
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToShow: 5,
+          slidesToScroll: 5,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 800,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 4,
           infinite: true,
           dots: true,
         },
@@ -54,116 +67,36 @@ const SliderRelacionados = () => {
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
+          slidesToShow: 3,
+          slidesToScroll: 3,
           initialSlide: 2,
         },
       },
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
+          slidesToShow: 2,
+          slidesToScroll: 2,
         },
       },
     ],
   };
 
   return (
-    <div>
+    <>
       <Slider {...settings}>
-        <div className="card">
-          <img src={Imagen1} alt="" />
-          <h3>Titulo</h3>
-          <h4>Autores</h4>
-        </div>
-        <div className="card">
-          <img src={Imagen2} alt="" />
-          <h3>Titulo</h3>
-          <h4>Autores</h4>
-        </div>
-        <div className="card">
-          <img src={Imagen3} alt="" />
-          <h3>Titulo</h3>
-          <h4>Autores</h4>
-        </div>
-        <div className="card">
-          <img src={Imagen4} alt="" />
-          <h3>Titulo</h3>
-          <h4>Autores</h4>
-        </div>
-        <div className="card">
-          <img src={Imagen1} alt="" />
-          <h3>Titulo</h3>
-          <h4>Autores</h4>
-        </div>
-        <div className="card">
-          <img src={Imagen5} alt="" />
-          <h3>Titulo</h3>
-          <h4>Autores</h4>
-        </div>
-        <div className="card">
-          <img src={Imagen4} alt="" />
-          <h3>Titulo</h3>
-          <h4>Autores</h4>
-        </div>
-        <div className="card">
-          <img src={Imagen1} alt="" />
-          <h3>Titulo</h3>
-          <h4>Autores</h4>
-        </div>
-        <div className="card">
-          <img src={Imagen5} alt="" />
-          <h3>Titulo</h3>
-          <h4>Autores</h4>
-        </div>
-        <div className="card">
-          <img src={Imagen4} alt="" />
-          <h3>Titulo</h3>
-          <h4>Autores</h4>
-        </div>
-        <div className="card">
-          <img src={Imagen1} alt="" />
-          <h3>Titulo</h3>
-          <h4>Autores</h4>
-        </div>
-        <div className="card">
-          <img src={Imagen5} alt="" />
-          <h3>Titulo</h3>
-          <h4>Autores</h4>
-        </div>
-        <div className="card">
-          <img src={Imagen4} alt="" />
-          <h3>Titulo</h3>
-          <h4>Autores</h4>
-        </div>
-        <div className="card">
-          <img src={Imagen1} alt="" />
-          <h3>Titulo</h3>
-          <h4>Autores</h4>
-        </div>
-        <div className="card">
-          <img src={Imagen5} alt="" />
-          <h3>Titulo</h3>
-          <h4>Autores</h4>
-        </div>
-        <div className="card">
-          <img src={Imagen4} alt="" />
-          <h3>Titulo</h3>
-          <h4>Autores</h4>
-        </div>
-        <div className="card">
-          <img src={Imagen1} alt="" />
-          <h3>Titulo</h3>
-          <h4>Autores</h4>
-        </div>
-        <div className="card">
-          <img src={Imagen5} alt="" />
-          <h3>Titulo</h3>
-          <h4>Autores</h4>
-        </div>
+        <Book autor="Pepito perez" title="Librito tales" img={Imagen1} />
+        <Book autor="Pepito perez" title="Librito tales" img={Imagen2} />
+        <Book autor="Pepito perez" title="Librito tales" img={Imagen3} />
+        <Book autor="Pepito perez" title="Librito tales" img={Imagen4} />
+        <Book autor="Pepito perez" title="Librito tales" img={Imagen5} />
+        <Book autor="Pepito perez" title="Librito tales" img={Imagen1} />
+        <Book autor="Pepito perez" title="Librito tales" img={Imagen2} />
+        <Book autor="Pepito perez" title="Librito tales" img={Imagen3} />
+        <Book autor="Pepito perez" title="Librito tales" img={Imagen4} />
+        <Book autor="Pepito perez" title="Librito tales" img={Imagen5} />
       </Slider>
-    </div>
+    </>
   );
 };
 
