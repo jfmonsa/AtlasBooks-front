@@ -14,7 +14,6 @@ import NewAccount from "./pages/account/NewAccount.jsx";
 import RecoveryAccount from "./pages/account/RecoveryAccount.jsx";
 import SendEmail from "./pages/account/SendEmail.jsx";
 import ChangePass from "./pages/account/ChangePass.jsx";
-
 import BookInformation from "./pages/bookInformation/BookInformation.jsx";
 import MyAccount from "./pages/myaccount/MyAccount.jsx";
 import ChangeUserDetails from "./pages/myaccount/ChangeUserDetails.jsx";
