@@ -61,7 +61,7 @@ const DropDownButtonCompartir = () => {
     const [open, setOpen] = useState(false);
 
     return (
-        <section className="share-dropdown">
+        <div className="button-dropdown">
             <div className="icon-buttonBookShare" onClick={() => setOpen(!open)}>
                 Compartir
                 <div className="divide-button"></div> 
@@ -69,7 +69,7 @@ const DropDownButtonCompartir = () => {
             </div>
 
              {open && <DropdownMenuCompartir />} 
-        </section>
+        </div>
     )
 }
 

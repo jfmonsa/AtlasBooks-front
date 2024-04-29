@@ -36,7 +36,7 @@ const DropDownButtonListUser = () => {
     const [open, setOpen] = useState(false);
 
     return (
-        <section className="listUser-dropdown">
+        <section className="button-dropdown">
             <div className="icon-buttonBookListUser" onClick={() => setOpen(!open)}>
                 Guardar en otra lista
                 <div className="icon-chevron">{open ? <FaChevronDown/> : <FaChevronLeft/> }</div>

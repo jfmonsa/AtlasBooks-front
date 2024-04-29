@@ -51,7 +51,7 @@ export function BookInfoContainer({
               <button className="more-buttons">
                 <img src={mark} alt="" />
               </button>
-              <DropDownButtonListUser />
+                <DropDownButtonListUser />
             </div>
             <h3>Sinopsis</h3>
             <h4 className="sinopsis">
@@ -95,8 +95,8 @@ export function BookInfoContainer({
         </div>
       </div>
       <div className="Buttons">
-        <DropDownButtonDescarga />
-        <DropDownButtonCompartir />
+          <DropDownButtonDescarga />
+          <DropDownButtonCompartir />
 
         <Link to="/Report">
           <PrimaryBtnForm
