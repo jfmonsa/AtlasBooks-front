@@ -1,11 +1,7 @@
 .container {
   text-align: center;
-  width: 1344px;
-  height: 151px;
   background-color: white;
   padding: 24px;
-  border-radius: var(--border-rad-surf);
-  box-shadow: 0px 2px 10px 1px #cccccc;
 }
 
 .title_container {

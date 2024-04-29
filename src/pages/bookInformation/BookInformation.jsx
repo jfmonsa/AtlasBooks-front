@@ -6,29 +6,29 @@ import Card from "../../components/card/Card.jsx";
 import Slider from "../../components/slider/Slider.jsx";
 import {Link} from "react-router-dom";
 import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm.jsx";
-import Comentarios from "../../components/commentarySection/Comentarios.jsx";
+
+import Comentarios from "../../components/commentarySection/Comentarios.jsx"
+import { BookInfoContainer } from "../../components/bookInfo/BookInfoContainer.jsx";
+import RateStars from "../../components/rate-stars/RateStars.jsx"
+
 
 const BookInformation = () => {
   return (
     <>
-      <Card h1_text="Inicio/Libro" id="Books-info">
-        <div className="Buttons">
-          <DropDownButtonDescarga />
-          <DropDownButtonCompartir />
-          <DropDownButtonListUser />
-          <Link to="/Report">
-            <PrimaryBtnForm
-              text="Reportar"
-              cssClasses="formCustomBtn black2Btn"
-            />
-          </Link>
-        </div>
+      <Card id="Books-info">
+        <BookInfoContainer 
+        bookName={"Salem's Lot"} 
+        authorName={"King Stephen"}
+        rank={"5.0"}></BookInfoContainer>
       </Card>
       <Card h1_text="Relacionados" id="Books-relacionados">
         <Slider />
       </Card>
       <Card>
-        <Comentarios></Comentarios>
+        <RateStars/>
+      </Card>
+      <Card>
+        <Comentarios userId={"1"} userName={"Jose"}></Comentarios>
       </Card>
     </>
   );
