@@ -1,12 +1,6 @@
 import "./BookInformation.sass";
-import DropDownButtonCompartir from "../../components/dropDownButtons/dropDownShare";
-import DropDownButtonDescarga from "../../components/dropDownButtons/dropDownDownload";
-import DropDownButtonListUser from "../../components/dropDownButtons/dropDownListUser";
 import Card from "../../components/card/Card.jsx";
 import Slider from "../../components/slider/Slider.jsx";
-import {Link} from "react-router-dom";
-import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm.jsx";
-
 import Comentarios from "../../components/commentarySection/Comentarios.jsx"
 import { BookInfoContainer } from "../../components/bookInfo/BookInfoContainer.jsx";
 import RateStars from "../../components/rate-stars/RateStars.jsx"
