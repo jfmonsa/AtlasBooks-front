@@ -6,15 +6,14 @@ import {
 } from "react-router-dom";
 
 //pages
-import Login from "./pages/account/Login.jsx";
+import Home from "./pages/home/Home.jsx";
+
+//Login related and recovery account
+import {Login} from "./pages/account/Login.jsx";
+import NewAccount from "./pages/account/NewAccount.jsx";
 import RecoveryAccount from "./pages/account/RecoveryAccount.jsx";
 import SendEmail from "./pages/account/SendEmail.jsx";
-import NewAccount from "./pages/account/NewAccount.jsx";
 import ChangePass from "./pages/account/ChangePass.jsx";
-
-import RateStars from "./components/rate-stars/RateStars.jsx";
-import Card from "./components/card/Card.jsx";
-import Comentarios from "./components/commentarySection/Comentarios.jsx"
 
 import BookInformation from "./pages/bookInformation/BookInformation.jsx";
 import MyAccount from "./pages/myaccount/MyAccount.jsx";
@@ -23,20 +22,20 @@ import UserPassConf from "./pages/myaccount/UserPassConf.jsx";
 import Report from "./pages/account/Report.jsx";
 import ConfPassDel from "./pages/account/confPassDel.jsx";
 
-
 //layouts
 import RootLayout from "./RootLayout.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
-      <Route index element={<Login /> /* <Home /> */} />
+      <Route index element={<Home />} />
+
+      {/* Login related and recovery account */}
       <Route path="login" element={<Login />} />
       <Route path="new-account" element={<NewAccount />} />
-
+      <Route path="recovery-account" element={<RecoveryAccount />} />
 
       {/* Routing de recovery account */}
-      <Route path="recovery-account" element={<RecoveryAccount />} />
       {/* TODO: falta esta pagina ._. */}
       {/* <Route path="enter-your-email" element={} /> */}
       <Route path="send-email" element={<SendEmail />} />
@@ -63,7 +62,6 @@ const router = createBrowserRouter(
 
 const App = () => {
   return <RouterProvider router={router} />;
-
 };
 
 export default App;

@@ -9,8 +9,9 @@ import PrivateListIcon from "./../../assets/icons/icon-privatelist.svg";
 import PublicListIcon from "./../../assets/icons/icon-publiclist.svg";
 import PrimaryBtnLink from "../../components/buttons/primaryBtn/PrimaryBtnLink.jsx";
 import BtnAdd from "../../components/buttons/BtnAdd/BtnAdd.jsx";
+import Slider from "../../components/slider/Slider.jsx";
 import Card from "../../components/card/Card.jsx";
-import {Link, Outlet} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 // Aux functions
 const MyAccountMyDataDatum = props => {
@@ -89,7 +90,11 @@ const MyAccountLists = () => {
 };
 
 const MyAccountDownloadsHistory = () => {
-  return <Card h1_text="Historial de descargas"></Card>;
+  return (
+    <Card h1_text="Historial de descargas">
+      <Slider />
+    </Card>
+  );
 };
 
 const MyAccountUploadABook = () => {
@@ -150,7 +155,6 @@ const MyAccountOtherOpts = () => {
           toLink="/PassDel"
         />
       </ul>
-      <Outlet />
     </Card>
   );
 };

@@ -1,0 +1,23 @@
+.slick-list {
+  margin-left: 50px !important;
+  margin-right: 50px !important;
+}
+
+.slick-slide > div {
+  display: flex;
+  width: max-content;
+  height: max-content;
+}
+
+.slick-arrow.slick-next,
+.slick-arrow.slick-prev {
+  opacity: 0.8;
+  height: 40px;
+  width: 40px;
+  margin: 0px 16px;
+}
+
+.slick-prev::before,
+.slick-next::before {
+  display: none;
+}
