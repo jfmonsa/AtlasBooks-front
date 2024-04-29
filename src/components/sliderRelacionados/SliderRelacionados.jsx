@@ -1,5 +1,5 @@
 import Slider from "react-slick";
-import "./SliderRelacionados.css"
+import "./SliderRelacionados.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Imagen1 from "../../assets/img/image1.png";
@@ -10,26 +10,24 @@ import Imagen5 from "../../assets/img/image5.png";
 import ArrowLeft from "../../assets/icons/icon-arrowLeft.svg";
 import ArrowRight from "../../assets/icons/icon-arrowRight.svg";
 
-
 const SliderRelacionados = () => {
-
-  const SamplePrevArrow = (props) => {
-    const { className, style, onClick } = props;
-    return(
-      <div onClick={onClick} className={`arrow ${className}`} >
+  const SamplePrevArrow = props => {
+    const {className, style, onClick} = props;
+    return (
+      <div onClick={onClick} className={`arrow ${className}`}>
         <img className="Right" src={ArrowRight} alt="" />
       </div>
-    )
-  }
+    );
+  };
 
-  const SampleNextArrow = (props) => {
-    const { className, style, onClick } = props;
-    return(
-      <div onClick={onClick} className={`arrow ${className}`} >
+  const SampleNextArrow = props => {
+    const {className, style, onClick} = props;
+    return (
+      <div onClick={onClick} className={`arrow ${className}`}>
         <img className="Left" src={ArrowLeft} alt="" />
       </div>
-    )
-  }
+    );
+  };
 
   var settings = {
     dots: false,
@@ -41,7 +39,7 @@ const SliderRelacionados = () => {
     initialSlide: 0,
     className: "slides",
     prevArrow: <SampleNextArrow to="next" />,
-    nextArrow: <SamplePrevArrow to="prev"/>,
+    nextArrow: <SamplePrevArrow to="prev" />,
 
     responsive: [
       {
@@ -50,29 +48,28 @@ const SliderRelacionados = () => {
           slidesToShow: 3,
           slidesToScroll: 3,
           infinite: true,
-          dots: true
-        }
+          dots: true,
+        },
       },
       {
         breakpoint: 600,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
-          initialSlide: 2
-        }
+          initialSlide: 2,
+        },
       },
       {
         breakpoint: 480,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-    ]
-  }
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
 
   return (
-
     <div>
       <Slider {...settings}>
         <div className="card">
@@ -167,8 +164,7 @@ const SliderRelacionados = () => {
         </div>
       </Slider>
     </div>
+  );
+};
 
-  )
-}
-
-export default SliderRelacionados
+export default SliderRelacionados;

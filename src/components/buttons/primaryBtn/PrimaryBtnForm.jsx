@@ -5,7 +5,6 @@ const PrimaryBtnForm = props => {
     <button
       type="submit"
       className={"baseBtn" + " " + props.cssClasses}
-      id={props.id}
       onClick={props.onClick}
     >
       {props.text}
