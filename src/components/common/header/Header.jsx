@@ -76,7 +76,7 @@ const DropdownMenu = () => {
         text="Mis listas"
       ></DropdownItem>
       <DropdownItem
-        toLink="/"
+        toLink="/login"
         icon={MenuLogoutIcon}
         text="Salir"
       ></DropdownItem>
