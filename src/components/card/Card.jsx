@@ -14,7 +14,7 @@ const Card = props => {
     >
       <h1
         className={
-          props.h1_center ? h1_className + "card__h1--center" : h1_className
+          props.h1_center ? h1_className + " card__h1--center" : h1_className
         }
         id={props.id}
       >

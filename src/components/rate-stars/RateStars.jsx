@@ -5,10 +5,7 @@ import {useState} from "react";
 const RateStars = ({}) => {
   const [number, setNumber] = useState(0);
   return (
-    <div className="container">
-      <div className="tittle_container">
-        <h1>Califica este libro</h1>
-      </div>
+    <>
       <div className="stars_container">
         {Array(5)
           .fill()
@@ -28,7 +25,7 @@ const RateStars = ({}) => {
             ),
           )}
       </div>
-    </div>
+    </>
   );
 };
 

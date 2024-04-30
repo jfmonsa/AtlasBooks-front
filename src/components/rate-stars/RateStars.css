@@ -1,18 +1,8 @@
-.container {
-  text-align: center;
-  background-color: white;
-  padding: 24px;
-}
-
-.title_container {
-  font-weight: var(--fw-semibold);
-  font-size: 24px;
-}
-
 .stars_container {
-  width: 244;
-  height: 36;
-  padding: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-3);
 }
 
 .stars {
