@@ -1,14 +1,14 @@
 import "./BookInformation.sass";
 import Card from "../../components/card/Card.jsx";
 import Slider from "../../components/slider/Slider.jsx";
-import Comentarios from "../../components/commentarySection/Comentarios.jsx";
-import {BookInfoContainer} from "./bookInfo/BookInfoContainer.jsx";
-import RateStars from "./rate-stars/RateStars.jsx";
 
-const BookInformation = () => {
+//Aux functions
+
+//main function
+const BookPage = () => {
   return (
     <>
-      <Card id="Books-info">
+      {/* <Card id="Books-info">
         <BookInfoContainer
           bookName={"Salem's Lot"}
           authorName={"King Stephen"}
@@ -21,7 +21,7 @@ const BookInformation = () => {
 
       <Card>
         <Comentarios userId={"1"} userName={"Jose"}></Comentarios>
-      </Card>
+      </Card> */}
     </>
   );
 };
@@ -38,4 +38,4 @@ const Card = ({
 })
 */
 
-export default BookInformation;
+export default BookPage;
