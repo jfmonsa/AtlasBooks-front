@@ -133,12 +133,8 @@
   .bookInfo-btns {
     justify-content: space-between;
   }
-  .bookInfo-btns .btnDropDown {
+  .bookInfo-btns .btnDropDown,
+  .bookInfo-btns .baseBtn {
     margin-top: var(--spacing-3);
-  }
-}
-@media screen and (max-width: 880px) {
-  .btnDropDown--moreOptions {
-    margin: var(--spacing-2) 0;
   }
 }

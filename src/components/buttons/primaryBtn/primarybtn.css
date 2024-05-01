@@ -28,3 +28,14 @@
   border: 2px solid var(--black-light);
   color: var(--compSurface-light);
 }
+.warningBtn {
+  background-color: var(--warning);
+  border: 2px solid #000;
+  color: var(--compSurface-light);
+}
+.warningBtn--reportBook {
+  height: 42px;
+  width: 150px;
+  font-size: var(--fs-2);
+  font-weight: var(--fw-medium);
+}

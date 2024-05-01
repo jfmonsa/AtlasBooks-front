@@ -157,8 +157,10 @@ const BookInfoSection = ({
           boxCssClasses="btnDropDown--small btnDropDown--outline btnDropDown--moreOptions"
           textCssClasses="btnDropDown__text"
         /> */}
-        {/* <DropDownButtonCompartir />
-        <PrimaryBtnForm text="Reportar" cssClasses=" black2Btn" /> */}
+        <PrimaryBtnForm
+          text="Reportar"
+          cssClasses="warningBtn warningBtn--reportBook"
+        />
       </div>
     </Card>
   );

@@ -1,14 +1,14 @@
 import "./primarybtn.css";
 
-const PrimaryBtnForm = props => {
+const PrimaryBtnForm = ({text, children, cssClasses, onClick}) => {
   return (
     <button
       type="submit"
-      className={"baseBtn" + " " + props.cssClasses}
-      onClick={props.onClick}
+      className={"baseBtn" + " " + cssClasses}
+      onClick={onClick}
     >
-      {props.text}
-      {props.children}
+      {text}
+      {children}
     </button>
   );
 };
