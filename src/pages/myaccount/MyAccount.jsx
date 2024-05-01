@@ -1,105 +1,113 @@
 import "./myaccount.css";
+import PrimaryBtnLink from "../../components/buttons/primaryBtn/PrimaryBtnLink.jsx";
+import BtnAdd from "../../components/buttons/BtnAdd/BtnAdd.jsx";
+import Slider from "../../components/slider/Slider.jsx";
+import Card from "../../components/card/Card.jsx";
+import {Link} from "react-router-dom";
+//icons for option's section
 import IconPaypal from "../../assets/icons/icon-paypal.svg";
 import IconLogout from "../../assets/icons/menu-logout.svg";
 import IconEditEmail from "../../assets/icons/icon-edit-email.svg";
 import IconEditDetails from "../../assets/icons/icon-edit-details.svg";
 import IconShieldPass from "../../assets/icons/icon-shieldpass.svg";
 import IconDelAccount from "../../assets/icons/icon-delaccount.svg";
+//icons for my lists' section
 import PrivateListIcon from "./../../assets/icons/icon-privatelist.svg";
 import PublicListIcon from "./../../assets/icons/icon-publiclist.svg";
-import PrimaryBtnLink from "../../components/buttons/primaryBtn/PrimaryBtnLink.jsx";
-import BtnAdd from "../../components/buttons/BtnAdd/BtnAdd.jsx";
-import Slider from "../../components/slider/Slider.jsx";
-import Card from "../../components/card/Card.jsx";
-import {Link} from "react-router-dom";
 
 // Aux functions
-const MyAccountMyDataDatum = props => {
+const SectionMyDataDatum = ({left, right}) => {
   return (
     <li className="card-myData">
-      <span className="card-myData__left">{props.left}</span>
-      <span className="card-myData__right">{props.right}</span>
+      <span className="card-myData__left">{left}</span>
+      <span className="card-myData__right">{right}</span>
     </li>
   );
 };
 
-const MyAccountMyData = () => {
+const SectionMyData = ({name, email, country, registerDate}) => {
   return (
-    <Card h1_text="Mis datos" h1_center={false}>
+    <Card h1Text="Mis datos">
       <ul>
-        <MyAccountMyDataDatum left="Nombre" right="Pepito Perez" />
-        <MyAccountMyDataDatum left="Email" right="pepito@p.com" />
-        <MyAccountMyDataDatum left="País" right="Palestina" />
-        <MyAccountMyDataDatum left="Fecha de Registro" right="11/03/2003" />
+        <SectionMyDataDatum left="Nombre" right={name} />
+        <SectionMyDataDatum left="Email" right={email} />
+        <SectionMyDataDatum left="País" right={country} />
+        <SectionMyDataDatum left="Fecha de Registro" right={registerDate} />
       </ul>
     </Card>
   );
 };
 
-const MyAccountListCard = props => {
-  const iconpath = props.publicList ? PublicListIcon : PrivateListIcon;
-  const alticon = props.publicList
+const SectionListsListCard = ({
+  listName,
+  path,
+  desc,
+  numBooks,
+  publicList = false,
+}) => {
+  const iconpath = publicList ? PublicListIcon : PrivateListIcon;
+  const alticon = publicList
     ? "icono de lista de libros publica"
     : "icono de lista de libros privada";
 
   return (
-    <Link to={props.path} className="listCard navHover">
+    <Link to={path} className="listCard navHover">
       <span>
-        <span className="listCard--itemss">{props.listName}</span>
+        <span className="listCard--itemss">{listName}</span>
         <img
           className="listCard-icon listCard--item"
           src={iconpath}
           alt={alticon}
         />
       </span>
-      <span className="listCard--item">{props.desc}</span>
-      <span className="listCard--item">{props.num + " Libros"}</span>
+      <span className="listCard--item">{desc}</span>
+      <span className="listCard--item">{numBooks + " Libros"}</span>
     </Link>
   );
 };
 
-const MyAccountLists = () => {
+const SectionLists = () => {
   return (
-    <Card h1_text="Mis listas" id="my-lists">
+    <Card h1Text="Mis listas" id="my-lists">
       <div>
-        <MyAccountListCard
+        <SectionListsListCard
+          listName="Mis Favoritos"
+          path="/user/"
+          desc="Lista de mis libros favoritos"
+          numBooks="14"
           publicList
-          path="/user/"
-          listName="Mis Favoritos"
-          desc="Lista de mis libros favoritos"
-          num="14"
         />
-        <MyAccountListCard
-          path="/user/"
+        <SectionListsListCard
           listName="Mis Favoritos"
+          path="/user/"
           desc="Lista de mis libros favoritos"
-          num="14"
+          numBooks="14"
         />
-        <MyAccountListCard
+        <SectionListsListCard
+          listName="Mis Favoritos"
+          path="/user/"
+          desc="Lista de mis libros favoritos"
+          numBooks="14"
           publicList
-          path="/user/"
-          listName="Mis Favoritos"
-          desc="Lista de mis libros favoritos"
-          num="14"
         />
       </div>
       {/* TODO: el link para este */}
-      <BtnAdd tolink="" />
+      <BtnAdd tolink="#" />
     </Card>
   );
 };
 
-const MyAccountDownloadsHistory = () => {
+const SectionDownloadsHistory = () => {
   return (
-    <Card h1_text="Historial de descargas">
+    <Card h1Text="Historial de descargas">
       <Slider />
     </Card>
   );
 };
 
-const MyAccountUploadABook = () => {
+const SectionUploadABook = () => {
   return (
-    <Card h1_text="Subir un libro" h1_center={false}>
+    <Card h1Text="Subir un libro">
       <p>
         Contribuye con la comunidad añadiendo nuevos libros, click al boton para
         hacerlo
@@ -109,47 +117,48 @@ const MyAccountUploadABook = () => {
     </Card>
   );
 };
-const MyAccountOpt = props => {
+
+const SectionOtherOptsOpt = ({text, toLink, iconSrc}) => {
   return (
     <li>
-      <Link to={props.toLink} className="options navHover">
+      <Link to={toLink} className="options navHover">
         <img
-          src={props.iconSrc}
-          alt={`icono opción ${props.text}`}
+          src={iconSrc}
+          alt={`icono opción ${text}`}
           className="options__icon"
         />
-        <span>{props.text}</span>
+        <span>{text}</span>
       </Link>
     </li>
   );
 };
 
-const MyAccountOtherOpts = () => {
+const SectionOtherOpts = () => {
   return (
-    <Card h1_text="Opciones" h1_center={false}>
+    <Card h1Text="Opciones">
       <ul>
-        <MyAccountOpt text="Donar" iconSrc={IconPaypal} toLink="#" />
-        <MyAccountOpt
+        <SectionOtherOptsOpt text="Donar" iconSrc={IconPaypal} toLink="#" />
+        <SectionOtherOptsOpt
           text="Cerrar sesión"
           iconSrc={IconLogout}
           toLink="/login"
         />
-        <MyAccountOpt
+        <SectionOtherOptsOpt
           text="Editar mi información"
           iconSrc={IconEditDetails}
           toLink="/login"
         />
-        <MyAccountOpt
+        <SectionOtherOptsOpt
           text="Cambiar email"
           iconSrc={IconEditEmail}
           toLink="/login"
         />
-        <MyAccountOpt
+        <SectionOtherOptsOpt
           text="Cambiar contraseña"
           iconSrc={IconShieldPass}
           toLink="/confirm-password"
         />
-        <MyAccountOpt
+        <SectionOtherOptsOpt
           text="Eliminar cuenta"
           iconSrc={IconDelAccount}
           toLink="/PassDel"
@@ -163,11 +172,16 @@ const MyAccountOtherOpts = () => {
 const MyAccount = () => {
   return (
     <>
-      <MyAccountMyData />
-      <MyAccountLists />
-      <MyAccountDownloadsHistory />
-      <MyAccountUploadABook />
-      <MyAccountOtherOpts />
+      <SectionMyData
+        name="Pepito Perez"
+        email="pepito@p.com"
+        country="Palestina"
+        registerDate="11/03/2003"
+      />
+      <SectionLists />
+      <SectionDownloadsHistory />
+      <SectionUploadABook />
+      <SectionOtherOpts />
     </>
   );
 };

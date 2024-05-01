@@ -1,10 +1,10 @@
 import "./BookInfoContainer.css";
 import BookImage from "../../assets/img/image1.png";
-import DropDownButtonCompartir from "../dropDownButtons/dropDownShare";
-import DropDownButtonDescarga from "../dropDownButtons/dropDownDownload";
-import DropDownButtonListUser from "../dropDownButtons/dropDownListUser";
+import DropDownButtonCompartir from "../../../components/dropDownButtons/dropDownShare";
+import DropDownButtonDescarga from "../../../components/dropDownButtons/dropDownDownload";
+import DropDownButtonListUser from "../../../components/dropDownButtons/dropDownListUser";
 import {Link} from "react-router-dom";
-import PrimaryBtnForm from "../buttons/primaryBtn/PrimaryBtnForm";
+import PrimaryBtnForm from "../../../components/buttons/primaryBtn/PrimaryBtnForm";
 import Star from "../../assets/icons/Star.svg";
 import coment from "../../assets/icons/comentario-icon.svg";
 import heart from "../../assets/icons/corazon-icon.svg";
@@ -22,6 +22,7 @@ export function BookInfoContainer({
   languaje = "None",
   pages = "None",
   vol = 1,
+  bookImg,
 }) {
   return (
     <div className="book-container-info">

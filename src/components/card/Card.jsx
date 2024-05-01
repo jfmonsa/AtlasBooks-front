@@ -1,26 +1,30 @@
 import "./card.css";
 
-const Card = props => {
-  const h1_className = "card__h1 ";
-  const section_className = "cardSection";
+const Card = ({
+  h1Text,
+  children,
+  customCssClassesSection = "",
+  customCssClasesH1 = "",
+  id,
+  h1Center = false,
+  cardDialog = false,
+}) => {
+  const h1ClassName = "card__h1 " + customCssClasesH1;
+  const sectionClassName = "cardSection " + customCssClassesSection;
 
   return (
     <section
       className={
-        props.cardDialog
-          ? section_className + " cardSection-dialog"
-          : section_className
+        cardDialog ? sectionClassName + " cardSection-dialog" : sectionClassName
       }
     >
       <h1
-        className={
-          props.h1_center ? h1_className + " card__h1--center" : h1_className
-        }
-        id={props.id}
+        className={h1Center ? h1ClassName + " card__h1--center" : h1ClassName}
+        id={id}
       >
-        {props.h1_text}
+        {h1Text}
       </h1>
-      {props.children}
+      {children}
     </section>
   );
 };
