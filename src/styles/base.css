@@ -21,9 +21,9 @@ body {
 }
 
 /* TODO: Revisar en que partes estoy repitiendo este estilo para eliminarlos ahí */
+div,
 p,
 a,
-button,
 ul,
 ol,
 h1,
@@ -33,6 +33,7 @@ h4,
 h5,
 h6,
 label,
+button,
 input {
   font-family: var(--font-family);
 }

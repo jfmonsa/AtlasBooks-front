@@ -8,9 +8,16 @@ import {useState} from "react";
 
 //Book Info
 import BookImage from "../../assets/img/image1.png";
-import DropDownButtonCompartir from "../../components/dropDownButtons/dropDownShare";
-import DropDownButtonDescarga from "../../components/dropDownButtons/dropDownDownload";
-import DropDownButtonListUser from "../../components/dropDownButtons/dropDownListUser";
+import DropDownBtn from "../../components/dropDownButtons/DropDownBtn.jsx";
+// -- Download option's icon
+import Mega from "../../assets/icons/Icon-mega.svg";
+import Mediafire from "../../assets/icons/Icon-mediafire.svg";
+// -- Share option's icon
+import Facebook from "../../assets/icons/Icon-facebook.svg";
+import Instagram from "../../assets/icons/Icon-instagram.svg";
+import Telegram from "../../assets/icons/Icon-telegram.svg";
+import WhatsApp from "../../assets/icons/Icon-whatsapp.svg";
+import Enlace from "../../assets/icons/Icon-link.svg";
 import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm";
 // import Star from "../../assets/icons/Star.svg";
 import coment from "../../assets/icons/comentario-icon.svg";
@@ -42,6 +49,19 @@ const BookInfoSection = ({
   bookImg,
   numComments,
 }) => {
+  const shareOptions = [
+    {toLink: "#", iconPath: Facebook, text: "Facebook"},
+    {toLink: "#", iconPath: Instagram, text: "Instagram"},
+    {toLink: "#", iconPath: Telegram, text: "Telegram"},
+    {toLink: "#", iconPath: WhatsApp, text: "WhatsApp"},
+    {toLink: "#", iconPath: Enlace, text: "Copiar enlace"},
+    // Puedes agregar más opciones aquí
+  ];
+  const downloadOptions = [
+    {toLink: "#", iconPath: Mega, text: "Mega"},
+    {toLink: "#", iconPath: Mediafire, text: "Mediafire"},
+  ];
+
   return (
     <Card h1Text="Inicio / libro">
       <div className="bookInfo">
@@ -112,9 +132,18 @@ const BookInfoSection = ({
         </div>
       </div>
       <div className="bookInfo-btns">
-        <DropDownButtonDescarga />
-        <DropDownButtonCompartir />
-        <PrimaryBtnForm text="Reportar" cssClasses=" black2Btn" />
+        <DropDownBtn
+          options={downloadOptions}
+          text="Descargar"
+          boxCssClasses="btnDropDown--black"
+        />
+        <DropDownBtn
+          options={shareOptions}
+          text="Compatir"
+          boxCssClasses="btnDropDown--blue"
+        />
+        {/* <DropDownButtonCompartir />
+        <PrimaryBtnForm text="Reportar" cssClasses=" black2Btn" /> */}
       </div>
     </Card>
   );

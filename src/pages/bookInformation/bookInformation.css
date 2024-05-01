@@ -1,15 +1,10 @@
-.bookInfo-btns {
-  margin-top: var(--spacing-5);
-  display: flex;
-  justify-content: space-between;
-}
-
 /* ============ Rate starts ============ */
 .stars_container {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: var(--spacing-3);
+  cursor: pointer;
 }
 .stars {
   font-size: 36px;
@@ -100,6 +95,13 @@
 }
 .specs__item__left {
   margin-right: var(--spacing-3);
+}
+
+.bookInfo-btns {
+  margin-top: var(--spacing-5);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 @media screen and (max-width: 610px) {
