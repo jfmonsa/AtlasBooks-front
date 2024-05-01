@@ -12,7 +12,7 @@ import DropDownButtonCompartir from "../../components/dropDownButtons/dropDownSh
 import DropDownButtonDescarga from "../../components/dropDownButtons/dropDownDownload";
 import DropDownButtonListUser from "../../components/dropDownButtons/dropDownListUser";
 import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm";
-import Star from "../../assets/icons/Star.svg";
+// import Star from "../../assets/icons/Star.svg";
 import coment from "../../assets/icons/comentario-icon.svg";
 import heart from "../../assets/icons/corazon-icon.svg";
 import mark from "../../assets/icons/marcador-icon.svg";
@@ -47,7 +47,7 @@ const BookInfoSection = ({
       <div className="bookInfo">
         <img
           className="bookInfo__img"
-          src={BookImage}
+          src={bookImg}
           alt={`portada del libro ${bookName}`}
         />
         <div className="bookInfo__right">
@@ -56,25 +56,33 @@ const BookInfoSection = ({
 
           <div className="relevantInfo">
             <div className="relevantInfo__subCont">
-              <img className="relevantInfo__icon" src={Star} alt="star-book" />
-              <span className="rank__real">{rank}</span> /
-              <span className="rank__total"> 5.0</span>
+              <AiOutlineStar className="relevantInfo__icon1" />
+              <span className="rank__real">{rank}</span>/
+              <span className="rank__total">5.0</span>
             </div>
 
             <div className="relevantInfo__subCont">
               <div>
                 <img
                   src={coment}
-                  alt="coment-book"
-                  className="relevantInfo__icon"
+                  alt="icon of comments of this book"
+                  className="relevantInfo__icon1"
                 />
                 {/* TODO: Hacer que al clickear esto te redirija a la sección de comentarios */}
                 <span> {numComments} comentarios</span>
               </div>
 
               <div>
-                <img className="relevantInfo__icon" src={heart} alt="heart" />
-                <img className="relevantInfo__icon" src={mark} alt="" />
+                <img
+                  className="relevantInfo__icon2"
+                  src={heart}
+                  alt="icon of save this book in favorites"
+                />
+                <img
+                  className="relevantInfo__icon2"
+                  src={mark}
+                  alt="icon to save this book in whistlist"
+                />
               </div>
               {/* <DropDownButtonListUser /> */}
             </div>
@@ -90,9 +98,9 @@ const BookInfoSection = ({
           <div className="bookInfo__specs">
             <ul className="specs">
               <BookInfoSectionSpecs left="Categorias:" right={categories} />
-              <BookInfoSectionSpecs left="Publicador:" right={categories} />
-              <BookInfoSectionSpecs left="ISBN:" right={categories} />
-              <BookInfoSectionSpecs left="Archivo:" right={categories} />
+              <BookInfoSectionSpecs left="Publicador:" right={editory} />
+              <BookInfoSectionSpecs left="ISBN:" right={isbn} />
+              <BookInfoSectionSpecs left="Archivo:" right={fileType} />
             </ul>
             <ul className="specs">
               <BookInfoSectionSpecs left="Año:" right={year} />
@@ -103,16 +111,16 @@ const BookInfoSection = ({
           </div>
         </div>
       </div>
-      {/* <div className="Buttons">
+      <div className="bookInfo-btns">
         <DropDownButtonDescarga />
         <DropDownButtonCompartir />
-        <PrimaryBtnForm text="Reportar" cssClasses="formCustomBtn black2Btn" />
-      </div> */}
+        <PrimaryBtnForm text="Reportar" cssClasses=" black2Btn" />
+      </div>
     </Card>
   );
 };
 
-const RateStarsSection = ({}) => {
+const RateStarsSection = () => {
   const [number, setNumber] = useState(0);
 
   return (
@@ -123,12 +131,14 @@ const RateStarsSection = ({}) => {
           .map((_, index) =>
             number >= index + 1 ? (
               <AiFillStar
+                key={index}
                 className="stars"
                 style={{color: "orange"}}
                 onClick={() => setNumber(index + 1)}
               />
             ) : (
               <AiOutlineStar
+                key={index}
                 className="stars"
                 style={{color: "black"}}
                 onClick={() => setNumber(index + 1)}
@@ -145,12 +155,22 @@ const BookPage = () => {
   return (
     <>
       <BookInfoSection
-        bookName={"Salem's Lot"}
-        authorName={"King Stephen"}
-        rank={"5.0"}
+        bookName="Salem's Lot"
+        authorName="King Stephen"
+        rank="5.0"
+        categories="Horror, crime"
+        editory="Radom Peguin"
+        isbn="978-3-16-148410-0"
+        fileType="EPUB"
+        year="1987"
+        language="English"
+        pages="431"
+        vol={3}
+        bookImg={BookImage}
+        numComments={2}
       />
 
-      {/* <RateStarsSection /> */}
+      <RateStarsSection />
 
       {/*
       <Card h1Text="Relacionados" id="Books-relacionados">
