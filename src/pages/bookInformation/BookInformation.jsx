@@ -8,7 +8,7 @@ import {useState} from "react";
 
 //Book Info
 import BookImage from "../../assets/img/image1.png";
-import DropDownBtn from "../../components/dropDownButtons/DropDownBtn.jsx";
+import DropdownBtn from "../../components/dropDownButtons/DropdownBtn.jsx";
 // -- Download option's icon
 import Mega from "../../assets/icons/Icon-mega.svg";
 import Mediafire from "../../assets/icons/Icon-mediafire.svg";
@@ -61,6 +61,12 @@ const BookInfoSection = ({
     {toLink: "#", iconPath: Mega, text: "Mega"},
     {toLink: "#", iconPath: Mediafire, text: "Mediafire"},
   ];
+  const moreOpts = [{toLink: "#", iconPath: mark, text: "Lista Punk"}];
+
+  /*
+  <DropdownItemListUser toLink="" text="Favoritos"></DropdownItemListUser>
+        <DropdownItemListUser toLink="" text="Leyendo"></DropdownItemListUser>
+  */
 
   return (
     <Card h1Text="Inicio / libro">
@@ -104,7 +110,6 @@ const BookInfoSection = ({
                   alt="icon to save this book in whistlist"
                 />
               </div>
-              {/* <DropDownButtonListUser /> */}
             </div>
           </div>
           <h3 className="bookInfo__right__sipnosisTitle">Sinopsis</h3>
@@ -132,16 +137,26 @@ const BookInfoSection = ({
         </div>
       </div>
       <div className="bookInfo-btns">
-        <DropDownBtn
+        <DropdownBtn
           options={downloadOptions}
           text="Descargar"
-          boxCssClasses="btnDropDown--black"
+          boxCssClasses="btnDropDown btnDropDown--black"
+          textCssClasses="btnDropDown__text"
         />
-        <DropDownBtn
+        <DropdownBtn
           options={shareOptions}
           text="Compatir"
-          boxCssClasses="btnDropDown--blue"
+          boxCssClasses="btnDropDown btnDropDown--blue"
+          textCssClasses="btnDropDown__text"
         />
+        {/* Hacer una card dialog mejor para esta
+        
+        <DropdownBtn
+          options={moreOpts}
+          text="Guardar más..."
+          boxCssClasses="btnDropDown--small btnDropDown--outline btnDropDown--moreOptions"
+          textCssClasses="btnDropDown__text"
+        /> */}
         {/* <DropDownButtonCompartir />
         <PrimaryBtnForm text="Reportar" cssClasses=" black2Btn" /> */}
       </div>

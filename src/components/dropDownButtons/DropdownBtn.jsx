@@ -1,4 +1,4 @@
-import "./dropDownButton.sass";
+import "./dropdownButton.sass";
 import {FaChevronLeft} from "react-icons/fa";
 import {FaChevronDown} from "react-icons/fa";
 import {useState} from "react";
@@ -33,14 +33,12 @@ const DropdownBtnMenu = ({options}) => {
   );
 };
 
-const DropDownBtn = ({text, options, boxCssClasses, textCssClasses}) => {
+const DropdownBtn = ({text, options, boxCssClasses, textCssClasses}) => {
   const [open, setOpen] = useState(false);
-  const boxCss = "btnDropDown " + boxCssClasses;
-  const textCss = "btnDropDown__text " + textCssClasses;
 
   return (
-    <div className={boxCss} onClick={() => setOpen(!open)}>
-      <span className={textCss}>{text}</span>
+    <div className={boxCssClasses} onClick={() => setOpen(!open)}>
+      <span className={textCssClasses}>{text}</span>
       <div className="btnDropDown__icon">
         {open ? <FaChevronDown /> : <FaChevronLeft />}
       </div>
@@ -50,4 +48,4 @@ const DropDownBtn = ({text, options, boxCssClasses, textCssClasses}) => {
   );
 };
 
-export default DropDownBtn;
+export default DropdownBtn;

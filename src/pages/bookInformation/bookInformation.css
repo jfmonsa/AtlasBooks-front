@@ -74,6 +74,10 @@
   color: var(--ok);
 }
 
+/* ----- DropDown */
+.btnDropDown--moreOptions {
+  margin-left: var(--spacing-5);
+}
 /* --- specs subsection*/
 .bookInfo__specs {
   display: flex;
@@ -101,7 +105,9 @@
   margin-top: var(--spacing-5);
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+}
+.bookInfo-btns .btnDropDown {
+  margin-right: var(--spacing-3);
 }
 
 @media screen and (max-width: 610px) {
@@ -123,5 +129,16 @@
     width: 100%;
     flex-direction: row;
     justify-content: space-between;
+  }
+  .bookInfo-btns {
+    justify-content: space-between;
+  }
+  .bookInfo-btns .btnDropDown {
+    margin-top: var(--spacing-3);
+  }
+}
+@media screen and (max-width: 880px) {
+  .btnDropDown--moreOptions {
+    margin: var(--spacing-2) 0;
   }
 }
