@@ -1,0 +1,103 @@
+.Buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+/* ============ Rate starts ============ */
+.stars_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+.stars {
+  font-size: 36px;
+}
+
+/* ============ book info section ============ */
+.bookInfo {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.bookInfo__img {
+  height: 300px;
+}
+
+/* Right subcontaiber */
+.bookInfo__right {
+  width: calc(100% - 300px);
+  min-width: 300px;
+  margin-left: var(--spacing-4);
+}
+.bookInfo__right__name {
+  font-size: var(--spacing-4);
+  margin-bottom: var(--spacing-2);
+}
+.bookInfo__right__author {
+  font-size: var(--spacing-3);
+  font-weight: 500;
+}
+.bookInfo__right__sipnosisTitle {
+  margin-bottom: var(--spacing-3);
+}
+.bookInfo__right__sipnosisText {
+  margin-bottom: var(--spacing-5);
+}
+
+/* relevant info subcontainer */
+.relevantInfo {
+  margin-top: var(--spacing-4);
+  margin-bottom: var(--spacing-5);
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.relevantInfo__subCont {
+  display: flex;
+}
+.relevantInfo__subCont:first-child,
+.relevantInfo__subCont > div {
+  margin-right: var(--spacing-5);
+}
+.relevantInfo__icon {
+  max-height: 24px;
+  margin-right: var(--spacing-2);
+}
+.rank__real {
+  color: var(--warning);
+}
+.rank__total {
+  color: var(--ok);
+}
+
+/* --- specs subsection*/
+.bookInfo__specs {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: var(--spacing-3);
+}
+.specs:first-child {
+  margin-bottom: var(--spacing-3);
+}
+.specs__item:not(.specs__item:last-child) {
+  margin-bottom: var(--spacing-2);
+}
+.specs__item__left,
+.specs__item__right {
+  display: inline-block;
+  width: 100px;
+}
+.specs__item__left {
+  margin-right: var(--spacing-3);
+}
+
+@media screen and (max-width: 6px) {
+  .bookInfo__right {
+    margin-left: 0;
+    justify-content: center;
+  }
+  .bookInfo__right {
+  }
+}
