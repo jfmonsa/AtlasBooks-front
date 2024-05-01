@@ -64,3 +64,15 @@ main {
 .navHover:hover {
   background-color: var(--border-graySurfaces-light);
 }
+
+/* Z-index issues */
+.navbar {
+  z-index: 90;
+}
+.DropDownBtn {
+  z-index: 20;
+}
+/* padding top style */
+main section:first-child {
+  margin-top: var(--spacing-6);
+}
