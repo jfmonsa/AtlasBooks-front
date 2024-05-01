@@ -18,7 +18,7 @@
 /* ============ book info section ============ */
 .bookInfo {
   display: flex;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
 }
 
 .bookInfo__img {
@@ -27,8 +27,6 @@
 
 /* Right subcontaiber */
 .bookInfo__right {
-  width: calc(100% - 300px);
-  min-width: 300px;
   margin-left: var(--spacing-4);
 }
 .bookInfo__right__name {
@@ -44,6 +42,7 @@
 }
 .bookInfo__right__sipnosisText {
   margin-bottom: var(--spacing-5);
+  overflow-wrap: break-word;
 }
 
 /* relevant info subcontainer */
@@ -58,7 +57,7 @@
   display: flex;
 }
 .relevantInfo__subCont:first-child,
-.relevantInfo__subCont > div {
+.relevantInfo__subCont > div:not(.relevantInfo__subCont > div:last-child) {
   margin-right: var(--spacing-5);
 }
 .relevantInfo__icon {
@@ -93,11 +92,14 @@
   margin-right: var(--spacing-3);
 }
 
-@media screen and (max-width: 6px) {
-  .bookInfo__right {
-    margin-left: 0;
-    justify-content: center;
+@media screen and (max-width: 610px) {
+  .bookInfo {
+    flex-direction: column;
   }
+
   .bookInfo__right {
+    justify-content: center;
+    align-items: center;
+    margin-left: 0;
   }
 }

@@ -45,6 +45,9 @@ a,
 button {
   cursor: pointer;
 }
+img {
+  object-fit: contain;
+}
 
 /* Sticky footer */
 #root {
