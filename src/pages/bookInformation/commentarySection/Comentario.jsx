@@ -1,6 +1,6 @@
-import {deleteComment, updateComment} from "../../api";
+import {deleteComment, updateComment} from "../../../api";
 import {NewComentario} from "./NewComentario";
-import DefaultUser from "../../assets/icons/user-svgrepo-com.svg"
+import DefaultUser from "../../../assets/icons/user-svgrepo-com.svg";
 
 export function Comentario({
   comment,

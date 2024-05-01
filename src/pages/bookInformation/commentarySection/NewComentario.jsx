@@ -1,6 +1,6 @@
-import { useState } from "react";
-import DefaultUser from "../../assets/icons/user-svgrepo-com.svg"
-import sendIcon from "../../assets/icons/send-icon.svg"
+import {useState} from "react";
+import DefaultUser from "../../../assets/icons/user-svgrepo-com.svg";
+import sendIcon from "../../../assets/icons/send-icon.svg";
 export function NewComentario({
   handleSubmit,
   submitLabel,
@@ -11,7 +11,7 @@ export function NewComentario({
 }) {
   const [text, setText] = useState(initialText);
   const isTextAreaDisabled = text.length == 0;
-  const onSubmit = (event) => {
+  const onSubmit = event => {
     event.preventDefault();
     handleSubmit(text);
     setText("");
@@ -29,7 +29,7 @@ export function NewComentario({
           <textarea
             className="comment-form-textarea"
             value={text}
-            onChange={(e) => setText(e.target.value)}
+            onChange={e => setText(e.target.value)}
           ></textarea>
           <div className="comment-editing-buttons">
             <button
