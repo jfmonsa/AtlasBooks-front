@@ -1,0 +1,97 @@
+.Container{
+width:1280px;
+height: 1505px;
+align-items: center;
+}
+
+.headerContainer{
+width:863px;
+height:121px;
+align-items: left;
+margin-bottom: 32px;
+}
+
+.titleContainer{
+width:491px;
+height: 121px;
+margin-bottom: 48px;
+}
+
+.subtitle{
+width: 473px;
+height: 36px;
+
+}
+
+.title1{
+font-weight:var(--fw-semibold);
+font-size: 4rem;
+}
+
+.title2{
+font-weight: 400px;
+font-size:1.5rem;
+color:rgba(130, 130, 130, 1);
+}
+
+.browser{
+width: 863px;
+height:124px;
+text-align: left;
+margin-top:48px;
+}
+
+.button{
+width:155px;
+height: 48px;
+background-color: black;
+color: white;
+margin-top:0px;
+}
+
+.Container2{
+width:1280px;
+height: 1180px;
+justify-content: center;
+
+}
+
+.bookContainer{
+width: 1216px;
+height: 324px;
+margin-left: 24px;
+align-items: center;
+}
+
+.verMas{
+width: 1198px;
+height: 48px;
+text-align: center;
+display: inline-block;
+position: relative;
+}
+
+.line1{
+    width: 332px;
+    height: 3px;
+    background-color: black;
+    float: left;
+}
+
+.line2{
+    width: 332px;
+    height: 3px;
+    background-color: black;
+    float: right;
+    
+}
+
+.button{
+width: 318px;
+height: 48px;
+background-color:black;
+color:white;
+border-radius:var(--border-rad-comp);
+}
+
+
