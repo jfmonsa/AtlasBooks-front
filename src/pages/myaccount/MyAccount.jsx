@@ -115,7 +115,7 @@ const SectionUploadABook = () => {
         hacerlo
       </p>
       {/* TODO: el link para este */}
-      <BtnAdd tolink="" />
+      <BtnAdd tolink="/upload-book" />
     </Card>
   );
 };
