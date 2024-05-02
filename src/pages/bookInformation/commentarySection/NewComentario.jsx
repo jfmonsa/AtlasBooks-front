@@ -1,11 +1,12 @@
 import {useState} from "react";
-import DefaultUser from "../../../assets/icons/user-svgrepo-com.svg";
-import sendIcon from "../../../assets/icons/send-icon.svg";
+import DefaultUser from "../../../assets/img/user-i.png";
+import PrimaryBtnForm from "../../../components/buttons/primaryBtn/PrimaryBtnForm";
+
 export function NewComentario({
   handleSubmit,
   submitLabel,
   userName,
-  hasCancelButton = false,
+  hasCancelButton = true,
   initialText = "",
   handleCancel,
 }) {
@@ -17,39 +18,38 @@ export function NewComentario({
     setText("");
   };
   return (
-    <div className="comment">
-      <div className="comment-image-container">
-        <img src={DefaultUser} alt="userIcon" />
-      </div>
-      <div className="comment-right-part">
-        <div className="comment-content">
-          <div className="comment-author">{userName} (Tú)</div>
+    <div className="comment comment--new">
+      <img
+        className="comment__image comment__image--i"
+        src={DefaultUser}
+        alt="userIcon"
+      />
+      <form className="comment__right" onSubmit={onSubmit}>
+        <p className="comment__info">
+          <span className="comment__author__name">{userName} (Tú)</span>{" "}
+          <span className="comment__author__desc">descripcion</span>
+        </p>
+        <textarea
+          placeholder="Escribe un comentario..."
+          className="comment__textarea"
+          value={text}
+          onChange={e => setText(e.target.value)}
+        ></textarea>
+        <div className="comment__btns">
+          <PrimaryBtnForm
+            text="Comentar"
+            cssClasses="baseBtn commentsBtn blueBtn"
+            disabled={isTextAreaDisabled}
+          />
+          {hasCancelButton && (
+            <PrimaryBtnForm
+              text="Cancelar"
+              onClick={handleCancel}
+              cssClasses="baseBtn commentsBtn black2Btn"
+            />
+          )}
         </div>
-        <form className="comment-form" onSubmit={onSubmit}>
-          <textarea
-            className="comment-form-textarea"
-            value={text}
-            onChange={e => setText(e.target.value)}
-          ></textarea>
-          <div className="comment-editing-buttons">
-            <button
-              className="comment-form-button"
-              disabled={isTextAreaDisabled}
-            >
-              <img src={sendIcon} alt="send" />
-            </button>
-            {hasCancelButton && (
-              <button
-                type="button"
-                className="comment-form-button comment-form-cancel-button"
-                onClick={handleCancel}
-              >
-                Cancelar
-              </button>
-            )}
-          </div>
-        </form>
-      </div>
+      </form>
     </div>
   );
 }

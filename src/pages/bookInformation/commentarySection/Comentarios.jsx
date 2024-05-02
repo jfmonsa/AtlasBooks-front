@@ -1,3 +1,7 @@
+import "./Comentarios.css";
+import {Comentario} from "./Comentario";
+import {NewComentario} from "./NewComentario.jsx";
+//api and logic
 import {useEffect, useState} from "react";
 import {
   getComments as getCommentsApi,
@@ -5,9 +9,6 @@ import {
   deleteComment as deleteCommentApi,
   updateComment as updateCommentApi,
 } from "../../../api";
-import {Comentario} from "./Comentario";
-import "./Comentarios.css";
-import {NewComentario} from "./NewComentario.jsx";
 
 const Comentarios = ({userId, userName}) => {
   const [backendComents, setBackendComents] = useState([]);
@@ -54,15 +55,13 @@ const Comentarios = ({userId, userName}) => {
   };
 
   return (
-    <div className="comments">
-      <h3 className="comments-title">Comentarios</h3>
-
+    <>
       <NewComentario
         submitLabel="Comentar"
         handleSubmit={addComent}
         userName={userName}
       />
-      <h4 className="comments-title">Otros Comentarios</h4>
+      <h2 className="card__h1">Otros Comentarios</h2>
       <div className="comments-container">
         {rootComments.map(rootComment => (
           <Comentario
@@ -76,7 +75,7 @@ const Comentarios = ({userId, userName}) => {
           />
         ))}
       </div>
-    </div>
+    </>
   );
 };
 export default Comentarios;

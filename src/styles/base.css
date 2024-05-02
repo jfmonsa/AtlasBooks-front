@@ -34,7 +34,8 @@ h5,
 h6,
 label,
 button,
-input {
+input,
+textarea {
   font-family: var(--font-family);
 }
 
@@ -61,9 +62,6 @@ main {
 }
 
 /* Other styles */
-.navHover:hover {
-  background-color: var(--border-graySurfaces-light);
-}
 
 /* Z-index issues */
 .navbar {
@@ -75,4 +73,8 @@ main {
 /* padding top style */
 main section:first-child {
   margin-top: var(--spacing-6);
+}
+
+.navHover:hover {
+  background-color: var(--border-graySurfaces-light);
 }

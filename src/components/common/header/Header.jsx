@@ -12,19 +12,19 @@ import MenuRecommendedIcon from "../../../assets/icons/menu-recommended.svg";
 import MenuSearchIcon from "../../../assets/icons/menu-search.svg";
 import MenuSingupIcon from "../../../assets/icons/menu-singup.svg";
 import {useState} from "react";
-import {NavLink} from "react-router-dom";
+import {NavLink, Link} from "react-router-dom";
 
 // Auxiliary components for dropdownmenu
-const DropdownItem = props => {
+const DropdownItem = ({toLink, icon, text}) => {
   const alticon = "Icono de";
   return (
     <li>
-      <NavLink to={props.toLink} className="dropmenu__item navHover">
+      <Link to={toLink} className="dropmenu__item navHover">
         <span className="dropmenu__item__icon">
-          <img src={props.icon} alt={alticon + " " + props.text}></img>
+          <img src={icon} alt={alticon + " " + text}></img>
         </span>
-        <span className="dropmenu__item__text">{props.text}</span>
-      </NavLink>
+        <span className="dropmenu__item__text">{text}</span>
+      </Link>
     </li>
   );
 };

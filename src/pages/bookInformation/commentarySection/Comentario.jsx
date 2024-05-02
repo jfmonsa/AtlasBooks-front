@@ -1,6 +1,6 @@
 import {deleteComment, updateComment} from "../../../api";
 import {NewComentario} from "./NewComentario";
-import DefaultUser from "../../../assets/icons/user-svgrepo-com.svg";
+import DefaultUser from "../../../assets/img/user.png";
 
 export function Comentario({
   comment,
@@ -20,17 +20,50 @@ export function Comentario({
     activeComent &&
     activeComent.type == "editing" &&
     activeComent.id == comment.id;
+
+  /*
+  
+  <div className="comment comment--new">
+      <img className="comment__image--i" src={DefaultUser} alt="userIcon" />
+      <form className="comment__right" onSubmit={onSubmit}>
+        <p className="comment__author">
+          <span className="comment__author__name">{userName} (Tú)</span>{" "}
+          <span className="comment__author__desc">descripcion</span>
+        </p>
+        <textarea
+          placeholder="Escribe un comentario..."
+          className="comment__textarea"
+          value={text}
+          onChange={e => setText(e.target.value)}
+        ></textarea>
+        <div className="comment__btns">
+          <PrimaryBtnForm
+            text="Comentar"
+            cssClasses="baseBtn commentsBtn blueBtn"
+            disabled={isTextAreaDisabled}
+          />
+          {hasCancelButton && (
+            <PrimaryBtnForm
+              text="Cancelar"
+              onClick={handleCancel}
+              cssClasses="baseBtn commentsBtn black2Btn"
+            />
+          )}
+        </div>
+      </form>
+    </div>*/
   return (
     <div className="comment">
-      <div className="comment-image-container">
-        <img src={DefaultUser} alt="userIcon" />
-      </div>
-      <div className="comment-right-part">
-        <div className="comment-content">
-          <div className="comment-author">{comment.username}</div>
-          <div className="comment-date">{createdAt}</div>
-        </div>
-        {!isEditing && <div className="comment-text">{comment.body}</div>}
+      <img className="comment__image" src={DefaultUser} alt="userIcon" />
+
+      <div className="comment__right">
+        <p className="comment__info">
+          <span className="comment__author__name">Joselito (Tú)</span>{" "}
+          <span className="comment__author__desc">descripcion</span>
+          {" - "}
+          <span className="comment__author__desc">{createdAt}</span>
+        </p>
+        {!isEditing && <div className="comment__text">{comment.body}</div>}
         {isEditing && (
           <NewComentario
             submitLabel="Actualizar"
@@ -41,7 +74,7 @@ export function Comentario({
             userName={comment.username}
           />
         )}
-        <div className="comment-actions">
+        <div className="comment__btns">
           {canEdit && (
             <div
               className="comment-action"
