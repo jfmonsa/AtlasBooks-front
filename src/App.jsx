@@ -25,6 +25,7 @@ import ChangeUserDetails from "./pages/myaccount/ChangeUserDetails.jsx";
 //layouts
 import RootLayout from "./RootLayout.jsx";
 import UploadBook from "./pages/myaccount/UploadBook.jsx";
+import NewList from "./pages/myaccount/NewList.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -46,6 +47,7 @@ const router = createBrowserRouter(
       {/* <Route path="confirm-password" element={<UserPassConf />} /> */}
       <Route path="users-details" element={<ChangeUserDetails />} />
       <Route path="upload-book" element={<UploadBook />} />
+      <Route path="new-list" element={<NewList />} />
       {/* <Route path="recommended" /> */}
       {/* <Route path="lists">
           Aquí iría cada lista que tenga el usuario
