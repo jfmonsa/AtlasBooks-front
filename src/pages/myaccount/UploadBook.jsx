@@ -92,8 +92,20 @@ const UploadBook = () => {
           text="Sube un archivo"
           cssClasses="formCustomBtn black2Btn"
         />
-        <Link to="/">
+        <InputText
+          holder="Mi lista"
+          type={"TextArea"}
+          typecss={"access"}
+          text="Descripcion"
+        />
+        <Link to="/my-account">
           <PrimaryBtnForm text="Enviar" cssClasses="formCustomBtn black2Btn" />
+        </Link>
+        <Link to="/my-account">
+          <PrimaryBtnForm
+            text="Cancelar"
+            cssClasses="formCustomBtn black2Btn"
+          />
         </Link>
       </Form>
     </Card>
