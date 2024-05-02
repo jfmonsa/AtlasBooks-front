@@ -40,7 +40,9 @@
   border-radius: var(--border-rad-comp);
   border: none;
 }
-
+.comment__text {
+  padding: var(--spacing-2) 0;
+}
 .comment__author__desc,
 .comment__author__name {
   font-size: var(--fs-2);
