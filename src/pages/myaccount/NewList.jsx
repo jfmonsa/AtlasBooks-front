@@ -20,7 +20,7 @@ const ConfPassDel = () => {
           typecss={"access"}
           text="Descripcion"
         />
-        <Link to="/my-account">
+        <Link to="/my-accounts">
           <PrimaryBtnForm text="Enviar" cssClasses="formCustomBtn black2Btn" />
         </Link>
       </form>
