@@ -1,6 +1,14 @@
 import styles from "./inputText.module.css";
 
-const InputText = ({text, holder, type, name, value, id, onChange}) => {
+const InputText = ({
+  text,
+  holder,
+  type = "text",
+  name,
+  value,
+  id,
+  onChange,
+}) => {
   return (
     <>
       <label htmlFor={id} className={styles.input__label}>

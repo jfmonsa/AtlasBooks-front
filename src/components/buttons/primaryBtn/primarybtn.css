@@ -1,3 +1,7 @@
+button {
+  /* Delete default border of button */
+  border: none;
+}
 .formCustomBtn {
   width: 300px;
   height: 48px;
@@ -21,7 +25,6 @@
 .blueBtn {
   background-color: var(--blue-2);
   color: var(--compSurface-light);
-  border: none;
 }
 
 .purpleBtn {

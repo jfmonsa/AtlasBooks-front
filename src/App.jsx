@@ -31,11 +31,9 @@ const router = createBrowserRouter(
       {/* Login related and recovery account */}
       <Route path="login" element={<Login />} />
       <Route path="new-account" element={<NewAccount />} />
-      <Route path="recovery-account" element={<RecoveryAccount />} />
 
-      {/* Routing de recovery account */}
-      {/* TODO: falta esta pagina ._. */}
-      {/* <Route path="enter-your-email" element={} /> */}
+      {/* --- Routing recovery account */}
+      <Route path="recovery-account" element={<RecoveryAccount />} />
       <Route path="send-email" element={<SendEmail />} />
       <Route path="change-pass" element={<ChangePass />} />
 
@@ -50,7 +48,6 @@ const router = createBrowserRouter(
         </Route>*/}
       {/* TODO: change path for book/id_del_libro */}
       {/* <Route path="Report" element={<Report />} /> */}
-      {/* <Route path="PassDel" element={<ConfPassDel />} /> */}
       <Route path="book-information" element={<BookInformation />} />
       {/* <Route path="categories" element={<BookInformation />} /> */}
       {/* <Route path="*" element={<NoFound404 />} /> */}
