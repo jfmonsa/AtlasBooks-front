@@ -2,6 +2,7 @@ import Card from "../../components/card/Card.jsx";
 import InputText from "../../components/inputText/InputText.jsx";
 import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm.jsx";
 import {Link} from "react-router-dom";
+// import Report from "./pages/account/Report.jsx";
 
 const ConfPassDel = () => {
   return (
