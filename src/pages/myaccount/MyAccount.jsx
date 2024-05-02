@@ -174,10 +174,10 @@ const MyAccountAdmin = () => {
   return (
     <>
       <Card h1Text="Administrar libros" h1Center>
-        <Searcher holder="Buscar libros" toNavigate="/result" />
+        <Searcher holder="Buscar libros" toNavigate="/results" />
       </Card>
       <Card h1Text="Administrar usuarios" h1Center>
-        <Searcher holder="Buscar libros" />
+        <Searcher holder="Buscar libros" toNavigate="/results" />
       </Card>
       <Card h1Text="Administrar reportes" h1Center></Card>
     </>

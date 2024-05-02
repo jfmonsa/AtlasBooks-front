@@ -15,7 +15,9 @@ import RecoveryAccount from "./pages/account/RecoveryAccount.jsx";
 import SendEmail from "./pages/account/SendEmail.jsx";
 import ChangePass from "./pages/account/ChangePass.jsx";
 import BookInformation from "./pages/bookInformation/BookInformation.jsx";
+//My Account related
 import MyAccount from "./pages/myaccount/MyAccount.jsx";
+import AdminResults from "./pages/myaccount/AdminResults.jsx";
 import ChangeUserDetails from "./pages/myaccount/ChangeUserDetails.jsx";
 // import UserPassConf from "./pages/myaccount/UserPassConf.jsx";
 // import Report from "./pages/account/Report.jsx";
@@ -50,6 +52,9 @@ const router = createBrowserRouter(
       {/* <Route path="Report" element={<Report />} /> */}
       <Route path="book-information" element={<BookInformation />} />
       {/* <Route path="categories" element={<BookInformation />} /> */}
+
+      {/* Routes for admin */}
+      <Route path="results" element={<AdminResults />} />
       {/* <Route path="*" element={<NoFound404 />} /> */}
     </Route>,
   ),

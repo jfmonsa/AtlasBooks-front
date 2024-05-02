@@ -1,11 +1,13 @@
-import "./Searcher.css";
+import "./searcher.css";
 import PrimaryBtnForm from "../buttons/primaryBtn/PrimaryBtnForm";
 import {useNavigate} from "react-router-dom";
 
 const Searcher = ({type = "text", holder, toNavigate}) => {
-  const handleSearch = () => {
-    const navigate = useNavigate();
-    navigate(toNavigate, {replace: true});
+  const navigate = useNavigate();
+
+  const handleSearch = event => {
+    event.preventDefault();
+    navigate(toNavigate /*,{replace: true}*/);
   };
 
   return (
@@ -15,12 +17,5 @@ const Searcher = ({type = "text", holder, toNavigate}) => {
     </form>
   );
 };
-/*
-  text,
-  children,
-  cssClasses,
-  onClick,
-  disabled = false,
-*/
 
 export default Searcher;
