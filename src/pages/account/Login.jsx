@@ -5,6 +5,7 @@ import InputText from "../../components/inputText/InputText.jsx";
 import {EMAIL, PASSWD, SEARCH} from "../../utils/placeholder.js";
 import {Link} from "react-router-dom";
 import {useState} from "react";
+import Recommended from "../recommended/Recommended.jsx"
 
 export const Login = () => {
   const [user, setUser] = useState("");

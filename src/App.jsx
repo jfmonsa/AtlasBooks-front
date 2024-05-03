@@ -21,6 +21,8 @@ import AdminResults from "./pages/myaccount/AdminResults.jsx";
 import ChangeUserDetails from "./pages/myaccount/ChangeUserDetails.jsx";
 // import UserPassConf from "./pages/myaccount/UserPassConf.jsx";
 // import Report from "./pages/account/Report.jsx";
+// import ConfPassDel from "./pages/account/confPassDel.jsx";
+// import Recommended from "./pages/recommended/Recommended.jsx";
 
 //layouts
 import RootLayout from "./RootLayout.jsx";

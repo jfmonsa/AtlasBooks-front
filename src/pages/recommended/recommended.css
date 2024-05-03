@@ -1,0 +1,63 @@
+.title1 {
+  font-weight: var(--fw-semibold);
+  font-size: 4rem;
+  text-align: center;
+  margin-bottom: 8px;
+  margin-top: 48px;
+}
+
+.title2 {
+  font-weight: 400px;
+  font-size: 1.5rem;
+  color: rgba(130, 130, 130, 1);
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.bookRecommended {
+  max-width: 1200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-4);
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+
+.line1 {
+  width: 332px;
+  height: 3px;
+  background-color: black;
+  float: left;
+}
+
+.line2 {
+  width: 332px;
+  height: 3px;
+  background-color: black;
+  float: right;
+}
+
+.buttonMasOpciones {
+  width: 863px;
+  margin-bottom: 48px;
+  margin-top: 24px;
+}
+
+.buttonOpciones {
+  width: 155px;
+  height: 48px;
+  background-color: black;
+  color: white;
+  border-radius: var(--border-rad-comp);
+}
+
+.buttonVerMas {
+  width: 318px;
+  height: 48px;
+  background-color: black;
+  color: white;
+  border-radius: var(--border-rad-comp);
+  margin-left: 48px;
+  margin-right: 48px;
+}
