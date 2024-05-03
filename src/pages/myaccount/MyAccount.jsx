@@ -14,6 +14,8 @@ import IconDelAccount from "../../assets/icons/icon-delaccount.svg";
 //icons for my lists' section
 import PrivateListIcon from "./../../assets/icons/icon-privatelist.svg";
 import PublicListIcon from "./../../assets/icons/icon-publiclist.svg";
+//Admin page
+import Searcher from "../../components/searcher/Searcher.jsx";
 
 // Aux functions
 const SectionMyDataDatum = ({left, right}) => {
@@ -92,7 +94,7 @@ const SectionLists = () => {
         />
       </div>
       {/* TODO: el link para este */}
-      <BtnAdd tolink="#" />
+      <BtnAdd tolink="/new-list" />
     </Card>
   );
 };
@@ -113,7 +115,7 @@ const SectionUploadABook = () => {
         hacerlo
       </p>
       {/* TODO: el link para este */}
-      <BtnAdd tolink="" />
+      <BtnAdd tolink="/upload-book" />
     </Card>
   );
 };
@@ -168,6 +170,20 @@ const SectionOtherOpts = () => {
   );
 };
 
+const MyAccountAdmin = () => {
+  return (
+    <>
+      <Card h1Text="Administrar libros" h1Center>
+        <Searcher holder="Buscar libros" toNavigate="/results" />
+      </Card>
+      <Card h1Text="Administrar usuarios" h1Center>
+        <Searcher holder="Buscar libros" toNavigate="/results" />
+      </Card>
+      <Card h1Text="Administrar reportes" h1Center></Card>
+    </>
+  );
+};
+
 // Main page
 const MyAccount = () => {
   return (
@@ -178,6 +194,7 @@ const MyAccount = () => {
         country="Palestina"
         registerDate="11/03/2003"
       />
+      <MyAccountAdmin />
       <SectionLists />
       <SectionDownloadsHistory />
       <SectionUploadABook />

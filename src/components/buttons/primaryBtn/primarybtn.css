@@ -1,3 +1,7 @@
+button {
+  /* Delete default border of button */
+  border: none;
+}
 .formCustomBtn {
   width: 300px;
   height: 48px;
@@ -5,11 +9,22 @@
   font-weight: var(--fw-medium);
 }
 
+.commentsBtn {
+  width: 100px;
+  height: 32px;
+  font-size: var(--fs-2);
+}
+
 .baseBtn {
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: var(--border-rad-comp);
+}
+
+.blueBtn {
+  background-color: var(--blue-2);
+  color: var(--compSurface-light);
 }
 
 .purpleBtn {
@@ -27,4 +42,18 @@
   background-color: var(--black-light);
   border: 2px solid var(--black-light);
   color: var(--compSurface-light);
+}
+.black2Btn:hover {
+  background-color: #000000e1;
+}
+.warningBtn {
+  background-color: var(--warning);
+  border: 2px solid #000;
+  color: var(--compSurface-light);
+}
+.warningBtn--reportBook {
+  height: 42px;
+  width: 150px;
+  font-size: var(--fs-2);
+  font-weight: var(--fw-medium);
 }

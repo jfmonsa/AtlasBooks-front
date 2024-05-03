@@ -1,11 +1,11 @@
 import "./primarybtn.css";
 import {Link} from "react-router-dom";
 
-const PrimaryBtnLink = props => {
+const PrimaryBtnLink = ({text, tolink, cssClasses, children}) => {
   return (
-    <Link to={props.tolink} className={"baseBtn" + " " + props.cssClasses}>
-      {props.text}
-      {props.children}
+    <Link to={tolink} className={"baseBtn" + " " + cssClasses}>
+      {text}
+      {children}
     </Link>
   );
 };

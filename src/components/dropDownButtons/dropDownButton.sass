@@ -1,109 +1,87 @@
-.button-dropdown
+.btnDropDown, .btnDropDown--small
     position: relative
+    padding: var(--spacing-2)
+    display: flex
+    align-items: center
+    justify-content: center
+    cursor: pointer
+    border-radius: var(--border-rad-comp)
+
+.btnDropDown
+    height: 42px
+    width: 150px
+
+.btnDropDown--small
+    height: 32px
+    // width: 150px
+
+.btnDropDown__text
+    padding-left: var(--spacing-2)
+    padding-right: var(--spacing-3)
+    border-right: 2px solid #fff
+    font-size: var(--fs-2)
+    font-weight: var(--fw-medium)
+
+.btnDropDown__icon
+    padding-left: var(--spacing-3)
+    padding-right: var(--spacing-2)
 
 //Diseño boton descargar ---------------------------------------------------------------------------
-
-.icon-buttonBookDownload
-    height: 43px
-    width: 150px
-    padding: 7px 15px
+.btnDropDown--black, .btnDropDown--black:active
     background-color: #000
     color: white
-    border: none
-    border-radius: var(--border-rad-comp)
-    cursor: pointer
-    font-family: var(--font-family)
-    font-size: var(--fs-2)
-    font-weight: var(--fw-medium)
-    align-content: center
-    align-items: center
-    display: flex
-    justify-content: center
 
-.icon-buttonBookDownload:hover
+.btnDropDown--black:hover
     background-color: #000000e1
 
-.icon-buttonBookDownload:active
-    background-color: #000
-
 //Diseño boton compartir -----------------------------------------------------------------------------
-
-.icon-buttonBookShare
-    height: 43px
-    width: 150px
-    padding: 7px 15px
+.btnDropDown--blue, .btnDropDown--blue:active
     background-color: var(--blue-2)
     color: white
-    border: none
-    border-radius: var(--border-rad-comp)
-    cursor: pointer
-    font-family: var(--font-family)
-    font-size: var(--fs-2)
-    font-weight: var(--fw-medium)
-    align-content: center
-    align-items: center
-    display: flex
-    justify-content: center
 
-.icon-buttonBookShare:hover
+.btnDropDown--blue:hover
     background-color: #0011ffc2
-
-.icon-buttonBookShare:active
-    background-color: var(--blue-2)
-
 //Diseño boton lista de usuarios ------------------------------------------------------------------
-
-.icon-buttonBookListUser
-    height: var(--spacing-5)
-    width: 216.36px
-    padding: 7px 15px
+.btnDropDown--purple, .btnDropDown--purple:active
     background-color: var(--bg-purple-light)
-    color: white
-    border: none
-    border-radius: var(--border-rad-comp)
-    cursor: pointer
-    font-family: var(--font-family)
-    font-size: var(--spacing-3)
-    font-weight: var(--fw-medium)
-    align-content: center
-    align-items: center
-    display: flex
-    justify-content: center
-    margin-left: var(--spacing-3)
 
-.icon-buttonBookListUser:hover
+.btnDropDown--purple:hover
     background-color: var(--border-pruple-light)
 
-.icon-buttonBookListUser:active
-    background-color: var(--bg-purple-light)
-    width: 216.36px
+.btnDropDown--outline
+    background-color: initial
+    border: 2px solid #000
 
-// Detalles globales -------------------------------------------------------------------------------
-
-.divide-button
-    margin-left: 7px
-    width: 2px
-    height: 25px
-    background-color: #fff
-
-.icon-chevron
-    margin-left: 7px
-    margin-top: 5px
-    padding: 2px 3px
-
+.btnDropDown--outline .btnDropDown__text
+    border-right: 2px solid #000
+// Detalles globales ------------------------------------------------------------------------------
 // Diseño dropdown menu
 
-.dropmenuBook
+.btnDropDown
+    .btnDropdown__menu
+        top: 42px
+        width: 150px
+
+    .btnDropdown__menu__item
+        height: 48px
+
+.btnDropDown--small
+    .btnDropdown__menu
+        top: 32px
+        width: 100%
+
+    .btnDropdown__menu__item
+        height: 36px
+
+.btnDropdown__menu
     position: absolute
-    top: 42px
-    width: 150px
     background-color: var(--compSurface-light)
-    // Hacer una variable para este borde
+    // Hacer una variable para este borde TODO:
     border: 2px solid var(--border-graySurfaces-light)
     border-radius: var(--border-rad-comp)
     padding: var(--spacing-1)
 
-.dropmenu__itemBook
+.btnDropdown__menu__item
     height: 48px
     display: flex
     align-items: center
@@ -114,7 +92,7 @@
     &:hover
         background-color: var(--border-graySurfaces-light)
 
-.dropmenu__item__iconBook
+.btnDropdown__menu__item__icon
     width: var(--spacing-5)
     height: var(--spacing-5)
     margin-right: var(--spacing-3)
@@ -124,18 +102,5 @@
     border-radius: var(--border-rad-comp)
     background-color: var(--iconSurface-light)
 
-.dropmenu__item__textBook
+.btnDropdown__menu__item__text
     color: var(--black-light)
-
-// Diseño dropdown menu listUser
-
-.dropmenuBookList
-    position: absolute
-    top: 32px
-    margin: 0px 15px
-    width: 216.36px
-    background-color: var(--compSurface-light)
-    // Hacer una variable para este borde
-    border: 2px solid var(--border-graySurfaces-light)
-    border-radius: var(--border-rad-comp)
-    padding: var(--spacing-1)
