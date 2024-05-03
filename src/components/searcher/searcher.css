@@ -8,12 +8,11 @@
 }
 .searcher__input,
 .searcher__button {
-  height: 52px;
+  height: 36px;
 }
 
 .searcher__input {
   min-width: 730px;
-  height: 52px;
   padding: var(--spacing-1) var(--spacing-2);
   border: var(--border-1);
   border-radius: var(--border-rad-comp);
