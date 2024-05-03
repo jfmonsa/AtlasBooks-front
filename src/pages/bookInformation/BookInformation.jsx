@@ -25,7 +25,7 @@ import mark from "../../assets/icons/marcador-icon.svg";
 //Relacionados
 import Slider from "../../components/slider/Slider.jsx";
 //Comments
-import Comments from "./commentarySection/Comentarios.jsx";
+import Comments from "./commentarySection/Comments.jsx";
 
 //Aux functions
 const BookInfoSectionSpecs = ({left, right}) => {

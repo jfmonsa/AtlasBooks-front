@@ -1,5 +1,5 @@
-import "./Comentarios.css";
-import {Comentario} from "./Comment.jsx";
+import "./comments.css";
+import {Comment} from "./Comment.jsx";
 import {NewComment} from "./NewComment.jsx";
 //api and logic
 import {useEffect, useState} from "react";
@@ -64,7 +64,7 @@ const Comments = ({userId, userName}) => {
       <h2 className="card__h1">Otros Comentarios</h2>
       <div className="comments-container">
         {rootComments.map(rootComment => (
-          <Comentario
+          <Comment
             key={rootComment.id}
             comment={rootComment}
             userId={userId}
