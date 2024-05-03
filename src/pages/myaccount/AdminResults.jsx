@@ -8,8 +8,8 @@ const TableResults = () => {
   const columns = [
     {id: "id", name: "Id"},
     {id: "name", name: "Name"},
-    {id: "email", name: "Email"},
-    {id: "phone", name: "Phone"},
+    {id: "country", name: "Country"},
+    {id: "status", name: "Status"},
   ];
 
   const handlechangepage = (event, newpage) => {
@@ -19,6 +19,8 @@ const TableResults = () => {
     rowperpagechange(+event.target.value);
     pagechange(0);
   };
+
+  return "hola";
 };
 
 const AdminResults = ({kindOfQuery}) => {
@@ -26,6 +28,9 @@ const AdminResults = ({kindOfQuery}) => {
     <>
       <Card h1Text="Administrar usuarios" h1Center>
         <Searcher holder="Busca a un usuario" toNavigate="results"></Searcher>
+      </Card>
+      <Card h1Text="Resultados" h1Center>
+        <TableResults />
       </Card>
     </>
   );
