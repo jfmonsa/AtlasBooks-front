@@ -1,4 +1,4 @@
-import {deleteComment, updateComment} from "../../../api";
+import {deleteComment, updateComment} from "../../../data/apiComments";
 import {NewComment} from "./NewComment";
 import DefaultUser from "../../../assets/img/user.png";
 
