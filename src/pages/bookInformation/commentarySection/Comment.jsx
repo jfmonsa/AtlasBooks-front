@@ -1,9 +1,9 @@
 import {deleteComment, updateComment} from "../../../api";
-import {NewComentario} from "./NewComentario";
+import {NewComment} from "./NewComment";
 import DefaultUser from "../../../assets/img/user.png";
 
 // TODO: Revisar pq no salen las funccione de elimar y editar comentario
-export function Comentario({
+export function Comment({
   comment,
   key,
   userId,
@@ -35,7 +35,7 @@ export function Comentario({
         </p>
         {!isEditing && <div className="comment__text">{comment.body}</div>}
         {isEditing && (
-          <NewComentario
+          <NewComment
             submitLabel="Actualizar"
             hasCancelButton
             initialText={comment.body}

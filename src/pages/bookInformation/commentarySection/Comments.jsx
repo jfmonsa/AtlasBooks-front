@@ -1,6 +1,6 @@
 import "./Comentarios.css";
-import {Comentario} from "./Comentario";
-import {NewComentario} from "./NewComentario.jsx";
+import {Comentario} from "./Comment.jsx";
+import {NewComment} from "./NewComment.jsx";
 //api and logic
 import {useEffect, useState} from "react";
 import {
@@ -8,9 +8,9 @@ import {
   createComment as createCommentApi,
   deleteComment as deleteCommentApi,
   updateComment as updateCommentApi,
-} from "../../../api";
+} from "../../../api.js";
 
-const Comentarios = ({userId, userName}) => {
+const Comments = ({userId, userName}) => {
   const [backendComents, setBackendComents] = useState([]);
   const [activeComent, setActiveComent] = useState(null);
   const rootComments = backendComents.filter(
@@ -56,7 +56,7 @@ const Comentarios = ({userId, userName}) => {
 
   return (
     <>
-      <NewComentario
+      <NewComment
         submitLabel="Comentar"
         handleSubmit={addComent}
         userName={userName}
@@ -78,4 +78,4 @@ const Comentarios = ({userId, userName}) => {
     </>
   );
 };
-export default Comentarios;
+export default Comments;

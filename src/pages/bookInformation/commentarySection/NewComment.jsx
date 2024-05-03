@@ -2,7 +2,7 @@ import {useState} from "react";
 import DefaultUser from "../../../assets/img/user-i.png";
 import PrimaryBtnForm from "../../../components/buttons/primaryBtn/PrimaryBtnForm";
 
-export function NewComentario({
+export function NewComment({
   handleSubmit,
   submitLabel,
   userName,

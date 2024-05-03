@@ -25,7 +25,7 @@ import mark from "../../assets/icons/marcador-icon.svg";
 //Relacionados
 import Slider from "../../components/slider/Slider.jsx";
 //Comments
-import NewComentario from "./commentarySection/Comentarios.jsx";
+import Comments from "./commentarySection/Comentarios.jsx";
 
 //Aux functions
 const BookInfoSectionSpecs = ({left, right}) => {
@@ -225,7 +225,7 @@ const BookPage = () => {
         <Slider />
       </Card>
       <Card h1Text="Comentarios">
-        <NewComentario />
+        <Comments />
         {/* <Comentarios userId={"1"} userName={"Jose"}></Comentarios> */}
       </Card>
     </>
