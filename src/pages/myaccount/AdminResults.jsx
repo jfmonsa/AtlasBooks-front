@@ -3,6 +3,12 @@ import Searcher from "../../components/searcher/Searcher";
 //Table imports
 // import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow } from "@mui/material";
 import {useEffect, useState} from "react";
+import {
+  getSearchUsers as getSearchUsersApi,
+  // createComment as createCommentApi,
+  // deleteComment as deleteCommentApi,
+  // updateComment as updateCommentApi,
+} from "../../../data/apiSearchUsers.js";
 
 const TableResults = () => {
   const columns = [
@@ -19,6 +25,24 @@ const TableResults = () => {
     rowperpagechange(+event.target.value);
     pagechange(0);
   };
+
+  const [rows, rowchange] = useState([]);
+  const [page, pagechange] = useState(0);
+  const [rowperpage, rowperpagechange] = useState(5);
+
+  //Fetch data from api
+  useEffect(() => {
+    getCommentsApi()
+      .then(resp => {
+        return resp.json();
+      })
+      .then(resp => {
+        rowchange(resp);
+      })
+      .catch(e => {
+        console.log(e.message);
+      });
+  }, []);
 
   return "hola";
 };
