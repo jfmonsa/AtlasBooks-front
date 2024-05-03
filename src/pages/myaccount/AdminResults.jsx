@@ -8,7 +8,7 @@ import {
   // createComment as createCommentApi,
   // deleteComment as deleteCommentApi,
   // updateComment as updateCommentApi,
-} from "../../../data/apiSearchUsers.js";
+} from "../../data/apiSearchUsers.js";
 
 const TableResults = () => {
   const columns = [
