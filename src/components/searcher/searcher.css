@@ -21,5 +21,5 @@
 
 .searcher__button {
   width: 100px;
-  /* margin-left: var(--spacing-5); */
+  margin-left: var(--spacing-5);
 }

@@ -1,6 +1,6 @@
 .display--heading {
   font-weight: var(--fw-semibold);
-  font-size: 4rem;
+  font-size: clamp(2rem, 6vw, 4rem);
   text-align: center;
   margin-bottom: 8px;
   margin-top: 48px;
