@@ -1,0 +1,18 @@
+tr.MuiTableRow-root:nth-child(odd) {
+  background-color: var(--bg-surf-subtle-light);
+}
+
+table thead.MuiTableHead-root tr.MuiTableRow-head th {
+  background-color: var(--bg-soft-purple-light);
+  border-bottom: var(--border-1);
+}
+div.MuiTableContainer-root {
+  border-radius: var(--border-rad-comp);
+}
+
+/* Centering the table */
+div.MuiTableContainer-root,
+div.MuiToolbar-root.MuiToolbar-gutters.MuiToolbar-regular.MuiTablePagination-toolbar {
+  max-width: 1000px;
+  margin: auto;
+}

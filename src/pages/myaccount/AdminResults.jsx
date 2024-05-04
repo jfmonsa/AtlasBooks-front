@@ -1,3 +1,4 @@
+import "./adminResults.css";
 import Card from "../../components/card/Card";
 import Searcher from "../../components/searcher/Searcher";
 //Table imports
