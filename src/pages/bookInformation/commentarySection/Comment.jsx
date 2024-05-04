@@ -5,7 +5,6 @@ import DefaultUser from "../../../assets/img/user.png";
 // TODO: Revisar pq no salen las funccione de elimar y editar comentario
 export function Comment({
   comment,
-  key,
   userId,
   deleteComment,
   activeComent,
