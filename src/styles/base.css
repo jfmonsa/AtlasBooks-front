@@ -78,3 +78,20 @@ main section:first-child {
 .navHover:hover {
   background-color: var(--border-graySurfaces-light);
 }
+
+/* Heandings */
+.display--heading {
+  font-weight: var(--fw-semibold);
+  font-size: clamp(2rem, 6vw, 4rem);
+  text-align: center;
+  margin-bottom: 8px;
+  margin-top: 48px;
+}
+
+.display--subheading {
+  font-weight: 400px;
+  font-size: 1.5rem;
+  color: rgba(130, 130, 130, 1);
+  text-align: center;
+  margin-bottom: 32px;
+}
