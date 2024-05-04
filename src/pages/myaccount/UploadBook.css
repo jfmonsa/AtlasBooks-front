@@ -1,14 +1,14 @@
 .UploadBook {
-    max-width: 50%; /* Reducir el tamaño horizontal de la tarjeta a la mitad */
-    margin: auto; /* Centrar la tarjeta */
-  }
-  
- /* Agregar espaciado arriba solo a los elementos necesarios */
-    .btnGroup {
-    margin-top: 20px; /* Espacio arriba */
-  }
-  
-  /* Agregar espaciado arriba solo entre los DropdownButtons "Categoria" e "Idioma" */
-    .btnDropDown {
-    margin-top: 20px; /* Espacio arriba */
-  }
+  max-width: 50%; /* Reducir el tamaño horizontal de la tarjeta a la mitad */
+  margin: auto;
+}
+
+/* Agregar espaciado arriba solo a los elementos necesarios */
+/* .btnGroup {
+    margin-top: 20px;
+  } */
+
+/* Agregar espaciado arriba solo entre los DropdownButtons "Categoria" e "Idioma" */
+/* .btnDropDown {
+    margin-top: 20px;
+  } */
