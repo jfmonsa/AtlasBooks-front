@@ -3,22 +3,28 @@ import InputText from "../../components/inputText/InputText.jsx";
 import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm.jsx";
 import {Link, Form} from "react-router-dom";
 import DropdownBtn from "../../components/dropDownButtons/DropdownBtn.jsx";
-import React, {useRef} from "react";
+import {useState, useCallback} from "react";
+import {useDropzone} from "react-dropzone";
+import "./UploadBook.css";
 
 const UploadBook = () => {
   const CatOptions = [{text: "Accion"}, {text: "Fantasia"}];
   const IdiOptions = [{text: "Ingles"}, {text: "Español"}];
-  const fileInput = useRef(null);
-  const handleFileChange = () => {
-    const selectedFile = fileInput.current.files[0];
-    console.log("Archivo seleccionado:", selectedFile);
+  const [file, setFile] = useState();
+  const onDrop = useCallback(acceptedFiles => {
+    console.log(acceptedFiles[0]);
+  }, []);
+  const {getRootProps, getInputProps, IsDragActive} = useDropzone({onDrop});
+  const handleSubmit = e => {
+    e.preventDefault();
+
+    console.log(e.target[0].files[0]);
+    console.log(file);
   };
-  const handleUpload = () => {
-    fileInput.current.click();
-  };
+
   return (
-    <Card cardDialog h1_text="Sube un libro">
-      <Form method="post" action="">
+    <Card cardDialog h1_text="Sube un libro" classname="UploadBook">
+      <Form method="post" action="" onSubmit={handleSubmit}>
         <h2>Subir un libro</h2>
         <InputText
           holder="P. ej Movie Dick"
@@ -74,33 +80,30 @@ const UploadBook = () => {
           textCssClasses="btnDropDown__text"
         />
         <h3>Imagen de portada</h3>
-        <PrimaryBtnForm
-          text="Sube una imagen"
-          cssClasses="formCustomBtn black2Btn"
-        />
+
+        <div {...getRootProps()}>
+          <input {...getInputProps()} />
+          {IsDragActive ? (
+            <p>Sube la imagen aqui</p>
+          ) : (
+            <p>Sube la imagen aqui</p>
+          )}
+        </div>
+
         <h3>Archivos</h3>
         <p>Sube uno o mas archivos en distintos formatos</p>
-        <input
-          type="file"
-          ref={fileInput}
-          style={{display: "none"}}
-          onChange={handleFileChange}
-          name="files"
-        />
-        <PrimaryBtnForm
-          onClick={handleUpload}
-          text="Sube un archivo"
-          cssClasses="formCustomBtn black2Btn"
-        />
+
+        <input type="file" onChange={e => setFile(e.target.files[0])} />
+
         <InputText
           holder="Mi lista"
           type={"TextArea"}
           typecss={"access"}
           text="Descripcion"
         />
-        <Link to="/my-account">
-          <PrimaryBtnForm text="Enviar" cssClasses="formCustomBtn black2Btn" />
-        </Link>
+        {/* <Link to="/my-account"> */}
+        <PrimaryBtnForm text="Enviar" cssClasses="formCustomBtn black2Btn" />
+        {/* </Link> */}
         <Link to="/my-account">
           <PrimaryBtnForm
             text="Cancelar"
