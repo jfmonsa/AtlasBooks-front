@@ -12,7 +12,8 @@
 }
 
 .searcher__input {
-  min-width: 730px;
+  width: 60vw;
+  min-width: 300px;
   padding: var(--spacing-1) var(--spacing-2);
   border: var(--border-1);
   border-radius: var(--border-rad-comp);
