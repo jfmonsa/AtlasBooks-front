@@ -71,28 +71,26 @@ const SectionListsListCard = ({
 const SectionLists = () => {
   return (
     <Card h1Text="Mis listas" id="my-lists">
-      <div>
-        <SectionListsListCard
-          listName="Mis Favoritos"
-          path="/user/"
-          desc="Lista de mis libros favoritos"
-          numBooks="14"
-          publicList
-        />
-        <SectionListsListCard
-          listName="Mis Favoritos"
-          path="/user/"
-          desc="Lista de mis libros favoritos"
-          numBooks="14"
-        />
-        <SectionListsListCard
-          listName="Mis Favoritos"
-          path="/user/"
-          desc="Lista de mis libros favoritos"
-          numBooks="14"
-          publicList
-        />
-      </div>
+      <SectionListsListCard
+        listName="Mis Favoritos"
+        path="/user/"
+        desc="Lista de mis libros favoritos"
+        numBooks="14"
+        publicList
+      />
+      <SectionListsListCard
+        listName="Mis Favoritos"
+        path="/user/"
+        desc="Lista de mis libros favoritos"
+        numBooks="14"
+      />
+      <SectionListsListCard
+        listName="Mis Favoritos"
+        path="/user/"
+        desc="Lista de mis libros favoritos"
+        numBooks="14"
+        publicList
+      />
       {/* TODO: el link para este */}
       {/* <BtnAdd tolink="/new-list" /> */}
       <BtnAdd tolink="/my-lists" />
