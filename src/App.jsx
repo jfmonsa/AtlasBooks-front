@@ -19,6 +19,7 @@ import BookInformation from "./pages/bookInformation/BookInformation.jsx";
 import MyAccount from "./pages/myaccount/MyAccount.jsx";
 import AdminResults from "./pages/myaccount/AdminResults.jsx";
 import ChangeUserDetails from "./pages/myaccount/ChangeUserDetails.jsx";
+import Lists from "./pages/myaccount/Lists.jsx";
 // import UserPassConf from "./pages/myaccount/UserPassConf.jsx";
 // import Report from "./pages/account/Report.jsx";
 // import ConfPassDel from "./pages/account/confPassDel.jsx";
@@ -46,6 +47,7 @@ const router = createBrowserRouter(
       {/* Routing for edit details in my account */}
       {/* TODO: change path for user/id_del_user */}
       <Route path="my-account" element={<MyAccount />} />
+      <Route path="my-lists" element={<Lists />} />
       {/* <Route path="confirm-password" element={<UserPassConf />} /> */}
       <Route path="users-details" element={<ChangeUserDetails />} />
       <Route path="upload-book" element={<UploadBook />} />
