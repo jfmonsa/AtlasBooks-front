@@ -6,6 +6,7 @@ export const getSearchUsers = async () => {
       email: "ramesh@in.com",
       country: "Colombia",
       status: true,
+      admin: false,
     },
     {
       id: 2,
@@ -13,6 +14,7 @@ export const getSearchUsers = async () => {
       email: "rakesh@in.com",
       country: "Colombia",
       status: true,
+      admin: false,
     },
     {
       id: 3,
@@ -20,6 +22,7 @@ export const getSearchUsers = async () => {
       email: "rajesh@in.com",
       country: "Colombia",
       status: true,
+      admin: false,
     },
     {
       id: 4,
@@ -27,6 +30,7 @@ export const getSearchUsers = async () => {
       email: "rajesh@in.com",
       country: "Colombia",
       status: true,
+      admin: false,
     },
     {
       id: 5,
@@ -34,6 +38,7 @@ export const getSearchUsers = async () => {
       email: "rajesh@in.com",
       country: "Colombia",
       status: true,
+      admin: false,
     },
     {
       id: 6,
@@ -41,6 +46,7 @@ export const getSearchUsers = async () => {
       email: "rajesh@in.com",
       country: "Colombia",
       status: true,
+      admin: false,
     },
     {
       id: 7,
@@ -48,6 +54,7 @@ export const getSearchUsers = async () => {
       email: "rajesh@in.com",
       country: "Colombia",
       status: true,
+      admin: false,
     },
   ];
 };

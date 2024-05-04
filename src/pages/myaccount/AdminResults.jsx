@@ -18,11 +18,20 @@ import {
 } from "../../data/apiSearchUsers.js";
 
 const TableResults = () => {
+  const checkBool = value => {
+    if (typeof value == "boolean") {
+      return value ? "true" : "false";
+    }
+    return value;
+  };
+
   const columns = [
     {id: "id", name: "Id"},
     {id: "name", name: "Name"},
     {id: "country", name: "Country"},
     {id: "status", name: "Status"},
+    {id: "admin", name: "Admin?"},
+    {id: "actions", name: "Actions"}, // Nueva columna para los botones
   ];
 
   const handlechangepage = (event, newpage) => {
@@ -31,6 +40,17 @@ const TableResults = () => {
   const handleRowsPerPage = event => {
     rowperpagechange(+event.target.value);
     pagechange(0);
+  };
+
+  //Actions
+  const handleDeleteUser = userId => {
+    // Lógica para eliminar un usuario
+    console.log(`Eliminar usuario con ID: ${userId}`);
+  };
+
+  const handleMakeAdmin = userId => {
+    // Lógica para hacer administrador a un usuario
+    console.log(`Hacer administrador al usuario con ID: ${userId}`);
   };
 
   const [rows, setRowchange] = useState([]);
@@ -51,7 +71,6 @@ const TableResults = () => {
 
   return (
     <>
-      {/* sx={{maxHeight: 450}} */}
       <TableContainer>
         <Table stickyHeader>
           <TableHead>
@@ -70,13 +89,41 @@ const TableResults = () => {
             {rows &&
               rows
                 .slice(page * rowperpage, page * rowperpage + rowperpage)
-                .map((row, i) => {
+                .map(row => {
                   return (
-                    <TableRow key={i}>
+                    <TableRow key={row.id}>
                       {columns &&
-                        columns.map((column, i) => {
-                          let value = row[column.id];
-                          return <TableCell key={value}>{value}</TableCell>;
+                        columns.map((column, colIndex) => {
+                          let value = checkBool(row[column.id]);
+                          if (column.id === "actions") {
+                            return (
+                              <TableCell key={colIndex}>
+                                <button
+                                  onClick={() => handleDeleteUser(row.id)}
+                                >
+                                  Eliminar
+                                </button>
+                                <button onClick={() => handleMakeAdmin(row.id)}>
+                                  Hacer Admin
+                                </button>
+                              </TableCell>
+                            );
+                          } else if (
+                            column.id === "status" ||
+                            column.id === "admin"
+                          ) {
+                            return (
+                              <TableCell key={colIndex}>
+                                {checkBool(value)}
+                              </TableCell>
+                            );
+                          } else {
+                            return (
+                              <TableCell key={colIndex}>
+                                {row[column.id]}
+                              </TableCell>
+                            );
+                          }
                         })}
                     </TableRow>
                   );
