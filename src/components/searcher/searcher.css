@@ -3,12 +3,12 @@
   justify-content: center;
   flex-wrap: wrap;
   gap: var(--spacing-3) var(--spacing-5);
-  font-size: var(--fs-2);
-  font-weight: var(--fw-medium);
 }
 .searcher__input,
 .searcher__button {
   height: 36px;
+  font-size: var(--fs-2);
+  font-weight: var(--fw-medium);
 }
 
 .searcher__input {
