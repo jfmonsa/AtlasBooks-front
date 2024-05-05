@@ -157,7 +157,10 @@ const SectionOtherOpts = () => {
   ];
   return (
     <Card h1Text="Opciones">
-      <DropMenu options={SectionOtherOptsOptions} />
+      <DropMenu
+        options={SectionOtherOptsOptions}
+        cssClassContainer=" nonFloating"
+      />
       {/* <SectionOtherOptsOpt
           text="Eliminar cuenta"
           iconSrc={IconDelAccount}

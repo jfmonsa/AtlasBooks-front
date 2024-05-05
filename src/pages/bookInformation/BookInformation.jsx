@@ -236,22 +236,9 @@ const BookPage = () => {
       </Card>
       <Card h1Text="Comentarios" id="comments">
         <Comments />
-        {/* <Comentarios userId={"1"} userName={"Jose"}></Comentarios> */}
       </Card>
     </>
   );
 };
-
-/*
-const Card = ({
-  h1Text,
-  children,
-  customCssClassesSection = "",
-  customCssClasesH1 = "",
-  id,
-  h1Center = false,
-  cardDialog = false,
-})
-*/
 
 export default BookPage;
