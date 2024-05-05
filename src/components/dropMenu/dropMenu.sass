@@ -1,4 +1,16 @@
 // Custom css 
+.iconDropDown
+    position: relative
+
+    .dropMenu
+        padding: var(--spacing-2) 0
+        width: 160px
+        left: -140px
+        // top: 24px
+        // left: translateX(-50%)
+    .dropMenu__item
+        height: 42px
+
 .btnDropDown
     .dropMenu
         padding: var(--spacing-2) 0
@@ -28,7 +40,7 @@
     background-color: var(--compSurface-light)
     border: var(--border-2)
 
-.dropMenu:not(.nonFloating, .btnDropDown .dropMenu)
+.dropMenu:not(.nonFloating, .btnDropDown > .dropMenu, .iconDropDown > .dropMenu)
     padding: var(--spacing-3)
 
 .dropMenu__item

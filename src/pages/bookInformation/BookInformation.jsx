@@ -8,6 +8,7 @@ import {useState} from "react";
 //Book Info
 import BookImage from "../../assets/img/image1.png";
 import DropdownBtn from "../../components/dropDownButtons/DropdownBtn.jsx";
+import IconDropDown from "../../components/iconDropDown/IconDropDown.jsx";
 // -- Download option's icon
 import Mega from "../../assets/icons/Icon-mega.svg";
 import Mediafire from "../../assets/icons/Icon-mediafire.svg";
@@ -20,7 +21,6 @@ import WhatsApp from "../../assets/icons/Icon-whatsapp.svg";
 import Enlace from "../../assets/icons/Icon-link.svg";
 import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm";
 import coment from "../../assets/icons/comentario-icon.svg";
-import heart from "../../assets/icons/corazon-icon.svg";
 import mark from "../../assets/icons/marcador-icon.svg";
 //Relacionados
 import Slider from "../../components/slider/Slider.jsx";
@@ -79,12 +79,12 @@ const BookInfoSection = ({
     {toLink: "#", iconPath: Mega, text: "Mega"},
     {toLink: "#", iconPath: Mediafire, text: "Mediafire"},
   ];
-  const moreOpts = [{toLink: "#", iconPath: mark, text: "Lista Punk"}];
-
-  /*
-  <DropdownItemListUser toLink="" text="Favoritos"></DropdownItemListUser>
-        <DropdownItemListUser toLink="" text="Leyendo"></DropdownItemListUser>
-  */
+  const listsOpts = [
+    {toLink: "#", iconPath: mark, text: "Lista Punk"},
+    {toLink: "#", iconPath: mark, text: "Lista Punk"},
+    {toLink: "#", iconPath: mark, text: "Lista Punk"},
+    {toLink: "#", iconPath: mark, text: "Lista Punk"},
+  ];
 
   return (
     <Card h1Text="Inicio / libro">
@@ -117,10 +117,12 @@ const BookInfoSection = ({
 
               <div>
                 <HeartButton className="relevantInfo__icon2 heartLike" />
-                <img
-                  className="relevantInfo__icon2"
-                  src={mark}
-                  alt="icon to save this book in whistlist"
+                <IconDropDown
+                  altText="icon to save this book in a list"
+                  iconPath={mark}
+                  cssClassIcon="relevantInfo__icon2"
+                  options={listsOpts}
+                  cssClassContainer="iconDropDown "
                 />
               </div>
             </div>
@@ -162,14 +164,6 @@ const BookInfoSection = ({
           boxCssClasses="btnDropDown btnDropDown--blue"
           textCssClasses="btnDropDown__text"
         />
-        {/* Hacer una card dialog mejor para esta
-        
-        <DropdownBtn
-          options={moreOpts}
-          text="Guardar más..."
-          boxCssClasses="btnDropDown--small btnDropDown--outline btnDropDown--moreOptions"
-          textCssClasses="btnDropDown__text"
-        /> */}
         <PrimaryBtnForm
           text="Reportar"
           cssClasses="warningBtn warningBtn--reportBook"
