@@ -1,6 +1,6 @@
 import Slider from "../../components/slider/Slider.jsx";
 import Searcher from "../../components/searcher/Searcher.jsx";
-import Card from "../../components/card/Card";
+import Card from "../../components/card/Card.jsx";
 import "./discoverList.css";
 import "../../components/gridBooks/gridBooks.css";
 
