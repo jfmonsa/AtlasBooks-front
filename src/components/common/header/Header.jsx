@@ -30,6 +30,62 @@ const DropdownItem = ({toLink, icon, text}) => {
   );
 };
 
+
+const DropdownMenu = () => {
+  return (
+    <ul className="dropmenu">
+      <DropdownItem
+        toLink="/my-account"
+        icon={MenuProfileIcon}
+        text="Mi cuenta"
+      ></DropdownItem>
+      {/* Si no ha iniciado sesión */}
+      {/* <DropdownItem
+        toLink="/login"
+        icon={MenuLoginIcon}
+        text="Iniciar sesión"
+      ></DropdownItem>
+      <DropdownItem
+        toLink="/new-account"
+        icon={MenuSingupIcon}
+        text="Registrarse"
+      ></DropdownItem> */}
+      {/* Si es admin: */}
+      {/* <DropdownItem toLink="/" icon={MenuControlpanelIcon} text="Panel de control"></DropdownItem> */}
+      <DropdownItem
+        toLink="/book-information"
+        icon={MenuSearchIcon}
+        text="Buscar libro"
+      ></DropdownItem>
+      <DropdownItem 
+        toLink="/categories"
+        icon={MenuCategoriesIcon}
+        text="Categorias"
+      ></DropdownItem>
+      <DropdownItem
+        toLink="/"
+        icon={MenuRecommendedIcon}
+        text="Recomendados"
+      ></DropdownItem>
+      <DropdownItem
+        toLink="/"
+        icon={MenuDiscoverlistsIcon}
+        text="Explorar listas"
+      ></DropdownItem>
+      <DropdownItem
+        toLink="/my-account#my-lists"
+        icon={MenuMylistsIcon}
+        text="Mis listas"
+      ></DropdownItem>
+      <DropdownItem
+        toLink="/login"
+        icon={MenuLogoutIcon}
+        text="Salir"
+      ></DropdownItem>
+    </ul>
+  );
+};
+
 const menuOptions = [
   {toLink: "/my-account", iconPath: MenuProfileIcon, text: "Mi cuenta"},
   //Si el USUARIO no a iniciado sessión;
