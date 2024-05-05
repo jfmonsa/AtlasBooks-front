@@ -1,4 +1,4 @@
-/* small reset */
+/* =============== small reset =============== */
 *,
 *::before,
 *::after {
@@ -13,14 +13,14 @@ ol {
 a {
   text-decoration: none;
 }
+/* =============== small reset =============== */
 
-/* Gloabal styles */
+/* =============== Gloabal styles =============== */
 body {
   background-color: var(--bg-light);
   overflow-x: hidden;
 }
 
-/* TODO: Revisar en que partes estoy repitiendo este estilo para eliminarlos ahí */
 div,
 p,
 a,
@@ -57,18 +57,27 @@ img {
 textarea {
   resize: none;
 }
-/* Sticky footer */
+/* =============== Gloabal styles =============== */
+
+/* =============== Sticky footer & fixed header =============== */
 #root {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  padding-bottom: calc(--headerHeight + var(--spacing-6));
 }
 main {
   flex: 1;
 }
 
-/* Other styles */
+/* padding top style */
+/* main section:first-child {
+  margin-top: var(--spacing-6);
+} */
 
+/* =============== Sticky footer & fixed header =============== */
+
+/* =============== Other styles ===============*/
 /* Z-index issues */
 .navbar {
   z-index: 90;
@@ -76,10 +85,7 @@ main {
 .DropDownBtn {
   z-index: 20;
 }
-/* padding top style */
-main section:first-child {
-  margin-top: var(--spacing-6);
-}
+
 .navHover {
   transition: background-color var(--speed);
 }

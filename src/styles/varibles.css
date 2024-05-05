@@ -49,4 +49,5 @@
   --border-1: 2px solid var(--border-pruple-light);
   --border-2: 2px solid var(--border-graySurfaces-light);
   --speed: 0.3s /*500ms; ?*/;
+  --headerHeight: 60px;
 }

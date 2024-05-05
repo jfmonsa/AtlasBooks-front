@@ -27,7 +27,6 @@ import Recommended from "./pages/recommended/Recommended.jsx";
 import DiscoverList from "./pages/discoverList/DiscoverList.jsx";
 import Categories from "./pages/categories/Categories.jsx";
 
-
 //layouts
 import RootLayout from "./RootLayout.jsx";
 import UploadBook from "./pages/myaccount/UploadBook.jsx";
@@ -64,8 +63,7 @@ const router = createBrowserRouter(
       <Route path="book-information" element={<BookInformation />} />
 
       <Route path="categories" element={<Categories />} />
-      <Route path="discover-list" element={<DiscoverList />}/>
-
+      <Route path="discover-list" element={<DiscoverList />} />
 
       {/* Routes for admin */}
       <Route path="results" element={<AdminResults />} />
