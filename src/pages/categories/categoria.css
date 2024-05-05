@@ -1,0 +1,16 @@
+.category-container{
+    display: flex;
+    flex-direction: column;
+    margin: var(--spacing-2);
+    width: 150px;
+}
+
+.all-categories{
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-2);
+}   
+
+.sub-category{
+    color: #828282;
+}
