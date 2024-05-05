@@ -24,7 +24,9 @@ import Lists from "./pages/myaccount/Lists.jsx";
 // import Report from "./pages/account/Report.jsx";
 // import ConfPassDel from "./pages/account/confPassDel.jsx";
 import Recommended from "./pages/recommended/Recommended.jsx";
-import DiscoverList from "./pages/discoverList/DiscoverList.jsx";
+import DiscoverList from "./pages/discoverList/Discoverlist.jsx";
+import Categories from "./pages/categories/Categories.jsx";
+
 
 //layouts
 import RootLayout from "./RootLayout.jsx";
@@ -60,8 +62,10 @@ const router = createBrowserRouter(
       {/* TODO: change path for book/id_del_libro */}
       {/* <Route path="Report" element={<Report />} /> */}
       <Route path="book-information" element={<BookInformation />} />
-      <Route path="categories" element={<BookInformation />} />
-      <Route path="discover-list" element={<DiscoverList />} />
+
+      <Route path="categories" element={<Categories />} />
+      <Route path="discover-list" element={<DiscoverList />}/>
+
 
       {/* Routes for admin */}
       <Route path="results" element={<AdminResults />} />
