@@ -1,9 +1,10 @@
 import Recommended from "../recommended/Recommended";
+
 const Home = () => {
   return (
     <>
-    <Recommended></Recommended>
+      <Recommended></Recommended>
     </>
- );
+  );
 };
 export default Home;

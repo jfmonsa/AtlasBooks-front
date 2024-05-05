@@ -2,7 +2,7 @@ import "./dropdownButton.sass";
 import {FaChevronLeft} from "react-icons/fa";
 import {FaChevronDown} from "react-icons/fa";
 import {useState} from "react";
-import DropMenu from "../menuItem/DropMenu";
+import DropMenu from "../dropMenu/DropMenu";
 
 const DropdownBtn = ({
   text,

@@ -67,9 +67,7 @@ const UploadBook = () => {
 
         <input type="file" onChange={e => setFile(e.target.files[0])} />
         <TextArea text="Descripción" holder="Agrega la sipnosis del libro" />
-        {/* <Link to="/my-account"> */}
         <PrimaryBtnForm text="Enviar" cssClasses="formCustomBtn black2Btn" />
-        {/* </Link> */}
         <PrimaryBtnForm text="Cancelar" cssClasses="formCustomBtn black2Btn" />
       </form>
     </Card>

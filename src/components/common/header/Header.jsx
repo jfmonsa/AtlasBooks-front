@@ -13,8 +13,7 @@ import MenuSearchIcon from "../../../assets/icons/menu-search.svg";
 import MenuSingupIcon from "../../../assets/icons/menu-singup.svg";
 import {useState} from "react";
 import {NavLink, Link} from "react-router-dom";
-import DropMenu from "../../menuItem/DropMenu.jsx";
-
+import DropMenu from "../../dropMenu/DropMenu.jsx";
 
 const menuOptions = [
   {toLink: "/my-account", iconPath: MenuProfileIcon, text: "Mi cuenta"},
@@ -27,7 +26,11 @@ const menuOptions = [
   {toLink: "/book-information", iconPath: MenuSearchIcon, text: "Buscar libro"},
   {toLink: "/categories", iconPath: MenuCategoriesIcon, text: "Categorias"},
   {toLink: "/recommended", iconPath: MenuRecommendedIcon, text: "Recomendados"},
-  {toLink: "/", iconPath: MenuDiscoverlistsIcon, text: "Explorar listas"},
+  {
+    toLink: "/discover-list",
+    iconPath: MenuDiscoverlistsIcon,
+    text: "Explorar listas",
+  },
   {
     toLink: "/my-account#my-lists",
     iconPath: MenuMylistsIcon,
@@ -86,7 +89,7 @@ const Header = () => {
           <div className="menu-button-burger"></div>
         </div>
       </div>
-      {isOpen && <DropMenu options={menuOptions} cssClassContainer="" />}
+      {isOpen && <DropMenu options={menuOptions} />}
     </header>
   );
 };
