@@ -1,16 +1,17 @@
 import "./myaccount.css";
-import PrimaryBtnLink from "../../components/buttons/primaryBtn/PrimaryBtnLink.jsx";
 import BtnAdd from "../../components/buttons/BtnAdd/BtnAdd.jsx";
 import Slider from "../../components/slider/Slider.jsx";
 import Card from "../../components/card/Card.jsx";
 import {Link} from "react-router-dom";
-//icons for option's section
+//for option's section
 import IconPaypal from "../../assets/icons/icon-paypal.svg";
 import IconLogout from "../../assets/icons/menu-logout.svg";
 import IconEditEmail from "../../assets/icons/icon-edit-email.svg";
 import IconEditDetails from "../../assets/icons/icon-edit-details.svg";
 import IconShieldPass from "../../assets/icons/icon-shieldpass.svg";
 import IconDelAccount from "../../assets/icons/icon-delaccount.svg";
+import DropMenu from "../../components/dropMenu/DropMenu.jsx";
+
 //icons for my lists' section
 import PrivateListIcon from "./../../assets/icons/icon-privatelist.svg";
 import PublicListIcon from "./../../assets/icons/icon-publiclist.svg";
@@ -113,7 +114,6 @@ const SectionUploadABook = () => {
         Contribuye con la comunidad añadiendo nuevos libros, click al boton para
         hacerlo
       </p>
-      {/* TODO: el link para este */}
       <BtnAdd tolink="/upload-book" />
     </Card>
   );
@@ -135,36 +135,34 @@ const SectionOtherOptsOpt = ({text, toLink, iconSrc}) => {
 };
 
 const SectionOtherOpts = () => {
+  const SectionOtherOptsOptions = [
+    {toLink: "#", iconPath: IconPaypal, text: "Donar"},
+    {toLink: "/login", iconPath: IconLogout, text: "Cerrar sesión"},
+    {
+      toLink: "/confirm-password",
+      iconPath: IconEditDetails,
+      text: "Editar mi información",
+    },
+    {
+      toLink: "/confirm-password",
+      iconPath: IconEditEmail,
+      text: "Cambiar email",
+    },
+    {
+      toLink: "/confirm-password",
+      iconPath: IconShieldPass,
+      text: "Cambiar contraseña",
+    },
+    {toLink: "/PassDel", iconPath: IconDelAccount, text: "Eliminar cuenta"},
+  ];
   return (
     <Card h1Text="Opciones">
-      <ul>
-        <SectionOtherOptsOpt text="Donar" iconSrc={IconPaypal} toLink="#" />
-        <SectionOtherOptsOpt
-          text="Cerrar sesión"
-          iconSrc={IconLogout}
-          toLink="/login"
-        />
-        <SectionOtherOptsOpt
-          text="Editar mi información"
-          iconSrc={IconEditDetails}
-          toLink="/login"
-        />
-        <SectionOtherOptsOpt
-          text="Cambiar email"
-          iconSrc={IconEditEmail}
-          toLink="/login"
-        />
-        <SectionOtherOptsOpt
-          text="Cambiar contraseña"
-          iconSrc={IconShieldPass}
-          toLink="/confirm-password"
-        />
-        <SectionOtherOptsOpt
+      <DropMenu options={SectionOtherOptsOptions} />
+      {/* <SectionOtherOptsOpt
           text="Eliminar cuenta"
           iconSrc={IconDelAccount}
           toLink="/PassDel"
-        />
-      </ul>
+        /> */}
     </Card>
   );
 };

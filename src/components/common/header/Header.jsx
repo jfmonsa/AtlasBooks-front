@@ -13,7 +13,7 @@ import MenuSearchIcon from "../../../assets/icons/menu-search.svg";
 import MenuSingupIcon from "../../../assets/icons/menu-singup.svg";
 import {useState} from "react";
 import {NavLink, Link} from "react-router-dom";
-import DropMenu from "../../menuItem/DropMenu.jsx";
+import DropMenu from "../../dropMenu/DropMenu.jsx";
 
 // Auxiliary components for dropdownmenu
 const DropdownItem = ({toLink, icon, text}) => {
@@ -100,7 +100,7 @@ const Header = () => {
           <div className="menu-button-burger"></div>
         </div>
       </div>
-      {isOpen && <DropMenu options={menuOptions} cssClassContainer="" />}
+      {isOpen && <DropMenu options={menuOptions} />}
     </header>
   );
 };
