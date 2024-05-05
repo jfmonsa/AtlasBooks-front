@@ -15,76 +15,6 @@ import {useState} from "react";
 import {NavLink, Link} from "react-router-dom";
 import DropMenu from "../../menuItem/DropMenu.jsx";
 
-// Auxiliary components for dropdownmenu
-const DropdownItem = ({toLink, icon, text}) => {
-  const alticon = "Icono de";
-  return (
-    <li>
-      <Link to={toLink} className="dropmenu__item navHover">
-        <span className="dropmenu__item__icon">
-          <img src={icon} alt={alticon + " " + text}></img>
-        </span>
-        <span className="dropmenu__item__text">{text}</span>
-      </Link>
-    </li>
-  );
-};
-
-
-const DropdownMenu = () => {
-  return (
-    <ul className="dropmenu">
-      <DropdownItem
-        toLink="/my-account"
-        icon={MenuProfileIcon}
-        text="Mi cuenta"
-      ></DropdownItem>
-      {/* Si no ha iniciado sesión */}
-      {/* <DropdownItem
-        toLink="/login"
-        icon={MenuLoginIcon}
-        text="Iniciar sesión"
-      ></DropdownItem>
-      <DropdownItem
-        toLink="/new-account"
-        icon={MenuSingupIcon}
-        text="Registrarse"
-      ></DropdownItem> */}
-      {/* Si es admin: */}
-      {/* <DropdownItem toLink="/" icon={MenuControlpanelIcon} text="Panel de control"></DropdownItem> */}
-      <DropdownItem
-        toLink="/book-information"
-        icon={MenuSearchIcon}
-        text="Buscar libro"
-      ></DropdownItem>
-      <DropdownItem 
-        toLink="/categories"
-        icon={MenuCategoriesIcon}
-        text="Categorias"
-      ></DropdownItem>
-      <DropdownItem
-        toLink="/"
-        icon={MenuRecommendedIcon}
-        text="Recomendados"
-      ></DropdownItem>
-      <DropdownItem
-        toLink="/"
-        icon={MenuDiscoverlistsIcon}
-        text="Explorar listas"
-      ></DropdownItem>
-      <DropdownItem
-        toLink="/my-account#my-lists"
-        icon={MenuMylistsIcon}
-        text="Mis listas"
-      ></DropdownItem>
-      <DropdownItem
-        toLink="/login"
-        icon={MenuLogoutIcon}
-        text="Salir"
-      ></DropdownItem>
-    </ul>
-  );
-};
 
 const menuOptions = [
   {toLink: "/my-account", iconPath: MenuProfileIcon, text: "Mi cuenta"},
@@ -95,8 +25,8 @@ const menuOptions = [
   //Si el usuario es admin
   //  {toLink: "/", iconPath: MenuControlpanelIcon, text: "Panel de control"},
   {toLink: "/book-information", iconPath: MenuSearchIcon, text: "Buscar libro"},
-  {toLink: "/", iconPath: MenuCategoriesIcon, text: "Categorias"},
-  {toLink: "/", iconPath: MenuRecommendedIcon, text: "Recomendados"},
+  {toLink: "/categories", iconPath: MenuCategoriesIcon, text: "Categorias"},
+  {toLink: "/recommended", iconPath: MenuRecommendedIcon, text: "Recomendados"},
   {toLink: "/", iconPath: MenuDiscoverlistsIcon, text: "Explorar listas"},
   {
     toLink: "/my-account#my-lists",
