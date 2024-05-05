@@ -12,13 +12,13 @@ import DropdownBtn from "../../components/dropDownButtons/DropdownBtn.jsx";
 import Mega from "../../assets/icons/Icon-mega.svg";
 import Mediafire from "../../assets/icons/Icon-mediafire.svg";
 // -- Share option's icon
+import {FaRegHeart, FaHeart} from "react-icons/fa";
 import Facebook from "../../assets/icons/Icon-facebook.svg";
 import Instagram from "../../assets/icons/Icon-instagram.svg";
 import Telegram from "../../assets/icons/Icon-telegram.svg";
 import WhatsApp from "../../assets/icons/Icon-whatsapp.svg";
 import Enlace from "../../assets/icons/Icon-link.svg";
 import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm";
-// import Star from "../../assets/icons/Star.svg";
 import coment from "../../assets/icons/comentario-icon.svg";
 import heart from "../../assets/icons/corazon-icon.svg";
 import mark from "../../assets/icons/marcador-icon.svg";
@@ -28,6 +28,21 @@ import Slider from "../../components/slider/Slider.jsx";
 import Comments from "./commentarySection/Comments.jsx";
 
 //Aux functions
+const HeartButton = ({className}) => {
+  const [likeBook, setLikeBook] = useState(false);
+  return likeBook ? (
+    <FaHeart
+      style={{
+        color: "var(--error)",
+      }}
+      className={className}
+      onClick={() => setLikeBook(false)}
+    />
+  ) : (
+    <FaRegHeart onClick={() => setLikeBook(true)} className={className} />
+  );
+};
+
 const BookInfoSectionSpecs = ({left, right}) => {
   return (
     <li className="specs__item">
@@ -102,11 +117,7 @@ const BookInfoSection = ({
               </div>
 
               <div>
-                <img
-                  className="relevantInfo__icon2"
-                  src={heart}
-                  alt="icon of save this book in favorites"
-                />
+                <HeartButton className="relevantInfo__icon2 heartLike" />
                 <img
                   className="relevantInfo__icon2"
                   src={mark}

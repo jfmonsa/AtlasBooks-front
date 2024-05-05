@@ -62,10 +62,14 @@
   margin-right: var(--spacing-2);
 }
 .relevantInfo__icon2 {
-  height: 20px;
+  height: 24px;
+  cursor: pointer;
 }
 .relevantInfo__icon2:first-child {
   margin-right: var(--spacing-3);
+}
+.heartLike {
+  width: 24px;
 }
 .rank__real {
   color: var(--warning);
