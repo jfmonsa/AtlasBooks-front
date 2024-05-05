@@ -54,8 +54,8 @@ const SectionListsListCard = ({
 
   return (
     <Link to={path} className="listCard navHover">
-      <span>
-        <span className="listCard--itemss">{listName}</span>
+      <span className="listCard__items">
+        <span>{listName}</span>
         <img
           className="listCard-icon listCard--item"
           src={iconpath}

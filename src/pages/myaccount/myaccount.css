@@ -11,7 +11,6 @@
 }
 
 .listCard {
-  /* height: 48px; */
   padding: var(--spacing-2) var(--spacing-3);
   display: flex;
   justify-content: space-between;
@@ -23,8 +22,9 @@
   color: var(--black-light);
 }
 
-.listCard-icon {
-  margin-bottom: var(--spacing-1);
+.listCard__items {
+  display: flex;
+  align-items: center;
 }
 
 .listCard:not(.listCard:last-child) {
