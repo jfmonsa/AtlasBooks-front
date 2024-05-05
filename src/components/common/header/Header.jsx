@@ -56,7 +56,7 @@ const DropdownMenu = () => {
         text="Buscar libro"
       ></DropdownItem>
       <DropdownItem
-        toLink="/"
+        toLink="/categoies"
         icon={MenuCategoriesIcon}
         text="Categorias"
       ></DropdownItem>
