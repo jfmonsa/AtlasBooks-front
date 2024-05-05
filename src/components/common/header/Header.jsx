@@ -13,6 +13,7 @@ import MenuSearchIcon from "../../../assets/icons/menu-search.svg";
 import MenuSingupIcon from "../../../assets/icons/menu-singup.svg";
 import {useState} from "react";
 import {NavLink, Link} from "react-router-dom";
+import DropMenu from "../../menuItem/DropMenu.jsx";
 
 // Auxiliary components for dropdownmenu
 const DropdownItem = ({toLink, icon, text}) => {
@@ -29,60 +30,25 @@ const DropdownItem = ({toLink, icon, text}) => {
   );
 };
 
-const DropdownMenu = () => {
-  return (
-    <ul className="dropmenu">
-      <DropdownItem
-        toLink="/my-account"
-        icon={MenuProfileIcon}
-        text="Mi cuenta"
-      ></DropdownItem>
-      {/* Si no ha iniciado sesión */}
-      {/* <DropdownItem
-        toLink="/login"
-        icon={MenuLoginIcon}
-        text="Iniciar sesión"
-      ></DropdownItem>
-      <DropdownItem
-        toLink="/new-account"
-        icon={MenuSingupIcon}
-        text="Registrarse"
-      ></DropdownItem> */}
-      {/* Si es admin: */}
-      {/* <DropdownItem toLink="/" icon={MenuControlpanelIcon} text="Panel de control"></DropdownItem> */}
-      <DropdownItem
-        toLink="/book-information"
-        icon={MenuSearchIcon}
-        text="Buscar libro"
-      ></DropdownItem>
-      <DropdownItem
-        toLink="/"
-        icon={MenuCategoriesIcon}
-        text="Categorias"
-      ></DropdownItem>
-      <DropdownItem
-        toLink="/"
-        icon={MenuRecommendedIcon}
-        text="Recomendados"
-      ></DropdownItem>
-      <DropdownItem
-        toLink="/"
-        icon={MenuDiscoverlistsIcon}
-        text="Explorar listas"
-      ></DropdownItem>
-      <DropdownItem
-        toLink="/my-account#my-lists"
-        icon={MenuMylistsIcon}
-        text="Mis listas"
-      ></DropdownItem>
-      <DropdownItem
-        toLink="/login"
-        icon={MenuLogoutIcon}
-        text="Salir"
-      ></DropdownItem>
-    </ul>
-  );
-};
+const menuOptions = [
+  {toLink: "/my-account", iconPath: MenuProfileIcon, text: "Mi cuenta"},
+  //Si el USUARIO no a iniciado sessión;
+  //TODO: hacer esto usando conditional rendering y useContext hook
+  //  {toLink: "/login", iconPath: MenuLoginIcon, text: "Iniciar sesión"},
+  //  {toLink: "/new-account", iconPath: MenuSingupIcon, text: "Registrarse"},
+  //Si el usuario es admin
+  //  {toLink: "/", iconPath: MenuControlpanelIcon, text: "Panel de control"},
+  {toLink: "/book-information", iconPath: MenuSearchIcon, text: "Buscar libro"},
+  {toLink: "/", iconPath: MenuCategoriesIcon, text: "Categorias"},
+  {toLink: "/", iconPath: MenuRecommendedIcon, text: "Recomendados"},
+  {toLink: "/", iconPath: MenuDiscoverlistsIcon, text: "Explorar listas"},
+  {
+    toLink: "/my-account#my-lists",
+    iconPath: MenuMylistsIcon,
+    text: "Mis listas",
+  },
+  {toLink: "/login", iconPath: MenuLogoutIcon, text: "Salir"},
+];
 
 // Main header component
 const Header = () => {
@@ -134,7 +100,7 @@ const Header = () => {
           <div className="menu-button-burger"></div>
         </div>
       </div>
-      {isOpen && <DropdownMenu />}
+      {isOpen && <DropMenu options={menuOptions} cssClassContainer="" />}
     </header>
   );
 };

@@ -80,7 +80,9 @@ main {
 main section:first-child {
   margin-top: var(--spacing-6);
 }
-
+.navHover {
+  transition: background-color var(--speed);
+}
 .navHover:hover {
   background-color: var(--border-graySurfaces-light);
 }

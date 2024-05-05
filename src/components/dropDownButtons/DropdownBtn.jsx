@@ -2,24 +2,15 @@ import "./dropdownButton.sass";
 import {FaChevronLeft} from "react-icons/fa";
 import {FaChevronDown} from "react-icons/fa";
 import {useState} from "react";
-import MenuItem from "../menuItem/MenuItem";
+import DropMenu from "../menuItem/DropMenu";
 
-const DropdownBtnMenu = ({options}) => {
-  return (
-    <ul className="btnDropdown__menu">
-      {options.map((option, index) => (
-        <MenuItem
-          key={index}
-          toLink={option.toLink}
-          iconPath={option.iconPath}
-          text={option.text}
-        />
-      ))}
-    </ul>
-  );
-};
-
-const DropdownBtn = ({text, options, boxCssClasses, textCssClasses}) => {
+const DropdownBtn = ({
+  text,
+  options,
+  boxCssClasses,
+  textCssClasses,
+  cssClassMenuContainer = " btnDropdown__menu--avg",
+}) => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -29,7 +20,9 @@ const DropdownBtn = ({text, options, boxCssClasses, textCssClasses}) => {
         {open ? <FaChevronDown /> : <FaChevronLeft />}
       </div>
 
-      {open && <DropdownBtnMenu options={options} />}
+      {open && (
+        <DropMenu options={options} cssClassContainer={cssClassMenuContainer} />
+      )}
     </div>
   );
 };
