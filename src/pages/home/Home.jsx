@@ -1,6 +1,10 @@
 import Recommended from "../recommended/Recommended";
+import DiscoverList from "../discoverList/discoverlist";
 const Home = () => {
   return (
-  <Recommended></Recommended>);
+    <>
+    <DiscoverList></DiscoverList>
+    </>
+ );
 };
 export default Home;

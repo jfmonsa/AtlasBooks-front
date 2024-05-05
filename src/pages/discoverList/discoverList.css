@@ -1,0 +1,70 @@
+.titleListC{
+display:flex;
+align-items: center;
+margin-right:32px;
+}
+.listSearch{
+margin-bottom: 80px;
+}
+
+.sliderList{
+ margin-left: 32px;
+ margin-right: 32px;
+}
+
+.titleList{
+font-weight:var(--fw-semibold);
+font-size:24px;
+margin-bottom: 8px;
+margin-top: 16px;
+margin-left: 32px;
+max-width:500px;
+}
+
+.subtitleList{
+font-weight:var(--fw-medium);
+font-size:var(--fs-3); 
+color: rgba(130, 130, 130, 1);   
+margin-bottom: 32px;
+margin-left: 32px;
+max-width:500px;
+}
+
+.followList{
+justify-content: space-between;
+display: flex;
+width: 307px;
+height: 32px;
+}
+
+.headerList{
+flex:1;
+}
+
+.booksNumber{
+font-size: var(--fs-2);  
+font-weight: 700px;
+color:rgba(126, 66, 255, 1);  
+text-align: center;
+}
+
+.buttonFollowList{
+width: 66px;
+height: 32px;
+background-color:var(--bg-purple-light);
+color: white;
+border-radius:var(--border-rad-comp);
+font-weight:var(--fw-medium);
+font-size: var(--fs-2);
+}
+
+.discoverInfoList{
+font-size: var(--fs-2);
+font-weight:var(--fw-medium);
+color: black;
+margin-left: 32px;
+margin-right: 32px;
+margin-bottom:24px;
+max-width:1280px;
+}
+
