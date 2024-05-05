@@ -26,7 +26,6 @@ import mark from "../../assets/icons/marcador-icon.svg";
 import Slider from "../../components/slider/Slider.jsx";
 //Comments
 import Comments from "./commentarySection/Comments.jsx";
-import {Link} from "react-router-dom";
 
 //Aux functions
 const HeartButton = ({className}) => {
