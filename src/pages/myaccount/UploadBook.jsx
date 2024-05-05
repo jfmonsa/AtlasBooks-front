@@ -26,45 +26,19 @@ const UploadBook = () => {
     <Card cardDialog h1_text="Sube un libro" classname="UploadBook">
       <Form method="post" action="" onSubmit={handleSubmit}>
         <h2>Subir un libro</h2>
-        <InputText
-          holder="P. ej Movie Dick"
-          type={"text"}
-          typecss={"access"}
-          text="Titulo"
-        />
-        <InputText
-          holder="Autor 1"
-          type={"text"}
-          typecss={"access"}
-          text="Autor"
-        />
+        <InputText holder="P. ej Movie Dick" type={"text"} text="Titulo" />
+        <InputText holder="Autor 1" type={"text"} text="Autor" />
         <PrimaryBtnForm
           text="Añadir autor"
           cssClasses="formCustomBtn black2Btn"
         />
-        <InputText
-          holder="978-3-16-148410-0"
-          type={"text"}
-          typecss={"access"}
-          text="ISBN"
-        />
-        <InputText holder="1963" type={"text"} typecss={"access"} text="Año" />
-        <InputText
-          holder="273"
-          type={"text"}
-          typecss={"access"}
-          text="Numero de paginas"
-        />
+        <InputText holder="978-3-16-148410-0" type={"text"} text="ISBN" />
+        <InputText holder="1963" type={"text"} text="Año" />
+        <InputText holder="273" type={"text"} text="Numero de paginas" />
+        <InputText holder="vol 1" type={"text"} text="Numero de volumen" />
         <InputText
           holder="vol 1"
           type={"text"}
-          typecss={"access"}
-          text="Numero de volumen"
-        />
-        <InputText
-          holder="vol 1"
-          type={"text"}
-          typecss={"access"}
           text="Publicador / casa editorial"
         />
         <DropdownBtn
@@ -95,12 +69,7 @@ const UploadBook = () => {
 
         <input type="file" onChange={e => setFile(e.target.files[0])} />
 
-        <InputText
-          holder="Mi lista"
-          type={"TextArea"}
-          typecss={"access"}
-          text="Descripcion"
-        />
+        <InputText holder="Mi lista" type={"TextArea"} text="Descripcion" />
         {/* <Link to="/my-account"> */}
         <PrimaryBtnForm text="Enviar" cssClasses="formCustomBtn black2Btn" />
         {/* </Link> */}

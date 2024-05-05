@@ -1,8 +1,7 @@
 import Card from "../../components/card/Card.jsx";
 import InputText from "../../components/inputText/InputText.jsx";
 import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm.jsx";
-import {Link} from "react-router-dom";
-// import Report from "./pages/account/Report.jsx";
+import TextArea from "../../components/textArea/TextArea.jsx";
 
 const ConfPassDel = () => {
   return (
@@ -21,9 +20,9 @@ const ConfPassDel = () => {
           typecss={"access"}
           text="Descripcion"
         />
-        <Link to="/my-account">
-          <PrimaryBtnForm text="Enviar" cssClasses="formCustomBtn black2Btn" />
-        </Link>
+        <TextArea holder="Mi lista" type={"text"} text="Descripcion" />
+
+        <PrimaryBtnForm text="Enviar" cssClasses="formCustomBtn black2Btn" />
       </form>
     </Card>
   );

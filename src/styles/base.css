@@ -50,7 +50,9 @@ button {
 img {
   object-fit: contain;
 }
-
+textarea {
+  resize: none;
+}
 /* Sticky footer */
 #root {
   min-height: 100vh;

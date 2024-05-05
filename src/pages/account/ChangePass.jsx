@@ -35,7 +35,6 @@ const ChangePass = ({setUsuario}) => {
           holder={PASSWD}
           value={user}
           onChange={e => setUser(e.target.value)}
-          typecss={"access"}
           text={"Nueva contraseña"}
         />
 
@@ -43,7 +42,6 @@ const ChangePass = ({setUsuario}) => {
           type={"password"}
           holder={PASSWD}
           onChange={e => setUser(e.target.value)}
-          typecss={"access"}
           text={"Repite tu nueva contraseña"}
         />
         <Link to="/my-account">

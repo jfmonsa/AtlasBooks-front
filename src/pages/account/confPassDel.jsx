@@ -10,7 +10,6 @@ const ConfPassDel = () => {
         <InputText
           holder="Contraseña actual"
           type={"password"}
-          typecss={"access"}
           text="Contraseña actual"
         />
         <Link to="/Login">
