@@ -1,11 +1,10 @@
 import Card from "../../components/card/Card.jsx";
 import InputText from "../../components/inputText/InputText.jsx";
+import TextArea from "../../components/inputText/TextArea.jsx";
 import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm.jsx";
-import {Link, Form} from "react-router-dom";
 import DropdownBtn from "../../components/dropDownButtons/DropdownBtn.jsx";
 import {useState, useCallback} from "react";
 import {useDropzone} from "react-dropzone";
-import "./UploadBook.css";
 
 const UploadBook = () => {
   const CatOptions = [{text: "Accion"}, {text: "Fantasia"}];
@@ -23,9 +22,8 @@ const UploadBook = () => {
   };
 
   return (
-    <Card cardDialog h1_text="Sube un libro" classname="UploadBook">
-      <Form method="post" action="" onSubmit={handleSubmit}>
-        <h2>Subir un libro</h2>
+    <Card cardDialog h1Text="Sube un libro" h1Center>
+      <form onSubmit={handleSubmit}>
         <InputText holder="P. ej Movie Dick" type={"text"} text="Titulo" />
         <InputText holder="Autor 1" type={"text"} text="Autor" />
         <PrimaryBtnForm
@@ -68,18 +66,12 @@ const UploadBook = () => {
         <p>Sube uno o mas archivos en distintos formatos</p>
 
         <input type="file" onChange={e => setFile(e.target.files[0])} />
-
-        <InputText holder="Mi lista" type={"TextArea"} text="Descripcion" />
+        <TextArea text="Descripción" holder="Agrega la sipnosis del libro" />
         {/* <Link to="/my-account"> */}
         <PrimaryBtnForm text="Enviar" cssClasses="formCustomBtn black2Btn" />
         {/* </Link> */}
-        <Link to="/my-account">
-          <PrimaryBtnForm
-            text="Cancelar"
-            cssClasses="formCustomBtn black2Btn"
-          />
-        </Link>
-      </Form>
+        <PrimaryBtnForm text="Cancelar" cssClasses="formCustomBtn black2Btn" />
+      </form>
     </Card>
   );
 };

@@ -1,4 +1,4 @@
-import "./textArea.css";
+import "./inputText.css";
 
 const TextArea = ({text, holder, name, value, id, onChange}) => {
   return (
@@ -12,7 +12,7 @@ const TextArea = ({text, holder, name, value, id, onChange}) => {
         id={id}
         value={value}
         onChange={onChange}
-        className="formTextArea"
+        className="input__textArea"
       ></textarea>
     </>
   );

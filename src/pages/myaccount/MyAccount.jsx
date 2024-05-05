@@ -93,7 +93,7 @@ const SectionLists = () => {
       />
       {/* TODO: el link para este */}
       {/* <BtnAdd tolink="/new-list" /> */}
-      <BtnAdd tolink="/my-lists" />
+      <BtnAdd tolink="/new-list" />
     </Card>
   );
 };
