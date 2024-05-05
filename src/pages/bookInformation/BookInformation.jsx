@@ -26,6 +26,7 @@ import mark from "../../assets/icons/marcador-icon.svg";
 import Slider from "../../components/slider/Slider.jsx";
 //Comments
 import Comments from "./commentarySection/Comments.jsx";
+import {Link} from "react-router-dom";
 
 //Aux functions
 const HeartButton = ({className}) => {
@@ -99,22 +100,21 @@ const BookInfoSection = ({
           <h3 className="bookInfo__right__author">{authorName}</h3>
 
           <div className="relevantInfo">
-            <div className="relevantInfo__subCont">
+            <a className="relevantInfo__subCont" href="#rate-stars">
               <AiOutlineStar className="relevantInfo__icon1" />
               <span className="rank__real">{rank}</span>/
               <span className="rank__total">5.0</span>
-            </div>
+            </a>
 
             <div className="relevantInfo__subCont">
-              <div>
+              <a className="relevantInfo__subCont" href="#comments">
                 <img
                   src={coment}
                   alt="icon of comments of this book"
                   className="relevantInfo__icon1"
                 />
-                {/* TODO: Hacer que al clickear esto te redirija a la sección de comentarios */}
                 <span> {numComments} comentarios</span>
-              </div>
+              </a>
 
               <div>
                 <HeartButton className="relevantInfo__icon2 heartLike" />
@@ -184,7 +184,7 @@ const RateStarsSection = () => {
   const [number, setNumber] = useState(0);
 
   return (
-    <Card h1Text="Califica este libro" h1Center>
+    <Card h1Text="Califica este libro" h1Center id="rate-stars">
       <div className="stars_container">
         {Array(5)
           .fill()
@@ -235,7 +235,7 @@ const BookPage = () => {
       <Card h1Text="Relacionados" id="Books-relacionados">
         <Slider />
       </Card>
-      <Card h1Text="Comentarios">
+      <Card h1Text="Comentarios" id="comments">
         <Comments />
         {/* <Comentarios userId={"1"} userName={"Jose"}></Comentarios> */}
       </Card>

@@ -8,7 +8,7 @@ const DropdownBtnItem = ({text, toLink, iconPath}) => {
   const alticon = "Icono de";
   return (
     <li>
-      <Link to={toLink} className="btnDropdown__menu__item">
+      <Link to={toLink} className="btnDropdown__menu__item navHover">
         <span className="btnDropdown__menu__item__icon">
           <img src={iconPath} alt={alticon + " " + text}></img>
         </span>
