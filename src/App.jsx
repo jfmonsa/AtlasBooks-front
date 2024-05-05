@@ -23,7 +23,8 @@ import Lists from "./pages/myaccount/Lists.jsx";
 // import UserPassConf from "./pages/myaccount/UserPassConf.jsx";
 // import Report from "./pages/account/Report.jsx";
 // import ConfPassDel from "./pages/account/confPassDel.jsx";
-// import Recommended from "./pages/recommended/Recommended.jsx";
+import Recommended from "./pages/recommended/Recommended.jsx";
+import DiscoverList from "./pages/discoverList/DiscoverList.jsx";
 
 //layouts
 import RootLayout from "./RootLayout.jsx";
@@ -52,14 +53,15 @@ const router = createBrowserRouter(
       <Route path="users-details" element={<ChangeUserDetails />} />
       <Route path="upload-book" element={<UploadBook />} />
       <Route path="new-list" element={<NewList />} />
-      {/* <Route path="recommended" /> */}
+      <Route path="recommended" element={<Recommended />} />
       {/* <Route path="lists">
           Aquí iría cada lista que tenga el usuario
         </Route>*/}
       {/* TODO: change path for book/id_del_libro */}
       {/* <Route path="Report" element={<Report />} /> */}
       <Route path="book-information" element={<BookInformation />} />
-      {/* <Route path="categories" element={<BookInformation />} /> */}
+      <Route path="categories" element={<BookInformation />} />
+      <Route path="discover-list" element={<DiscoverList />} />
 
       {/* Routes for admin */}
       <Route path="results" element={<AdminResults />} />

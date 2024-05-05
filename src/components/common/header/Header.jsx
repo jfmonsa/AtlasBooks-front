@@ -15,21 +15,6 @@ import {useState} from "react";
 import {NavLink, Link} from "react-router-dom";
 import DropMenu from "../../dropMenu/DropMenu.jsx";
 
-// Auxiliary components for dropdownmenu
-const DropdownItem = ({toLink, icon, text}) => {
-  const alticon = "Icono de";
-  return (
-    <li>
-      <Link to={toLink} className="dropmenu__item navHover">
-        <span className="dropmenu__item__icon">
-          <img src={icon} alt={alticon + " " + text}></img>
-        </span>
-        <span className="dropmenu__item__text">{text}</span>
-      </Link>
-    </li>
-  );
-};
-
 const menuOptions = [
   {toLink: "/my-account", iconPath: MenuProfileIcon, text: "Mi cuenta"},
   //Si el USUARIO no a iniciado sessión;
@@ -39,9 +24,13 @@ const menuOptions = [
   //Si el usuario es admin
   //  {toLink: "/", iconPath: MenuControlpanelIcon, text: "Panel de control"},
   {toLink: "/book-information", iconPath: MenuSearchIcon, text: "Buscar libro"},
-  {toLink: "/", iconPath: MenuCategoriesIcon, text: "Categorias"},
-  {toLink: "/", iconPath: MenuRecommendedIcon, text: "Recomendados"},
-  {toLink: "/", iconPath: MenuDiscoverlistsIcon, text: "Explorar listas"},
+  {toLink: "/categories", iconPath: MenuCategoriesIcon, text: "Categorias"},
+  {toLink: "/recommended", iconPath: MenuRecommendedIcon, text: "Recomendados"},
+  {
+    toLink: "/discover-list",
+    iconPath: MenuDiscoverlistsIcon,
+    text: "Explorar listas",
+  },
   {
     toLink: "/my-account#my-lists",
     iconPath: MenuMylistsIcon,
