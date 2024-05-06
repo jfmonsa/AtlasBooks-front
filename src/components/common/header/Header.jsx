@@ -3,16 +3,19 @@ import PrimaryBtnLink from "../../buttons/primaryBtn/PrimaryBtnLink.jsx";
 import logo_Atlas from "../../../assets/logo_Atlas.svg";
 import MenuProfileIcon from "../../../assets/icons/menu-profile.svg";
 import MenuCategoriesIcon from "../../../assets/icons/menu-categories.svg";
-import MenuControlpanelIcon from "../../../assets/icons/menu-controlPanel.svg";
+//import MenuControlpanelIcon from "../../../assets/icons/menu-controlPanel.svg";
 import MenuDiscoverlistsIcon from "../../../assets/icons/menu-discoverLists.svg";
-import MenuLoginIcon from "../../../assets/icons/menu-login.svg";
+//import MenuLoginIcon from "../../../assets/icons/menu-login.svg";
 import MenuLogoutIcon from "../../../assets/icons/menu-logout.svg";
 import MenuMylistsIcon from "../../../assets/icons/menu-myLists.svg";
 import MenuRecommendedIcon from "../../../assets/icons/menu-recommended.svg";
 import MenuSearchIcon from "../../../assets/icons/menu-search.svg";
-import MenuSingupIcon from "../../../assets/icons/menu-singup.svg";
-import {useState} from "react";
-import {NavLink, Link} from "react-router-dom";
+//import MenuSingupIcon from "../../../assets/icons/menu-singup.svg";
+
+import {useContext, useState} from "react";
+import LoginContext from "../../../contexts/LoginContext.jsx"
+
+import {NavLink} from "react-router-dom";
 import DropMenu from "../../dropMenu/DropMenu.jsx";
 
 const menuOptions = [
@@ -39,14 +42,59 @@ const menuOptions = [
   {toLink: "/login", iconPath: MenuLogoutIcon, text: "Salir"},
 ];
 
+
+
+const UnLogged = () => {
+
+  return(
+    <>
+      <li>
+          <NavLink to="/new-account" className="navbar-right__item">
+              Registrarse
+          </NavLink>
+      </li>
+      <li>
+          <NavLink to="/login" className="navbar-right__item">
+            Iniciar Sesion
+          </NavLink>
+      </li>
+    </> 
+  )
+}
+
+const Logged = () => {
+
+  return(
+
+    <li>
+      <NavLink to="/my-account" className="navbar-right__item">
+        Mi Perfil
+      </NavLink>
+    </li>
+  )
+}
+
+const IsLogged = () => {
+  const context = useContext(LoginContext)
+
+  if (context.logged)
+    return <Logged/>;
+  else return <UnLogged/>;
+
+}
+
 // Main header component
 const Header = () => {
+
   const [isOpen, setIsOpen] = useState(false);
   const setOpenedState = () => {
     setIsOpen(!isOpen);
   };
 
   return (
+
+    
+
     <header className="navbar">
       <NavLink to="/">
         <img src={logo_Atlas} alt="logo AtlassBook" />
@@ -62,25 +110,7 @@ const Header = () => {
               Donar
             </PrimaryBtnLink>
           </li>
-          {/* Si no ha iniciado sección */}
-          {/* <li>
-            <NavLink top="/new-account" className="navbar-right__item">
-              Registrarse
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/login" className="navbar-right__item">
-              Iniciar Sesion
-            </NavLink>
-          </li> */}
-          {/* 
-          TODO: fix this link when the Account page is ready
-           */}
-          <li>
-            <NavLink to="/my-account" className="navbar-right__item">
-              Mi Perfil
-            </NavLink>
-          </li>
+            <IsLogged/>
         </ul>
         <div
           className={isOpen ? "menu-button-opened" : "menu-button"}

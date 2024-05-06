@@ -33,41 +33,43 @@ import NewList from "./pages/myaccount/NewList.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<RootLayout />}>
-      <Route index element={<Home />} />
 
-      {/* Login related and recovery account */}
-      <Route path="login" element={<Login />} />
-      <Route path="new-account" element={<NewAccount />} />
+      <Route path="/" element={<RootLayout />}>
+        <Route index element={<Home />} />
 
-      {/* --- Routing recovery account */}
-      <Route path="recovery-account" element={<RecoveryAccount />} />
-      <Route path="send-email" element={<SendEmail />} />
-      <Route path="change-pass" element={<ChangePass />} />
+        {/* Login related and recovery account */}
+        <Route path="login" element={<Login />} />
+        <Route path="new-account" element={<NewAccount />} />
 
-      {/* Routing for edit details in my account */}
-      {/* TODO: change path for user/id_del_user */}
-      <Route path="my-account" element={<MyAccount />} />
-      <Route path="my-lists" element={<Lists />} />
-      <Route path="confirm-password" element={<PasswordConfirm />} />
-      <Route path="users-details" element={<ChangeUserDetails />} />
-      <Route path="upload-book" element={<UploadBook />} />
-      <Route path="new-list" element={<NewList />} />
-      <Route path="recommended" element={<Recommended />}/>
-      {/* <Route path="lists">
-          Aquí iría cada lista que tenga el usuario
-        </Route>*/}
-      {/* TODO: change path for book/id_del_libro */}
-      <Route path="report" element={<Report />} />
-      <Route path="book-information" element={<BookInformation />} />
+        {/* --- Routing recovery account */}
+        <Route path="recovery-account" element={<RecoveryAccount />} />
+        <Route path="send-email" element={<SendEmail />} />
+        <Route path="change-pass" element={<ChangePass />} />
 
-      <Route path="categories" element={<Categories />} />
-      <Route path="discover-list" element={<DiscoverList/>}/>
+        {/* Routing for edit details in my account */}
+        {/* TODO: change path for user/id_del_user */}
+        <Route path="my-account" element={<MyAccount />} />
+        <Route path="my-lists" element={<Lists />} />
+        <Route path="confirm-password" element={<PasswordConfirm />} />
+        <Route path="users-details" element={<ChangeUserDetails />} />
+        <Route path="upload-book" element={<UploadBook />} />
+        <Route path="new-list" element={<NewList />} />
+        <Route path="recommended" element={<Recommended />}/>
+        {/* <Route path="lists">
+            Aquí iría cada lista que tenga el usuario
+          </Route>*/}
+        {/* TODO: change path for book/id_del_libro */}
+        <Route path="report" element={<Report />} />
+        <Route path="book-information" element={<BookInformation />} />
 
-      {/* Routes for admin */}
-      <Route path="results" element={<AdminResults />} />
-      {/* <Route path="*" element={<NoFound404 />} /> */}
-    </Route>,
+        <Route path="categories" element={<Categories />} />
+        <Route path="discover-list" element={<DiscoverList/>}/>
+
+        {/* Routes for admin */}
+        <Route path="results" element={<AdminResults />} />
+        {/* <Route path="*" element={<NoFound404 />} /> */}
+      </Route>
+
   ),
 );
 

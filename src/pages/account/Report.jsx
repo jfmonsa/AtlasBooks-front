@@ -17,7 +17,7 @@ const Report = () => {
     <Card cardDialog h1_text="Reportar">
       {/* <DropDownButtonReport /> */}
       <form onSubmit={handleSubmit}>
-        <InputText holder="Contexto reporte" type={"text"} text="Reporte:" />
+         <InputText holder="Contexto reporte" type={"text"} text="Reporte:" />
           <PrimaryBtnForm text="Enviar" cssClasses="formCustomBtn black2Btn" />
       </form>
     </Card>
