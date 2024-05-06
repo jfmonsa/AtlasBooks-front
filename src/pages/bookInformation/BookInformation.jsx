@@ -1,6 +1,6 @@
 import "./bookInformation.css";
 import Card from "../../components/card/Card.jsx";
-import { Link, Navigate } from "react-router-dom";
+import {Link, Navigate} from "react-router-dom";
 //Rate starts
 import {AiFillStar, AiOutlineStar} from "react-icons/ai";
 import {useState} from "react";
@@ -27,7 +27,6 @@ import mark from "../../assets/icons/marcador-icon.svg";
 import Slider from "../../components/slider/Slider.jsx";
 //Comments
 import Comments from "./commentarySection/Comments.jsx";
-
 
 //Aux functions
 const HeartButton = ({className}) => {
@@ -167,7 +166,7 @@ const BookInfoSection = ({
           text="Reportar"
           cssClasses="warningBtn warningBtn--reportBook"
           tolink="/report"
-          />
+        />
       </div>
     </Card>
   );

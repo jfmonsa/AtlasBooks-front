@@ -3,6 +3,7 @@
   justify-content: center;
   flex-wrap: wrap;
   gap: var(--spacing-3) var(--spacing-5);
+  margin-bottom: var(--spacing-6);
 }
 .searcher__input,
 .searcher__button {
@@ -11,7 +12,7 @@
   font-weight: var(--fw-medium);
 }
 
-.searcher__content{
+.searcher__content {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -37,7 +38,7 @@
   font-weight: var(--fw-medium);
 }
 
-.more-options__buttons{
+.more-options__buttons {
   display: flex;
   margin: var(--spacing-2);
   justify-content: center;

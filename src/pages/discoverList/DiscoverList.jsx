@@ -9,9 +9,7 @@ const DiscoverList = ({}) => {
     <>
       <h1 className="display--heading">Descubre listas</h1>
       <h2 className="display--subheading">Best ranked</h2>
-      <div className="listSearch">
-        <Searcher />
-      </div>
+      <Searcher />
       <Card>
         <div className="titleListC">
           <div className="headerList">

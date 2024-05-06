@@ -34,9 +34,9 @@ const Searcher = ({type = "text", holder, toNavigate}) => {
     {toLink: "#", iconPath: languajeIcon, text: "Italiano"},
   ];
   const filesFormat = [
-      {toLink: "#", iconPath: fileIcon, text: "PDF"},
-      {toLink: "#", iconPath: fileIcon, text: "Ebook"},
-    ];
+    {toLink: "#", iconPath: fileIcon, text: "PDF"},
+    {toLink: "#", iconPath: fileIcon, text: "Ebook"},
+  ];
 
   return (
     <section className="searcher">

@@ -1,16 +1,6 @@
-/* Esto debería ser parte del Searcher */
-/* 
-.buttonOpciones {
-  width: 155px;
-  height: 48px;
-  background-color: black;
-  color: white;
-  border-radius: var(--border-rad-comp);
-} */
-
 .gridBooks {
   max-width: 1200px;
-  margin: var(--spacing-6) auto 60px;
+  margin: 0 auto 60px;
   display: flex;
   justify-content: center;
   align-items: start;
