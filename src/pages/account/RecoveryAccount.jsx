@@ -36,15 +36,16 @@ const RecoveryAccount = ({setUsuario}) => {
           typecss={"access"}
           text={"Email "}
         />
-
-        <PrimaryBtnForm
-          text="Enviar"
-          cssClasses="formCustomBtn purpleBtn"
-          id="3"
-        />
+        <Link to="/send-email">
+          <PrimaryBtnForm
+            text="Enviar"
+            cssClasses="formCustomBtn purpleBtn"
+            id="3"
+          />
+        </Link>
       </form>
 
-      <Link tolink="/send-email" className="account__forgot-link">
+      <Link to="/login" className="account__forgot-link">
         Volver al inicio de sesión
       </Link>
 

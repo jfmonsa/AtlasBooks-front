@@ -1,5 +1,7 @@
 import "./primarybtn.css";
 
+
+
 const PrimaryBtnForm = ({
   text,
   children,
@@ -13,8 +15,8 @@ const PrimaryBtnForm = ({
       className={"baseBtn" + " " + cssClasses}
       onClick={onClick}
     >
-      {text}
-      {children}
+        {text}
+        {children}
     </button>
   );
 };

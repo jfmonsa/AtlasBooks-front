@@ -14,13 +14,13 @@ const SendEmail = () => {
       </p>
 
       <img src={icon_mail} alt="" className="icon_mail" />
-
-      <PrimaryBtnForm
-        text="Iniciar Sesion"
-        cssClasses="formCustomBtn purpleBtn"
-        id="4"
-      />
-
+      <Link to="/login">
+        <PrimaryBtnForm
+          text="Iniciar Sesion"
+          cssClasses="formCustomBtn purpleBtn"
+          id="4"
+        />
+      </Link>
       <p className="text-link">
         No recibió el email?
         <Link tolink="/send-email" className="forgot-link">

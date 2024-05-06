@@ -73,27 +73,27 @@ const SectionLists = () => {
     <Card h1Text="Mis listas" id="my-lists">
       <SectionListsListCard
         listName="Mis Favoritos"
-        path="/user/"
+        path="/my-lists"
         desc="Lista de mis libros favoritos"
         numBooks="14"
         publicList
       />
       <SectionListsListCard
         listName="Mis Favoritos"
-        path="/user/"
+        path="/my-lists"
         desc="Lista de mis libros favoritos"
         numBooks="14"
       />
       <SectionListsListCard
         listName="Mis Favoritos"
-        path="/user/"
+        path="/my-lists"
         desc="Lista de mis libros favoritos"
         numBooks="14"
         publicList
       />
       {/* TODO: el link para este */}
       {/* <BtnAdd tolink="/new-list" /> */}
-      <BtnAdd tolink="/my-lists" />
+      <BtnAdd tolink="/new-list" />
     </Card>
   );
 };
@@ -147,12 +147,12 @@ const SectionOtherOpts = () => {
         <SectionOtherOptsOpt
           text="Editar mi información"
           iconSrc={IconEditDetails}
-          toLink="/login"
+          toLink="/confirm-password"
         />
         <SectionOtherOptsOpt
           text="Cambiar email"
           iconSrc={IconEditEmail}
-          toLink="/login"
+          toLink="/confirm-password"
         />
         <SectionOtherOptsOpt
           text="Cambiar contraseña"
@@ -162,7 +162,7 @@ const SectionOtherOpts = () => {
         <SectionOtherOptsOpt
           text="Eliminar cuenta"
           iconSrc={IconDelAccount}
-          toLink="/PassDel"
+          toLink="/confirm-password"
         />
       </ul>
     </Card>

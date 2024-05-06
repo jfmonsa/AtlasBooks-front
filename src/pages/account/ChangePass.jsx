@@ -46,13 +46,13 @@ const ChangePass = ({setUsuario}) => {
           typecss={"access"}
           text={"Repite tu nueva contraseña"}
         />
-        <Link to="/my-account">
+        {/* <Link to="/my-account"> */}
           <PrimaryBtnForm
             text="Enviar"
             cssClasses="formCustomBtn purpleBtn"
             id="3"
           />
-        </Link>
+        {/* </Link> */}
       </form>
 
       {error && (

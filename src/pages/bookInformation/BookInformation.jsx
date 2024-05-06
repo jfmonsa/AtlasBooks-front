@@ -1,6 +1,6 @@
 import "./bookInformation.css";
 import Card from "../../components/card/Card.jsx";
-
+import { Link, Navigate } from "react-router-dom";
 //Rate starts
 import {AiFillStar, AiOutlineStar} from "react-icons/ai";
 import {useState} from "react";
@@ -160,10 +160,13 @@ const BookInfoSection = ({
           boxCssClasses="btnDropDown--small btnDropDown--outline btnDropDown--moreOptions"
           textCssClasses="btnDropDown__text"
         /> */}
-        <PrimaryBtnForm
+        <Link to="/Report">
+          <PrimaryBtnForm
           text="Reportar"
           cssClasses="warningBtn warningBtn--reportBook"
-        />
+          Navigate="confirm-password"
+          />
+        </Link>
       </div>
     </Card>
   );

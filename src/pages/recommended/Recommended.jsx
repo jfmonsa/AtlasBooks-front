@@ -50,7 +50,7 @@ const books = [
   // Agrega más objetos de libros según sea necesario
 ];
 
-const Recommended = ({}) => {
+const Recommended = () => {
   return (
     <>
       <h1 className="display--heading">Recomendados</h1>
