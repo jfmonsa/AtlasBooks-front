@@ -9,6 +9,7 @@ import {useState} from "react";
 import BookImage from "../../assets/img/image1.png";
 import DropdownBtn from "../../components/dropDownButtons/DropdownBtn.jsx";
 import IconDropDown from "../../components/iconDropDown/IconDropDown.jsx";
+import {FaRegBookmark} from "react-icons/fa";
 // -- Download option's icon
 import Mega from "../../assets/icons/Icon-mega.svg";
 import Mediafire from "../../assets/icons/Icon-mediafire.svg";
@@ -118,11 +119,8 @@ const BookInfoSection = ({
               <div>
                 <HeartButton className="relevantInfo__icon2 heartLike" />
                 <IconDropDown
-                  altText="icon to save this book in a list"
-                  iconPath={mark}
-                  cssClassIcon="relevantInfo__icon2"
+                  icon={<FaRegBookmark className="relevantInfo__icon2" />}
                   options={listsOpts}
-                  cssClassContainer="iconDropDown "
                 />
               </div>
             </div>

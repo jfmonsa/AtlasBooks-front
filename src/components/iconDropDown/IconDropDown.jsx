@@ -1,9 +1,57 @@
 import "./iconDropDown.css";
-import DropMenu from "../../components/dropMenu/DropMenu.jsx";
+import {useState} from "react";
+import {FaRegBookmark, FaBookmark} from "react-icons/fa";
+
+const IconDropMenuItem = ({
+  text,
+  toLink,
+  iconPath,
+  cssClassItemCont,
+  itemSize,
+}) => {
+  const [mark, setMark] = useState(false);
+  return (
+    <li
+      className={`dropMenu__item--${itemSize} dropMenu__item  navHover  ${cssClassItemCont}`}
+      onClick={() => {
+        setMark(!mark);
+      }}
+    >
+      <span className="dropMenu__item__icon">
+        {mark ? <FaBookmark /> : <FaRegBookmark />}
+      </span>
+      <span className="dropMenu__item__text">{text}</span>
+    </li>
+  );
+};
+
+const IconDropMenu = ({
+  options,
+  cssClassContainer = "",
+  cssClassItemContainer = "",
+  itemSizep = "avg",
+  orientation = "left",
+  infoText,
+}) => {
+  return (
+    <ul className={`dropMenu dropMenu--${orientation} ${cssClassContainer}`}>
+      <li className="dropMenu--infoText"> {infoText} </li>
+      {options.map(option => (
+        <IconDropMenuItem
+          key={option.text}
+          onClick={option.onClick}
+          icon={option.icon}
+          text={option.text}
+          cssClassItemCont={cssClassItemContainer}
+          itemSize={itemSizep}
+        />
+      ))}
+    </ul>
+  );
+};
 
 const IconDropDown = ({
-  altText,
-  iconPath,
+  icon,
   options,
   cssClassContainer,
   cssClassIcon,
@@ -12,15 +60,21 @@ const IconDropDown = ({
   const [open, setOpen] = useState(false);
 
   return (
-    <span
-      className={cssClassContainer}
-      onClick={() => {
-        setOpen(!open);
-      }}
-    >
-      <img className={cssClassIcon} src={iconPath} alt={altText} />
+    <span className="iconDropDown">
+      <span
+        className={cssClassContainer}
+        onClick={() => {
+          setOpen(!open);
+        }}
+      >
+        {icon}
+      </span>
       {open && (
-        <DropMenu options={options} cssClassContainer={menuContainerCssClass} />
+        <IconDropMenu
+          infoText="Guardar en lista:"
+          options={options}
+          cssClassContainer={menuContainerCssClass}
+        />
       )}
     </span>
   );

@@ -35,6 +35,7 @@
   --black-light: #000;
   --black-text-light: #191b29;
   --shadow: rgba(0, 0, 0, 0.274);
+  --shadow-2: 0px 0px 10px rgba(0, 0, 0, 0.5);
   --shadow-spread: 4px;
   --shadow-radious: 4px;
   /* for states */

@@ -83,10 +83,10 @@ main > :first-child {
 }
 
 .navHover {
-  transition: background-color var(--speed);
+  transition: background-color var(--speed) !important;
 }
 .navHover:hover {
-  background-color: var(--border-graySurfaces-light);
+  background-color: var(--border-graySurfaces-light) !important;
 }
 
 /* Heandings */

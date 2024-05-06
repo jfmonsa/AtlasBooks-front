@@ -5,11 +5,26 @@
     .dropMenu
         padding: var(--spacing-2) 0
         width: 160px
+        box-shadow: var(--shadow-2)
+
+    .dropMenu--left
         left: -140px
-        // top: 24px
-        // left: translateX(-50%)
+
+    .dropMenu--right
+        right: -140px
+
+    .dropMenu__item,.dropMenu--infoText
+        background-color: inherit
+
     .dropMenu__item
         height: 42px
+        cursor: pointer
+
+    .dropMenu--infoText
+        height: 36px
+        padding: var(--spacing-2)
+        border-bottom: 1px solid var(--iconSurface-light)
+        margin-bottom: var(--spacing-2)
 
 .btnDropDown
     .dropMenu
