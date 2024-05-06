@@ -20,9 +20,8 @@ import MyAccount from "./pages/myaccount/MyAccount.jsx";
 import AdminResults from "./pages/myaccount/AdminResults.jsx";
 import ChangeUserDetails from "./pages/myaccount/ChangeUserDetails.jsx";
 import Lists from "./pages/myaccount/Lists.jsx";
-// import UserPassConf from "./pages/myaccount/UserPassConf.jsx";
 import Report from "./pages/account/Report.jsx";
-import PasswordConfirm from "./component/passwordConfirm/PasswordConfirm.jsx";
+import PasswordConfirm from "./components/passwordConfirm/PasswordConfirm.jsx";
 import Recommended from "./pages/recommended/Recommended.jsx";
 import DiscoverList from "./pages/discoverList/DiscoverList.jsx";
 import Categories from "./pages/categories/Categories.jsx";
@@ -59,9 +58,11 @@ const router = createBrowserRouter(
           Aquí iría cada lista que tenga el usuario
         </Route>*/}
       {/* TODO: change path for book/id_del_libro */}
-      <Route path="Report" element={<Report />} />
+      <Route path="report" element={<Report />} />
       <Route path="book-information" element={<BookInformation />} />
-      <Route path="categories" element={<BookInformation />} />
+
+      <Route path="categories" element={<Categories />} />
+      <Route path="discover-list" element={<DiscoverList/>}/>
 
       {/* Routes for admin */}
       <Route path="results" element={<AdminResults />} />

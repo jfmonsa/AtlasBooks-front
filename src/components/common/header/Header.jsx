@@ -15,77 +15,6 @@ import {useState} from "react";
 import {NavLink, Link} from "react-router-dom";
 import DropMenu from "../../dropMenu/DropMenu.jsx";
 
-<<<<<<< HEAD
-// Auxiliary components for dropdownmenu
-const DropdownItem = ({toLink, icon, text}) => {
-  const alticon = "Icono de";
-  return (
-    <li>
-      <Link to={toLink} className="dropmenu__item navHover">
-        <span className="dropmenu__item__icon">
-          <img src={icon} alt={alticon + " " + text}></img>
-        </span>
-        <span className="dropmenu__item__text">{text}</span>
-      </Link>
-    </li>
-  );
-};
-
-const DropdownMenu = () => {
-  return (
-    <ul className="dropmenu">
-      <DropdownItem
-        toLink="/my-account"
-        icon={MenuProfileIcon}
-        text="Mi cuenta"
-      ></DropdownItem>
-      {/* Si no ha iniciado sesión */}
-      {/* <DropdownItem
-        toLink="/login"
-        icon={MenuLoginIcon}
-        text="Iniciar sesión"
-      ></DropdownItem>
-      <DropdownItem
-        toLink="/new-account"
-        icon={MenuSingupIcon}
-        text="Registrarse"
-      ></DropdownItem> */}
-      {/* Si es admin: */}
-      {/* <DropdownItem toLink="/" icon={MenuControlpanelIcon} text="Panel de control"></DropdownItem> */}
-      <DropdownItem
-        toLink="/book-information"
-        icon={MenuSearchIcon}
-        text="Buscar libro"
-      ></DropdownItem>
-      <DropdownItem
-        toLink="/"
-        icon={MenuCategoriesIcon}
-        text="Categorias"
-      ></DropdownItem>
-      <DropdownItem
-        toLink="/recommended"
-        icon={MenuRecommendedIcon}
-        text="Recomendados"
-      ></DropdownItem>
-      <DropdownItem
-        toLink="/"
-        icon={MenuDiscoverlistsIcon}
-        text="Explorar listas"
-      ></DropdownItem>
-      <DropdownItem
-        toLink="/my-account#my-lists"
-        icon={MenuMylistsIcon}
-        text="Mis listas"
-      ></DropdownItem>
-      <DropdownItem
-        toLink="/login"
-        icon={MenuLogoutIcon}
-        text="Salir"
-      ></DropdownItem>
-    </ul>
-  );
-};
-=======
 const menuOptions = [
   {toLink: "/my-account", iconPath: MenuProfileIcon, text: "Mi cuenta"},
   //Si el USUARIO no a iniciado sessión;
@@ -109,7 +38,6 @@ const menuOptions = [
   },
   {toLink: "/login", iconPath: MenuLogoutIcon, text: "Salir"},
 ];
->>>>>>> b1a267f710d2478184fde0268a38f167903292ed
 
 // Main header component
 const Header = () => {

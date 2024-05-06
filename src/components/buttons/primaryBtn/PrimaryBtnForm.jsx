@@ -1,7 +1,6 @@
 import "./primarybtn.css";
 
 
-
 const PrimaryBtnForm = ({
   text,
   children,

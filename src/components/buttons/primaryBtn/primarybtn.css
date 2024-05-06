@@ -46,7 +46,7 @@ button {
 .black2Btn:hover {
   background-color: var(--black-text-light);
 }
-.warningBtn {
+a.warningBtn {
   background-color: var(--warning);
   border: 2px solid #000;
   color: var(--compSurface-light);

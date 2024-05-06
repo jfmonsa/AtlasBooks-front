@@ -10,6 +10,7 @@ import BookImage from "../../assets/img/image1.png";
 import DropdownBtn from "../../components/dropDownButtons/DropdownBtn.jsx";
 import IconDropDown from "../../components/iconDropDown/IconDropDown.jsx";
 import {FaRegBookmark} from "react-icons/fa";
+import PrimaryBtnLink from "../../components/buttons/primaryBtn/PrimaryBtnLink.jsx";
 // -- Download option's icon
 import Mega from "../../assets/icons/Icon-mega.svg";
 import Mediafire from "../../assets/icons/Icon-mediafire.svg";
@@ -20,13 +21,13 @@ import Instagram from "../../assets/icons/Icon-instagram.svg";
 import Telegram from "../../assets/icons/Icon-telegram.svg";
 import WhatsApp from "../../assets/icons/Icon-whatsapp.svg";
 import Enlace from "../../assets/icons/Icon-link.svg";
-import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm";
 import coment from "../../assets/icons/comentario-icon.svg";
 import mark from "../../assets/icons/marcador-icon.svg";
 //Relacionados
 import Slider from "../../components/slider/Slider.jsx";
 //Comments
 import Comments from "./commentarySection/Comments.jsx";
+
 
 //Aux functions
 const HeartButton = ({className}) => {
@@ -162,25 +163,11 @@ const BookInfoSection = ({
           boxCssClasses="btnDropDown btnDropDown--blue"
           textCssClasses="btnDropDown__text"
         />
-<<<<<<< HEAD
-        {/* Hacer una card dialog mejor para esta
-        
-        <DropdownBtn
-          options={moreOpts}
-          text="Guardar más..."
-          boxCssClasses="btnDropDown--small btnDropDown--outline btnDropDown--moreOptions"
-          textCssClasses="btnDropDown__text"
-        /> */}
-        <Link to="/Report">
-          <PrimaryBtnForm
-=======
-        <PrimaryBtnForm
->>>>>>> b1a267f710d2478184fde0268a38f167903292ed
+        <PrimaryBtnLink
           text="Reportar"
           cssClasses="warningBtn warningBtn--reportBook"
-          Navigate="confirm-password"
+          tolink="/report"
           />
-        </Link>
       </div>
     </Card>
   );

@@ -153,38 +153,19 @@ const SectionOtherOpts = () => {
       iconPath: IconShieldPass,
       text: "Cambiar contraseña",
     },
-    {toLink: "/PassDel", iconPath: IconDelAccount, text: "Eliminar cuenta"},
+    {toLink: "/confirm-password", iconPath: IconDelAccount, text: "Eliminar cuenta"},
   ];
   return (
     <Card h1Text="Opciones">
-      <ul>
-        <SectionOtherOptsOpt text="Donar" iconSrc={IconPaypal} toLink="#" />
-        <SectionOtherOptsOpt
-          text="Cerrar sesión"
-          iconSrc={IconLogout}
-          toLink="/login"
-        />
-        <SectionOtherOptsOpt
-          text="Editar mi información"
-          iconSrc={IconEditDetails}
-          toLink="/login"
-        />
-        <SectionOtherOptsOpt
-          text="Cambiar email"
-          iconSrc={IconEditEmail}
-          toLink="/login"
-        />
-        <SectionOtherOptsOpt
-          text="Cambiar contraseña"
-          iconSrc={IconShieldPass}
-          toLink="/confirm-password"
-        />
-        <SectionOtherOptsOpt
+      <DropMenu
+        options={SectionOtherOptsOptions}
+        cssClassContainer=" nonFloating"
+      />
+      {/* <SectionOtherOptsOpt
           text="Eliminar cuenta"
           iconSrc={IconDelAccount}
           toLink="/PassDel"
-        />
-      </ul>
+        /> */}
     </Card>
   );
 };
