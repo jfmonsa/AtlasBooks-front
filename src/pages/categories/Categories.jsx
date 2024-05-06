@@ -5,11 +5,10 @@ const Categories = ({}) => {
   return (
     <>
       <h1>Categorias</h1>
-      <Searcher></Searcher>
+      <Searcher holder={"Buscar libro..."}></Searcher>
       <Card h1Text={"Todas las Categorias"} h1Center>
         <Catergoria />
       </Card>
-      
     </>
   );
 };
