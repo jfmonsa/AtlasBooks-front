@@ -5,7 +5,13 @@ dropDownItem of a dropDownBtn or the burguer menu
 import "./dropMenu.sass";
 import {Link} from "react-router-dom";
 
-const DropMenuItem = ({text, toLink, iconPath, cssClassItemCont, itemSize}) => {
+const DropMenuItem = ({
+  text,
+  toLink,
+  iconPath,
+  cssClassItemCont = "",
+  itemSize,
+}) => {
   const alticon = "Icono de";
   return (
     <li>
@@ -24,8 +30,8 @@ const DropMenuItem = ({text, toLink, iconPath, cssClassItemCont, itemSize}) => {
 
 const DropMenu = ({
   options,
-  cssClassContainer,
-  cssClassItemContainer,
+  cssClassContainer = "",
+  cssClassItemContainer = "",
   itemSizep = "avg",
 }) => {
   /* Item size acepta valores de: avg, small
