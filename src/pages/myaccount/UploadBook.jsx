@@ -1,11 +1,10 @@
 import Card from "../../components/card/Card.jsx";
 import InputText from "../../components/inputText/InputText.jsx";
+import TextArea from "../../components/inputText/TextArea.jsx";
 import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm.jsx";
-import {Link, Form} from "react-router-dom";
 import DropdownBtn from "../../components/dropDownButtons/DropdownBtn.jsx";
 import {useState, useCallback} from "react";
 import {useDropzone} from "react-dropzone";
-import "./UploadBook.css";
 
 const UploadBook = () => {
   const CatOptions = [{text: "Accion"}, {text: "Fantasia"}];
@@ -23,48 +22,21 @@ const UploadBook = () => {
   };
 
   return (
-    <Card cardDialog h1_text="Sube un libro" classname="UploadBook">
-      <Form method="post" action="" onSubmit={handleSubmit}>
-        <h2>Subir un libro</h2>
-        <InputText
-          holder="P. ej Movie Dick"
-          type={"text"}
-          typecss={"access"}
-          text="Titulo"
-        />
-        <InputText
-          holder="Autor 1"
-          type={"text"}
-          typecss={"access"}
-          text="Autor"
-        />
+    <Card cardDialog h1Text="Sube un libro" h1Center>
+      <form onSubmit={handleSubmit}>
+        <InputText holder="P. ej Movie Dick" type={"text"} text="Titulo" />
+        <InputText holder="Autor 1" type={"text"} text="Autor" />
         <PrimaryBtnForm
           text="Añadir autor"
           cssClasses="formCustomBtn black2Btn"
         />
-        <InputText
-          holder="978-3-16-148410-0"
-          type={"text"}
-          typecss={"access"}
-          text="ISBN"
-        />
-        <InputText holder="1963" type={"text"} typecss={"access"} text="Año" />
-        <InputText
-          holder="273"
-          type={"text"}
-          typecss={"access"}
-          text="Numero de paginas"
-        />
+        <InputText holder="978-3-16-148410-0" type={"text"} text="ISBN" />
+        <InputText holder="1963" type={"text"} text="Año" />
+        <InputText holder="273" type={"text"} text="Numero de paginas" />
+        <InputText holder="vol 1" type={"text"} text="Numero de volumen" />
         <InputText
           holder="vol 1"
           type={"text"}
-          typecss={"access"}
-          text="Numero de volumen"
-        />
-        <InputText
-          holder="vol 1"
-          type={"text"}
-          typecss={"access"}
           text="Publicador / casa editorial"
         />
         <DropdownBtn
@@ -94,23 +66,10 @@ const UploadBook = () => {
         <p>Sube uno o mas archivos en distintos formatos</p>
 
         <input type="file" onChange={e => setFile(e.target.files[0])} />
-
-        <InputText
-          holder="Mi lista"
-          type={"TextArea"}
-          typecss={"access"}
-          text="Descripcion"
-        />
-        {/* <Link to="/my-account"> */}
+        <TextArea text="Descripción" holder="Agrega la sipnosis del libro" />
         <PrimaryBtnForm text="Enviar" cssClasses="formCustomBtn black2Btn" />
-        {/* </Link> */}
-        <Link to="/my-account">
-          <PrimaryBtnForm
-            text="Cancelar"
-            cssClasses="formCustomBtn black2Btn"
-          />
-        </Link>
-      </Form>
+        <PrimaryBtnForm text="Cancelar" cssClasses="formCustomBtn black2Btn" />
+      </form>
     </Card>
   );
 };

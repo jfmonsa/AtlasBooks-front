@@ -8,19 +8,20 @@ import {useState} from "react";
 //Book Info
 import BookImage from "../../assets/img/image1.png";
 import DropdownBtn from "../../components/dropDownButtons/DropdownBtn.jsx";
+import IconDropDown from "../../components/iconDropDown/IconDropDown.jsx";
+import {FaRegBookmark} from "react-icons/fa";
 // -- Download option's icon
 import Mega from "../../assets/icons/Icon-mega.svg";
 import Mediafire from "../../assets/icons/Icon-mediafire.svg";
 // -- Share option's icon
+import {FaRegHeart, FaHeart} from "react-icons/fa";
 import Facebook from "../../assets/icons/Icon-facebook.svg";
 import Instagram from "../../assets/icons/Icon-instagram.svg";
 import Telegram from "../../assets/icons/Icon-telegram.svg";
 import WhatsApp from "../../assets/icons/Icon-whatsapp.svg";
 import Enlace from "../../assets/icons/Icon-link.svg";
 import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm";
-// import Star from "../../assets/icons/Star.svg";
 import coment from "../../assets/icons/comentario-icon.svg";
-import heart from "../../assets/icons/corazon-icon.svg";
 import mark from "../../assets/icons/marcador-icon.svg";
 //Relacionados
 import Slider from "../../components/slider/Slider.jsx";
@@ -28,6 +29,21 @@ import Slider from "../../components/slider/Slider.jsx";
 import Comments from "./commentarySection/Comments.jsx";
 
 //Aux functions
+const HeartButton = ({className}) => {
+  const [likeBook, setLikeBook] = useState(false);
+  return likeBook ? (
+    <FaHeart
+      style={{
+        color: "var(--error)",
+      }}
+      className={className}
+      onClick={() => setLikeBook(false)}
+    />
+  ) : (
+    <FaRegHeart onClick={() => setLikeBook(true)} className={className} />
+  );
+};
+
 const BookInfoSectionSpecs = ({left, right}) => {
   return (
     <li className="specs__item">
@@ -64,12 +80,12 @@ const BookInfoSection = ({
     {toLink: "#", iconPath: Mega, text: "Mega"},
     {toLink: "#", iconPath: Mediafire, text: "Mediafire"},
   ];
-  const moreOpts = [{toLink: "#", iconPath: mark, text: "Lista Punk"}];
-
-  /*
-  <DropdownItemListUser toLink="" text="Favoritos"></DropdownItemListUser>
-        <DropdownItemListUser toLink="" text="Leyendo"></DropdownItemListUser>
-  */
+  const listsOpts = [
+    {toLink: "#", iconPath: mark, text: "Lista Punk"},
+    {toLink: "#", iconPath: mark, text: "Lista Punk"},
+    {toLink: "#", iconPath: mark, text: "Lista Punk"},
+    {toLink: "#", iconPath: mark, text: "Lista Punk"},
+  ];
 
   return (
     <Card h1Text="Inicio / libro">
@@ -84,33 +100,27 @@ const BookInfoSection = ({
           <h3 className="bookInfo__right__author">{authorName}</h3>
 
           <div className="relevantInfo">
-            <div className="relevantInfo__subCont">
+            <a className="relevantInfo__subCont" href="#rate-stars">
               <AiOutlineStar className="relevantInfo__icon1" />
               <span className="rank__real">{rank}</span>/
               <span className="rank__total">5.0</span>
-            </div>
+            </a>
 
             <div className="relevantInfo__subCont">
-              <div>
+              <a className="relevantInfo__subCont" href="#comments">
                 <img
                   src={coment}
                   alt="icon of comments of this book"
                   className="relevantInfo__icon1"
                 />
-                {/* TODO: Hacer que al clickear esto te redirija a la sección de comentarios */}
                 <span> {numComments} comentarios</span>
-              </div>
+              </a>
 
               <div>
-                <img
-                  className="relevantInfo__icon2"
-                  src={heart}
-                  alt="icon of save this book in favorites"
-                />
-                <img
-                  className="relevantInfo__icon2"
-                  src={mark}
-                  alt="icon to save this book in whistlist"
+                <HeartButton className="relevantInfo__icon2 heartLike" />
+                <IconDropDown
+                  icon={<FaRegBookmark className="relevantInfo__icon2" />}
+                  options={listsOpts}
                 />
               </div>
             </div>
@@ -152,6 +162,7 @@ const BookInfoSection = ({
           boxCssClasses="btnDropDown btnDropDown--blue"
           textCssClasses="btnDropDown__text"
         />
+<<<<<<< HEAD
         {/* Hacer una card dialog mejor para esta
         
         <DropdownBtn
@@ -162,6 +173,9 @@ const BookInfoSection = ({
         /> */}
         <Link to="/Report">
           <PrimaryBtnForm
+=======
+        <PrimaryBtnForm
+>>>>>>> b1a267f710d2478184fde0268a38f167903292ed
           text="Reportar"
           cssClasses="warningBtn warningBtn--reportBook"
           Navigate="confirm-password"
@@ -176,7 +190,7 @@ const RateStarsSection = () => {
   const [number, setNumber] = useState(0);
 
   return (
-    <Card h1Text="Califica este libro" h1Center>
+    <Card h1Text="Califica este libro" h1Center id="rate-stars">
       <div className="stars_container">
         {Array(5)
           .fill()
@@ -227,24 +241,11 @@ const BookPage = () => {
       <Card h1Text="Relacionados" id="Books-relacionados">
         <Slider />
       </Card>
-      <Card h1Text="Comentarios">
+      <Card h1Text="Comentarios" id="comments">
         <Comments />
-        {/* <Comentarios userId={"1"} userName={"Jose"}></Comentarios> */}
       </Card>
     </>
   );
 };
-
-/*
-const Card = ({
-  h1Text,
-  children,
-  customCssClassesSection = "",
-  customCssClasesH1 = "",
-  id,
-  h1Center = false,
-  cardDialog = false,
-})
-*/
 
 export default BookPage;

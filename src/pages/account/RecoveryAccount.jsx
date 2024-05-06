@@ -33,7 +33,6 @@ const RecoveryAccount = ({setUsuario}) => {
           holder={EMAIL}
           value={user}
           onChange={e => setUser(e.target.value)}
-          typecss={"access"}
           text={"Email "}
         />
         <Link to="/send-email">

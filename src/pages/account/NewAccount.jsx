@@ -25,18 +25,12 @@ const NewAccount = ({setUsuario}) => {
     <>
       <h1 className="account__title">Crear una cuenta nueva</h1>
       <form onSubmit={handleSubmit}>
-        <InputText
-          type={"text"}
-          holder={NAME}
-          typecss={"access"}
-          text={"Nombre "}
-        />
+        <InputText type={"text"} holder={NAME} text={"Nombre "} />
         <InputText
           type={"text"}
           holder={EMAIL}
           value={user}
           onChange={e => setUser(e.target.value)}
-          typecss={"access"}
           text={"Email "}
         />
 
@@ -45,7 +39,6 @@ const NewAccount = ({setUsuario}) => {
           holder={PASSWD}
           value={password}
           onChange={e => setPassword(e.target.value)}
-          typecss={"access"}
           text={"Contraseña"}
         />
 

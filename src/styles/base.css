@@ -1,4 +1,4 @@
-/* small reset */
+/* =============== small reset =============== */
 *,
 *::before,
 *::after {
@@ -13,14 +13,14 @@ ol {
 a {
   text-decoration: none;
 }
+/* =============== small reset =============== */
 
-/* Gloabal styles */
+/* =============== Gloabal styles =============== */
 body {
   background-color: var(--bg-light);
   overflow-x: hidden;
 }
 
-/* TODO: Revisar en que partes estoy repitiendo este estilo para eliminarlos ahí */
 div,
 p,
 a,
@@ -47,11 +47,19 @@ a,
 button {
   cursor: pointer;
 }
+a:visited,
+a:link {
+  color: inherit;
+}
 img {
   object-fit: contain;
 }
+textarea {
+  resize: none;
+}
+/* =============== Gloabal styles =============== */
 
-/* Sticky footer */
+/* =============== Sticky footer & fixed header =============== */
 #root {
   min-height: 100vh;
   display: flex;
@@ -60,9 +68,12 @@ img {
 main {
   flex: 1;
 }
+main > :first-child {
+  margin-top: var(--spacing-6);
+}
+/* =============== Sticky footer & fixed header =============== */
 
-/* Other styles */
-
+/* =============== Other styles ===============*/
 /* Z-index issues */
 .navbar {
   z-index: 90;
@@ -70,13 +81,12 @@ main {
 .DropDownBtn {
   z-index: 20;
 }
-/* padding top style */
-main section:first-child {
-  margin-top: var(--spacing-6);
-}
 
+.navHover {
+  transition: background-color var(--speed) !important;
+}
 .navHover:hover {
-  background-color: var(--border-graySurfaces-light);
+  background-color: var(--border-graySurfaces-light) !important;
 }
 
 /* Heandings */

@@ -1,29 +1,20 @@
 import "./inputText.css";
 
-const InputText = ({
-  text,
-  holder,
-  type = "text",
-  name,
-  value,
-  id,
-  onChange,
-}) => {
+const TextArea = ({text, holder, name, value, id, onChange}) => {
   return (
     <>
       <label htmlFor={id} className="input__label">
         {text}
       </label>
-      <input
-        type={type}
+      <textarea
         placeholder={holder}
         name={id}
         id={id}
         value={value}
         onChange={onChange}
-        className="input__typeText"
-      />
+        className="input__textArea"
+      ></textarea>
     </>
   );
 };
-export default InputText;
+export default TextArea;

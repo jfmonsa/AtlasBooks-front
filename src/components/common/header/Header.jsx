@@ -13,7 +13,9 @@ import MenuSearchIcon from "../../../assets/icons/menu-search.svg";
 import MenuSingupIcon from "../../../assets/icons/menu-singup.svg";
 import {useState} from "react";
 import {NavLink, Link} from "react-router-dom";
+import DropMenu from "../../dropMenu/DropMenu.jsx";
 
+<<<<<<< HEAD
 // Auxiliary components for dropdownmenu
 const DropdownItem = ({toLink, icon, text}) => {
   const alticon = "Icono de";
@@ -83,6 +85,31 @@ const DropdownMenu = () => {
     </ul>
   );
 };
+=======
+const menuOptions = [
+  {toLink: "/my-account", iconPath: MenuProfileIcon, text: "Mi cuenta"},
+  //Si el USUARIO no a iniciado sessión;
+  //TODO: hacer esto usando conditional rendering y useContext hook
+  //  {toLink: "/login", iconPath: MenuLoginIcon, text: "Iniciar sesión"},
+  //  {toLink: "/new-account", iconPath: MenuSingupIcon, text: "Registrarse"},
+  //Si el usuario es admin
+  //  {toLink: "/", iconPath: MenuControlpanelIcon, text: "Panel de control"},
+  {toLink: "/book-information", iconPath: MenuSearchIcon, text: "Buscar libro"},
+  {toLink: "/categories", iconPath: MenuCategoriesIcon, text: "Categorias"},
+  {toLink: "/recommended", iconPath: MenuRecommendedIcon, text: "Recomendados"},
+  {
+    toLink: "/discover-list",
+    iconPath: MenuDiscoverlistsIcon,
+    text: "Explorar listas",
+  },
+  {
+    toLink: "/my-account#my-lists",
+    iconPath: MenuMylistsIcon,
+    text: "Mis listas",
+  },
+  {toLink: "/login", iconPath: MenuLogoutIcon, text: "Salir"},
+];
+>>>>>>> b1a267f710d2478184fde0268a38f167903292ed
 
 // Main header component
 const Header = () => {
@@ -134,7 +161,7 @@ const Header = () => {
           <div className="menu-button-burger"></div>
         </div>
       </div>
-      {isOpen && <DropdownMenu />}
+      {isOpen && <DropMenu options={menuOptions} />}
     </header>
   );
 };

@@ -9,22 +9,10 @@
 
 .btnDropDown
     height: 42px
-    width: 150px
+    width: 160px
 
 .btnDropDown--small
     height: 32px
-    // width: 150px
-
-.btnDropDown__text
-    padding-left: var(--spacing-2)
-    padding-right: var(--spacing-3)
-    border-right: 2px solid #fff
-    font-size: var(--fs-2)
-    font-weight: var(--fw-medium)
-
-.btnDropDown__icon
-    padding-left: var(--spacing-3)
-    padding-right: var(--spacing-2)
 
 //Diseño boton descargar ---------------------------------------------------------------------------
 .btnDropDown--black, .btnDropDown--black:active
@@ -41,12 +29,17 @@
 
 .btnDropDown--blue:hover
     background-color: #0011ffc2
-//Diseño boton lista de usuarios ------------------------------------------------------------------
-.btnDropDown--purple, .btnDropDown--purple:active
-    background-color: var(--bg-purple-light)
 
-.btnDropDown--purple:hover
-    background-color: var(--border-pruple-light)
+.btnDropDown__text
+    padding-left: var(--spacing-2)
+    padding-right: var(--spacing-3)
+    border-right: 2px solid #fff
+    font-size: var(--fs-2)
+    font-weight: var(--fw-medium)
+
+.btnDropDown__icon
+    padding-left: var(--spacing-3)
+    padding-right: var(--spacing-2)
 
 .btnDropDown--outline
     background-color: initial
@@ -54,53 +47,3 @@
 
 .btnDropDown--outline .btnDropDown__text
     border-right: 2px solid #000
-// Detalles globales ------------------------------------------------------------------------------
-// Diseño dropdown menu
-
-.btnDropDown
-    .btnDropdown__menu
-        top: 42px
-        width: 150px
-
-    .btnDropdown__menu__item
-        height: 48px
-
-.btnDropDown--small
-    .btnDropdown__menu
-        top: 32px
-        width: 100%
-
-    .btnDropdown__menu__item
-        height: 36px
-
-.btnDropdown__menu
-    position: absolute
-    background-color: var(--compSurface-light)
-    // Hacer una variable para este borde TODO:
-    border: 2px solid var(--border-graySurfaces-light)
-    border-radius: var(--border-rad-comp)
-    padding: var(--spacing-1)
-
-.btnDropdown__menu__item
-    height: 48px
-    display: flex
-    align-items: center
-    border-radius: var(--border-rad-comp)
-    transition: background var(--speed)
-    padding: var(--spacing-2)
-
-    &:hover
-        background-color: var(--border-graySurfaces-light)
-
-.btnDropdown__menu__item__icon
-    width: var(--spacing-5)
-    height: var(--spacing-5)
-    margin-right: var(--spacing-3)
-    display: flex
-    justify-content: center
-    align-items: center
-    border-radius: var(--border-rad-comp)
-    background-color: var(--iconSurface-light)
-
-.btnDropdown__menu__item__text
-    color: var(--black-light)
