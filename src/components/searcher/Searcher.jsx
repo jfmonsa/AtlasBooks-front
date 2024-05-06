@@ -39,7 +39,7 @@ const Searcher = ({type = "text", holder, toNavigate}) => {
     ];
 
   return (
-    <section>
+    <section className="searcher__content">
       <form className={"searcher"} onSubmit={handleSearch}>
         <input type={type} className={"searcher__input"} placeholder={holder} />
         <PrimaryBtnForm
