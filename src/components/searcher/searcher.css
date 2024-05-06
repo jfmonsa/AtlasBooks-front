@@ -33,7 +33,6 @@
 .more-options__button {
   width: 150px;
   height: 36px;
-  margin-top: var(--spacing-3);
   font-size: var(--fs-2);
   font-weight: var(--fw-medium);
 }
