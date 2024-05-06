@@ -32,13 +32,26 @@
 }
 
 .list__follow__btn {
-  width: 66px;
+  /* width: 66px; */
   height: 32px;
-  background-color: var(--bg-purple-light);
-  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--spacing-2);
+  border: var(--border-1);
   border-radius: var(--border-rad-comp);
   font-weight: var(--fw-medium);
   font-size: var(--fs-2);
+}
+
+.list__follow__btn--unfollowed {
+  background-color: var(--bg-purple-light);
+  color: var(--compSurface-light);
+}
+
+.list__follow__btn--followed {
+  background-color: var(--bg-button-donar);
+  color: var(--border-pruple-light);
 }
 
 .list__description {

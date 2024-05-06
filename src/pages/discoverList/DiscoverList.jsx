@@ -3,6 +3,7 @@ import Searcher from "../../components/searcher/Searcher.jsx";
 import Card from "../../components/card/Card.jsx";
 import "./discoverList.css";
 import "../../components/gridBooks/gridBooks.css";
+import {useState} from "react";
 
 const lists = [
   {
@@ -33,6 +34,32 @@ const lists = [
   },
 ];
 
+// Aux functions
+const FollowBtnList = () => {
+  const [followed, setFollowed] = useState(false);
+  let btnClassName = "list__follow__btn ";
+  let btnText = "";
+
+  if (followed) {
+    btnClassName += "list__follow__btn--followed";
+    btnText = "Seguido";
+  } else {
+    btnClassName += "list__follow__btn--unfollowed";
+    btnText = "Seguir";
+  }
+  return (
+    <button
+      onClick={() => {
+        setFollowed(!followed);
+      }}
+      className={btnClassName}
+    >
+      {btnText}
+    </button>
+  );
+};
+
+// main component
 const DiscoverListList = ({
   title,
   author,
@@ -51,7 +78,7 @@ const DiscoverListList = ({
         <div className="list__follow">
           <h5 className="list__follow__nBooks">{`${nBooks} libros`} </h5>
           <h6 className="list__follow__nFollowers">{`${nFollowers} seguidores`}</h6>
-          <button className="list__follow__btn">seguir</button>
+          <FollowBtnList />
         </div>
       </div>
 
