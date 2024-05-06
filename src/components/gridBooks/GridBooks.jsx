@@ -5,7 +5,6 @@ const GridBooks = ({books}) => {
   return (
     <>
       <div className="gridBooks">
-        {/* list rendering  */}
         {books.map((book, index) => (
           <Book
             key={index}

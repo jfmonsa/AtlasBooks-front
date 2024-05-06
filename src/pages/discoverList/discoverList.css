@@ -1,70 +1,66 @@
-.titleListC{
-display:flex;
-align-items: center;
-margin-right:32px;
-}
-.listSearch{
-margin-bottom: 80px;
+.listExplore {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
-.sliderList{
- margin-left: 32px;
- margin-right: 32px;
+.list__info__title {
+  margin-bottom: var(--spacing-2);
+  margin-right: var(--spacing-3);
+  font-size: var(--fs-3);
+  font-weight: var(--fw-semibold);
+  color: var(--black-light);
 }
 
-.titleList{
-font-weight:var(--fw-semibold);
-font-size:24px;
-margin-bottom: 8px;
-margin-top: 16px;
-margin-left: 32px;
-max-width:500px;
+.list__info__autor {
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-2);
+  color: #828282;
+}
+.list__follow {
+  max-height: 32px;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+.list__follow__nBooks,
+.list__follow__nFollowers {
+  font-size: var(--fs-2);
+  font-weight: var(--fw-medium);
+  color: var(--bg-purple-light);
+  margin-right: var(--spacing-3);
 }
 
-.subtitleList{
-font-weight:var(--fw-medium);
-font-size:var(--fs-3); 
-color: rgba(130, 130, 130, 1);   
-margin-bottom: 32px;
-margin-left: 32px;
-max-width:500px;
+.list__follow__btn {
+  width: 66px;
+  height: 32px;
+  background-color: var(--bg-purple-light);
+  color: white;
+  border-radius: var(--border-rad-comp);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-2);
 }
 
-.followList{
-justify-content: space-between;
-display: flex;
-width: 307px;
-height: 32px;
+.list__description {
+  margin: var(--spacing-4) 0 var(--spacing-5);
+  max-height: 100px;
+  max-width: 100%;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.headerList{
-flex:1;
+.list__slider {
+  margin-bottom: var(--spacing-3);
 }
 
-.booksNumber{
-font-size: var(--fs-2);  
-font-weight: 700px;
-color:rgba(126, 66, 255, 1);  
-text-align: center;
+@media screen and (max-width: 645px) {
+  .list__follow {
+    width: 100%;
+  }
+  .list__info__autor {
+    margin-bottom: var(--spacing-4);
+  }
 }
-
-.buttonFollowList{
-width: 66px;
-height: 32px;
-background-color:var(--bg-purple-light);
-color: white;
-border-radius:var(--border-rad-comp);
-font-weight:var(--fw-medium);
-font-size: var(--fs-2);
-}
-
-.discoverInfoList{
-font-size: var(--fs-2);
-font-weight:var(--fw-medium);
-color: black;
-margin-left: 32px;
-margin-right: 32px;
-margin-bottom:24px;
-max-width:1280px;
-}
-
