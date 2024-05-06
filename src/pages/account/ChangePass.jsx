@@ -2,22 +2,26 @@ import "./account.css";
 import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm.jsx";
 import InputText from "../../components/inputText/InputText.jsx";
 import {PASSWD} from "../../utils/placeholder.js";
-import {Link} from "react-router-dom";
 import {useState} from "react";
+import { useNavigate } from "react-router-dom";
 
-const ChangePass = ({setUsuario}) => {
-  const [user, setUser] = useState("");
+const ChangePass = () => {
+  const [pass1, setPass1] = useState("");
+  const [pass2, setPass2] = useState("");
   const [error, setError] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = e => {
     e.preventDefault();
-    if (user == "") {
+    if (pass1 == "") {
       setError(true);
-      return;
     }
-    setError(false);
+    else{
+      setError(false);
 
-    setUsuario([user]);
+      setPass1([pass1]);
+    }
+    navigate("/my-account");
   };
 
   return (
@@ -33,24 +37,24 @@ const ChangePass = ({setUsuario}) => {
         <InputText
           type={"password"}
           holder={PASSWD}
-          value={user}
-          onChange={e => setUser(e.target.value)}
+          onChange={e => setPass1(e.target.value)}
+          typecss={"access"}
           text={"Nueva contraseña"}
         />
 
         <InputText
           type={"password"}
           holder={PASSWD}
-          onChange={e => setUser(e.target.value)}
+          onChange={e => setPass2(e.target.value)}
+          typecss={"access"}
           text={"Repite tu nueva contraseña"}
         />
-        <Link to="/my-account">
-          <PrimaryBtnForm
+
+        <PrimaryBtnForm
             text="Enviar"
             cssClasses="formCustomBtn purpleBtn"
             id="3"
-          />
-        </Link>
+        />       
       </form>
 
       {error && (

@@ -74,20 +74,20 @@ const SectionLists = () => {
     <Card h1Text="Mis listas" id="my-lists">
       <SectionListsListCard
         listName="Mis Favoritos"
-        path="/user/"
+        path="/my-lists"
         desc="Lista de mis libros favoritos"
         numBooks="14"
         publicList
       />
       <SectionListsListCard
         listName="Mis Favoritos"
-        path="/user/"
+        path="/my-lists"
         desc="Lista de mis libros favoritos"
         numBooks="14"
       />
       <SectionListsListCard
         listName="Mis Favoritos"
-        path="/user/"
+        path="/my-lists"
         desc="Lista de mis libros favoritos"
         numBooks="14"
         publicList
@@ -153,7 +153,7 @@ const SectionOtherOpts = () => {
       iconPath: IconShieldPass,
       text: "Cambiar contraseña",
     },
-    {toLink: "/PassDel", iconPath: IconDelAccount, text: "Eliminar cuenta"},
+    {toLink: "/confirm-password", iconPath: IconDelAccount, text: "Eliminar cuenta"},
   ];
   return (
     <Card h1Text="Opciones">

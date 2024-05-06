@@ -1,10 +1,15 @@
 import Card from "../../components/card/Card.jsx";
 import InputText from "../../components/inputText/InputText.jsx";
 import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm.jsx";
-import {Link} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
+
 
 const ConfPassUs = ({redirectPath}) => {
+  const navigate = useNavigate();
+
   const handleSubmit = e => {
+    e.preventDefault();
+    navigate("/change-pass");
     //Este componente debe ser instanciado en cada opción de usuario como:
     // cambiar contraseña, cambiar email, o editar detalles
     //TODO: Aquí usar el useNavigate del routing para redirigir al redirectPath despues de hacer
