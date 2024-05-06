@@ -11,6 +11,12 @@
   font-weight: var(--fw-medium);
 }
 
+.searcher__content{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
 .searcher__input {
   width: 60vw;
   min-width: 300px;
@@ -22,4 +28,18 @@
 .searcher__button {
   width: 100px;
   margin-left: var(--spacing-5);
+}
+
+.more-options__button {
+  width: 150px;
+  height: 36px;
+  font-size: var(--fs-2);
+  font-weight: var(--fw-medium);
+}
+
+.more-options__buttons{
+  display: flex;
+  margin: var(--spacing-2);
+  justify-content: center;
+  flex-wrap: wrap;
 }
