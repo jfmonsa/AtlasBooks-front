@@ -7,6 +7,7 @@ import {
 
 //pages
 import Home from "./pages/home/Home.jsx";
+import Error from "./pages/error/Error.jsx";
 
 //Login related and recovery account
 import {Login} from "./pages/account/Login.jsx";
@@ -30,6 +31,24 @@ import Categories from "./pages/categories/Categories.jsx";
 import RootLayout from "./RootLayout.jsx";
 import UploadBook from "./pages/myaccount/UploadBook.jsx";
 import NewList from "./pages/myaccount/NewList.jsx";
+import { useContext } from "react";
+import LoginContext from "./contexts/LoginContext.jsx";
+
+const LoggedAdminRouting = () =>{
+  const context = useContext(LoginContext)
+
+  if (context.admin)
+    return <AdminResults />
+  else return <Error/>
+}
+
+const LoggedRouting = () =>{
+  const context = useContext(LoginContext)
+
+  if (context.logged)
+    return <MyAccount />
+  else return <Error/>
+}
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -48,7 +67,7 @@ const router = createBrowserRouter(
 
         {/* Routing for edit details in my account */}
         {/* TODO: change path for user/id_del_user */}
-        <Route path="my-account" element={<MyAccount />} />
+        <Route path="my-account" element={<LoggedRouting />} />
         <Route path="my-lists" element={<Lists />} />
         <Route path="confirm-password" element={<PasswordConfirm />} />
         <Route path="users-details" element={<ChangeUserDetails />} />
@@ -66,7 +85,7 @@ const router = createBrowserRouter(
         <Route path="discover-list" element={<DiscoverList/>}/>
 
         {/* Routes for admin */}
-        <Route path="results" element={<AdminResults />} />
+        <Route path="results" element={<LoggedAdminRouting /> } />
         {/* <Route path="*" element={<NoFound404 />} /> */}
       </Route>
 
