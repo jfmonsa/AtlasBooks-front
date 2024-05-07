@@ -18,12 +18,18 @@ import LoginContext from "../../../contexts/LoginContext.jsx"
 import {NavLink} from "react-router-dom";
 import DropMenu from "../../dropMenu/DropMenu.jsx";
 
+
+const IsLoggedMenuOption = () => {
+  const context = useContext(LoginContext)
+
+  if (context.logged)
+    return menuOptions.splice(0, 0, {toLink: "/my-account", iconPath: MenuProfileIcon, text: "Mi cuenta"})
+  else return menuOptions.splice(0, 0, {toLink: "/login", iconPath: MenuProfileIcon, text: "Mi cuenta"});
+}
+
 const menuOptions = [
-  {toLink: "/my-account", iconPath: MenuProfileIcon, text: "Mi cuenta"},
-  //Si el USUARIO no a iniciado sessión;
-  //TODO: hacer esto usando conditional rendering y useContext hook
-  //  {toLink: "/login", iconPath: MenuLoginIcon, text: "Iniciar sesión"},
-  //  {toLink: "/new-account", iconPath: MenuSingupIcon, text: "Registrarse"},
+  
+  IsLoggedMenuOption,
   //Si el usuario es admin
   //  {toLink: "/", iconPath: MenuControlpanelIcon, text: "Panel de control"},
   {toLink: "/book-information", iconPath: MenuSearchIcon, text: "Buscar libro"},
@@ -44,7 +50,7 @@ const menuOptions = [
 
 
 
-const UnLogged = () => {
+const UnLoggedHeader = () => {
 
   return(
     <>
@@ -62,7 +68,7 @@ const UnLogged = () => {
   )
 }
 
-const Logged = () => {
+const LoggedHeader = () => {
 
   return(
 
@@ -74,12 +80,12 @@ const Logged = () => {
   )
 }
 
-const IsLogged = () => {
+const IsLoggedHeader = () => {
   const context = useContext(LoginContext)
 
   if (context.logged)
-    return <Logged/>;
-  else return <UnLogged/>;
+    return <LoggedHeader/>;
+  else return <UnLoggedHeader/>;
 
 }
 
@@ -110,7 +116,7 @@ const Header = () => {
               Donar
             </PrimaryBtnLink>
           </li>
-            <IsLogged/>
+            <IsLoggedHeader/>
         </ul>
         <div
           className={isOpen ? "menu-button-opened" : "menu-button"}
