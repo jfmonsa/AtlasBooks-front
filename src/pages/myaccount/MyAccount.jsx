@@ -17,6 +17,8 @@ import PrivateListIcon from "./../../assets/icons/icon-privatelist.svg";
 import PublicListIcon from "./../../assets/icons/icon-publiclist.svg";
 //Admin page
 import Searcher from "../../components/searcher/Searcher.jsx";
+import { useContext } from "react";
+import LoginContext from "../../contexts/LoginContext.jsx";
 
 // Aux functions
 const SectionMyDataDatum = ({left, right}) => {
@@ -184,6 +186,17 @@ const MyAccountAdmin = () => {
   );
 };
 
+const LoggedAdmin = () => {
+  const context = useContext(LoginContext)
+  
+  if (context.admin) {
+    return <MyAccountAdmin />;
+  } else {
+    return <></>
+  }
+
+}
+
 // Main page
 const MyAccount = () => {
   return (
@@ -194,7 +207,7 @@ const MyAccount = () => {
         country="Palestina"
         registerDate="11/03/2003"
       />
-      <MyAccountAdmin />
+      <LoggedAdmin  />
       <SectionLists />
       <SectionDownloadsHistory />
       <SectionUploadABook />

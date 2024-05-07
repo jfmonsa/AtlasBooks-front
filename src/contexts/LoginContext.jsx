@@ -3,7 +3,7 @@ import { createContext } from "react"
 
 const LoginContext = createContext({
 
-    logged: false,
+    logged: true,
     admin: false
 
 })
