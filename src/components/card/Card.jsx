@@ -33,13 +33,15 @@ const Card = ({
         cardDialog ? sectionClassName + " cardSection-dialog" : sectionClassName
       }
     >
-      <CardH1Logic
-        customH1={customH1}
-        h1Center={h1Center}
-        h1ClassName={h1ClassName}
-        h1Text={h1Text}
-      />
-      {children}
+      <div className="cardSection__childrenContainer">
+        <CardH1Logic
+          customH1={customH1}
+          h1Center={h1Center}
+          h1ClassName={h1ClassName}
+          h1Text={h1Text}
+        />
+        {children}
+      </div>
     </section>
   );
 };

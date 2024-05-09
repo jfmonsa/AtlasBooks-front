@@ -4,11 +4,12 @@ main {
 /* Only selector for full-width cards */
 .cardSection:not(.cardSection-dialog) {
   width: 100%;
+  max-width: 1400px;
 }
 
 .cardSection {
   background-color: var(--compSurface-light);
-  padding: var(--spacing-3);
+  padding: var(--spacing-5);
   border: var(--border-2);
   border-radius: 12px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
@@ -25,4 +26,13 @@ main {
 }
 .card__h1--center {
   text-align: center;
+}
+.cardSection__childrenContainer {
+  max-width: 1000px;
+  margin: auto;
+}
+@media screen and (max-width: 400px) {
+  .cardSection {
+    padding: var(--spacing-3);
+  }
 }
