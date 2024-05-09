@@ -27,6 +27,12 @@ import mark from "../../assets/icons/marcador-icon.svg";
 import Slider from "../../components/slider/Slider.jsx";
 //Comments
 import Comments from "./commentarySection/Comments.jsx";
+//TODO: reeemplzarlas por unas alamacenadas en el backend
+import Imagen1 from "../../assets/img/image1.png";
+import Imagen2 from "../../assets/img/image2.png";
+import Imagen3 from "../../assets/img/image3.png";
+import Imagen4 from "../../assets/img/image4.png";
+import Imagen5 from "../../assets/img/image5.png";
 
 //Aux functions
 const HeartButton = ({className}) => {
@@ -202,6 +208,50 @@ const RateStarsSection = () => {
   );
 };
 
+const BookPageRelated = ({books}) => {
+  return (
+    <Card h1Text="Relacionados" id="Books-relacionados">
+      <Slider books={books} />
+    </Card>
+  );
+};
+
+const BookPageComments = ({comments}) => {
+  return (
+    <Card h1Text="Comentarios" id="comments">
+      <Comments />
+    </Card>
+  );
+};
+//Aux data
+const relatedBooks = [
+  {
+    author: "Pepito Perez",
+    title: "Pepe tenia una pipa",
+    pathBookCover: Imagen1,
+  },
+  {
+    author: "Gogó manotas",
+    title: "Bases de datos relacionales",
+    pathBookCover: Imagen2,
+  },
+  {
+    author: "Carlos Delgado",
+    title: "Salem's lot",
+    pathBookCover: Imagen3,
+  },
+  {
+    author: "Jaimito el Carterito",
+    title: "Odio al chavo",
+    pathBookCover: Imagen4,
+  },
+  {
+    author: "Karl Marx",
+    title: "Das Kapital",
+    pathBookCover: Imagen5,
+  },
+];
+
 //main function
 const BookPage = () => {
   return (
@@ -221,15 +271,9 @@ const BookPage = () => {
         bookImg={BookImage}
         numComments={2}
       />
-
       <RateStarsSection />
-
-      <Card h1Text="Relacionados" id="Books-relacionados">
-        <Slider />
-      </Card>
-      <Card h1Text="Comentarios" id="comments">
-        <Comments />
-      </Card>
+      <BookPageRelated books={relatedBooks} />
+      <BookPageComments comments={null} />
     </>
   );
 };
