@@ -17,8 +17,16 @@ import PrivateListIcon from "./../../assets/icons/icon-privatelist.svg";
 import PublicListIcon from "./../../assets/icons/icon-publiclist.svg";
 //Admin page
 import Searcher from "../../components/searcher/Searcher.jsx";
-import { useContext } from "react";
+import {useContext} from "react";
 import LoginContext from "../../contexts/LoginContext.jsx";
+
+//imgs para libros
+//TODO: reeemplzarlas por unas alamacenadas en el backend
+import Imagen1 from "../../assets/img/image1.png";
+import Imagen2 from "../../assets/img/image2.png";
+import Imagen3 from "../../assets/img/image3.png";
+import Imagen4 from "../../assets/img/image4.png";
+import Imagen5 from "../../assets/img/image5.png";
 
 // Aux functions
 const SectionMyDataDatum = ({left, right}) => {
@@ -30,14 +38,25 @@ const SectionMyDataDatum = ({left, right}) => {
   );
 };
 
-const SectionMyData = ({name, email, country, registerDate}) => {
+const SectionMyData = ({
+  name,
+  nickname,
+  email,
+  country,
+  registerDate,
+  isAdmin,
+  pathProfilePic = null,
+}) => {
   return (
     <Card h1Text="Mis datos">
       <ul>
         <SectionMyDataDatum left="Nombre" right={name} />
+        <SectionMyDataDatum left="Nickname" right={nickname} />
         <SectionMyDataDatum left="Email" right={email} />
         <SectionMyDataDatum left="País" right={country} />
         <SectionMyDataDatum left="Fecha de Registro" right={registerDate} />
+        {/* TODO: mejorar los estilos del admin y la alinación en los lists, mirar como incluir la imagen de perfil */}
+        {isAdmin ? <p>Admin del sitio</p> : null}
       </ul>
     </Card>
   );
@@ -45,11 +64,12 @@ const SectionMyData = ({name, email, country, registerDate}) => {
 
 const SectionListsListCard = ({
   listName,
-  path,
   desc,
+  path,
   numBooks,
   publicList = false,
 }) => {
+  // TODO: Cuadrar esto con css grid para alegrar problemas de alineamiento
   const iconpath = publicList ? PublicListIcon : PrivateListIcon;
   const alticon = publicList
     ? "icono de lista de libros publica"
@@ -58,12 +78,12 @@ const SectionListsListCard = ({
   return (
     <Link to={path} className="listCard navHover">
       <span className="listCard__items">
-        <span>{listName}</span>
         <img
           className="listCard-icon listCard--item"
           src={iconpath}
           alt={alticon}
         />
+        <span>{listName}</span>
       </span>
       <span className="listCard--item">{desc}</span>
       <span className="listCard--item">{numBooks + " Libros"}</span>
@@ -71,42 +91,36 @@ const SectionListsListCard = ({
   );
 };
 
-const SectionLists = () => {
-  return (
-    <Card h1Text="Mis listas" id="my-lists">
-      <SectionListsListCard
-        listName="Mis Favoritos"
-        path="/my-lists"
-        desc="Lista de mis libros favoritos"
-        numBooks="14"
-        publicList
-      />
-      <SectionListsListCard
-        listName="Mis Favoritos"
-        path="/my-lists"
-        desc="Lista de mis libros favoritos"
-        numBooks="14"
-      />
-      <SectionListsListCard
-        listName="Mis Favoritos"
-        path="/my-lists"
-        desc="Lista de mis libros favoritos"
-        numBooks="14"
-        publicList
-      />
-      {/* TODO: el link para este */}
-      {/* <BtnAdd tolink="/new-list" /> */}
-      <BtnAdd tolink="/new-list" />
-    </Card>
-  );
+const SectionLists = ({myLists}) => {
+  if (myLists != null) {
+    return (
+      <Card h1Text="Mis listas" id="my-lists">
+        {myLists.map((list, index) => {
+          return (
+            <SectionListsListCard
+              key={index}
+              listName={list.listName}
+              path={list.path}
+              desc={list.desc}
+              numBooks={list.numBooks}
+              publicList={list.publicList}
+            />
+          );
+        })}
+        <BtnAdd tolink="/new-list" />
+      </Card>
+    );
+  }
 };
 
-const SectionDownloadsHistory = () => {
-  return (
-    <Card h1Text="Historial de descargas">
-      <Slider />
-    </Card>
-  );
+const SectionDownloadsHistory = ({historyBooks}) => {
+  if (historyBooks != null) {
+    return (
+      <Card h1Text="Historial de descargas">
+        <Slider books={historyBooks} />
+      </Card>
+    );
+  }
 };
 
 const SectionUploadABook = () => {
@@ -155,19 +169,19 @@ const SectionOtherOpts = () => {
       iconPath: IconShieldPass,
       text: "Cambiar contraseña",
     },
-    {toLink: "/confirm-password", iconPath: IconDelAccount, text: "Eliminar cuenta"},
+    {
+      toLink: "/confirm-password",
+      iconPath: IconDelAccount,
+      text: "Eliminar cuenta",
+    },
   ];
+
   return (
     <Card h1Text="Opciones">
       <DropMenu
         options={SectionOtherOptsOptions}
         cssClassContainer=" nonFloating"
       />
-      {/* <SectionOtherOptsOpt
-          text="Eliminar cuenta"
-          iconSrc={IconDelAccount}
-          toLink="/PassDel"
-        /> */}
     </Card>
   );
 };
@@ -187,15 +201,67 @@ const MyAccountAdmin = () => {
 };
 
 const LoggedAdmin = () => {
-  const context = useContext(LoginContext)
-  
+  const context = useContext(LoginContext);
+
   if (context.admin) {
     return <MyAccountAdmin />;
   } else {
-    return <></>
+    return <></>;
   }
+};
 
-}
+// Aux Test data
+const myBookLists = [
+  {
+    listName: "Mis Favoritos",
+    desc: "Lista de mis libros favoritos :3",
+    numBooks: 23,
+    path: "/my-lists",
+    publicList: true,
+  },
+  {
+    listName: "Clasicos de literatura",
+    desc: "No description",
+    numBooks: 13,
+    path: "/my-lists",
+    publicList: true,
+  },
+  {
+    listName: "Libros de la Universidad",
+    desc: "Libros de toda la carrera",
+    numBooks: 16,
+    path: "/my-lists",
+    publicList: false,
+  },
+];
+
+const downloadHistoryBooks = [
+  {
+    author: "Pepito Perez",
+    title: "Pepe tenia una pipa",
+    pathBookCover: Imagen1,
+  },
+  {
+    author: "Gogó manotas",
+    title: "Bases de datos relacionales",
+    pathBookCover: Imagen2,
+  },
+  {
+    author: "Carlos Delgado",
+    title: "Salem's lot",
+    pathBookCover: Imagen3,
+  },
+  {
+    author: "Jaimito el Carterito",
+    title: "Odio al chavo",
+    pathBookCover: Imagen4,
+  },
+  {
+    author: "Karl Marx",
+    title: "Das Kapital",
+    pathBookCover: Imagen5,
+  },
+];
 
 // Main page
 const MyAccount = () => {
@@ -203,13 +269,14 @@ const MyAccount = () => {
     <>
       <SectionMyData
         name="Pepito Perez"
+        nickname="pepitope"
         email="pepito@p.com"
         country="Palestina"
         registerDate="11/03/2003"
       />
-      <LoggedAdmin  />
-      <SectionLists />
-      <SectionDownloadsHistory />
+      <LoggedAdmin />
+      <SectionLists myLists={myBookLists} />
+      <SectionDownloadsHistory historyBooks={downloadHistoryBooks} />
       <SectionUploadABook />
       <SectionOtherOpts />
     </>

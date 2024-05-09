@@ -1,10 +1,13 @@
+.card-myData {
+  display: flex;
+}
 .card-myData:not(.card-myData:last-child) {
   margin-bottom: var(--spacing-2);
 }
 .card-myData__left,
 .card-myData__right {
   display: inline-block;
-  width: 100px;
+  width: 200px;
 }
 .card-myData__left {
   margin-right: var(--spacing-3);
@@ -31,7 +34,7 @@
   margin-bottom: var(--spacing-2);
 }
 .listCard-icon {
-  margin-left: var(--spacing-4);
+  margin-right: var(--spacing-4);
 }
 
 .options {

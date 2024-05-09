@@ -31,64 +31,60 @@ import Categories from "./pages/categories/Categories.jsx";
 import RootLayout from "./RootLayout.jsx";
 import UploadBook from "./pages/myaccount/UploadBook.jsx";
 import NewList from "./pages/myaccount/NewList.jsx";
-import { useContext } from "react";
+import {useContext} from "react";
 import LoginContext from "./contexts/LoginContext.jsx";
 
-const LoggedAdminRouting = () =>{
-  const context = useContext(LoginContext)
+const LoggedAdminRouting = () => {
+  const context = useContext(LoginContext);
 
-  if (context.admin)
-    return <AdminResults />
-  else return <Error/>
-}
+  if (context.admin) return <AdminResults />;
+  else return <Error />;
+};
 
-const LoggedRouting = () =>{
-  const context = useContext(LoginContext)
+const LoggedRouting = () => {
+  const context = useContext(LoginContext);
 
-  if (context.logged)
-    return <MyAccount />
-  else return <Error/>
-}
+  if (context.logged) return <MyAccount />;
+  else return <Error />;
+};
 
 const router = createBrowserRouter(
   createRoutesFromElements(
+    <Route path="/" element={<RootLayout />}>
+      <Route index element={<Home />} />
 
-      <Route path="/" element={<RootLayout />}>
-        <Route index element={<Home />} />
+      {/* Login related and recovery account */}
+      <Route path="login" element={<Login />} />
+      <Route path="new-account" element={<NewAccount />} />
 
-        {/* Login related and recovery account */}
-        <Route path="login" element={<Login />} />
-        <Route path="new-account" element={<NewAccount />} />
+      {/* --- Routing recovery account */}
+      <Route path="recovery-account" element={<RecoveryAccount />} />
+      <Route path="send-email" element={<SendEmail />} />
+      <Route path="change-pass" element={<ChangePass />} />
 
-        {/* --- Routing recovery account */}
-        <Route path="recovery-account" element={<RecoveryAccount />} />
-        <Route path="send-email" element={<SendEmail />} />
-        <Route path="change-pass" element={<ChangePass />} />
-
-        {/* Routing for edit details in my account */}
-        {/* TODO: change path for user/id_del_user */}
-        <Route path="my-account" element={<LoggedRouting />} />
-        <Route path="my-lists" element={<Lists />} />
-        <Route path="confirm-password" element={<PasswordConfirm />} />
-        <Route path="users-details" element={<ChangeUserDetails />} />
-        <Route path="upload-book" element={<UploadBook />} />
-        <Route path="new-list" element={<NewList />} />
-        <Route path="recommended" element={<Recommended />}/>
-        {/* <Route path="lists">
+      {/* Routing for edit details in my account */}
+      {/* TODO: change path for user/id_del_user */}
+      <Route path="my-account" element={<LoggedRouting />} />
+      <Route path="my-lists" element={<Lists />} />
+      <Route path="confirm-password" element={<PasswordConfirm />} />
+      <Route path="users-details" element={<ChangeUserDetails />} />
+      <Route path="upload-book" element={<UploadBook />} />
+      <Route path="new-list" element={<NewList />} />
+      <Route path="recommended" element={<Recommended />} />
+      {/* <Route path="lists">
             Aquí iría cada lista que tenga el usuario
           </Route>*/}
-        {/* TODO: change path for book/id_del_libro */}
-        <Route path="report" element={<Report />} />
-        <Route path="book-information" element={<BookInformation />} />
+      {/* TODO: change path for book/id_del_libro */}
+      <Route path="report" element={<Report />} />
+      <Route path="book-information" element={<BookInformation />} />
 
-        <Route path="categories" element={<Categories />} />
-        <Route path="discover-list" element={<DiscoverList/>}/>
+      <Route path="categories" element={<Categories />} />
+      <Route path="discover-list" element={<DiscoverList />} />
 
-        {/* Routes for admin */}
-        <Route path="results" element={<LoggedAdminRouting /> } />
-        {/* <Route path="*" element={<NoFound404 />} /> */}
-      </Route>
-
+      {/* Routes for admin */}
+      <Route path="results" element={<LoggedAdminRouting />} />
+      {/* <Route path="*" element={<NoFound404 />} /> */}
+    </Route>,
   ),
 );
 

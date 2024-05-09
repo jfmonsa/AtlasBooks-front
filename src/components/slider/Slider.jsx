@@ -12,9 +12,9 @@ import ArrowRight from "../../assets/icons/icon-arrowRight.svg";
 import Book from "../book/Book.jsx";
 
 // TODO: le pasamos como props un objeto que contenga los libros, despues de la consulta a la bd
-const SliderRelacionados = props => {
+const CustomSlider = ({books}) => {
   const SamplePrevArrow = props => {
-    const {className, style, onClick} = props;
+    const {className, onClick} = props;
     return (
       <img
         onClick={onClick}
@@ -26,7 +26,7 @@ const SliderRelacionados = props => {
   };
 
   const SampleNextArrow = props => {
-    const {className, style, onClick} = props;
+    const {className, onClick} = props;
     return (
       <img
         onClick={onClick}
@@ -95,19 +95,19 @@ const SliderRelacionados = props => {
   return (
     <>
       <Slider {...settings}>
-        <Book autor="Pepito perez" title="Librito tales" img={Imagen1} />
-        <Book autor="Pepito perez" title="Librito tales" img={Imagen2} />
-        <Book autor="Pepito perez" title="Librito tales" img={Imagen3} />
-        <Book autor="Pepito perez" title="Librito tales" img={Imagen4} />
-        <Book autor="Pepito perez" title="Librito tales" img={Imagen5} />
-        <Book autor="Pepito perez" title="Librito tales" img={Imagen1} />
-        <Book autor="Pepito perez" title="Librito tales" img={Imagen2} />
-        <Book autor="Pepito perez" title="Librito tales" img={Imagen3} />
-        <Book autor="Pepito perez" title="Librito tales" img={Imagen4} />
-        <Book autor="Pepito perez" title="Librito tales" img={Imagen5} />
+        {books.map((book, index) => {
+          return (
+            <Book
+              key={index}
+              autor={book.author}
+              title={book.title}
+              img={book.pathBookCover}
+            />
+          );
+        })}
       </Slider>
     </>
   );
 };
 
-export default SliderRelacionados;
+export default CustomSlider;
