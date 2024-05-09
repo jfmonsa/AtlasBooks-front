@@ -36,9 +36,9 @@ const IconDropMenu = ({
   return (
     <ul className={`dropMenu dropMenu--${orientation} ${cssClassContainer}`}>
       <li className="dropMenu--infoText"> {infoText} </li>
-      {options.map(option => (
+      {options.map((option, index) => (
         <IconDropMenuItem
-          key={option.text}
+          key={index}
           onClick={option.onClick}
           icon={option.icon}
           text={option.text}
