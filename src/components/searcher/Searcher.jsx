@@ -6,15 +6,17 @@ import {useState} from "react";
 import timeIcon from "../../../src/assets/icons/time-svgrepo-com.svg";
 import languajeIcon from "../../../src/assets/icons/language-svgrepo-com.svg";
 import fileIcon from "../../../src/assets/icons/file-zipper-svgrepo-com.svg";
-const Searcher = ({type = "text", holder, toNavigate}) => {
+
+const Searcher = ({holder, toUrl}) => {
   const navigate = useNavigate();
 
   const handleSearch = event => {
     event.preventDefault();
-    navigate(toNavigate /*,{replace: true}*/);
+    navigate(toUrl /*,{replace: true}*/);
   };
 
   const [viewMoreOptions, setViewMoreOptions] = useState(false);
+
   const handleMoreOptions = () => {
     setViewMoreOptions(!viewMoreOptions);
   };
@@ -40,12 +42,14 @@ const Searcher = ({type = "text", holder, toNavigate}) => {
 
   return (
     <section className="searcher">
-      <form className={"searcher"} onSubmit={handleSearch}>
-        <input type={type} className={"searcher__input"} placeholder={holder} />
-        <PrimaryBtnForm
-          text="Buscar"
-          cssClasses=" searcher__button black2Btn"
-        />
+      <form onSubmit={handleSearch}>
+        <div className="searcher__inputContainer">
+          <input type="text" className="searcher__input" placeholder={holder} />
+          <PrimaryBtnForm
+            text="Buscar"
+            cssClasses=" searcher__button black2Btn"
+          />
+        </div>
         {viewMoreOptions && (
           <div className="more-options__buttons">
             <DropdownBtn
