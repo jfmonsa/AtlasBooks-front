@@ -47,7 +47,6 @@ const books = [
     autor: "Another Author",
     img: image3,
   },
-  // Agrega más objetos de libros según sea necesario
 ];
 
 const Recommended = () => {
@@ -57,7 +56,6 @@ const Recommended = () => {
       <h2 className="display--subheading">Best ranked</h2>
 
       <Searcher type={"text"} holder={"Buscar libro"} />
-      {/* <button className="buttonOpciones">Más opciones</button> */}
       <GridBooks books={books} />
     </>
   );

@@ -8,6 +8,7 @@ import {
 //pages
 import Home from "./pages/home/Home.jsx";
 import Error from "./pages/error/Error.jsx";
+import BookSearch from "./pages/bookSearch/bookSearch.jsx";
 
 //Login related and recovery account
 import {Login} from "./pages/account/Login.jsx";
@@ -29,6 +30,7 @@ import Categories from "./pages/categories/Categories.jsx";
 
 //layouts
 import RootLayout from "./RootLayout.jsx";
+
 import UploadBook from "./pages/myaccount/UploadBook.jsx";
 import NewList from "./pages/myaccount/NewList.jsx";
 import {useContext} from "react";
@@ -71,9 +73,8 @@ const router = createBrowserRouter(
       <Route path="upload-book" element={<UploadBook />} />
       <Route path="new-list" element={<NewList />} />
       <Route path="recommended" element={<Recommended />} />
-      {/* <Route path="lists">
-            Aquí iría cada lista que tenga el usuario
-          </Route>*/}
+      <Route path="search-results" element={<BookSearch />} />
+
       {/* TODO: change path for book/id_del_libro */}
       <Route path="report" element={<Report />} />
       <Route path="book-information" element={<BookInformation />} />
