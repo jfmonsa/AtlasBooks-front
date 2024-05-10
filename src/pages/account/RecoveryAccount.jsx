@@ -2,22 +2,17 @@ import "./account.css";
 import {EMAIL} from "../../utils/placeholder.js";
 import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm.jsx";
 import InputText from "../../components/inputText/InputText.jsx";
-import {Link} from "react-router-dom";
+import {useNavigate, Link} from "react-router-dom";
 import {useState} from "react";
 
 const RecoveryAccount = ({setUsuario}) => {
   const [user, setUser] = useState("");
   const [error, setError] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = e => {
     e.preventDefault();
-    if (user == "") {
-      setError(true);
-      return;
-    }
-    setError(false);
-
-    setUsuario([user]);
+    navigate("/send-email")
   };
 
   return (
@@ -29,19 +24,17 @@ const RecoveryAccount = ({setUsuario}) => {
       </p>
       <form onSubmit={handleSubmit}>
         <InputText
-          type={"text"}
+          type={"email"}
           holder={EMAIL}
           value={user}
           onChange={e => setUser(e.target.value)}
           text={"Email "}
         />
-        <Link to="/send-email">
           <PrimaryBtnForm
             text="Enviar"
             cssClasses="formCustomBtn purpleBtn"
             id="3"
           />
-        </Link>
       </form>
 
       <Link to="/login" className="account__forgot-link">

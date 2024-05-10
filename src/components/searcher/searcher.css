@@ -23,6 +23,16 @@
   }
 }
 
+.searcher__moreOpts{
+  margin: var(--spacing-3) var(--spacing-2);
+  border-bottom: 2px dotted var(--black-text-light);
+  color: var(--black-text-light);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-2);
+}
+.searcher__moreOpts:hover{
+  opacity: 0.8;
+}
 .searcher__input,
 .searcher__button {
   height: 36px;
