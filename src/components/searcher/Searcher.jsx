@@ -6,7 +6,7 @@ import {useState} from "react";
 import timeIcon from "../../../src/assets/icons/time-svgrepo-com.svg";
 import languajeIcon from "../../../src/assets/icons/language-svgrepo-com.svg";
 import fileIcon from "../../../src/assets/icons/file-zipper-svgrepo-com.svg";
-
+import MultiSelectSearch from "../multiSelectSearch/MultiSelectSearch";
 
 const yearOptions = [
   {toLink: "#", iconPath: timeIcon, text: "2010"},
@@ -27,18 +27,42 @@ const filesFormat = [
   {toLink: "#", iconPath: fileIcon, text: "Ebook"},
 ];
 
+const genYearArray = (to = 1799) => {
+  const currentYear = new Date().getFullYear();
+  const years = [];
+  for (let year = currentYear; year >= to; year--) {
+    // append the year generated to the years array
+    years.push({value: `${year}`, label: `${year}`});
+  }
+  return years;
+};
+
+const Years = genYearArray();
+
+//Main functions
 const Searcher = ({holder, toUrl}) => {
   const navigate = useNavigate();
-
   const handleSearch = event => {
     event.preventDefault();
     navigate(toUrl /*,{replace: true}*/);
   };
 
+  //Aux fuctions an states for inputs
   const [viewMoreOptions, setViewMoreOptions] = useState(false);
+  const [yearFrom, setYearFrom] = useState({value: "1789", label: "1789"});
+  const [yearTo, setYearTo] = useState({value: "1789", label: "1789"});
+  const [yearToOptions, setYearToOptions] = useState([]);
 
-  const handleMoreOptions = () => {
-    setViewMoreOptions(!viewMoreOptions);
+  const handleYearFromChange = selectedOption => {
+    setYearFrom(selectedOption);
+    setYearToOptions(
+      Years.filter(
+        year => parseInt(year.value) >= parseInt(selectedOption.value),
+      ),
+    );
+  };
+  const handleYearToChange = selectedOption => {
+    setYearTo(selectedOption);
   };
 
   return (
@@ -51,43 +75,33 @@ const Searcher = ({holder, toUrl}) => {
             cssClasses=" searcher__button black2Btn"
           />
         </div>
-        <div>
-          <button className="searcher__moreOpts" onClick={handleMoreOptions}>Más opciones</button>
+        <div className="searcher__moreOptions">
+          <button
+            className="searcher__moreOpts"
+            onClick={() => {
+              setViewMoreOptions(!viewMoreOptions);
+            }}
+          >
+            Más opciones
+          </button>
+          {viewMoreOptions && (
+            <>
+              <MultiSelectSearch
+                labelText="Año desde"
+                selectName="fromYear"
+                options={Years}
+                onChangeCallback={handleYearFromChange}
+              />
+              <MultiSelectSearch
+                labelText="Año hasta"
+                selectName="toYear"
+                options={yearToOptions}
+                onChangeCallback={handleYearToChange}
+              />
+            </>
+          )}
         </div>
-        {viewMoreOptions && (
-          <div className="more-options__buttons">
-            <DropdownBtn
-              boxCssClasses="btnDropDown btnDropDown--purple"
-              textCssClasses="btnDropDown__text"
-              text={"Año desde..."}
-              options={yearOptions}
-            ></DropdownBtn>
-            <DropdownBtn
-              boxCssClasses="btnDropDown btnDropDown--purple"
-              textCssClasses="btnDropDown__text"
-              text={"Año hasta..."}
-              options={yearOptions}
-            ></DropdownBtn>
-            <DropdownBtn
-              boxCssClasses="btnDropDown btnDropDown--purple"
-              textCssClasses="btnDropDown__text"
-              text={"Lenguaje..."}
-              options={languajes}
-            ></DropdownBtn>
-            <DropdownBtn
-              boxCssClasses="btnDropDown btnDropDown--purple"
-              textCssClasses="btnDropDown__text"
-              text={"Formato..."}
-              options={filesFormat}
-            ></DropdownBtn>
-          </div>
-        )}
       </form>
-      {/* <PrimaryBtnForm
-        cssClasses=" more-options__button black2Btn"
-        onClick={handleMoreOptions}
-        text={"Más opciones..."}
-      /> */}
     </section>
   );
 };
