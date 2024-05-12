@@ -5,6 +5,16 @@ import "./discoverList.css";
 import "../../components/gridBooks/gridBooks.css";
 import {useState} from "react";
 
+//Images for temporal array of books
+//TODO: Borrar esto cuando se haga la conexión a la db y los libros se obtengan de ahí
+import Imagen1 from "../../assets/img/image1.png";
+import Imagen2 from "../../assets/img/image2.png";
+import Imagen3 from "../../assets/img/image3.png";
+import Imagen4 from "../../assets/img/image4.png";
+import Imagen5 from "../../assets/img/image5.png";
+
+// Temporal data
+// TODO: Borrar esto cuando se haga la conexión con la db
 const lists = [
   {
     title: "Top 100 Literatura Clásica",
@@ -33,7 +43,33 @@ const lists = [
                   mollit anim id est laborum.`,
   },
 ];
-
+const booksTmp = [
+  {
+    author: "Pepito Perez",
+    title: "Pepe tenia una pipa",
+    pathBookCover: Imagen1,
+  },
+  {
+    author: "Gogó manotas",
+    title: "Bases de datos relacionales",
+    pathBookCover: Imagen2,
+  },
+  {
+    author: "Carlos Delgado",
+    title: "Salem's lot",
+    pathBookCover: Imagen3,
+  },
+  {
+    author: "Jaimito el Carterito",
+    title: "Odio al chavo",
+    pathBookCover: Imagen4,
+  },
+  {
+    author: "Karl Marx",
+    title: "Das Kapital",
+    pathBookCover: Imagen5,
+  },
+];
 // Aux functions
 const FollowBtnList = () => {
   const [followed, setFollowed] = useState(false);
@@ -85,7 +121,7 @@ const DiscoverListList = ({
       <p className="list__description">{description}</p>
       {/* TODO: pasar parametro books (lista de libros) */}
       <div className="list__slider">
-        <Slider />
+        <Slider books={books} />
       </div>
     </Card>
   );
@@ -105,6 +141,7 @@ const DiscoverList = () => {
           nBooks={list.nBooks}
           nFollowers={list.nFollowers}
           description={list.description}
+          books={booksTmp}
         />
       ))}
     </>
