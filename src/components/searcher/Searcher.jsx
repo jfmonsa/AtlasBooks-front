@@ -1,32 +1,11 @@
 import "./searcher.css";
 import PrimaryBtnForm from "../buttons/primaryBtn/PrimaryBtnForm";
 import {useNavigate} from "react-router-dom";
-import DropdownBtn from "../dropDownButtons/DropdownBtn";
 import {useState} from "react";
-import timeIcon from "../../../src/assets/icons/time-svgrepo-com.svg";
-import languajeIcon from "../../../src/assets/icons/language-svgrepo-com.svg";
-import fileIcon from "../../../src/assets/icons/file-zipper-svgrepo-com.svg";
 import MultiSelectSearch from "../multiSelectSearch/MultiSelectSearch";
+import MultiSelectNoSearch from "../multiSelecNoSearch/MultiSelectNoSearch";
 
-const yearOptions = [
-  {toLink: "#", iconPath: timeIcon, text: "2010"},
-  {toLink: "#", iconPath: timeIcon, text: "2009"},
-  {toLink: "#", iconPath: timeIcon, text: "2008"},
-  {toLink: "#", iconPath: timeIcon, text: "2007"},
-];
-
-const languajes = [
-  {toLink: "#", iconPath: languajeIcon, text: "Español"},
-  {toLink: "#", iconPath: languajeIcon, text: "Ingles"},
-  {toLink: "#", iconPath: languajeIcon, text: "Aleman"},
-  {toLink: "#", iconPath: languajeIcon, text: "Frances"},
-  {toLink: "#", iconPath: languajeIcon, text: "Italiano"},
-];
-const filesFormat = [
-  {toLink: "#", iconPath: fileIcon, text: "PDF"},
-  {toLink: "#", iconPath: fileIcon, text: "Ebook"},
-];
-
+//Aux function for data of the select inputs
 const genYearArray = (to = 1799) => {
   const currentYear = new Date().getFullYear();
   const years = [];
@@ -36,11 +15,24 @@ const genYearArray = (to = 1799) => {
   }
   return years;
 };
-
 const Years = genYearArray();
+const mainLanguages = [
+  {label: "English", value: "en"},
+  {label: "Mandarin Chinese", value: "zh"},
+  {label: "Spanish", value: "es"},
+  {label: "Hindi", value: "hi"},
+  {label: "Arabic", value: "ar"},
+  {label: "Bengali", value: "bn"},
+  {label: "Portuguese", value: "pt"},
+  {label: "Russian", value: "ru"},
+  {label: "Japanese", value: "ja"},
+  {label: "German", value: "de"},
+  // Add more languages as needed
+];
 
-//Main functions
+//Main function
 const Searcher = ({holder, toUrl}) => {
+  //handle action (search)
   const navigate = useNavigate();
   const handleSearch = event => {
     event.preventDefault();
@@ -49,9 +41,11 @@ const Searcher = ({holder, toUrl}) => {
 
   //Aux fuctions an states for inputs
   const [viewMoreOptions, setViewMoreOptions] = useState(false);
+  // -- states for filters
   const [yearFrom, setYearFrom] = useState({value: "1789", label: "1789"});
   const [yearTo, setYearTo] = useState({value: "1789", label: "1789"});
   const [yearToOptions, setYearToOptions] = useState([]);
+  const [selectedLanguages, setSelectedLanguages] = useState([]);
 
   const handleYearFromChange = selectedOption => {
     setYearFrom(selectedOption);
@@ -63,6 +57,10 @@ const Searcher = ({holder, toUrl}) => {
   };
   const handleYearToChange = selectedOption => {
     setYearTo(selectedOption);
+  };
+  const handleSelectedLanguagesChange = selectedOption => {
+    setSelectedLanguages(selectedOption);
+    console.log(selectedOption);
   };
 
   return (
@@ -97,6 +95,12 @@ const Searcher = ({holder, toUrl}) => {
                 selectName="toYear"
                 options={yearToOptions}
                 onChangeCallback={handleYearToChange}
+              />
+              <MultiSelectNoSearch
+                labelText="Idiomas"
+                selectName="languages"
+                options={mainLanguages}
+                onChangeCallback={handleSelectedLanguagesChange}
               />
             </>
           )}
