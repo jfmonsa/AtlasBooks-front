@@ -94,8 +94,8 @@ const VisibleHeaderOptions = ({opts}) => {
     <>
       {opts.map((opt, index) => {
         return (
-          <li>
-            <NavLink key={index} to={opt.url} className="navbar-right__item">
+          <li key={index}>
+            <NavLink to={opt.url} className="navbar-right__item">
               {opt.text}
             </NavLink>
           </li>
