@@ -52,3 +52,13 @@
   --speed: 0.3s /*500ms; ?*/;
   --headerHeight: 60px;
 }
+main {
+  /* Sizes for layouts and margins */
+  --bookSize: clamp(80px, 80px + 3vw, 166px);
+  --searcher__inputSize: 60vw;
+  --searcher__buttonSize: 100px;
+  /* -- Grid Books and searcher sizes */
+  --gridAndSearcher__size: calc(
+    var(--searcher__inputSize) + var(--spacing-3) + var(--searcher__buttonSize)
+  );
+}

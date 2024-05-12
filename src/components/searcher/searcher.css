@@ -1,6 +1,5 @@
 .searcher {
-  /* TODO: estandarizar esto que se repite en 3 partes, aquí y en gridBooks, ademas los valores en variables puede ayudar */
-  max-width: calc(60vw + var(--spacing-3) + 100px);
+  max-width: var(--gridAndSearcher__size);
 }
 
 .searcher__inputContainer {
@@ -11,15 +10,16 @@
 }
 
 .searcher__input {
-  width: 60vw;
+  width: var(--searcher__inputSize);
   min-width: 230px;
   padding: var(--spacing-1) var(--spacing-2);
   border: var(--border-1);
   border-radius: var(--border-rad-comp);
 }
 
-.searcher__button {
-  height: 36px;
+.searcher__button,
+.searcher__input {
+  height: 40px;
 }
 .searcher__input,
 .searcher__button {
@@ -28,13 +28,12 @@
 
 .searcher__button {
   font-weight: var(--fw-medium);
-}
-.searcher__button {
-  width: 100px;
+  width: var(--searcher__buttonSize);
 }
 @media screen and (max-width: 470px) {
   .searcher__inputContainer {
     gap: var(--spacing-2);
+    width: 80vw;
   }
   .searcher__input {
     width: 100%;

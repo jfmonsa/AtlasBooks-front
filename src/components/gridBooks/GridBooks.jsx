@@ -3,8 +3,8 @@ import Book from "../book/Book.jsx";
 
 const GridBooks = ({books}) => {
   return (
-    <>
-      <div className="gridBooks">
+    <section className="gridBooks">
+      <div className="gridBooks__grid">
         {books.map((book, index) => (
           <Book
             key={index}
@@ -19,7 +19,7 @@ const GridBooks = ({books}) => {
           Ver mas
         </button>
       </div>
-    </>
+    </section>
   );
 };
 export default GridBooks;

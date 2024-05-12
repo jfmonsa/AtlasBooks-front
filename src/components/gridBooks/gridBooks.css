@@ -1,14 +1,15 @@
-.gridBooks,
-.gridBooks__loadMoreContainer {
-  max-width: calc(60vw + var(--spacing-3) + 100px);
-}
 .gridBooks {
-  margin: var(--spacing-6) auto 60px;
-  display: flex;
-  justify-content: space-between;
-  align-items: start;
+  margin: var(--spacing-6) auto;
+  width: var(--gridAndSearcher__size);
+}
+
+.gridBooks__grid {
+  margin: auto;
+  margin-bottom: 60px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, var(--bookSize));
   gap: var(--spacing-4);
-  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .gridBooks__loadMoreBtn {

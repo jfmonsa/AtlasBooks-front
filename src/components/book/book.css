@@ -1,7 +1,7 @@
 .bookContainer {
-  display: inline-block;
-  width: clamp(80px, 80px + 3vw, 166px);
-  max-width: 166px;
+  /* display: inline-block; */
+  width: var(--bookSize);
+  /* max-width: 166px; */
 }
 
 .img {

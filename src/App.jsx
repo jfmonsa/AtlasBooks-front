@@ -8,7 +8,7 @@ import {
 //pages
 import Home from "./pages/home/Home.jsx";
 import Error from "./pages/error/Error.jsx";
-import BookSearch from "./pages/bookSearch/bookSearch.jsx";
+import BookSearchResults from "./pages/bookSearchResults/bookSearchResults.jsx";
 
 //Login related and recovery account
 import {Login} from "./pages/account/Login.jsx";
@@ -73,7 +73,7 @@ const router = createBrowserRouter(
       <Route path="upload-book" element={<UploadBook />} />
       <Route path="new-list" element={<NewList />} />
       <Route path="recommended" element={<Recommended />} />
-      <Route path="search-results" element={<BookSearch />} />
+      <Route path="search-results" element={<BookSearchResults />} />
 
       {/* TODO: change path for book/id_del_libro */}
       <Route path="report" element={<Report />} />
