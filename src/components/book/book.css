@@ -2,6 +2,15 @@
   /* display: inline-block; */
   width: var(--bookSize);
   /* max-width: 166px; */
+  /* For scale on hover animation */
+  transform: scale(0.925);
+  position: relative;
+  transition: all 0.2s ease-in-out;
+}
+
+.bookContainer:hover {
+  filter: brightness(1.1);
+  transform: scale(1);
 }
 
 .img {
