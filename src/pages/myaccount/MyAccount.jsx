@@ -17,6 +17,7 @@ import PrivateListIcon from "./../../assets/icons/icon-privatelist.svg";
 import PublicListIcon from "./../../assets/icons/icon-publiclist.svg";
 //Admin page
 import Searcher from "../../components/searcher/Searcher.jsx";
+import SearcherNoFilters from "../../components/searcher/SearcherNoFilters.jsx";
 import {useContext} from "react";
 import LoginContext from "../../contexts/LoginContext.jsx";
 
@@ -190,10 +191,10 @@ const MyAccountAdmin = () => {
   return (
     <>
       <Card h1Text="Administrar libros" h1Center>
-        <Searcher holder="Buscar libros" toNavigate="/results" />
+        <SearcherNoFilters toNavigate="/results" />
       </Card>
       <Card h1Text="Administrar usuarios" h1Center>
-        <Searcher holder="Buscar libros" toNavigate="/results" />
+        <SearcherNoFilters holder="Buscar usuarios" toNavigate="/results" />
       </Card>
       <Card h1Text="Administrar reportes" h1Center></Card>
     </>
@@ -205,8 +206,6 @@ const LoggedAdmin = () => {
 
   if (context.admin) {
     return <MyAccountAdmin />;
-  } else {
-    return <></>;
   }
 };
 

@@ -1,3 +1,8 @@
+.searcher {
+  /* TODO: estandarizar esto que se repite en 3 partes, aquí y en gridBooks, ademas los valores en variables puede ayudar */
+  max-width: calc(60vw + var(--spacing-3) + 100px);
+}
+
 .searcher__inputContainer {
   display: flex;
   justify-content: start;
@@ -6,7 +11,6 @@
 }
 
 .searcher__input {
-  max-width: 1200px;
   width: 60vw;
   min-width: 230px;
   padding: var(--spacing-1) var(--spacing-2);
@@ -17,10 +21,12 @@
 .searcher__button {
   height: 36px;
 }
-
 .searcher__input,
 .searcher__button {
   font-size: var(--fs-2);
+}
+
+.searcher__button {
   font-weight: var(--fw-medium);
 }
 .searcher__button {
@@ -42,7 +48,7 @@
   color: var(--black-text-light);
   font-weight: var(--fw-medium);
   font-size: var(--fs-2);
-  line-height: 12px;
+  line-height: 16px;
 }
 .searcher__moreOptsBtn:hover {
   opacity: 0.8;

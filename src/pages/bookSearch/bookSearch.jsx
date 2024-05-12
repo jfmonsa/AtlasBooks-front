@@ -4,7 +4,7 @@ const BookSearch = () => {
     <>
       <h1 className="display--heading">Resultados</h1>
 
-      <Searcher type={"text"} holder={"Buscar libro"} />
+      <Searcher type={"text"} />
     </>
   );
 };

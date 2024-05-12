@@ -4,6 +4,7 @@ import {useNavigate} from "react-router-dom";
 import {useState} from "react";
 import MultiSelectSearch from "../multiSelectSearch/MultiSelectSearch";
 import MultiSelectNoSearch from "../multiSelecNoSearch/MultiSelectNoSearch";
+import {SEARCH} from "../../utils/placeholder.js";
 
 //Aux function for data of the select inputs
 const genYearArray = (to = 1799) => {
@@ -31,7 +32,7 @@ const mainLanguages = [
 ];
 
 //Main function
-const Searcher = ({holder, toUrl}) => {
+const Searcher = ({holder = SEARCH, toUrl}) => {
   //handle action (search)
   const navigate = useNavigate();
   const handleSearch = event => {
