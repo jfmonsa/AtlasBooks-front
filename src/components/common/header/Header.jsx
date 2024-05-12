@@ -18,7 +18,7 @@ import LoginContext from "../../../contexts/LoginContext.jsx";
 import {NavLink} from "react-router-dom";
 import DropMenu from "../../dropMenu/DropMenu.jsx";
 
-// Aux function
+// Aux functions
 const userConditionalRenderingMenu = context => {
   const menuOptions = [
     {
@@ -79,39 +79,30 @@ const userConditionalRenderingMenu = context => {
   }
   return menuOptions;
 };
-
-const UnLoggedHeader = () => {
+const userConditionalRenderingHederOptions = context => {
+  if (context.logged) {
+    return [{url: "/my-account", text: "Mi Cuenta"}];
+  }
+  return [
+    {url: "/new-account", text: "Registrarse"},
+    {url: "/login", text: "Iniciar Sesion"},
+  ];
+};
+const VisibleHeaderOptions = ({opts}) => {
+  console.log(opts);
   return (
     <>
-      <li>
-        <NavLink to="/new-account" className="navbar-right__item">
-          Registrarse
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to="/login" className="navbar-right__item">
-          Iniciar Sesion
-        </NavLink>
-      </li>
+      {opts.map((opt, index) => {
+        return (
+          <li>
+            <NavLink key={index} to={opt.url} className="navbar-right__item">
+              {opt.text}
+            </NavLink>
+          </li>
+        );
+      })}
     </>
   );
-};
-
-const LoggedHeader = () => {
-  return (
-    <li>
-      <NavLink to="/my-account" className="navbar-right__item">
-        Mi Perfil
-      </NavLink>
-    </li>
-  );
-};
-
-const IsLoggedHeader = () => {
-  const context = useContext(LoginContext);
-
-  if (context.logged) return <LoggedHeader />;
-  else return <UnLoggedHeader />;
 };
 
 // Main header component
@@ -140,7 +131,9 @@ const Header = () => {
               Donar
             </PrimaryBtnLink>
           </li>
-          <IsLoggedHeader />
+          <VisibleHeaderOptions
+            opts={userConditionalRenderingHederOptions(context)}
+          />
         </ul>
         <div
           className={isOpen ? "menu-button-opened" : "menu-button"}
