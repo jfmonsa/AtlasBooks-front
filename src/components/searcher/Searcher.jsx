@@ -42,9 +42,9 @@ const Searcher = ({holder, toUrl}) => {
   //Aux fuctions an states for inputs
   const [viewMoreOptions, setViewMoreOptions] = useState(false);
   // -- states for filters
+  const [yearToOptions, setYearToOptions] = useState(Years);
   const [yearFrom, setYearFrom] = useState({value: "1789", label: "1789"});
   const [yearTo, setYearTo] = useState({value: "1789", label: "1789"});
-  const [yearToOptions, setYearToOptions] = useState([]);
   const [selectedLanguages, setSelectedLanguages] = useState([]);
 
   const handleYearFromChange = selectedOption => {
@@ -73,37 +73,40 @@ const Searcher = ({holder, toUrl}) => {
             cssClasses=" searcher__button black2Btn"
           />
         </div>
-        <div className="searcher__moreOptions">
+        <div>
           <button
-            className="searcher__moreOpts"
+            className="searcher__moreOptsBtn"
             onClick={() => {
               setViewMoreOptions(!viewMoreOptions);
             }}
           >
             Más opciones
           </button>
-          {viewMoreOptions && (
-            <>
-              <MultiSelectSearch
-                labelText="Año desde"
-                selectName="fromYear"
-                options={Years}
-                onChangeCallback={handleYearFromChange}
-              />
-              <MultiSelectSearch
-                labelText="Año hasta"
-                selectName="toYear"
-                options={yearToOptions}
-                onChangeCallback={handleYearToChange}
-              />
-              <MultiSelectNoSearch
-                labelText="Idiomas"
-                selectName="languages"
-                options={mainLanguages}
-                onChangeCallback={handleSelectedLanguagesChange}
-              />
-            </>
-          )}
+          <div className="searcher__moreOpts">
+            {viewMoreOptions && (
+              <>
+                <MultiSelectSearch
+                  selectName="fromYear"
+                  options={Years}
+                  onChangeCallback={handleYearFromChange}
+                  placeholder="Desde..."
+                />
+                <MultiSelectSearch
+                  selectName="toYear"
+                  options={yearToOptions}
+                  onChangeCallback={handleYearToChange}
+                  placeholder="Hasta..."
+                />
+                <MultiSelectNoSearch
+                  labelText="Idiomas"
+                  selectName="languages"
+                  options={mainLanguages}
+                  onChangeCallback={handleSelectedLanguagesChange}
+                  placeholder="Idiomas..."
+                />
+              </>
+            )}
+          </div>
         </div>
       </form>
     </section>

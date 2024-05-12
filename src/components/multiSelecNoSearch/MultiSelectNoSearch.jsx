@@ -1,24 +1,23 @@
 import Select from "react-select";
 
 const MultiSelectNoSearch = ({
-  labelText,
   options,
   selectName,
   onChangeCallback,
+  placeholder,
 }) => {
   return (
-    <div>
-      <label>{labelText}</label>
+    <>
       <Select
-        // defaultValue={[colourOptions[2], colourOptions[3]]}
         isMulti
         name={selectName}
         options={options}
         className="basic-multi-select"
         classNamePrefix="select"
         onChange={onChangeCallback}
+        placeholder={placeholder}
       />
-    </div>
+    </>
   );
 };
 export default MultiSelectNoSearch;

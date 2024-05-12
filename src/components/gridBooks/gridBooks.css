@@ -1,8 +1,11 @@
+.gridBooks,
+.gridBooks__loadMoreContainer {
+  max-width: calc(60vw + var(--spacing-3) + 100px);
+}
 .gridBooks {
-  max-width: 1200px;
-  margin: 0 auto 60px;
+  margin: var(--spacing-6) auto 60px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: start;
   gap: var(--spacing-4);
   flex-wrap: wrap;
@@ -16,7 +19,7 @@
   box-shadow: 0 0 0 2em var(--bg-light);
 }
 .gridBooks__loadMoreContainer {
-  width: 90vw;
+  width: 100%;
   border-bottom: 3px solid #000;
   position: relative;
 }
