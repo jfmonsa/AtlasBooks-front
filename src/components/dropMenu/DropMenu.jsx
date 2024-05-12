@@ -40,9 +40,9 @@ const DropMenu = ({
 
   return (
     <ul className={"dropMenu " + cssClassContainer}>
-      {options.map(option => (
+      {options.map((option, index) => (
         <DropMenuItem
-          key={option.text}
+          key={index}
           toLink={option.toLink}
           iconPath={option.iconPath}
           text={option.text}
