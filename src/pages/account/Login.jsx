@@ -2,47 +2,65 @@ import "./account.css";
 import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm.jsx";
 import PrimaryBtnLink from "../../components/buttons/primaryBtn/PrimaryBtnLink.jsx";
 import InputText from "../../components/inputText/InputText.jsx";
-import {EMAIL, PASSWD, SEARCH} from "../../utils/placeholder.js";
+import {EMAIL, PASSWD, NICK} from "../../utils/placeholder.js";
 import {Link} from "react-router-dom";
 import {useState} from "react";
+import {
+  valEmail,
+  valNickname,
+  valNoEmpty,
+} from "../../utils/validateFormFields.js";
+import ErrorFormAccountMsg from "./ErrorFormAccountMsg.jsx";
 
 export const Login = () => {
-  const [user, setUser] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState(false);
+  const [userNickname, setUserNickname] = useState("");
+  const [userPassword, setUserPassword] = useState("");
 
+  //El error es una string, cuando no hay error es null,
+  //cuando el error existe se settea a una string que se va mostrar
+  //como mensaje de error al usuario
+  const [error, setError] = useState(null);
+
+  //Validations and post request to api
   const handleSubmit = e => {
     e.preventDefault();
-    if (user == "" || password == "") {
-      setError(true);
+    if (!valNoEmpty(userNickname) || !valNoEmpty(userPassword)) {
+      setError("Todos los campos son obligatorios");
       return;
     }
-    setError(false);
-    // setUser([user]);
+    //validar que sea un email o nickname validos
+    //nota: puede loggearse con nickname o email
+    if (!valNickname(userNickname) || !valEmail(userNickname)) {
+      setError("Email o nickname no valido");
+      return;
+    }
+    setError(null);
+    //hacer validaciones en el backend para verificar que el usuario
+    //exista
   };
 
   return (
     <>
       <h1 className="account__title">Iniciar Sesion</h1>
-      {/*TODO: En la logica interna del backend validar esto */}
       <form onSubmit={handleSubmit} method="post">
         <InputText
           type="text"
-          holder={EMAIL}
-          value={user}
+          holder={EMAIL + ", " + NICK}
+          value={userNickname}
           id="email"
-          text="Email"
-          onChange={e => setUser(e.target.value)}
+          text="Email o Nickname"
+          onChange={e => setUserNickname(e.target.value)}
         />
         <InputText
           type="password"
           holder={PASSWD}
-          value={password}
+          value={userPassword}
           id="password"
           text="Contraseña"
-          onChange={e => setPassword(e.target.value)}
+          onChange={e => setUserPassword(e.target.value)}
         />
 
+        <ErrorFormAccountMsg error={error} />
         <PrimaryBtnForm
           text="Iniciar Sesion"
           cssClasses="formCustomBtn purpleBtn"
@@ -58,11 +76,6 @@ export const Login = () => {
         text="Crear Cuenta"
         cssClasses="formCustomBtn black1Btn"
       />
-      {error && (
-        <p style={{color: "var(--error)"}}>
-          *Todos los campos son obligatorios
-        </p>
-      )}
     </>
   );
 };

@@ -5,9 +5,11 @@ const InputText = ({
   holder,
   type = "text",
   name,
-  value,
+  value = "",
   id,
   onChange,
+  required = false,
+  disabled = false,
 }) => {
   return (
     <>
@@ -22,6 +24,8 @@ const InputText = ({
         value={value}
         onChange={onChange}
         className="input__typeText"
+        required={required}
+        disabled={disabled}
       />
     </>
   );
