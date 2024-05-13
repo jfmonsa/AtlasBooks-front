@@ -1,46 +1,104 @@
 import "./account.css";
-import {NAME, EMAIL, PASSWD} from "../../utils/placeholder.js";
+import {NAME, NICK, EMAIL, PASSWD} from "../../utils/placeholder.js";
 import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm.jsx";
 import InputText from "../../components/inputText/InputText.jsx";
 import {useState} from "react";
-import Recommended from "../../components/recommended/Recommended.jsx";
+import ErrorFormAccountMsg from "./ErrorFormAccountMsg.jsx";
+import {
+  valEmail,
+  valNickname,
+  valNoEmpty,
+  valPassword,
+} from "../../utils/validateFormFields.js";
 
 const NewAccount = ({setUsuario}) => {
-  const [user, setUser] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState(false);
+  const [userName, setUserName] = useState("");
+  const [userNick, setUserNick] = useState("");
+  const [userEmail, setUserEmail] = useState("");
+  const [userPass1, setUserPass1] = useState("");
+  const [userPass2, setUserPass2] = useState("");
 
+  const [error, setError] = useState(null);
+
+  //validations and api request
   const handleSubmit = e => {
     e.preventDefault();
-    if (user == "" || password == "") {
-      setError(true);
+    if (
+      !valNoEmpty(userName) ||
+      !valNoEmpty(userNick) ||
+      !valNoEmpty(userEmail) ||
+      !valNoEmpty(userPass1) ||
+      !valNoEmpty(userPass2)
+    ) {
+      setError("Todos los campos son obligatorios");
       return;
     }
-    setError(false);
+    //val nickname
+    else if (!valNickname(userNick)) {
+      setError("No se permiten espacios en el nickname");
+      return;
+    }
+    //val Email
+    else if (!valEmail(userEmail)) {
+      setError("El email ingresado no es valido");
+      return;
+    }
+    //val pass
+    else if (!valPassword(userPass1) || !valPassword(userPass2)) {
+      setError(
+        "Verifique que ambas claves tengan: minimo 8 caracteres, una mayuscula, un numero, un caracter especial",
+      );
+      return;
+    } else if (userPass1 != userPass2) {
+      setError("Verifique que ambsa contraseñas ingresadas sean iguales");
+      return;
+    }
 
-    setUsuario([user]);
+    //Enviar request al api para crear un usuario
   };
 
   return (
     <>
-      <h1 className="account__title">Crear una cuenta nueva</h1>
-      <form onSubmit={handleSubmit}>
-        <InputText type={"text"} holder={NAME} text={"Nombre "} />
+      <form className="form__likeLogin" onSubmit={handleSubmit}>
+        <h1 className="account__title">Crear una cuenta nueva</h1>
         <InputText
-          type={"text"}
+          text="Nombre"
+          holder={NAME}
+          type="text"
+          value={userName}
+          onChange={e => setUserName(e.target.value)}
+        />
+        <InputText
+          text="Nickname (Nombre de usuario)"
+          holder={NICK}
+          type="text"
+          value={userNick}
+          onChange={e => setUserNick(e.target.value)}
+        />
+        <InputText
+          text="Email"
           holder={EMAIL}
-          value={user}
-          onChange={e => setUser(e.target.value)}
-          text={"Email "}
+          type="email"
+          value={userEmail}
+          onChange={e => setUserEmail(e.target.value)}
         />
 
         <InputText
-          type={"password"}
+          text="Contraseña"
           holder={PASSWD}
-          value={password}
-          onChange={e => setPassword(e.target.value)}
-          text={"Contraseña"}
+          type="password"
+          value={userPass1}
+          onChange={e => setUserPass1(e.target.value)}
         />
+
+        <InputText
+          text="Confirmar Contraseña"
+          holder={PASSWD}
+          type="password"
+          value={userPass2}
+          onChange={e => setUserPass2(e.target.value)}
+        />
+        <ErrorFormAccountMsg error={error} />
 
         <PrimaryBtnForm
           text="Crear cuenta"
@@ -48,12 +106,6 @@ const NewAccount = ({setUsuario}) => {
           id="1"
         />
       </form>
-
-      {error && (
-        <p style={{color: "var(--error)"}}>
-          *Todos los campos son obligatorios
-        </p>
-      )}
     </>
   );
 };

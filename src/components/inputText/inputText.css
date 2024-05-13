@@ -18,7 +18,9 @@
 }
 
 .input__typeText {
-  height: 36px;
+  height: 38px;
+  display: flex;
+  justify-content: center;
 }
 
 .input__textArea {

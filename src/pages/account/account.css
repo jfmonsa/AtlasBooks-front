@@ -4,6 +4,15 @@ main {
   justify-content: center;
   align-items: center;
 }
+/* form like login */
+.form__likeLogin {
+  max-width: 300px;
+}
+/* error for forms */
+.form__errorMsg {
+  color: var(--error);
+  margin-bottom: var(--spacing-2);
+}
 
 .account__title {
   margin-bottom: var(--spacing-5);
@@ -19,8 +28,7 @@ main {
 .account__subtitle {
   max-width: 300px;
   margin-bottom: var(--spacing-4);
-  font-weight: var(--fw-medium);
-  font-size: var(--fs-1);
+  font-size: var(--fs-2);
   color: var(--black-text-light);
 }
 
