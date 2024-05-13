@@ -1,5 +1,7 @@
+import "./bookSearchResults.css";
 import Searcher from "../../components/searcher/Searcher";
 import {Link} from "react-router-dom";
+import {AiOutlineStar} from "react-icons/ai";
 
 //Temp data for book results
 import image1 from "../../assets/img/image1.png";
@@ -123,40 +125,53 @@ const BookResult = ({
   pathCoverBook,
 }) => {
   return (
-    <Link className="bookResult" to={urlBook}>
-      <img className="bookResult__img" src={pathCoverBook}></img>
-      <div className="bookResult__mainInfo">
-        <h2 className="bookResult__mainInfo__title">{title}</h2>
-        <span className="bookResult__mainInfo__autors">{autors}</span>
-        <span className="bookResult__mainInfo__publisher">{publisher}</span>
-      </div>
-      <div className="bookResult__sideInfo">
-        <span className="bookResult__siderInfo__year">{year}</span>
-        <span className="bookResult__siderInfo__lang">{language}</span>
-        <span className="bookResult__siderInfo__rate">{rate}</span>
+    <Link to={urlBook}>
+      <div className="bookResult">
+        <img className="bookResult__img" src={pathCoverBook}></img>
+        <div className="bookResult__info">
+          <h2 className="bookResult__info__title">{title}</h2>
+          <span className="bookResult__info__publisher">{publisher}</span>
+          <span className="bookResult__info__autors">{autors}</span>
+          <div className="bookResult__sideInfo">
+            <span className="bookResult__siderInfo__year">
+              <span>Año: </span> {" " + year}
+            </span>
+            <span className="bookResult__siderInfo__lang">
+              <span>Idioma: </span> {" " + language}
+            </span>
+            <span className="bookResult__siderInfo__rate">
+              <AiOutlineStar className="relevantInfo__icon1" />
+              {rate + " "} / 5.0
+            </span>
+          </div>
+        </div>
       </div>
     </Link>
   );
 };
 
-const BookResultsContainer = ({results}) => {
+const BookResultsContainer = ({results, totalResults}) => {
   return (
-    <section>
-      {results.map(book => {
-        return (
-          <BookResult
-            title={book.title}
-            autors={book.autors}
-            publisher={book.publisher}
-            year={book.year}
-            language={book.language}
-            rate={book.rate}
-            urlBook={book.urlBook}
-            pathCoverBook={book.pathCoverBook}
-          />
-        );
-      })}
-    </section>
+    <>
+      <section className="results">
+        <p className="results__total">Total: {totalResults} libros</p>
+        {results.map((book, index) => {
+          return (
+            <BookResult
+              key={index}
+              title={book.title}
+              autors={book.autors}
+              publisher={book.publisher}
+              year={book.year}
+              language={book.language}
+              rate={book.rate}
+              urlBook={book.urlBook}
+              pathCoverBook={book.pathCoverBook}
+            />
+          );
+        })}
+      </section>
+    </>
   );
 };
 
@@ -164,8 +179,11 @@ const BookSearch = () => {
   return (
     <>
       <h1 className="display--heading">Resultados</h1>
-      <Searcher type={"text"} />
-      <BookResultsContainer results={searchResults} />
+      <Searcher toUrl="/search-results" />
+      <BookResultsContainer
+        results={searchResults}
+        totalResults={totalResults}
+      />
     </>
   );
 };

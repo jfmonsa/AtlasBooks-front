@@ -89,7 +89,6 @@ const userConditionalRenderingHederOptions = context => {
   ];
 };
 const VisibleHeaderOptions = ({opts}) => {
-  console.log(opts);
   return (
     <>
       {opts.map((opt, index) => {
