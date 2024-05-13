@@ -55,7 +55,7 @@ const Recommended = () => {
       <h1 className="display--heading">Recomendados</h1>
       <h2 className="display--subheading">Best ranked</h2>
 
-      <Searcher />
+      <Searcher toUrl="search-results" />
       <GridBooks books={books} />
     </>
   );
