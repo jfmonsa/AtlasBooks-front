@@ -1,24 +1,44 @@
 //Retornar true -> ok; Retornar false->error
 
 export function valEmail(str) {
+  str = str.trim();
   // Expresión regular para validar email
   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return regex.trim().test(str);
+  return regex.test(str);
 }
 
 export function valNickname(str) {
+  str = str.trim();
   // Expresión regular para validar nickname sin espacios
   const regex = /^\S+$/;
-  return regex.trim().test(str);
+  return regex.test(str);
 }
 
 export function valPassword(str) {
-  // Verificar si la clave tiene al menos 6 caracteres
-  // Verificar si la clave tiene al menos 8 caracteres, una mayúscula, un número y un carácter especial
-  const regex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-  return regex.test(str) && str.trim().length >= 6;
+  str = str.trim();
+  const MIN_LENGTH = "8";
+  const MAX_LENGTH = "20";
+  const SPECIAL_CHAR_NEEDED = false;
+
+  const ONE_DIGIT = "(?=.*[0-9])";
+  const LOWER_CASE = "(?=.*[a-z])";
+  const UPPER_CASE = "(?=.*[A-Z])";
+  const SPECIAL_CHAR = SPECIAL_CHAR_NEEDED ? "(?=.*[@#$%^&+=])" : "";
+  const NO_SPACE = "(?=\\S+$)";
+
+  const MIN_MAX_CHAR = `.{${MIN_LENGTH},${MAX_LENGTH}}`;
+  const PATTERN =
+    ONE_DIGIT +
+    LOWER_CASE +
+    UPPER_CASE +
+    SPECIAL_CHAR +
+    NO_SPACE +
+    MIN_MAX_CHAR;
+
+  return str.match(PATTERN) !== null;
 }
 export function valNoEmpty(str) {
+  str = str.trim();
   // Expresión regular para validar que la cadena no este vacia
-  return "" != str.trim();
+  return "" != str;
 }
