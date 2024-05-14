@@ -1,6 +1,6 @@
 import "./inputText.css";
 
-const TextArea = ({text, holder, name, value, id, onChange}) => {
+const TextArea = ({text, holder, value = "", id, onChange}) => {
   return (
     <>
       <label htmlFor={id} className="input__label">
@@ -10,10 +10,11 @@ const TextArea = ({text, holder, name, value, id, onChange}) => {
         placeholder={holder}
         name={id}
         id={id}
-        value={value}
         onChange={onChange}
         className="input__textArea"
-      ></textarea>
+      >
+        {value}
+      </textarea>
     </>
   );
 };

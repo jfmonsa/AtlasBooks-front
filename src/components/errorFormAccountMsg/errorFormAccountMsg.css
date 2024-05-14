@@ -1,0 +1,5 @@
+/* error for forms */
+.form__errorMsg {
+  color: var(--error);
+  margin-bottom: var(--spacing-2);
+}

@@ -10,7 +10,7 @@ import {
   valNickname,
   valNoEmpty,
 } from "../../utils/validateFormFields.js";
-import ErrorFormAccountMsg from "./ErrorFormAccountMsg.jsx";
+import ErrorFormAccountMsg from "../../components/errorFormAccountMsg/ErrorFormAccountMsg.jsx";
 
 export const Login = () => {
   const [userNickname, setUserNickname] = useState("");
