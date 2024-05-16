@@ -3,13 +3,14 @@ import {NAME, NICK, EMAIL, PASSWD} from "../../utils/placeholder.js";
 import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm.jsx";
 import InputText from "../../components/inputText/InputText.jsx";
 import {useState} from "react";
-import ErrorFormAccountMsg from "./ErrorFormAccountMsg.jsx";
+import ErrorFormAccountMsg from "../../components/errorFormAccountMsg/ErrorFormAccountMsg.jsx";
 import {
   valEmail,
   valNickname,
   valNoEmpty,
   valPassword,
 } from "../../utils/validateFormFields.js";
+import useFetch from "../../utils/useFetch.js";
 
 const NewAccount = ({setUsuario}) => {
   const [userName, setUserName] = useState("");
@@ -17,6 +18,7 @@ const NewAccount = ({setUsuario}) => {
   const [userEmail, setUserEmail] = useState("");
   const [userPass1, setUserPass1] = useState("");
   const [userPass2, setUserPass2] = useState("");
+  const countryReq = useFetch("https://ipapi.co/json/");
 
   const [error, setError] = useState(null);
 
@@ -46,14 +48,17 @@ const NewAccount = ({setUsuario}) => {
     //val pass
     else if (!valPassword(userPass1) || !valPassword(userPass2)) {
       setError(
-        "Verifique que ambas claves tengan: minimo 8 caracteres, una mayuscula, un numero, un caracter especial",
+        "Verifique que ambas claves tengan: minimo 8 caracteres, una mayuscula, un numero, un caracter especial. máximo 20 caracteres",
       );
       return;
     } else if (userPass1 != userPass2) {
       setError("Verifique que ambsa contraseñas ingresadas sean iguales");
       return;
     }
-
+    setError(null);
+    //usemos country_code para almacenarlo en la columna de pais de usuario :)
+    //si se quiere el nombre, .country_name
+    console.log(countryReq.data.country_code);
     //Enviar request al api para crear un usuario
   };
 

@@ -24,7 +24,7 @@ import MyAccount from "./pages/myaccount/MyAccount.jsx";
 import AdminResults from "./pages/myaccount/AdminResults.jsx";
 import ChangeUserDetails from "./pages/myaccount/ChangeUserDetails.jsx";
 import Lists from "./pages/myaccount/Lists.jsx";
-import Report from "./pages/account/Report.jsx";
+import Report from "./pages/bookInformation/Report.jsx";
 import PasswordConfirm from "./components/passwordConfirm/PasswordConfirm.jsx";
 import Recommended from "./pages/recommended/Recommended.jsx";
 import DiscoverList from "./pages/discoverList/DiscoverList.jsx";

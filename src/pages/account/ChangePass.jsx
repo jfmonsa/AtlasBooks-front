@@ -6,7 +6,7 @@ import {useNavigate, useParams} from "react-router-dom";
 import {PASSWD} from "../../utils/placeholder.js";
 import {useEffect, useState} from "react";
 import {valNoEmpty, valPassword} from "../../utils/validateFormFields.js";
-import ErrorFormAccountMsg from "./ErrorFormAccountMsg.jsx";
+import ErrorFormAccountMsg from "../../components/errorFormAccountMsg/ErrorFormAccountMsg.jsx";
 
 const ChangePass = () => {
   const [pass1, setPass1] = useState("");

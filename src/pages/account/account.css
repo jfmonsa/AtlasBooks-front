@@ -8,12 +8,6 @@ main {
 .form__likeLogin {
   max-width: 300px;
 }
-/* error for forms */
-.form__errorMsg {
-  color: var(--error);
-  margin-bottom: var(--spacing-2);
-}
-
 .account__title {
   margin-bottom: var(--spacing-5);
   font-weight: var(--fw-semibold);
