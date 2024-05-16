@@ -5,6 +5,8 @@ import {
   RouterProvider,
 } from "react-router-dom";
 
+import {AccountProvider} from "./contexts/AccountContext.jsx";
+
 //pages
 import Home from "./pages/home/Home.jsx";
 import Error from "./pages/error/Error.jsx";
@@ -50,6 +52,7 @@ const LoggedRouting = () => {
   else return <Error />;
 };
 
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
@@ -90,7 +93,11 @@ const router = createBrowserRouter(
 );
 
 const App = () => {
-  return <RouterProvider router={router} />;
+  return (
+    <AccountProvider>
+      <RouterProvider router={router} />;
+    </AccountProvider>
+  )
 };
 
 export default App;
