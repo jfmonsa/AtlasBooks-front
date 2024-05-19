@@ -166,7 +166,7 @@ const SectionOtherOpts = () => {
       text: "Cambiar email",
     },
     {
-      toLink: "/confirm-password",
+      toLink: "/change-pass",
       iconPath: IconShieldPass,
       text: "Cambiar contraseña",
     },
