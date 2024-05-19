@@ -35,6 +35,7 @@ import UploadBook from "./pages/myaccount/UploadBook.jsx";
 import NewList from "./pages/myaccount/NewList.jsx";
 import {useContext} from "react";
 import LoginContext from "./contexts/LoginContext.jsx";
+import {AuthProvider} from "./contexts/authContext.jsx";
 
 const LoggedAdminRouting = () => {
   const context = useContext(LoginContext);
@@ -90,7 +91,11 @@ const router = createBrowserRouter(
 );
 
 const App = () => {
-  return <RouterProvider router={router} />;
+  return (
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
+  );
 };
 
 export default App;
