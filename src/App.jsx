@@ -8,7 +8,8 @@ import {useContext} from "react";
 
 //contexts
 import {ChangePassProvider} from "./contexts/ChangePassContext.jsx";
-import LoginContext from "./contexts/LoginContext.jsx";
+import LoginContext from "./contexts/LoginContext.jsx"
+import {AuthProvider} from "./contexts/authContext.jsx";
 
 //pages
 import Home from "./pages/home/Home.jsx";
@@ -36,6 +37,8 @@ import DiscoverList from "./pages/discoverList/DiscoverList.jsx";
 import Categories from "./pages/categories/Categories.jsx";
 //layouts
 import RootLayout from "./RootLayout.jsx";
+
+
 
 const LoggedAdminRouting = () => {
   const context = useContext(LoginContext);
@@ -93,9 +96,11 @@ const router = createBrowserRouter(
 
 const App = () => {
   return (
-    <ChangePassProvider>
-      <RouterProvider router={router} />
-    </ChangePassProvider>
+    <AuthProvider>
+      <ChangePassProvider>
+        <RouterProvider router={router} />
+      </ChangePassProvider>
+    </AuthProvider>
   )
 };
 

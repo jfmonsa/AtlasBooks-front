@@ -1,7 +1,7 @@
 import {createContext} from "react";
 
 const LoginContext = createContext({
-  logged: true,
+  logged: false,
   admin: false,
 });
 
