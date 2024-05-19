@@ -2,7 +2,7 @@ import "./account.css";
 import {NAME, NICK, EMAIL, PASSWD} from "../../utils/placeholder.js";
 import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm.jsx";
 import InputText from "../../components/inputText/InputText.jsx";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import ErrorFormAccountMsg from "../../components/errorFormAccountMsg/ErrorFormAccountMsg.jsx";
 import {
   valEmail,
@@ -11,19 +11,26 @@ import {
   valPassword,
 } from "../../utils/validateFormFields.js";
 import useFetch from "../../utils/useFetch.js";
+import {useAuth} from "../../contexts/authContext.jsx";
+import {useNavigate} from "react-router-dom";
 
-const NewAccount = ({setUsuario}) => {
+
+const NewAccount = ({}) => {
   const [userName, setUserName] = useState("");
   const [userNick, setUserNick] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [userPass1, setUserPass1] = useState("");
   const [userPass2, setUserPass2] = useState("");
   const countryReq = useFetch("https://ipapi.co/json/");
+  const navigate = useNavigate();
+
+  const {signup, isAuthenticated, errors: RegisterErrors} = useAuth();
 
   const [error, setError] = useState(null);
+  useEffect(() => { if (isAuthenticated) navigate('/'); }, [isAuthenticated]);
 
   //validations and api request
-  const handleSubmit = e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (
       !valNoEmpty(userName) ||
@@ -60,10 +67,25 @@ const NewAccount = ({setUsuario}) => {
     //si se quiere el nombre, .country_name
     console.log(countryReq.data.country_code);
     //Enviar request al api para crear un usuario
+    signup({
+      name: userName,
+      nickName: userNick,
+      email: userEmail,
+      password: userPass1,
+      country: countryReq.data.country_code,
+    });
   };
 
   return (
     <>
+    <div>
+    {
+        RegisterErrors.map((error, index) => (
+          <div className='errors' key={index}>
+            <p>{error}</p>
+          </div>
+        ))
+      }
       <form className="form__likeLogin" onSubmit={handleSubmit}>
         <h1 className="account__title">Crear una cuenta nueva</h1>
         <InputText
@@ -111,6 +133,8 @@ const NewAccount = ({setUsuario}) => {
           id="1"
         />
       </form>
+    </div>
+    
     </>
   );
 };
