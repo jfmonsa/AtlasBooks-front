@@ -2,7 +2,7 @@ import "./myaccount.css";
 import BtnAdd from "../../components/buttons/BtnAdd/BtnAdd.jsx";
 import Slider from "../../components/slider/Slider.jsx";
 import Card from "../../components/card/Card.jsx";
-import {Link, redirect} from "react-router-dom";
+import {Link,useNavigate} from "react-router-dom";
 //for option's section
 import IconPaypal from "../../assets/icons/icon-paypal.svg";
 import IconLogout from "../../assets/icons/menu-logout.svg";
@@ -28,6 +28,9 @@ import Imagen2 from "../../assets/img/image2.png";
 import Imagen3 from "../../assets/img/image3.png";
 import Imagen4 from "../../assets/img/image4.png";
 import Imagen5 from "../../assets/img/image5.png";
+import { useAuth } from "../../contexts/authContext.jsx";
+
+
 
 // Aux functions
 const SectionMyDataDatum = ({left, right}) => {
@@ -152,9 +155,14 @@ const SectionOtherOptsOpt = ({text, toLink, iconSrc}) => {
 };
 
 const SectionOtherOpts = () => {
+  const navigate = useNavigate();
+ const {logout} = useAuth();
   const SectionOtherOptsOptions = [
-    {toLink: "#", iconPath: IconPaypal, text: "Donar"},
-    {toLink: "/login", iconPath: IconLogout, text: "Cerrar sesión"},
+    {
+      toLink: "#", 
+      iconPath: IconPaypal, 
+      text: "Donar"},
+    
     {
       toLink: "/confirm-password",
       iconPath: IconEditDetails,
@@ -177,9 +185,27 @@ const SectionOtherOpts = () => {
     },
   ];
 
+  const handleLogout = () => {
+    logout();
+    navigate("/login");
+  }
+
+  const onClickOptions = [
+      {
+        onClick: handleLogout,
+        iconPath: IconLogout, 
+        text: "Cerrar sesión"},
+    
+  ]
+
+
+ 
+
   return (
     <Card h1Text="Opciones">
-      <DropMenu
+    
+      <DropMenu 
+        customOnclickOptions={onClickOptions}
         options={SectionOtherOptsOptions}
         cssClassContainer=" nonFloating"
       />
