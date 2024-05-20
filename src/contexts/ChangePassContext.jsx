@@ -8,20 +8,19 @@ export const UseChangePass = () => {
     const context = useContext(ChangePassContext);
 
     if (!context) {
-        throw new Error("UseAccount must be used within an AccountProvider");
+        throw new Error("ChangePass must be used within an ChangePassProvider");
     }
 
     return context;
 }
 
-
 export const ChangePassProvider = ({ children }) => {
 
     const [changePass, setChangePass] = useState([]);
 
-    const createChangePass = async (currentPassword, newPassword, confirmPassword) => {
+    const createChangePass = async (passwords) => {
         
-        const res = await GetChangePass(currentPassword, newPassword, confirmPassword);
+        const res = GetChangePass(passwords);
         console.log(res);
     }
     return (
