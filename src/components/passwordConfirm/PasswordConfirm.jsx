@@ -4,9 +4,9 @@ import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm.j
 import {useNavigate} from "react-router-dom";
 
 
-const ConfPassUs = ({redirectPath}) => {
+const ConfPassUs = () => {
+  
   const navigate = useNavigate();
-
   const handleSubmit = e => {
     e.preventDefault();
     navigate("/change-pass");

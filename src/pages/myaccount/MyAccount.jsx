@@ -2,7 +2,7 @@ import "./myaccount.css";
 import BtnAdd from "../../components/buttons/BtnAdd/BtnAdd.jsx";
 import Slider from "../../components/slider/Slider.jsx";
 import Card from "../../components/card/Card.jsx";
-import {Link} from "react-router-dom";
+import {Link, redirect} from "react-router-dom";
 //for option's section
 import IconPaypal from "../../assets/icons/icon-paypal.svg";
 import IconLogout from "../../assets/icons/menu-logout.svg";
@@ -166,7 +166,7 @@ const SectionOtherOpts = () => {
       text: "Cambiar email",
     },
     {
-      toLink: "/confirm-password",
+      toLink: "/changePass",
       iconPath: IconShieldPass,
       text: "Cambiar contraseña",
     },
