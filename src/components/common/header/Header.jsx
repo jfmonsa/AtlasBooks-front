@@ -107,7 +107,7 @@ const VisibleHeaderOptions = ({opts}) => {
 // Main header component
 const Header = () => {
   //Login context
-  const context = useContext(LoginContext);
+  const context = useContext(LoginContext());
 
   const [isOpen, setIsOpen] = useState(false);
   const setOpenedState = () => {

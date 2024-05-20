@@ -7,6 +7,7 @@ button {
   height: 48px;
   font-size: var(--fs-2);
   font-weight: var(--fw-medium);
+  margin-top: var(--spacing-3);
 }
 
 .commentsBtn {
