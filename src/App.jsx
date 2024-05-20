@@ -4,11 +4,19 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
+import {useContext} from "react";
+
+//contexts
+import {ChangePassProvider} from "./contexts/ChangePassContext.jsx";
+import LoginContext from "./contexts/LoginContext.jsx"
+import {AuthProvider} from "./contexts/authContext.jsx";
 
 //pages
 import Home from "./pages/home/Home.jsx";
 import Error from "./pages/error/Error.jsx";
 import BookSearchResults from "./pages/bookSearchResults/bookSearchResults.jsx";
+import UploadBook from "./pages/myaccount/UploadBook.jsx";
+import NewList from "./pages/myaccount/NewList.jsx";
 
 //Login related and recovery account
 import {Login} from "./pages/account/Login.jsx";
@@ -27,15 +35,10 @@ import PasswordConfirm from "./components/passwordConfirm/PasswordConfirm.jsx";
 import Recommended from "./pages/recommended/Recommended.jsx";
 import DiscoverList from "./pages/discoverList/DiscoverList.jsx";
 import Categories from "./pages/categories/Categories.jsx";
-
 //layouts
 import RootLayout from "./RootLayout.jsx";
 
-import UploadBook from "./pages/myaccount/UploadBook.jsx";
-import NewList from "./pages/myaccount/NewList.jsx";
-import {useContext} from "react";
-import LoginContext from "./contexts/LoginContext.jsx";
-import {AuthProvider} from "./contexts/authContext.jsx";
+
 
 const LoggedAdminRouting = () => {
   const context = useContext(LoginContext());
@@ -63,8 +66,9 @@ const router = createBrowserRouter(
       {/* --- Routing recovery account */}
       <Route path="recovery-account" element={<RecoveryAccount />} />
       <Route path="send-email" element={<SendEmail />} />
-      <Route path="change-pass" element={<ChangePass />} />
 
+      <Route path="changePass" element={<ChangePass />} />
+      
       {/* Routing for edit details in my account */}
       {/* TODO: change path for user/id_del_user */}
       <Route path="my-account" element={<LoggedRouting />} />
@@ -93,9 +97,11 @@ const router = createBrowserRouter(
 const App = () => {
   return (
     <AuthProvider>
-      <RouterProvider router={router} />
+      <ChangePassProvider>
+        <RouterProvider router={router} />
+      </ChangePassProvider>
     </AuthProvider>
-  );
+  )
 };
 
 export default App;

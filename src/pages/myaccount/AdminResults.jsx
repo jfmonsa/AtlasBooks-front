@@ -16,7 +16,7 @@ import {
   getSearchUsers as getSearchUsersApi,
   // deleteComment as deleteCommentApi,
   // updateComment as updateCommentApi,
-} from "../../data/apiSearchUsers.js";
+} from "../../api/apiSearchUsers.js";
 
 const TableResults = () => {
   const checkBool = value => {
