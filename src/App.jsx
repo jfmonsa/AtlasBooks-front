@@ -67,7 +67,7 @@ const router = createBrowserRouter(
       <Route path="recovery-account" element={<RecoveryAccount />} />
       <Route path="send-email" element={<SendEmail />} />
 
-      <Route path="change-pass" element={<ChangePass />} />
+      <Route path="changePass" element={<ChangePass />} />
       
       {/* Routing for edit details in my account */}
       {/* TODO: change path for user/id_del_user */}
