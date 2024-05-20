@@ -41,14 +41,14 @@ import RootLayout from "./RootLayout.jsx";
 
 
 const LoggedAdminRouting = () => {
-  const context = useContext(LoginContext);
+  const context = useContext(LoginContext());
 
   if (context.admin) return <AdminResults />;
   else return <Error />;
 };
 
 const LoggedRouting = () => {
-  const context = useContext(LoginContext);
+  const context = useContext(LoginContext());
 
   if (context.logged) return <MyAccount />;
   else return <Error />;

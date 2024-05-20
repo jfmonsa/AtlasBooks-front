@@ -13,6 +13,7 @@ import {
 import useFetch from "../../utils/useFetch.js";
 import {useAuth} from "../../contexts/authContext.jsx";
 import {useNavigate} from "react-router-dom";
+import PrimaryBtnLink from "../../components/buttons/primaryBtn/PrimaryBtnLink.jsx";
 
 
 const NewAccount = ({}) => {
@@ -24,7 +25,7 @@ const NewAccount = ({}) => {
   const countryReq = useFetch("https://ipapi.co/json/");
   const navigate = useNavigate();
 
-  const {signup, isAuthenticated, errors: RegisterErrors} = useAuth();
+  const {signup, isAuthenticated, errors: RegisterErrors, user} = useAuth();
 
   const [error, setError] = useState(null);
   useEffect(() => { if (isAuthenticated) navigate('/'); }, [isAuthenticated]);
@@ -74,6 +75,8 @@ const NewAccount = ({}) => {
       password: userPass1,
       country: countryReq.data.country_code,
     });
+
+    consle.log(user);
   };
 
   return (
@@ -133,6 +136,11 @@ const NewAccount = ({}) => {
           id="1"
         />
       </form>
+      <PrimaryBtnLink
+        tolink="/login"
+        text="Iniciar Sesion"
+        cssClasses="formCustomBtn black1Btn"
+      />
     </div>
     
     </>

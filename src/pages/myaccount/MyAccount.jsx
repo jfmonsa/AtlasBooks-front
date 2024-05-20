@@ -202,7 +202,7 @@ const MyAccountAdmin = () => {
 };
 
 const LoggedAdmin = () => {
-  const context = useContext(LoginContext);
+  const context = useContext(LoginContext());
 
   if (context.admin) {
     return <MyAccountAdmin />;
