@@ -76,6 +76,7 @@ const Searcher = ({holder = SEARCH, toUrl}) => {
         </div>
         <div>
           <button
+            type="button"
             className="searcher__moreOptsBtn"
             onClick={() => {
               setViewMoreOptions(!viewMoreOptions);

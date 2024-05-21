@@ -258,10 +258,10 @@ const relatedBooks = [
 
 //main function
 const BookPage = () => {
-  const {bookId} = useParams();
-  console.log(bookId);
+  const {id} = useParams();
+
   const {data, error, isPending} = useFetch(
-    `http://localhost:3000/api/books/${14 /*bookId*/}`,
+    `http://localhost:3000/api/books/${id}`,
   );
 
   if (error) {
