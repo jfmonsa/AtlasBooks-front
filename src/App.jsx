@@ -8,7 +8,7 @@ import {useContext} from "react";
 
 //contexts
 import {ChangePassProvider} from "./contexts/ChangePassContext.jsx";
-import LoginContext from "./contexts/LoginContext.jsx"
+import LoginContext from "./contexts/LoginContext.jsx";
 import {AuthProvider} from "./contexts/authContext.jsx";
 
 //pages
@@ -38,8 +38,6 @@ import Categories from "./pages/categories/Categories.jsx";
 //layouts
 import RootLayout from "./RootLayout.jsx";
 
-
-
 const LoggedAdminRouting = () => {
   const context = useContext(LoginContext());
 
@@ -54,45 +52,98 @@ const LoggedRouting = () => {
   else return <Error />;
 };
 
-const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path="/" element={<RootLayout />}>
-      <Route index element={<Home />} />
-
-      {/* Login related and recovery account */}
-      <Route path="login" element={<Login />} />
-      <Route path="new-account" element={<NewAccount />} />
-
-      {/* --- Routing recovery account */}
-      <Route path="recovery-account" element={<RecoveryAccount />} />
-      <Route path="send-email" element={<SendEmail />} />
-
-      <Route path="changePass" element={<ChangePass />} />
-      
-      {/* Routing for edit details in my account */}
-      {/* TODO: change path for user/id_del_user */}
-      <Route path="my-account" element={<LoggedRouting />} />
-      <Route path="my-lists" element={<Lists />} />
-      <Route path="confirm-password" element={<PasswordConfirm />} />
-      <Route path="users-details" element={<ChangeUserDetails />} />
-      <Route path="upload-book" element={<UploadBook />} />
-      <Route path="new-list" element={<NewList />} />
-      <Route path="recommended" element={<Recommended />} />
-      <Route path="search-results" element={<BookSearchResults />} />
-
-      {/* TODO: change path for book/id_del_libro */}
-      <Route path="report" element={<Report />} />
-      <Route path="book-information" element={<BookInformation />} />
-
-      <Route path="categories" element={<Categories />} />
-      <Route path="discover-list" element={<DiscoverList />} />
-
-      {/* Routes for admin */}
-      <Route path="results" element={<LoggedAdminRouting />} />
-      {/* <Route path="*" element={<NoFound404 />} /> */}
-    </Route>,
-  ),
-);
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <RootLayout />,
+    children: [
+      {
+        index: true,
+        element: <Home />,
+      },
+      {
+        path: "login",
+        element: <Login />,
+      },
+      {
+        path: "new-account",
+        element: <NewAccount />,
+      },
+      {
+        path: "recovery-account",
+        element: <RecoveryAccount />,
+      },
+      {
+        path: "send-email",
+        element: <SendEmail />,
+      },
+      {
+        path: "changePass",
+        element: <ChangePass />,
+      },
+      {
+        path: "my-account",
+        element: <LoggedRouting />,
+      },
+      {
+        path: "my-lists",
+        element: <Lists />,
+      },
+      {
+        path: "confirm-password",
+        element: <PasswordConfirm />,
+      },
+      {
+        path: "users-details",
+        element: <ChangeUserDetails />,
+      },
+      {
+        path: "upload-book",
+        element: <UploadBook />,
+      },
+      {
+        path: "new-list",
+        element: <NewList />,
+      },
+      {
+        path: "recommended",
+        element: <Recommended />,
+      },
+      {
+        path: "search-results",
+        element: <BookSearchResults />,
+      },
+      {
+        path: "report",
+        element: <Report />,
+      },
+      {
+        path: "book-information",
+        element: <BookInformation />,
+      },
+      {
+        path: "books/:id",
+        element: <BookInformation />,
+      },
+      {
+        path: "categories",
+        element: <Categories />,
+      },
+      {
+        path: "discover-list",
+        element: <DiscoverList />,
+      },
+      {
+        path: "results",
+        element: <LoggedAdminRouting />,
+      },
+      // {
+      //   path: "*",
+      //   element: <NoFound404 />,
+      // },
+    ],
+  },
+]);
 
 const App = () => {
   return (
@@ -101,7 +152,7 @@ const App = () => {
         <RouterProvider router={router} />
       </ChangePassProvider>
     </AuthProvider>
-  )
+  );
 };
 
 export default App;

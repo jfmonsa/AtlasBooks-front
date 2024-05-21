@@ -1,6 +1,10 @@
 import "./bookInformation.css";
 import Card from "../../components/card/Card.jsx";
-import {Link, Navigate} from "react-router-dom";
+
+//to fetch data
+import {useParams} from "react-router-dom";
+import useFetch from "../../utils/useFetch.js";
+
 //Rate starts
 import {AiFillStar, AiOutlineStar} from "react-icons/ai";
 import {useState} from "react";
@@ -254,28 +258,44 @@ const relatedBooks = [
 
 //main function
 const BookPage = () => {
-  return (
-    <>
-      <BookInfoSection
-        bookName="Salem's Lot"
-        authorName="King Stephen"
-        rank="5.0"
-        categories="Horror, crime"
-        editory="Radom Peguin"
-        isbn="978-3-16-148410-0"
-        fileType="EPUB"
-        year="1987"
-        language="English"
-        pages="431"
-        vol={3}
-        bookImg={BookImage}
-        numComments={2}
-      />
-      <RateStarsSection />
-      <BookPageRelated books={relatedBooks} />
-      <BookPageComments comments={null} />
-    </>
+  const {bookId} = useParams();
+  console.log(bookId);
+  const {data, error, isPending} = useFetch(
+    `http://localhost:3000/api/books/${14 /*bookId*/}`,
   );
+
+  if (error) {
+    return <div>Loading...</div>;
+  }
+  if (isPending) {
+    return <div>{error}</div>;
+  }
+  if (data) {
+    //{isbn, title, descriptionb, yearrelased, vol, npages, pulisher, pathBookCover} = data.data;
+    console.log(data);
+    return (
+      <>
+        <BookInfoSection
+          bookName="Salem's Lot"
+          authorName="King Stephen"
+          rank="5.0"
+          categories="Horror, crime"
+          editory="Radom Peguin"
+          isbn="978-3-16-148410-0"
+          fileType="EPUB"
+          year="1987"
+          language="English"
+          pages="431"
+          vol={3}
+          bookImg={BookImage}
+          numComments={2}
+        />
+        <RateStarsSection />
+        <BookPageRelated books={relatedBooks} />
+        <BookPageComments comments={null} />
+      </>
+    );
+  }
 };
 
 export default BookPage;
