@@ -2,16 +2,10 @@ import Slider from "react-slick";
 import "./Slider.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Imagen1 from "../../assets/img/image1.png";
-import Imagen2 from "../../assets/img/image2.png";
-import Imagen3 from "../../assets/img/image3.png";
-import Imagen4 from "../../assets/img/image4.png";
-import Imagen5 from "../../assets/img/image5.png";
 import ArrowLeft from "../../assets/icons/icon-arrowLeft.svg";
 import ArrowRight from "../../assets/icons/icon-arrowRight.svg";
 import Book from "../book/Book.jsx";
 
-// TODO: le pasamos como props un objeto que contenga los libros, despues de la consulta a la bd
 const CustomSlider = ({books}) => {
   const SamplePrevArrow = props => {
     const {className, onClick} = props;
@@ -95,11 +89,12 @@ const CustomSlider = ({books}) => {
   return (
     <>
       <Slider {...settings}>
-        {books.map((book, index) => {
+        {books.map(book => {
           return (
             <Book
-              key={index}
-              autor={book.author}
+              key={book.bookId}
+              bookId={book.bookId}
+              authors={book.authors}
               title={book.title}
               img={book.pathBookCover}
             />
