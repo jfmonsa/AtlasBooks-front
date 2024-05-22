@@ -10,7 +10,6 @@ import {AiFillStar, AiOutlineStar} from "react-icons/ai";
 import {useState} from "react";
 
 //Book Info
-import BookImage from "../../assets/img/image1.png";
 import DropdownBtn from "../../components/dropDownButtons/DropdownBtn.jsx";
 import IconDropDown from "../../components/iconDropDown/IconDropDown.jsx";
 import {FaRegBookmark} from "react-icons/fa";
@@ -31,12 +30,6 @@ import mark from "../../assets/icons/marcador-icon.svg";
 import Slider from "../../components/slider/Slider.jsx";
 //Comments
 import Comments from "./commentarySection/Comments.jsx";
-//TODO: reeemplzarlas por unas alamacenadas en el backend
-import Imagen1 from "../../assets/img/image1.png";
-import Imagen2 from "../../assets/img/image2.png";
-import Imagen3 from "../../assets/img/image3.png";
-import Imagen4 from "../../assets/img/image4.png";
-import Imagen5 from "../../assets/img/image5.png";
 
 //Aux functions
 const HeartButton = ({className}) => {
@@ -67,6 +60,7 @@ const BookInfoSection = ({
   bookName,
   authorName,
   rank,
+  bookDescription = "None",
   categories = "None",
   editory = "None",
   isbn = "None",
@@ -136,13 +130,7 @@ const BookInfoSection = ({
             </div>
           </div>
           <h3 className="bookInfo__right__sipnosisTitle">Sinopsis</h3>
-          <p className="bookInfo__right__sipnosisText">
-            Thousands of miles away from the small township of Salem's Lot, two
-            terrified people, a man and a boy, still share the secrets of those
-            clapboard houses and tree-lined streets. They must return to
-            'Salem's Lot for a final confrontation with the unspeakable evil
-            that lives on in the town.
-          </p>
+          <p className="bookInfo__right__sipnosisText">{bookDescription}</p>
           <div className="bookInfo__specs">
             <ul className="specs">
               <BookInfoSectionSpecs left="Categorias:" right={categories} />
@@ -227,34 +215,6 @@ const BookPageComments = ({comments}) => {
     </Card>
   );
 };
-//Aux data
-const relatedBooks = [
-  {
-    author: "Pepito Perez",
-    title: "Pepe tenia una pipa",
-    pathBookCover: Imagen1,
-  },
-  {
-    author: "Gogó manotas",
-    title: "Bases de datos relacionales",
-    pathBookCover: Imagen2,
-  },
-  {
-    author: "Carlos Delgado",
-    title: "Salem's lot",
-    pathBookCover: Imagen3,
-  },
-  {
-    author: "Jaimito el Carterito",
-    title: "Odio al chavo",
-    pathBookCover: Imagen4,
-  },
-  {
-    author: "Karl Marx",
-    title: "Das Kapital",
-    pathBookCover: Imagen5,
-  },
-];
 
 //main function
 const BookPage = () => {
@@ -265,33 +225,34 @@ const BookPage = () => {
   );
 
   if (error) {
-    return <div>Loading...</div>;
-  }
-  if (isPending) {
     return <div>{error}</div>;
   }
+  if (isPending) {
+    return <div>Loading...</div>;
+  }
   if (data) {
-    //{isbn, title, descriptionb, yearrelased, vol, npages, pulisher, pathBookCover} = data.data;
-    console.log(data);
     return (
       <>
         <BookInfoSection
-          bookName="Salem's Lot"
-          authorName="King Stephen"
-          rank="5.0"
-          categories="Horror, crime"
-          editory="Radom Peguin"
-          isbn="978-3-16-148410-0"
-          fileType="EPUB"
-          year="1987"
-          language="English"
-          pages="431"
-          vol={3}
-          bookImg={BookImage}
+          isbn={data.isbn}
+          bookName={data.title}
+          bookDescription={data.description}
+          year={data.year}
+          vol={data.vol}
+          pages={data.n_pages}
+          editory={data.publisher}
+          bookImg={`http://localhost:3000/storage/books/${data.cover_path}`}
+          rank={data.book_rate}
+          authorName={data.book_authors.join(", ")}
+          language={data.book_lang.join(", ")}
+          //TODO: pass files
+          fileType={data.book_files_type.join(", ")}
+          categories={data.book_subcategories.join(", ")}
+          // TODO: edit this when edit comments
           numComments={2}
         />
         <RateStarsSection />
-        <BookPageRelated books={relatedBooks} />
+        <BookPageRelated books={data.related_books} />
         <BookPageComments comments={null} />
       </>
     );
