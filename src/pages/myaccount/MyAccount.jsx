@@ -288,16 +288,23 @@ const downloadHistoryBooks = [
   },
 ];
 
+
+
 // Main page
 const MyAccount = () => {
+
+  const {user} = useAuth();
+  const usuario = user.user;
+  console.log(usuario);
+
   return (
     <>
       <SectionMyData
-        name="Pepito Perez"
-        nickname="pepitope"
-        email="pepito@p.com"
-        country="Palestina"
-        registerDate="11/03/2003"
+        name= {usuario.name}
+        nickname= {usuario.nickname}
+        email= {usuario.email}
+        country= {usuario.country}
+        registerDate= {usuario.registerDate.split("T")[0]}
       />
       <LoggedAdmin />
       <SectionLists myLists={myBookLists} />
