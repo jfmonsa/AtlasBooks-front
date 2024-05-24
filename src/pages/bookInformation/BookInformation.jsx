@@ -243,11 +243,11 @@ const BookPage = () => {
           editory={data.publisher}
           bookImg={`http://localhost:3000/storage/books/${data.cover_path}`}
           rank={data.book_rate}
-          authorName={data.book_authors.join(", ")}
-          language={data.book_lang.join(", ")}
+          authorName={data.book_authors?.join(", ")}
+          language={data.book_lang?.join(", ")}
           //TODO: pass files
-          fileType={data.book_files_type.join(", ")}
-          categories={data.book_subcategories.join(", ")}
+          fileType={data.book_files_type?.join(", ")}
+          categories={data.book_subcategories?.join(", ")}
           // TODO: edit this when edit comments
           numComments={2}
         />
