@@ -10,7 +10,7 @@ const GridBooks = ({books}) => {
             bookId={book.bookId}
             key={book.bookId}
             title={book.title}
-            autor={book.autors}
+            authors={book.authors}
             img={book.pathBookCover}
           />
         ))}
