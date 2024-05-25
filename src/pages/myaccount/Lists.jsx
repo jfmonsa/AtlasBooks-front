@@ -1,63 +1,30 @@
-import image1 from "../../assets/img/image1.png";
-import image2 from "../../assets/img/image2.png";
-import image3 from "../../assets/img/image3.png";
-import image4 from "../../assets/img/image4.png";
-import image5 from "../../assets/img/image5.png";
 import GridBooks from "../../components/gridBooks/GridBooks";
 
-const books = [
-  {
-    title: "The Alchemist",
-    autor: "Pablo Coelho",
-    img: image1,
-  },
-  {
-    title: "Another Book",
-    autor: "Another Author",
-    img: image2,
-  },
-  {
-    title: "Another Book",
-    autor: "Another Author",
-    img: image3,
-  },
-  {
-    title: "Another Book",
-    autor: "Another Author",
-    img: image4,
-  },
-  {
-    title: "Another Book",
-    autor: "Another Author",
-    img: image5,
-  },
-  {
-    title: "Another Book",
-    autor: "Another Author",
-    img: image4,
-  },
-  {
-    title: "Another Book",
-    autor: "Another Author",
-    img: image2,
-  },
-  {
-    title: "Another Book",
-    autor: "Another Author",
-    img: image3,
-  },
-  // Agrega más objetos de libros según sea necesario
-];
+//to fetch data
+import {useParams} from "react-router-dom";
+import useFetch from "../../utils/useFetch.js";
 
-const Lists = ({title, description}) => {
-  return (
-    <>
-      <h1 className="title1">Nombre lista</h1>
-      <h2 className="display--subheading">Descripción de lista</h2>
-      {/* TODO: hacer un boton de acciones para editar detalles de la lista o eliminarla */}
-      <GridBooks books={books} />
-    </>
+const Lists = ({}) => {
+  const {idList} = useParams();
+  const {data, error, isPending} = useFetch(
+    `http://localhost:3000/api/lists/${idList}`,
   );
+  if (error) {
+    return <div>{error}</div>;
+  }
+  if (isPending) {
+    return <div>Loading...</div>;
+  }
+  if (data) {
+    return (
+      <>
+        <h1 className="title1">{data.title}</h1>
+        <h2 className="display--subheading">{data.description}</h2>
+        {/* TODO: hacer un boton de acciones para editar detalles de la lista o eliminarla */}
+        <GridBooks books={data.books} />
+      </>
+    );
+  }
 };
 
 export default Lists;

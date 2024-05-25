@@ -5,12 +5,13 @@ const GridBooks = ({books}) => {
   return (
     <section className="gridBooks">
       <div className="gridBooks__grid">
-        {books.map((book, index) => (
+        {books.map(book => (
           <Book
-            key={index}
+            bookId={book.bookId}
+            key={book.bookId}
             title={book.title}
-            autor={book.autor}
-            img={book.img}
+            autor={book.autors}
+            img={book.pathBookCover}
           />
         ))}
       </div>

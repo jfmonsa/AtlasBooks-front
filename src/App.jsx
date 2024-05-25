@@ -81,7 +81,7 @@ const router = createBrowserRouter([
         element: <LoggedRouting />,
       },
       {
-        path: "my-lists",
+        path: "my-lists/:idList",
         element: <Lists />,
       },
       {
