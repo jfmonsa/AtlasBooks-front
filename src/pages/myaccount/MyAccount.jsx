@@ -169,7 +169,7 @@ const SectionOtherOpts = () => {
       text: "Editar mi información",
     },
     {
-      toLink: "/confirm-password",
+      toLink: "/changeEmail",
       iconPath: IconEditEmail,
       text: "Cambiar email",
     },
@@ -197,10 +197,7 @@ const SectionOtherOpts = () => {
         text: "Cerrar sesión"},
     
   ]
-
-
- 
-
+  
   return (
     <Card h1Text="Opciones">
     
@@ -295,7 +292,6 @@ const MyAccount = () => {
 
   const {user} = useAuth();
   const usuario = user.user;
-  console.log(usuario);
 
   return (
     <>

@@ -9,7 +9,7 @@ const ConfPassUs = () => {
   const navigate = useNavigate();
   const handleSubmit = e => {
     e.preventDefault();
-    navigate("/change-pass");
+    navigate("/changeEmail");
     //Este componente debe ser instanciado en cada opción de usuario como:
     // cambiar contraseña, cambiar email, o editar detalles
     //TODO: Aquí usar el useNavigate del routing para redirigir al redirectPath despues de hacer

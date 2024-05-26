@@ -21,7 +21,6 @@ export const ChangePassProvider = ({ children }) => {
     const createChangePass = async (passwords) => {
         
         const res = GetChangePass(passwords);
-        console.log(res);
     }
     return (
         <ChangePassContext.Provider value={{changePass, createChangePass}}>

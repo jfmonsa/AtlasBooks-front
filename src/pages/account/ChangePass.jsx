@@ -41,7 +41,6 @@ const ChangePass = () => {
       return;
     }
     //enviar datos post al api
-    console.log(pass1, pass2, pass3);
     createChangePass({currentPassword: pass1, newPassword: pass2, confirmPassword: pass3});
     //navegar hacia la pagina indicada
     navigate("/my-account");
