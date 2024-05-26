@@ -3,20 +3,19 @@ import icon_mail from "../../assets/icons/icon-mail.svg";
 import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm.jsx";
 import {Link} from "react-router-dom";
 
-const SendEmail = () => {
+const ReceivedEmail = () => {
   return (
     <>
-      <h1 className="account__title">Un correo ha sido enviado</h1>
+      <h1 className="account__title">Cambio de correo</h1>
 
       <p className="account__subtitle">
-        Por favor revisa tu correo para ver las instrucciones sobre como
-        recuperar tu contraseña
+        Por favor da click en el boton para confirmar el cambio de correo
       </p>
 
       <img src={icon_mail} alt="" className="icon_mail" />
-      <Link to="/login">
+      <Link to="/my-account">
         <PrimaryBtnForm
-          text="Iniciar Sesion"
+          text="Confirmar"
           cssClasses="formCustomBtn purpleBtn"
           id="4"
         />
@@ -30,4 +29,4 @@ const SendEmail = () => {
     </>
   );
 };
-export default SendEmail;
+export default ReceivedEmail;

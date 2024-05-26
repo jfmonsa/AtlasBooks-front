@@ -20,6 +20,8 @@ import RecoveryAccount from "./pages/account/RecoveryAccount.jsx";
 import SendEmail from "./pages/account/SendEmail.jsx";
 import ChangePass from "./pages/account/ChangePass.jsx";
 import BookInformation from "./pages/bookInformation/BookInformation.jsx";
+import ReceivedEmail from "./pages/account/ReceivedEmail.jsx";
+
 //My Account related
 import MyAccount from "./pages/myaccount/MyAccount.jsx";
 import AdminResults from "./pages/myaccount/AdminResults.jsx";
@@ -131,6 +133,10 @@ const router = createBrowserRouter([
       {
         path: "results",
         element: <LoggedAdminRouting />,
+      },
+      {
+        path: "received-email",
+        element: <ReceivedEmail />,
       },
       // {
       //   path: "*",
