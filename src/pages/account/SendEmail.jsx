@@ -10,7 +10,7 @@ const SendEmail = () => {
 
       <p className="account__subtitle">
         Por favor revisa tu correo para ver las instrucciones sobre como
-        recuperar tu contraseña
+        recuperar tu contraseña.
       </p>
 
       <img src={icon_mail} alt="" className="icon_mail" />

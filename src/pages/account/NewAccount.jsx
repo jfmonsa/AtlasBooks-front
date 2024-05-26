@@ -76,7 +76,6 @@ const NewAccount = ({}) => {
       country: countryReq.data.country_code,
     });
 
-    consle.log(user);
   };
 
   return (

@@ -3,6 +3,7 @@ import {useContext} from "react";
 
 //contexts
 import {ChangePassProvider} from "./contexts/ChangePassContext.jsx";
+import {ChangeEmailProvider} from "./contexts/ChangeEmailContext.jsx";
 import LoginContext from "./contexts/LoginContext.jsx";
 import {AuthProvider} from "./contexts/authContext.jsx";
 
@@ -21,6 +22,7 @@ import SendEmail from "./pages/account/SendEmail.jsx";
 import ChangePass from "./pages/account/ChangePass.jsx";
 import BookInformation from "./pages/bookInformation/BookInformation.jsx";
 import ReceivedEmail from "./pages/account/ReceivedEmail.jsx";
+import ChangeEmail from "./pages/account/ChangeEmail.jsx";
 
 //My Account related
 import MyAccount from "./pages/myaccount/MyAccount.jsx";
@@ -138,6 +140,10 @@ const router = createBrowserRouter([
         path: "received-email",
         element: <ReceivedEmail />,
       },
+      {
+        path: "ChangeEmail",
+        element: <ChangeEmail />,
+      },
       // {
       //   path: "*",
       //   element: <NoFound404 />,
@@ -149,9 +155,11 @@ const router = createBrowserRouter([
 const App = () => {
   return (
     <AuthProvider>
-      <ChangePassProvider>
-        <RouterProvider router={router} />
-      </ChangePassProvider>
+      <ChangeEmailProvider>
+        <ChangePassProvider>
+          <RouterProvider router={router} />
+        </ChangePassProvider>
+      </ChangeEmailProvider>
     </AuthProvider>
   );
 };

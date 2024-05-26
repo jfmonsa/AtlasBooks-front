@@ -9,7 +9,7 @@ const ReceivedEmail = () => {
       <h1 className="account__title">Cambio de correo</h1>
 
       <p className="account__subtitle">
-        Por favor da click en el boton para confirmar el cambio de correo
+        Por favor da click en el boton para confirmar el cambio de correo.
       </p>
 
       <img src={icon_mail} alt="" className="icon_mail" />
