@@ -1,64 +1,27 @@
 import Searcher from "../../components/searcher/Searcher";
-import image1 from "../../assets/img/image1.png";
-import image2 from "../../assets/img/image2.png";
-import image3 from "../../assets/img/image3.png";
-import image4 from "../../assets/img/image4.png";
-import image5 from "../../assets/img/image5.png";
 import GridBooks from "../../components/gridBooks/GridBooks";
-
-const books = [
-  {
-    title: "The Alchemist",
-    autor: "Pablo Coelho",
-    img: image1,
-  },
-  {
-    title: "Another Book",
-    autor: "Another Author",
-    img: image2,
-  },
-  {
-    title: "Another Book",
-    autor: "Another Author",
-    img: image3,
-  },
-  {
-    title: "Another Book",
-    autor: "Another Author",
-    img: image4,
-  },
-  {
-    title: "Another Book",
-    autor: "Another Author",
-    img: image5,
-  },
-  {
-    title: "Another Book",
-    autor: "Another Author",
-    img: image4,
-  },
-  {
-    title: "Another Book",
-    autor: "Another Author",
-    img: image2,
-  },
-  {
-    title: "Another Book",
-    autor: "Another Author",
-    img: image3,
-  },
-];
+import useFetch from "../../utils/useFetch.js";
 
 const Recommended = () => {
-  return (
-    <>
-      <h1 className="display--heading">Recomendados</h1>
-      <h2 className="display--subheading">Best ranked</h2>
+  const {data, isPending, error} = useFetch("http://localhost:3000/api/feed");
 
-      <Searcher toUrl="search-results" />
-      <GridBooks books={books} />
-    </>
-  );
+  if (error) {
+    return <p>{error}</p>;
+  }
+  if (isPending) {
+    return <p>Loading...</p>;
+  }
+  if (data) {
+    return (
+      <>
+        <h1 className="display--heading">Recomendados</h1>
+        <h2 className="display--subheading">Best ranked</h2>
+
+        <Searcher toUrl="search-results" />
+        <GridBooks books={data.recommended_feed} />
+      </>
+    );
+  }
 };
 
 export default Recommended;

@@ -225,10 +225,10 @@ const BookPage = () => {
   );
 
   if (error) {
-    return <div>{error}</div>;
+    return <p>{error}</p>;
   }
   if (isPending) {
-    return <div>Loading...</div>;
+    return <p>Loading...</p>;
   }
   if (data) {
     return (
