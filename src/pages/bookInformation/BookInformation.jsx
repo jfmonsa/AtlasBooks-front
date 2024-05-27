@@ -208,10 +208,10 @@ const BookPageRelated = ({books}) => {
   );
 };
 
-const BookPageComments = ({comments}) => {
+const BookPageComments = ({comments, bookId}) => {
   return (
     <Card h1Text="Comentarios" id="comments">
-      <Comments />
+      <Comments comments={comments} bookId={bookId} />
     </Card>
   );
 };
@@ -249,11 +249,11 @@ const BookPage = () => {
           fileType={data.book_files_type?.join(", ")}
           categories={data.book_subcategories?.join(", ")}
           // TODO: edit this when edit comments
-          numComments={2}
+          numComments={data.comments.length}
         />
         <RateStarsSection />
         <BookPageRelated books={data.related_books} />
-        <BookPageComments comments={null} />
+        <BookPageComments comments={data.comments} bookId={data.idBook} />
       </>
     );
   }

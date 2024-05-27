@@ -10,48 +10,69 @@ import {
   updateComment as updateCommentApi,
 } from "../../../api/apiComments.js";
 
-const Comments = ({userId, userName}) => {
-  const [backendComents, setBackendComents] = useState([]);
-  const [activeComent, setActiveComent] = useState(null);
-  const rootComments = backendComents.filter(
-    backendComent => backendComent.parentId == null,
-  );
-  useEffect(() => {
-    getCommentsApi().then(data => {
-      setBackendComents(data);
-    });
-  }, []);
+import {useAuth} from "../../../contexts/authContext.jsx";
 
-  const addComent = text => {
-    console.log(text);
-    createCommentApi(text).then(comment => {
-      setBackendComents([comment, ...backendComents]);
+const Comments = ({comments, bookId}) => {
+  const [activeComent, setActiveComent] = useState(null);
+  const {user} = useAuth();
+  const [backendComents, setBackendComents] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  const addComent = async body => {
+    setLoading(true);
+    try {
+      const comment = await createCommentApi(body);
+      if (comment.length == 0) {
+        throw new Error("Error al crear el comentario");
+      }
+      setBackendComents([comment.data, ...backendComents]);
       setActiveComent(null);
-    });
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
   };
+
+  useEffect(() => {
+    getCommentsApi(bookId);
+    setBackendComents(comments);
+  }, []);
 
   const deleteComment = commentId => {
     if (window.confirm("Estas seguro de querer eliminar este comentario?")) {
       deleteCommentApi(commentId).then(() => {
         const updateBackendComments = backendComents.filter(
-          backendComent => backendComent.id != commentId,
+          backendComent => backendComent.idcoment != commentId,
         );
         setBackendComents(updateBackendComments);
       });
     }
   };
 
-  const updateComment = (text, commentId) => {
-    updateCommentApi(text, commentId).then(() => {
-      const updateBackendComments = backendComents.map(backendComent => {
-        if (backendComent.id == commentId) {
-          return {...backendComent, body: text};
-        }
-        return backendComent;
-      });
+  const updateComment = async (text, commentId) => {
+    setLoading(true);
+    try {
+      const updatedComment = await updateCommentApi({text, commentId});
+      if (updatedComment.length == 0) {
+        throw new Error("Error al actualizar el comentario");
+      }
+      const updateBackendComments = backendComents.map(backendComent =>
+        backendComent.idcoment == commentId
+          ? {...backendComent, text: updatedComment.data.text}
+          : backendComent,
+      );
       setBackendComents(updateBackendComments);
       setActiveComent(null);
-    });
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -59,22 +80,31 @@ const Comments = ({userId, userName}) => {
       <NewComment
         submitLabel="Comentar"
         handleSubmit={addComent}
-        userName={userName}
+        userName={user.user.nickname}
+        idbook={bookId}
       />
       <h2 className="card__h1">Otros Comentarios</h2>
-      <div className="comments-container">
-        {rootComments.map(rootComment => (
-          <Comment
-            key={rootComment.id}
-            comment={rootComment}
-            userId={userId}
-            deleteComment={deleteComment}
-            activeComent={activeComent}
-            updateComment={updateComment}
-            setActiveComent={setActiveComent}
-          />
-        ))}
-      </div>
+      {loading ? (
+        <div className="loading">Cargando...</div>
+      ) : (
+        <div className="comments-container">
+          {backendComents.map(rootComment => (
+            <Comment
+              key={rootComment.idcoment}
+              id={rootComment.idcoment}
+              comment={rootComment.text}
+              userId={rootComment.iduser}
+              userName={rootComment.nickname}
+              date={rootComment.date}
+              deleteComment={deleteComment}
+              activeComent={activeComent}
+              updateComment={updateComment}
+              setActiveComent={setActiveComent}
+              profilepic={rootComment.pathprofilepic}
+            />
+          ))}
+        </div>
+      )}
     </>
   );
 };

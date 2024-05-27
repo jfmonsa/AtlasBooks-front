@@ -4,24 +4,29 @@ import PrimaryBtnForm from "../../../components/buttons/primaryBtn/PrimaryBtnFor
 
 export function NewComment({
   handleSubmit,
+  handleUpdate,
   submitLabel,
   userName,
   hasCancelButton = true,
   initialText = "",
   handleCancel,
+  profilepic,
+  idbook,
+  idcomment,
 }) {
   const [text, setText] = useState(initialText);
   const isTextAreaDisabled = text.length == 0;
   const onSubmit = event => {
     event.preventDefault();
-    handleSubmit(text);
+    handleSubmit({text: text, bookId: idbook, commentId: idcomment});
     setText("");
   };
+
   return (
     <div className="comment comment--new">
       <img
         className="comment__image comment__image--i"
-        src={DefaultUser}
+        src={`http://localhost:3000/storage/${profilepic}`}
         alt="userIcon"
       />
       <form className="comment__right" onSubmit={onSubmit}>
@@ -37,6 +42,7 @@ export function NewComment({
         ></textarea>
         <div className="comment__btns">
           <PrimaryBtnForm
+            //onClick={onSubmit}
             text="Comentar"
             cssClasses="baseBtn commentsBtn blueBtn"
             disabled={isTextAreaDisabled}

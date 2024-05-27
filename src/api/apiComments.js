@@ -1,55 +1,45 @@
-export const getComments = async () => {
-  return [
-    {
-      id: "1",
-      body: "First comment",
-      username: "Jack",
-      userId: "1",
-      parentId: null,
-      createdAt: "2021-08-16T23:00:33.010+02:00",
-    },
-    {
-      id: "2",
-      body: "Second comment",
-      username: "John",
-      userId: "2",
-      parentId: null,
-      createdAt: "2021-08-16T23:00:33.010+02:00",
-    },
-    {
-      id: "3",
-      body: "First comment first child",
-      username: "John",
-      userId: "2",
-      parentId: "1",
-      createdAt: "2021-08-16T23:00:33.010+02:00",
-    },
-    {
-      id: "4",
-      body: "Second comment second child",
-      username: "John",
-      userId: "2",
-      parentId: "2",
-      createdAt: "2021-08-16T23:00:33.010+02:00",
-    },
-  ];
+import {
+  getCommentsApi,
+  createCommentApi,
+  updateCommentApi,
+  deleteCommentApi,
+} from "./comments";
+
+export const getComments = async id => {
+  try {
+    const comments = await getCommentsApi(id);
+    return comments;
+  } catch (error) {
+    return error.message;
+  }
 };
 
-export const createComment = async (text, parentId = null) => {
-  return {
-    id: Math.random().toString(36).substr(2, 9),
-    body: text,
-    parentId,
-    userId: "1",
-    username: "John",
-    createdAt: new Date().toISOString(),
-  };
+export const createComment = async body => {
+  try {
+    const comment = await createCommentApi(body);
+    return comment;
+  } catch (error) {
+    return error.message;
+  }
 };
 
-export const updateComment = async text => {
-  return {text};
+export const updateComment = async comment => {
+  try {
+    console.log(
+      "Sending request to /api/comments/ to update:",
+      comment.text,
+      comment.commentId,
+    );
+    const updateComment = await updateCommentApi(comment);
+    console.log("Response received:", updateComment);
+    return updateComment;
+  } catch (error) {
+    return error.message;
+  }
 };
 
-export const deleteComment = async () => {
-  return {};
+export const deleteComment = async id => {
+  try {
+    await deleteCommentApi(id);
+  } catch (error) {}
 };
