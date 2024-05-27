@@ -137,11 +137,11 @@ const router = createBrowserRouter([
         element: <LoggedAdminRouting />,
       },
       {
-        path: "received-email",
+        path: "received-email/:token",
         element: <ReceivedEmail />,
       },
       {
-        path: "ChangeEmail",
+        path: "changeEmail",
         element: <ChangeEmail />,
       },
       // {
