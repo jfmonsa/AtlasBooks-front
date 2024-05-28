@@ -16,10 +16,7 @@ import DropMenu from "../../components/dropMenu/DropMenu.jsx";
 import PrivateListIcon from "./../../assets/icons/icon-privatelist.svg";
 import PublicListIcon from "./../../assets/icons/icon-publiclist.svg";
 //Admin page
-import Searcher from "../../components/searcher/Searcher.jsx";
 import SearcherNoFilters from "../../components/searcher/SearcherNoFilters.jsx";
-import {useContext} from "react";
-import LoginContext from "../../contexts/LoginContext.jsx";
 
 //imgs para libros
 //TODO: reeemplzarlas por unas alamacenadas en el backend
@@ -28,9 +25,7 @@ import Imagen2 from "../../assets/img/image2.png";
 import Imagen3 from "../../assets/img/image3.png";
 import Imagen4 from "../../assets/img/image4.png";
 import Imagen5 from "../../assets/img/image5.png";
-import { useAuth } from "../../contexts/authContext.jsx";
-
-
+import {  useAuth } from "../../contexts/authContext.jsx";
 
 // Aux functions
 const SectionMyDataDatum = ({left, right}) => {
@@ -225,8 +220,8 @@ const MyAccountAdmin = () => {
 };
 
 const LoggedAdmin = () => {
-  const context = useContext(LoginContext());
-
+  const {contextValue} = useAuth()
+  const context = contextValue;
   if (context.admin) {
     return <MyAccountAdmin />;
   }
@@ -291,16 +286,15 @@ const downloadHistoryBooks = [
 const MyAccount = () => {
 
   const {user} = useAuth();
-  const usuario = user.user;
 
   return (
     <>
       <SectionMyData
-        name= {usuario.name}
-        nickname= {usuario.nickname}
-        email= {usuario.email}
-        country= {usuario.country}
-        registerDate= {usuario.registerDate.split("T")[0]}
+        name= {user.name}
+        nickname= {user.nickname}
+        email= {user.email}
+        country= {user.country}
+        registerDate= {user.registerDate.split("T")[0]}
       />
       <LoggedAdmin />
       <SectionLists myLists={myBookLists} />

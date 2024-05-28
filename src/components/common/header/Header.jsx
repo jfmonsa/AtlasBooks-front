@@ -12,8 +12,8 @@ import MenuRecommendedIcon from "../../../assets/icons/menu-recommended.svg";
 import MenuSearchIcon from "../../../assets/icons/menu-search.svg";
 import MenuSingupIcon from "../../../assets/icons/menu-singup.svg";
 
-import {useContext, useState} from "react";
-import LoginContext from "../../../contexts/LoginContext.jsx";
+import { useState} from "react";
+import { useAuth } from "../../../contexts/authContext.jsx";
 
 import {NavLink} from "react-router-dom";
 import DropMenu from "../../dropMenu/DropMenu.jsx";
@@ -107,8 +107,8 @@ const VisibleHeaderOptions = ({opts}) => {
 // Main header component
 const Header = () => {
   //Login context
-  const context = useContext(LoginContext());
-
+  const {contextValue} = useAuth()
+  const context = contextValue;
   const [isOpen, setIsOpen] = useState(false);
   const setOpenedState = () => {
     setIsOpen(!isOpen);
