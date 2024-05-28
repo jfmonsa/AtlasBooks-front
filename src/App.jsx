@@ -6,7 +6,7 @@ import {ChangePassProvider} from "./contexts/ChangePassContext.jsx";
 import {ChangeEmailProvider} from "./contexts/ChangeEmailContext.jsx";
 import LoginContext from "./contexts/LoginContext.jsx";
 import {AuthProvider} from "./contexts/authContext.jsx";
-import {SearchBookProvider} from "./contexts/searchBookContext.jsx";
+
 
 //pages
 import Home from "./pages/home/Home.jsx";
@@ -158,9 +158,7 @@ const App = () => {
     <AuthProvider>
       <ChangeEmailProvider>
         <ChangePassProvider>
-          <SearchBookProvider>
           <RouterProvider router={router} />
-          </SearchBookProvider>
         </ChangePassProvider>
       </ChangeEmailProvider>
     </AuthProvider>
