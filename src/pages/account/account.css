@@ -48,13 +48,3 @@ main {
 .icon_mail {
   margin-bottom: var(--spacing-3);
 }
-
-.errors {
-  margin: var(--spacing-3);
-  color: red;
-  font-size: var(--fs-1);
-  text-align: center;
-  background-color: white;
-  padding: var(--spacing-2);
-  border-radius: 8px;
-}
