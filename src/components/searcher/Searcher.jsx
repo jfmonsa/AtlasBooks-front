@@ -1,12 +1,11 @@
 import "./searcher.css";
 import PrimaryBtnForm from "../buttons/primaryBtn/PrimaryBtnForm";
 import {useNavigate} from "react-router-dom";
-import {useEffect, useState} from "react";
+import { useState} from "react";
 import MultiSelectSearch from "../multiSelectSearch/MultiSelectSearch";
 import MultiSelectNoSearch from "../multiSelecNoSearch/MultiSelectNoSearch";
 import {SEARCH} from "../../utils/placeholder.js";
-import axios from 'axios';
-import Book from "../book/Book.jsx";
+
 
 
 //Aux function for data of the select inputs
@@ -29,19 +28,16 @@ const mainLanguages = [
 ];
 
 //Main function
-const Searcher = ({holder = SEARCH, toUrl}) => {
+const Searcher =  ({holder = SEARCH, toUrl, }) => {
     //handle action (search)
     
     const navigate = useNavigate();
-    const handleSearch = async (event) => {
-       
+    const handleSearch =  (event) => {
         event.preventDefault();
-        await booksResults(search,yearFrom.value,yearTo.value, selectedLanguages[0] ? selectedLanguages[0].label : '');
-       
-        navigate(toUrl /*,{replace: true}*/);
+        navigate(`/search-results?search=${search}&yearFrom=${yearFrom.value}&yearTo=${yearTo.value}&language=${selectedLanguages[0] ? selectedLanguages[0].label : ''}`); 
     };
 
-
+    // localhost:3000/api/searchFilter?search=a&language=spanish&yearTo=2020&yearFrom=2008
     //Aux fuctions an states for inputs
     const [viewMoreOptions, setViewMoreOptions] = useState(false);
     // -- states for filters
@@ -51,27 +47,6 @@ const Searcher = ({holder = SEARCH, toUrl}) => {
     const [selectedLanguages, setSelectedLanguages] = useState([]);
     const [search, setSearch] = useState('');
     
-
-
-
-    const booksResults = async () => {
-        try {
-          const response = await axios.get("http://localhost:3000/api/searchFilter", {
-            params: {
-              search: search,
-              language: selectedLanguages[0].value ? selectedLanguages.map(lang => lang.value).join(',') : '',
-              yearFrom: yearFrom ? yearFrom.value : '',
-              yearTo: yearTo ? yearTo.value : ''
-            }
-          });
-          const data = response.data;
-          console.log(data);
-          
-        } catch (error) {
-          console.error(error);
-        }
-      }
-
      
 
    const handleTextChange = ({target}) => {
@@ -93,13 +68,14 @@ const Searcher = ({holder = SEARCH, toUrl}) => {
     };
     const handleSelectedLanguagesChange = selectedOption => {
         setSelectedLanguages(selectedOption);
-        console.log(selectedOption);
+
+        
         
     };
 
     
-    console.log( search,yearFrom.value,yearTo.value,selectedLanguages[0] ? selectedLanguages[0].label : ''
-    );
+   // console.log( search,yearFrom.value,yearTo.value,selectedLanguages[0] ? selectedLanguages[0].label : ''
+     //);
     
     return (
         <section className="searcher">

@@ -2,44 +2,12 @@ import "./bookSearchResults.css";
 import Searcher from "../../components/searcher/Searcher";
 import {Link} from "react-router-dom";
 import {AiOutlineStar} from "react-icons/ai";
-
-
-//Temp data for book results
-import image1 from "../../assets/img/image1.png";
-import image2 from "../../assets/img/image2.png";
-import image3 from "../../assets/img/image3.png";
-import image4 from "../../assets/img/image4.png";
-import image5 from "../../assets/img/image5.png";
+import axios from "axios";
+import { useSearchParams } from 'react-router-dom';
+import useFetch from "../../utils/useFetch.js";
 
 
 
-
-const totalResults = 20;
-const searchResults = [
-  {
-    title: "El nombre del viento",
-    autors: "Patrick Rothfuss",
-    publisher: "DAW Books",
-    year: 2007,
-    language: "Español",
-    rate: 4.5,
-    urlBook: "/libros/el-nombre-del-viento",
-    pathCoverBook: image1,
-  },
-  {
-    title: "1984",
-    autors: "George Orwell",
-    publisher: "Secker & Warburg",
-    year: 1949,
-    language: "Inglés",
-    rate: 4.8,
-    urlBook: "/libros/1984",
-    pathCoverBook: image2,
-  },
- {
-  
- }
-];
 
 
 
@@ -83,23 +51,25 @@ const BookResult = (
   );
 };
 
-const BookResultsContainer = ({results, totalResults}) => {
+const BookResultsContainer =  ({results, totalResults}) => {
+  //`/books/${bookId}`
+  //`http://localhost:3000/storage/books/${img}`
   return (
     <>
       <section className="results">
         <p className="results__total">Total: {totalResults} libros</p>
-        {results.map((book, index) => {
+        {results.map(book => {
           return (
             <BookResult
-              key={index}
+              key={book.id}
               title={book.title}
               autors={book.autors}
               publisher={book.publisher}
               year={book.year}
               language={book.language}
               rate={book.rate}
-              urlBook={book.urlBook}
-              pathCoverBook={book.pathCoverBook}
+              urlBook={`/books/${book.id}`}
+              pathCoverBook={ `http://localhost:3000/storage/books/${book.pathCoverBook}`}
             />
           );
         })}
@@ -109,16 +79,29 @@ const BookResultsContainer = ({results, totalResults}) => {
 };
 
 const BookSearch = () => {
-  return (
-    <>
-      <h1 className="display--heading">Resultados</h1>
-      <Searcher toUrl="/search-results" />
-      <BookResultsContainer
-        results={searchResults}
-        totalResults={totalResults}
-      />
-    </>
-  );
+  const [searchParams] = useSearchParams()
+  const {data, isPending, error} = useFetch(`http://localhost:3000/api/searchFilter?search=${searchParams.get('search')}&yearFrom=${searchParams.get('yearFrom')}&yearTo=${searchParams.get('yearTo')}&language=${searchParams.get('language')}`);
+  
+  if (error) {
+    return <p>{error}</p>;
+  }
+  if (isPending) {
+    return <p>Loading...</p>;
+  }
+  if (data) {
+    console.log(data.data)
+     return (
+      <>
+        <h1 className="display--heading">Resultados</h1>
+        <Searcher toUrl={''} />
+        <BookResultsContainer
+          results={data.data}
+          totalResults={20}
+        />
+      </>
+    );
+  } 
+ 
 };
 
 export default BookSearch;
