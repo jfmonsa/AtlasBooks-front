@@ -1,12 +1,13 @@
 import "./searcher.css";
 import PrimaryBtnForm from "../buttons/primaryBtn/PrimaryBtnForm";
 import {useNavigate} from "react-router-dom";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import MultiSelectSearch from "../multiSelectSearch/MultiSelectSearch";
 import MultiSelectNoSearch from "../multiSelecNoSearch/MultiSelectNoSearch";
 import {SEARCH} from "../../utils/placeholder.js";
-import { useBookSearch } from "../../contexts/searchBookContext.jsx";
-import { getBooksRequest } from "../../api/apiSearchBooks.js";
+import axios from 'axios';
+import Book from "../book/Book.jsx";
+
 
 //Aux function for data of the select inputs
 const genYearArray = (to = 1799) => {
@@ -20,29 +21,26 @@ const genYearArray = (to = 1799) => {
 };
 const Years = genYearArray();
 const mainLanguages = [
-    {label: "English", value: "en"},
-    {label: "Mandarin Chinese", value: "zh"},
-    {label: "Spanish", value: "es"},
-    {label: "Hindi", value: "hi"},
-    {label: "Arabic", value: "ar"},
-    {label: "Bengali", value: "bn"},
-    {label: "Portuguese", value: "pt"},
-    {label: "Russian", value: "ru"},
-    {label: "Japanese", value: "ja"},
-    {label: "German", value: "de"},
+    {label:"English", value: "English"},
+    {label:"spanish", value: "spanish"},
+
+    
     // Add more languages as needed
 ];
 
 //Main function
 const Searcher = ({holder = SEARCH, toUrl}) => {
     //handle action (search)
+    
     const navigate = useNavigate();
-    const handleSearch = event => {
-        const Books = useBookSearch();
-        getBooksRequest();
+    const handleSearch = async (event) => {
+       
         event.preventDefault();
+        await booksResults(search,yearFrom.value,yearTo.value, selectedLanguages[0] ? selectedLanguages[0].label : '');
+       
         navigate(toUrl /*,{replace: true}*/);
     };
+
 
     //Aux fuctions an states for inputs
     const [viewMoreOptions, setViewMoreOptions] = useState(false);
@@ -51,6 +49,34 @@ const Searcher = ({holder = SEARCH, toUrl}) => {
     const [yearFrom, setYearFrom] = useState({value: "1789", label: "1789"});
     const [yearTo, setYearTo] = useState({value: "1789", label: "1789"});
     const [selectedLanguages, setSelectedLanguages] = useState([]);
+    const [search, setSearch] = useState('');
+    
+
+
+
+    const booksResults = async () => {
+        try {
+          const response = await axios.get("http://localhost:3000/api/searchFilter", {
+            params: {
+              search: search,
+              language: selectedLanguages[0].value ? selectedLanguages.map(lang => lang.value).join(',') : '',
+              yearFrom: yearFrom ? yearFrom.value : '',
+              yearTo: yearTo ? yearTo.value : ''
+            }
+          });
+          const data = response.data;
+          console.log(data);
+          
+        } catch (error) {
+          console.error(error);
+        }
+      }
+
+     
+
+   const handleTextChange = ({target}) => {
+        setSearch(target.value);
+   }
 
     const handleYearFromChange = selectedOption => {
         setYearFrom(selectedOption);
@@ -59,24 +85,29 @@ const Searcher = ({holder = SEARCH, toUrl}) => {
                 year => parseInt(year.value) >= parseInt(selectedOption.value),
             ),
         );
-        console.log(selectedOption);
+       
     };
     const handleYearToChange = selectedOption => {
         setYearTo(selectedOption);
-        console.log(selectedOption);
+        
     };
     const handleSelectedLanguagesChange = selectedOption => {
         setSelectedLanguages(selectedOption);
         console.log(selectedOption);
-        console.log(selectedOption);
+        
     };
-    console.log(yearFrom, yearTo, selectedLanguages);
+
+    
+    console.log( search,yearFrom.value,yearTo.value,selectedLanguages[0] ? selectedLanguages[0].label : ''
+    );
+    
     return (
         <section className="searcher">
+          
             <form onSubmit={handleSearch}>
                 <div className="searcher__inputContainer">
-                    <input type="text" className="searcher__input" placeholder={holder} />
-                    <PrimaryBtnForm
+                    <input type="text" className="searcher__input" placeholder={holder} onChange={handleTextChange}/>
+                    <PrimaryBtnForm 
                         text="Buscar"
                         cssClasses=" searcher__button black2Btn"
                     />
@@ -113,6 +144,8 @@ const Searcher = ({holder = SEARCH, toUrl}) => {
                                     onChangeCallback={handleSelectedLanguagesChange}
                                     placeholder="Idiomas..."
                                 />
+
+                                
                             </>
                         )}
                     </div>
