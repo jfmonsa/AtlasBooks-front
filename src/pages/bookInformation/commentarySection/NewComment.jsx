@@ -42,7 +42,6 @@ export function NewComment({
         ></textarea>
         <div className="comment__btns">
           <PrimaryBtnForm
-            //onClick={onSubmit}
             text="Comentar"
             cssClasses="baseBtn commentsBtn blueBtn"
             disabled={isTextAreaDisabled}

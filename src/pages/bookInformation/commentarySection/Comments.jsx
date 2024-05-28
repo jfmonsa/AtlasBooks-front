@@ -80,7 +80,7 @@ const Comments = ({comments, bookId}) => {
       <NewComment
         submitLabel="Comentar"
         handleSubmit={addComent}
-        userName={user.user.nickname}
+        userName={user.nickname}
         idbook={bookId}
       />
       <h2 className="card__h1">Otros Comentarios</h2>

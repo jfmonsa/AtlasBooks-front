@@ -16,7 +16,7 @@ export function Comment({
   profilepic,
 }) {
   const {user} = useAuth();
-  const userIdLogged = user.user.id;
+  const userIdLogged = user.id;
   const fiveMinutes = 3000;
   const timePased = new Date() - date > fiveMinutes;
   const canEdit = userIdLogged == userId && !timePased;
