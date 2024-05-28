@@ -2,4 +2,5 @@
 .form__errorMsg {
   color: var(--error);
   margin-bottom: var(--spacing-2);
+  max-width: 300px;
 }
