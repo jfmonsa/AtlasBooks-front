@@ -6,7 +6,7 @@ import {useState} from "react";
 import {EMAIL} from "../../utils/placeholder.js";
 import ErrorFormAccountMsg from "../../components/errorFormAccountMsg/ErrorFormAccountMsg.jsx";
 import {valEmail, valNoEmpty} from "../../utils/validateFormFields.js";
-
+import { verifyEmail } from "../../api/apiRecoveyAccount.js";
 const RecoveryAccount = ({}) => {
   const [userEmail, setUserEmail] = useState("");
   const [error, setError] = useState(null);
@@ -22,7 +22,7 @@ const RecoveryAccount = ({}) => {
       return;
     }
     //request al api
-
+    verifyEmail({email: userEmail});
     navigate("/send-email");
   };
 
