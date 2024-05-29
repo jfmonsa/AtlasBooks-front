@@ -89,7 +89,6 @@ const BookSearch = () => {
     return <p>Loading...</p>;
   }
   if (data) {
-    console.log(data.data)
      return (
       <>
         <h1 className="display--heading">Resultados</h1>

@@ -67,7 +67,6 @@ const NewAccount = ({}) => {
     setError(null);
     //usemos country_code para almacenarlo en la columna de pais de usuario :)
     //si se quiere el nombre, .country_name
-    console.log(countryReq.data.country_code);
     //Enviar request al api para crear un usuario
     signup({
       name: userName,

@@ -25,13 +25,7 @@ export const createComment = async body => {
 
 export const updateComment = async comment => {
   try {
-    console.log(
-      "Sending request to /api/comments/ to update:",
-      comment.text,
-      comment.commentId,
-    );
     const updateComment = await updateCommentApi(comment);
-    console.log("Response received:", updateComment);
     return updateComment;
   } catch (error) {
     return error.message;
@@ -41,5 +35,7 @@ export const updateComment = async comment => {
 export const deleteComment = async id => {
   try {
     await deleteCommentApi(id);
-  } catch (error) {}
+  } catch (error) {
+    error.message;
+  }
 };

@@ -47,7 +47,6 @@ const LoggedAdminRouting = () => {
 const LoggedRouting = () => {
   const {contextValue} = useAuth()
   const context = contextValue;
-  console.log(context)
   
 
   if (context.logged) return <MyAccount />;

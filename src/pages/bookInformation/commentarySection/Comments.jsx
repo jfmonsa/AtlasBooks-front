@@ -31,8 +31,7 @@ const Comments = ({comments, bookId}) => {
       }
       setBackendComents([comment.data, ...backendComents]);
       setActiveComent(null);
-    } catch (error) {
-      console.log(error);
+    } catch (error) {error.message;
     } finally {
       setLoading(false);
     }
@@ -69,7 +68,7 @@ const Comments = ({comments, bookId}) => {
       setBackendComents(updateBackendComments);
       setActiveComent(null);
     } catch (error) {
-      console.log(error);
+      error.message;
     } finally {
       setLoading(false);
     }

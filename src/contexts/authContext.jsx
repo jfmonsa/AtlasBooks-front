@@ -36,7 +36,6 @@ export const AuthProvider = ({children}) => {
       });
       
     } catch (error) {
-      console.log(error.response.data);
       setErrors(error.response.data);
     }
   };
@@ -48,7 +47,6 @@ export const AuthProvider = ({children}) => {
         setUser(res.data);
       });
     } catch (error) {
-      console.log(error.response.data);
       setErrors(error.response.data);
     }
   };
@@ -85,7 +83,6 @@ export const AuthProvider = ({children}) => {
 
       try {
         const res = await verifyTokenRequest(cookie.token);
-        console.log(res)
         if (!res.data) {
           setIsAuthenticated(false);
           return;
@@ -93,7 +90,6 @@ export const AuthProvider = ({children}) => {
         setIsAuthenticated(true);
         setUser(res.data.user);
       } catch (error) {
-        console.log(error);
         setIsAuthenticated(false);
         setUser(false);
       }
