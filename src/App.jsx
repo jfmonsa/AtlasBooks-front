@@ -5,7 +5,6 @@ import {ChangePassProvider} from "./contexts/ChangePassContext.jsx";
 import {ChangeEmailProvider} from "./contexts/ChangeEmailContext.jsx";
 import {AuthProvider, useAuth} from "./contexts/authContext.jsx";
 
-
 //pages
 import Home from "./pages/home/Home.jsx";
 import Error from "./pages/error/Error.jsx";
@@ -22,6 +21,7 @@ import ChangePass from "./pages/account/ChangePass.jsx";
 import BookInformation from "./pages/bookInformation/BookInformation.jsx";
 import ReceivedEmail from "./pages/account/ReceivedEmail.jsx";
 import ChangeEmail from "./pages/account/ChangeEmail.jsx";
+import NewPassword from "./pages/account/CreateNewPass.jsx";
 
 //My Account related
 import MyAccount from "./pages/myaccount/MyAccount.jsx";
@@ -37,18 +37,15 @@ import Categories from "./pages/categories/Categories.jsx";
 import RootLayout from "./RootLayout.jsx";
 
 const LoggedAdminRouting = () => {
-  const {contextValue} = useAuth()
+  const {contextValue} = useAuth();
   const context = contextValue;
-
   if (context.admin) return <AdminResults />;
   else return <Error />;
 };
 
 const LoggedRouting = () => {
-  const {contextValue} = useAuth()
+  const {contextValue} = useAuth();
   const context = contextValue;
-  
-
   if (context.logged) return <MyAccount />;
   else return <Error />;
 };
@@ -145,6 +142,10 @@ const router = createBrowserRouter([
       {
         path: "changeEmail",
         element: <ChangeEmail />,
+      },
+      {
+        path: "newPassword/:token",
+        element: <NewPassword />,
       },
       // {
       //   path: "*",

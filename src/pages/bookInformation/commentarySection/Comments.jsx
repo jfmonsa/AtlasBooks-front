@@ -18,10 +18,6 @@ const Comments = ({comments, bookId}) => {
   const [backendComents, setBackendComents] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  }
-
   const addComent = async body => {
     setLoading(true);
     try {

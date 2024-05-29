@@ -10,7 +10,6 @@ const ReceivedEmail = () => {
   const {token} = useParams();
   
   const  OnClick = async() => {
-    
     const user = await verifyTokenEmail({token});
     GetChangeEmailToken({id: user.data.user.id, newEmail: user.data.user.newEmail});
   }
