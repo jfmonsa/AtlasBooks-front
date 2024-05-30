@@ -5,8 +5,7 @@ import {AiOutlineStar} from "react-icons/ai";
 import axios from "axios";
 import { useSearchParams } from 'react-router-dom';
 import useFetch from "../../utils/useFetch.js";
-
-
+import { useEffect,useState } from "react";
 
 
 
@@ -67,7 +66,7 @@ const BookResultsContainer =  ({results, totalResults}) => {
               publisher={book.publisher}
               year={book.year}
               language={book.language}
-              rate={book.rate}
+              rate={book.rate || 0}
               urlBook={`/books/${book.id}`}
               pathCoverBook={ `http://localhost:3000/storage/books/${book.pathCoverBook}`}
             />
@@ -80,8 +79,9 @@ const BookResultsContainer =  ({results, totalResults}) => {
 
 const BookSearch = () => {
   const [searchParams] = useSearchParams()
-  const {data, isPending, error} = useFetch(`http://localhost:3000/api/searchFilter?search=${searchParams.get('search')}&yearFrom=${searchParams.get('yearFrom')}&yearTo=${searchParams.get('yearTo')}&language=${searchParams.get('language')}`);
-  
+  const {data, isPending, error} = useFetch(`http://localhost:3000/api/searchFilter?search=${searchParams.get('search')}&yearFrom=${searchParams.get('yearFrom')}&yearTo=${searchParams.get('yearTo')}&language=${searchParams.get('language')}`);  
+  const books = [];
+ 
   if (error) {
     return <p>{error}</p>;
   }
@@ -89,12 +89,13 @@ const BookSearch = () => {
     return <p>Loading...</p>;
   }
   if (data) {
+    books.push(data.data);
      return (
       <>
         <h1 className="display--heading">Resultados</h1>
         <Searcher toUrl={''} />
         <BookResultsContainer
-          results={data.data}
+          results={books[0]}
           totalResults={20}
         />
       </>
