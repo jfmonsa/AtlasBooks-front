@@ -3,6 +3,7 @@ import {useState} from "react";
 import {FaRegBookmark, FaBookmark} from "react-icons/fa";
 
 const IconDropMenuItem = ({
+  onClick,
   text,
   toLink,
   iconPath,
@@ -10,12 +11,14 @@ const IconDropMenuItem = ({
   itemSize,
 }) => {
   const [mark, setMark] = useState(false);
+  const handleClick = () => {
+    setMark(!mark); // Esta es la acción adicional
+    onClick && onClick(); // Llama a la función onClick que pasaste como prop
+  };
   return (
     <li
       className={`dropMenu__item--${itemSize} dropMenu__item  navHover  ${cssClassItemCont}`}
-      onClick={() => {
-        setMark(!mark);
-      }}
+      onClick={handleClick}
     >
       <span className="dropMenu__item__icon">
         {mark ? <FaBookmark /> : <FaRegBookmark />}

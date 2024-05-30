@@ -1,5 +1,6 @@
 import "./bookInformation.css";
 import Card from "../../components/card/Card.jsx";
+import DropMenu from "../../components/dropMenu/DropMenu.jsx";
 
 //to fetch data
 import {useParams} from "react-router-dom";
@@ -71,6 +72,7 @@ const BookInfoSection = ({
   vol = 1,
   bookImg,
   numComments,
+  listsOpts,
 }) => {
   const shareOptions = [
     {toLink: "#", iconPath: Facebook, text: "Facebook"},
@@ -83,12 +85,6 @@ const BookInfoSection = ({
   const downloadOptions = [
     {toLink: "#", iconPath: Mega, text: "Mega"},
     {toLink: "#", iconPath: Mediafire, text: "Mediafire"},
-  ];
-  const listsOpts = [
-    {toLink: "#", iconPath: mark, text: "Lista Punk"},
-    {toLink: "#", iconPath: mark, text: "Lista Punk"},
-    {toLink: "#", iconPath: mark, text: "Lista Punk"},
-    {toLink: "#", iconPath: mark, text: "Lista Punk"},
   ];
 
   return (
@@ -125,6 +121,7 @@ const BookInfoSection = ({
                 <IconDropDown
                   icon={<FaRegBookmark className="relevantInfo__icon2" />}
                   options={listsOpts}
+                  //onClick={listId => handleSaveToList(listId)}
                 />
               </div>
             </div>
@@ -216,47 +213,94 @@ const BookPageComments = ({comments, bookId}) => {
   );
 };
 
-//main function
+// main function
 const BookPage = () => {
   const {id} = useParams();
 
-  const {data, error, isPending} = useFetch(
-    `http://localhost:3000/api/books/${id}`,
-  );
+  // Fetch book data
+  const {
+    data: bookData,
+    error: bookError,
+    isPending: bookIsPending,
+  } = useFetch(`http://localhost:3000/api/books/${id}`);
 
-  if (error) {
-    return <p>{error}</p>;
+  // Fetch lists data
+  const {
+    data: listsData,
+    error: listsError,
+    isPending: listsIsPending,
+  } = useFetch("http://localhost:3000/api/lists");
+
+  // Define handleSaveToList outside of BookInfoSection
+  const handleSaveToList = async listId => {
+    if (!bookData || !listId) return;
+
+    try {
+      // Realizar una solicitud al backend para guardar el libro en la lista
+      await fetch(`http://localhost:3000/api/lists/${listId}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          book: bookData.idBook, // Envía todos los datos del libro
+        }),
+      });
+
+      console.log(list.id);
+      // Actualizar el estado u otra acción necesaria para reflejar el libro guardado en la lista
+      // setSelectedList(listId);
+    } catch (error) {
+      console.error("Error saving book to list:", error);
+    }
+  };
+
+  if (bookError || listsError) {
+    return <p>{bookError || listsError}</p>;
   }
-  if (isPending) {
+
+  if (bookIsPending || listsIsPending) {
     return <p>Loading...</p>;
   }
-  if (data) {
+
+  if (bookData && listsData) {
+    const listsOpts = listsData.map(list => ({
+      toLink: "#",
+      iconPath: mark,
+      text: list.title,
+      onClick: () => handleSaveToList(list.id), // Assign handleSaveToList to onClick
+    }));
+
     return (
       <>
         <BookInfoSection
-          isbn={data.isbn}
-          bookName={data.title}
-          bookDescription={data.description}
-          year={data.year}
-          vol={data.vol}
-          pages={data.n_pages}
-          editory={data.publisher}
-          bookImg={`http://localhost:3000/storage/books/${data.cover_path}`}
-          rank={data.book_rate}
-          authorName={data.book_authors?.join(", ")}
-          language={data.book_lang?.join(", ")}
-          //TODO: pass files
-          fileType={data.book_files_type?.join(", ")}
-          categories={data.book_subcategories?.join(", ")}
-          // TODO: edit this when edit comments
-          numComments={data.comments.length}
+          isbn={bookData.isbn}
+          bookName={bookData.title}
+          bookDescription={bookData.description}
+          year={bookData.year}
+          vol={bookData.vol}
+          pages={bookData.n_pages}
+          editory={bookData.publisher}
+          bookImg={`http://localhost:3000/storage/books/${bookData.cover_path}`}
+          rank={bookData.book_rate}
+          authorName={bookData.book_authors?.join(", ")}
+          language={bookData.book_lang?.join(", ")}
+          fileType={bookData.book_files_type?.join(", ")}
+          categories={bookData.book_subcategories?.join(", ")}
+          numComments={bookData.comments.length}
+          listsOpts={listsOpts} // Pass listsOpts to BookInfoSection
         />
         <RateStarsSection />
-        <BookPageRelated books={data.related_books} />
-        <BookPageComments comments={data.comments} bookId={data.idBook} />
+        <BookPageRelated books={bookData.related_books} />
+        <BookPageComments
+          comments={bookData.comments}
+          bookId={bookData.idBook}
+        />
       </>
     );
   }
+
+  return null;
 };
 
 export default BookPage;
