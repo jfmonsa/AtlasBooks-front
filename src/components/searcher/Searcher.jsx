@@ -43,7 +43,7 @@ const Searcher =  ({holder = SEARCH, toUrl, }) => {
     // -- states for filters
     const [yearToOptions, setYearToOptions] = useState(Years);
     const [yearFrom, setYearFrom] = useState({value: "1", label: "1"});
-    const [yearTo, setYearTo] = useState({value: "2030", label: "2030"});
+    const [yearTo, setYearTo] = useState({value: "3000", label: "3000"});
     const [selectedLanguages, setSelectedLanguages] = useState([]);
     const [search, setSearch] = useState('');
     
