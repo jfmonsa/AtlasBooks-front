@@ -1,21 +1,21 @@
 import "./primarybtn.css";
 
-
 const PrimaryBtnForm = ({
   text,
   children,
   cssClasses,
   onClick,
   disabled = false,
+  type = "submit",
 }) => {
   return (
     <button
-      type="submit"
+      type={type}
       className={"baseBtn" + " " + cssClasses}
       onClick={onClick}
     >
-        {text}
-        {children}
+      {text}
+      {children}
     </button>
   );
 };
