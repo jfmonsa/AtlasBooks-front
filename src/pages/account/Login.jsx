@@ -11,17 +11,19 @@ import {
   valNoEmpty,
 } from "../../utils/validateFormFields.js";
 import ErrorFormAccountMsg from "../../components/errorFormAccountMsg/ErrorFormAccountMsg.jsx";
-import { useAuth } from "../../contexts/authContext.jsx";
-import { useNavigate } from "react-router-dom";
+import {useAuth} from "../../contexts/authContext.jsx";
+import {useNavigate} from "react-router-dom";
 
 export const Login = () => {
   const [userNickname, setUserNickname] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const navigate = useNavigate();
 
-  const {login ,isAuthenticated, errors: loginErrors} = useAuth();
+  const {login, isAuthenticated, errors: loginErrors} = useAuth();
 
-  useEffect(() => { if (isAuthenticated) navigate('/'); }, [isAuthenticated]); 
+  useEffect(() => {
+    if (isAuthenticated) navigate("/");
+  }, [isAuthenticated]);
 
   //El error es una string, cuando no hay error es null,
   //cuando el error existe se settea a una string que se va mostrar
@@ -45,18 +47,10 @@ export const Login = () => {
     //hacer validaciones en el backend para verificar que el usuario
     //exista
     login({userNickname: userNickname, userPassword: userPassword});
-    
   };
 
   return (
     <div>
-      {
-        loginErrors.map((error, index) => (
-          <div className='errors' key={index}>
-            <p>{error}</p>
-          </div>
-        ))
-      }
       <h1 className="account__title">Iniciar Sesion</h1>
       <form onSubmit={handleSubmit} method="post">
         <InputText
@@ -77,6 +71,9 @@ export const Login = () => {
         />
 
         <ErrorFormAccountMsg error={error} />
+        {loginErrors.map((error, index) => (
+          <ErrorFormAccountMsg error={error} index={index} />
+        ))}
         <PrimaryBtnForm
           text="Iniciar Sesion"
           cssClasses="formCustomBtn purpleBtn"

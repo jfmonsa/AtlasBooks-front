@@ -18,10 +18,6 @@ const Comments = ({comments, bookId}) => {
   const [backendComents, setBackendComents] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  }
-
   const addComent = async body => {
     setLoading(true);
     try {
@@ -31,8 +27,7 @@ const Comments = ({comments, bookId}) => {
       }
       setBackendComents([comment.data, ...backendComents]);
       setActiveComent(null);
-    } catch (error) {
-      console.log(error);
+    } catch (error) {error.message;
     } finally {
       setLoading(false);
     }
@@ -69,7 +64,7 @@ const Comments = ({comments, bookId}) => {
       setBackendComents(updateBackendComments);
       setActiveComent(null);
     } catch (error) {
-      console.log(error);
+      error.message;
     } finally {
       setLoading(false);
     }
@@ -80,7 +75,7 @@ const Comments = ({comments, bookId}) => {
       <NewComment
         submitLabel="Comentar"
         handleSubmit={addComent}
-        userName={user.user.nickname}
+        userName={user.nickname}
         idbook={bookId}
       />
       <h2 className="card__h1">Otros Comentarios</h2>

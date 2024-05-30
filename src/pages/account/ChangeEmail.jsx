@@ -31,7 +31,6 @@ const ChangeEmail = () => {
       return;
     }
     //enviar datos post al api
-    console.log(mail1, mail2);
     createChangeEmail({currentEmail: mail1, newEmail: mail2});
     //navegar hacia la pagina indicada
     navigate("/send-email");

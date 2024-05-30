@@ -1,8 +1,15 @@
 import {createContext, useState, useContext, useEffect} from "react";
-import {registerRequest, loginRequest, verifyTokenRequest} from "../api/auth.js";
+import {
+  registerRequest,
+  loginRequest,
+  verifyTokenRequest,
+} from "../api/auth.js";
 import Cookies from "js-cookie";
 
-export const AuthContext = createContext({});
+export const AuthContext = createContext({
+  logged: false,
+  admin:false,
+});
 
 export const useAuth = () => {
   const context = useContext(AuthContext);
@@ -15,29 +22,31 @@ export const useAuth = () => {
 export const AuthProvider = ({children}) => {
   const [user, setUser] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [contextValue, setAuthContext] = useState({
+    logged: false,
+    admin:false
+  })
   const [errors, setErrors] = useState([]);
 
-  const signup = async (userData) => {
+  const signup = async userData => {
     try {
-      const res = await registerRequest(userData);
-      if (res.status === 201) {
+      const res = await registerRequest(userData).then(res => {
         setIsAuthenticated(true);
         setUser(res.data);
-      }
+      });
+      
     } catch (error) {
-      console.log(error.response.data);
       setErrors(error.response.data);
     }
   };
 
   const login = async userData => {
     try {
-      const res = await loginRequest(userData);
-      setIsAuthenticated(true);
-      setUser(res.data);
-      
+      await loginRequest(userData).then(res => {
+        setIsAuthenticated(true);
+        setUser(res.data);
+      });
     } catch (error) {
-      console.log(error.response.data);
       setErrors(error.response.data);
     }
   };
@@ -58,6 +67,12 @@ export const AuthProvider = ({children}) => {
   }, [errors]);
 
   useEffect(() => {
+    if(user){
+      setAuthContext({logged: isAuthenticated, admin: user.isAdmin});
+    }
+  } ,[isAuthenticated,user]);
+
+  useEffect(() => {
     const checkLogin = async () => {
       const cookie = Cookies.get();
 
@@ -69,23 +84,22 @@ export const AuthProvider = ({children}) => {
       try {
         const res = await verifyTokenRequest(cookie.token);
         if (!res.data) {
-        setIsAuthenticated(false);
-        return;
+          setIsAuthenticated(false);
+          return;
         }
         setIsAuthenticated(true);
-        setUser(res.data);
-      }catch (error) {
-        console.log(error);
+        setUser(res.data.user);
+      } catch (error) {
         setIsAuthenticated(false);
         setUser(false);
       }
-    }
+    };
     checkLogin();
   }, []);
 
   return (
     <AuthContext.Provider
-      value={{signup, user, isAuthenticated, errors, login,logout}}
+      value={{signup, user, isAuthenticated, errors, login, logout,contextValue}}
     >
       {children}
     </AuthContext.Provider>

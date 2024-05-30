@@ -6,8 +6,8 @@ import {useState} from "react";
 import {EMAIL} from "../../utils/placeholder.js";
 import ErrorFormAccountMsg from "../../components/errorFormAccountMsg/ErrorFormAccountMsg.jsx";
 import {valEmail, valNoEmpty} from "../../utils/validateFormFields.js";
-
-const RecoveryAccount = ({setUsuario}) => {
+import { verifyEmail } from "../../api/apiRecoveyAccount.js";
+const RecoveryAccount = ({}) => {
   const [userEmail, setUserEmail] = useState("");
   const [error, setError] = useState(null);
   const navigate = useNavigate();
@@ -22,7 +22,7 @@ const RecoveryAccount = ({setUsuario}) => {
       return;
     }
     //request al api
-
+    verifyEmail({email: userEmail});
     navigate("/send-email");
   };
 
@@ -37,8 +37,8 @@ const RecoveryAccount = ({setUsuario}) => {
           text="Email"
           type="email"
           holder={EMAIL}
-          value={user}
-          onChange={e => setUser(e.target.value)}
+          value={userEmail}
+          onChange={e => setUserEmail(e.target.value)}
         />
         <PrimaryBtnForm text="Enviar" cssClasses="formCustomBtn purpleBtn" />
       </form>

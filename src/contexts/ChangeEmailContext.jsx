@@ -19,7 +19,6 @@ export const ChangeEmailProvider = ({ children }) => {
     const [changeEmail, setChangeEmail] = useState([]);
 
     const createChangeEmail = async (emails) => {
-        
         const res = GetChangeEmail(emails);
     }
     return (
