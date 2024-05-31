@@ -39,7 +39,7 @@ export function Comment({
       <div className="comment__right">
         <p className="comment__info">
           <span className="comment__author__name">{userName}</span>{" "}
-          <span className="comment__author__desc">{comment}</span>
+          <span className="comment__author__desc"></span>
           {" - "}
           <span className="comment__author__desc">{createdAt}</span>
         </p>
