@@ -7,6 +7,7 @@ const MultiSelectSearch = ({
   options,
   onChangeCallback,
   placeholder,
+  className = "basic-single",
 }) => {
   const [isSearchable, setIsSearchable] = useState(true);
   // TODO: No eliminar, esperar a ver si son necesarios más adelante
@@ -16,7 +17,7 @@ const MultiSelectSearch = ({
 
   return (
     <Select
-      className="basic-single"
+      className={className}
       classNamePrefix="select"
       // TODO: No eliminar, esperar a ver si son necesarios más adelante
       // isDisabled={isDisabled}

@@ -2,8 +2,9 @@ import Card from "../../components/card/Card.jsx";
 import InputText from "../../components/inputText/InputText.jsx";
 import TextArea from "../../components/inputText/TextArea.jsx";
 import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm.jsx";
-import DropdownBtn from "../../components/dropDownButtons/DropdownBtn.jsx";
+import MultiSelectSearch from "../../components/multiSelectSearch/MultiSelectSearch.jsx";
 import {useState} from "react";
+import {mainLanguages} from "../../utils/languagesArray.js";
 import DragAndDropFiles from "../../components/DragAndDropFiles/DragAndDropFiles.jsx";
 import "./uploadBook.css";
 
@@ -13,6 +14,7 @@ const UploadBook = () => {
   const [isbn, setIsbn] = useState("");
   const [nPages, setNPages] = useState("");
   const [nVol, setNVol] = useState("");
+  const [languages, setLanguages] = useState([]);
   const [files, setFiles] = useState([]);
   const handleSubmit = e => {
     e.preventDefault();
@@ -86,25 +88,15 @@ const UploadBook = () => {
           value={nVol}
           onChange={e => setNVol(e.target.value)}
         />
-        {/* <DropdownBtn
-          options={CatOptions}
-          text="Categoria"
-          boxCssClasses="btnDropDown btnDropDown--black"
-          textCssClasses="btnDropDown__text"
-        /> */}
-        {/* <DropdownBtn
-          options={IdiOptions}
-          text="Idioma"
-          boxCssClasses="btnDropDown btnDropDown--black"
-          textCssClasses="btnDropDown__text"
-        /> */}
-        {/* <InputText
-            text="Confirmar Contraseña"
-            holder={PASSWD}
-            type="password"
-            value={userPass2}
-            onChange={e => setUserPass2(e.target.value)}
-          /> */}
+        <h3>Idomas </h3>
+        <p>Puede seleccionar uno o más</p>
+        <MultiSelectSearch options={mainLanguages} />
+        <h3>Subcategorias</h3>
+        <p>Puede seleccionar una o más</p>
+        <label>Categorias </label>
+        <MultiSelectSearch options={mainLanguages} />
+        <h3>Imagen de portada</h3>
+        {/* TODO: Hacer el de subir portada */}
         <h3>Archivos</h3>
         <p>Sube uno o mas archivos en distintos formatos</p>
         <DragAndDropFiles onFilesSelected={handleFilesSelected} />

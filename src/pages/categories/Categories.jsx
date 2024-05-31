@@ -1,5 +1,6 @@
 import Searcher from "../../components/searcher/Searcher";
 import Card from "../../components/card/Card";
+import useFetch from "../../utils/useFetch.js";
 
 import "./categoria.css";
 
@@ -42,10 +43,10 @@ const Catergorie = ({primaryCategory, secundaryCategories}) => {
   return (
     <ul className="category">
       <li className="category__title">{primaryCategory}</li>
-      {secundaryCategories.map((cat, index) => {
+      {secundaryCategories.map(sub => {
         return (
-          <li key={index} className="category__subcategory">
-            {cat}
+          <li key={sub.subcat_id} className="category__subcategory">
+            {sub.subcat_name}
           </li>
         );
       })}
@@ -57,12 +58,12 @@ const Categories = ({catLits}) => {
   return (
     <Card h1Text={"Todas las Categorias"} h1Center>
       <div className="all-categories">
-        {catLits.map((cat, index) => {
+        {catLits.map(cat => {
           return (
             <Catergorie
-              key={index}
-              primaryCategory={cat.primary_name}
-              secundaryCategories={cat.secundary}
+              key={cat.cat_id}
+              primaryCategory={cat.cat_name}
+              secundaryCategories={cat.subcategories}
             />
           );
         })}
@@ -72,13 +73,24 @@ const Categories = ({catLits}) => {
 };
 
 const CategoriesMain = ({}) => {
-  return (
-    <>
-      <h1 className="display--heading">Categorias</h1>
-      <Searcher holder={"Buscar libro..."}></Searcher>
-      <Categories catLits={CategoriesLists} />
-    </>
+  const {error, isPending, data} = useFetch(
+    "http://localhost:3000/api/categories/groupped",
   );
+  if (error) {
+    return <p>{error}</p>;
+  }
+  if (isPending) {
+    return <p>Loading...</p>;
+  }
+  if (data) {
+    return (
+      <>
+        <h1 className="display--heading">Categorias</h1>
+        <Searcher holder={"Buscar libro..."}></Searcher>
+        <Categories catLits={data.groupedData} />
+      </>
+    );
+  }
 };
 
 export default CategoriesMain;

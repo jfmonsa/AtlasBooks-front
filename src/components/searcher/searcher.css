@@ -61,16 +61,16 @@
 }
 
 /* Select inputs */
-.select__indicators.css-4xgw5l-IndicatorsContainer2,
-div.select__control {
+.searcher__moreOpts .select__indicators.css-4xgw5l-IndicatorsContainer2,
+.searcher__moreOpts div.select__control {
   min-height: 30px;
   height: 30px;
 }
 
-.basic-single.css-b62m3t-container,
-.basic-multi-select.css-b62m3t-container {
+.searcher__moreOpts .basic-single.css-b62m3t-container,
+.searcher__moreOpts .basic-multi-select.css-b62m3t-container {
   border-radius: var(--border-rad-comp);
 }
-.basic-single.css-b62m3t-container {
+.searcher__moreOpts .basic-single.css-b62m3t-container {
   width: 120px;
 }

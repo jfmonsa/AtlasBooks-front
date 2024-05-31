@@ -5,6 +5,7 @@ import {useState} from "react";
 import MultiSelectSearch from "../multiSelectSearch/MultiSelectSearch";
 import MultiSelectNoSearch from "../multiSelecNoSearch/MultiSelectNoSearch";
 import {SEARCH} from "../../utils/placeholder.js";
+import {mainLanguages} from "../../utils/languagesArray.js";
 
 //Aux function for data of the select inputs
 const genYearArray = (to = 1799) => {
@@ -17,17 +18,9 @@ const genYearArray = (to = 1799) => {
   return years;
 };
 const Years = genYearArray();
-const mainLanguages = [
-  {label: "English", value: "English"},
-  {label: "spanish", value: "spanish"},
-
-  // Add more languages as needed
-];
 
 //Main function
 const Searcher = ({holder = SEARCH, toUrl}) => {
-  //handle action (search)
-
   const navigate = useNavigate();
   const handleSearch = event => {
     event.preventDefault();
@@ -64,9 +57,6 @@ const Searcher = ({holder = SEARCH, toUrl}) => {
   const handleSelectedLanguagesChange = selectedOption => {
     setSelectedLanguages(selectedOption);
   };
-
-  // console.log( search,yearFrom.value,yearTo.value,selectedLanguages[0] ? selectedLanguages[0].label : ''
-  //);
 
   return (
     <section className="searcher">
