@@ -27,7 +27,8 @@ const Comments = ({comments, bookId}) => {
       }
       setBackendComents([comment.data, ...backendComents]);
       setActiveComent(null);
-    } catch (error) {error.message;
+    } catch (error) {
+      error.message;
     } finally {
       setLoading(false);
     }
@@ -95,7 +96,11 @@ const Comments = ({comments, bookId}) => {
               activeComent={activeComent}
               updateComment={updateComment}
               setActiveComent={setActiveComent}
-              profilepic={rootComment.pathprofilepic}
+              profilepic={
+                rootComment.pathprofilepic
+                  ? rootComment.pathprofilepic
+                  : "default.jpg"
+              }
             />
           ))}
         </div>

@@ -14,16 +14,16 @@ const DropMenuItemOnclick = ({
 }) => {
   const alticon = "Icono de";
   return (
-    <li>
-      <button
-        onClick={onClick}
-        className={`dropMenu__item--${itemSize} dropMenu__item  navHover  ${cssClassItemCont}`}
-      >
-        <span className="dropMenu__item__icon">
-          <img src={iconPath} alt={alticon + " " + text}></img>
-        </span>
-        <span className="dropMenu__item__text">{text}</span>
-      </button>
+    <li
+      onClick={onClick}
+      className={`dropMenu__item--${itemSize} dropMenu__item  navHover  ${cssClassItemCont}`}
+    >
+      {/* <button> */}
+      <span className="dropMenu__item__icon">
+        <img src={iconPath} alt={alticon + " " + text}></img>
+      </span>
+      <span className="dropMenu__item__text">{text}</span>
+      {/* </button> */}
     </li>
   );
 };
@@ -64,26 +64,28 @@ const DropMenu = ({
 
   return (
     <ul className={"dropMenu " + cssClassContainer}>
-      {options && options.map((option, index) => (
-        <DropMenuItem
-          key={index}
-          toLink={option.toLink}
-          iconPath={option.iconPath}
-          text={option.text}
-          cssClassItemCont={cssClassItemContainer}
-          itemSize={itemSizep}
-        />
-      ))}
-      {customOnclickOptions && customOnclickOptions.map((option, index) => (
-        <DropMenuItemOnclick
-          key={index}
-          onClick={option.onClick}
-          iconPath={option.iconPath}
-          text={option.text}
-          cssClassItemCont={cssClassItemContainer}
-          itemSize={itemSizep}
-        />
-      ))}
+      {options &&
+        options.map((option, index) => (
+          <DropMenuItem
+            key={index}
+            toLink={option.toLink}
+            iconPath={option.iconPath}
+            text={option.text}
+            cssClassItemCont={cssClassItemContainer}
+            itemSize={itemSizep}
+          />
+        ))}
+      {customOnclickOptions &&
+        customOnclickOptions.map((option, index) => (
+          <DropMenuItemOnclick
+            key={index}
+            onClick={option.onClick}
+            iconPath={option.iconPath}
+            text={option.text}
+            cssClassItemCont={cssClassItemContainer}
+            itemSize={itemSizep}
+          />
+        ))}
     </ul>
   );
 };

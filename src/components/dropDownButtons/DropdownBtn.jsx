@@ -10,9 +10,9 @@ const DropdownBtn = ({
   boxCssClasses,
   textCssClasses,
   cssClassMenuContainer = " btnDropdown__menu--avg",
+  OnclickOptions = null,
 }) => {
   const [open, setOpen] = useState(false);
-  console.log("DropdownBtn -> options", options);
   return (
     <div className={boxCssClasses} onClick={() => setOpen(!open)}>
       <span className={textCssClasses}>{text}</span>
@@ -21,7 +21,11 @@ const DropdownBtn = ({
       </div>
 
       {open && (
-        <DropMenu options={options} cssClassContainer={cssClassMenuContainer} />
+        <DropMenu
+          customOnclickOptions={OnclickOptions}
+          options={options}
+          cssClassContainer={cssClassMenuContainer}
+        />
       )}
     </div>
   );

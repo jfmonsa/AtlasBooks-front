@@ -1,10 +1,10 @@
 import "./bookInformation.css";
 import Card from "../../components/card/Card.jsx";
-import DropMenu from "../../components/dropMenu/DropMenu.jsx";
 
 //to fetch data
 import {useParams} from "react-router-dom";
 import useFetch from "../../utils/useFetch.js";
+import {useAuth} from "../../contexts/authContext.jsx";
 
 //Rate starts
 import {AiFillStar, AiOutlineStar} from "react-icons/ai";
@@ -16,8 +16,8 @@ import IconDropDown from "../../components/iconDropDown/IconDropDown.jsx";
 import {FaRegBookmark} from "react-icons/fa";
 import PrimaryBtnLink from "../../components/buttons/primaryBtn/PrimaryBtnLink.jsx";
 // -- Download option's icon
-import Mega from "../../assets/icons/Icon-mega.svg";
-import Mediafire from "../../assets/icons/Icon-mediafire.svg";
+import PdfIcon from "../../assets/icons/pdfIcon.svg";
+import EpubIcon from "../../assets/icons/otherFile.svg";
 // -- Share option's icon
 import {FaRegHeart, FaHeart} from "react-icons/fa";
 import Facebook from "../../assets/icons/Icon-facebook.svg";
@@ -57,6 +57,11 @@ const BookInfoSectionSpecs = ({left, right}) => {
   );
 };
 
+const iconMap = {
+  PDF: PdfIcon,
+  EPUB: EpubIcon,
+};
+
 const BookInfoSection = ({
   bookName,
   authorName,
@@ -73,18 +78,53 @@ const BookInfoSection = ({
   bookImg,
   numComments,
   listsOpts,
+  bookFiles,
+  idBook,
 }) => {
+  const {isAuthenticated} = useAuth();
+
+  const generateDownloadOptions = bookFiles => {
+    return bookFiles.map(file => {
+      const fileExtension = file.split(".").pop().toUpperCase();
+      return {
+        iconPath: iconMap[fileExtension],
+        text: fileExtension,
+        onClick: () => handleDownload(`/api/downloadBook/${file}`),
+      };
+    });
+  };
+
+  const handleDownload = async url => {
+    if (!isAuthenticated) {
+      alert("You must be logged in to download this file.");
+    } else {
+      try {
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const blob = await response.blob();
+        const filename = url.split("/").pop(); // Obtenemos el nombre del archivo
+        const objectURL = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = objectURL;
+        a.download = filename; // Le asignamos el nombre al archivo descargado
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(objectURL);
+      } catch (error) {
+        console.error("Error downloading file:", error);
+        alert("An error occurred while downloading the file.");
+      }
+    }
+  };
   const shareOptions = [
     {toLink: "#", iconPath: Facebook, text: "Facebook"},
     {toLink: "#", iconPath: Instagram, text: "Instagram"},
     {toLink: "#", iconPath: Telegram, text: "Telegram"},
     {toLink: "#", iconPath: WhatsApp, text: "WhatsApp"},
     {toLink: "#", iconPath: Enlace, text: "Copiar enlace"},
-    // Puedes agregar más opciones aquí
-  ];
-  const downloadOptions = [
-    {toLink: "#", iconPath: Mega, text: "Mega"},
-    {toLink: "#", iconPath: Mediafire, text: "Mediafire"},
   ];
 
   return (
@@ -121,7 +161,6 @@ const BookInfoSection = ({
                 <IconDropDown
                   icon={<FaRegBookmark className="relevantInfo__icon2" />}
                   options={listsOpts}
-                  //onClick={listId => handleSaveToList(listId)}
                 />
               </div>
             </div>
@@ -146,7 +185,7 @@ const BookInfoSection = ({
       </div>
       <div className="bookInfo-btns">
         <DropdownBtn
-          options={downloadOptions}
+          OnclickOptions={generateDownloadOptions(bookFiles)}
           text="Descargar"
           boxCssClasses="btnDropDown btnDropDown--black"
           textCssClasses="btnDropDown__text"
@@ -246,8 +285,6 @@ const BookPage = () => {
           book: bookData.idBook, // Envía todos los datos del libro
         }),
       });
-
-      console.log(list.id);
       // Actualizar el estado u otra acción necesaria para reflejar el libro guardado en la lista
       // setSelectedList(listId);
     } catch (error) {
@@ -274,6 +311,7 @@ const BookPage = () => {
     return (
       <>
         <BookInfoSection
+          idBook={id}
           isbn={bookData.isbn}
           bookName={bookData.title}
           bookDescription={bookData.description}
@@ -289,6 +327,7 @@ const BookPage = () => {
           categories={bookData.book_subcategories?.join(", ")}
           numComments={bookData.comments.length}
           listsOpts={listsOpts} // Pass listsOpts to BookInfoSection
+          bookFiles={bookData.book_files}
         />
         <RateStarsSection />
         <BookPageRelated books={bookData.related_books} />
