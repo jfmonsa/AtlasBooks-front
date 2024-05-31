@@ -1,5 +1,5 @@
 import Slider from "../../components/slider/Slider.jsx";
-import Searcher from "../../components/searcher/Searcher.jsx";
+import Searcher2 from "../../components/searcher/searcher2.jsx";
 import Card from "../../components/card/Card.jsx";
 import "./discoverList.css";
 import "../../components/gridBooks/gridBooks.css";
@@ -132,10 +132,10 @@ const DiscoverList = () => {
     <>
       <h1 className="display--heading">Descubre listas</h1>
       <h2 className="display--subheading">Best ranked</h2>
-      <Searcher />
+      <Searcher2 />
       {lists.map((list, index) => (
         <DiscoverListList
-          key={index}
+          key={index} // Agrega la prop key con el valor único del índice
           title={list.title}
           author={list.author}
           nBooks={list.nBooks}
