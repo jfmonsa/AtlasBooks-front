@@ -5,6 +5,7 @@ import {useState} from "react";
 import MultiSelectSearch from "../multiSelectSearch/MultiSelectSearch";
 import MultiSelectNoSearch from "../multiSelecNoSearch/MultiSelectNoSearch";
 import {SEARCH} from "../../utils/placeholder.js";
+import {mainLanguages} from "../../utils/languagesArray.js";
 
 //Aux function for data of the select inputs
 const genYearArray = (to = 1799) => {
@@ -17,38 +18,10 @@ const genYearArray = (to = 1799) => {
   return years;
 };
 const Years = genYearArray();
-const mainLanguages = [
-    { label: "English", value: "English" },
-    { label: "Spanish", value: "Spanish" },
-    { label: "French", value: "French" },
-    { label: "German", value: "German" },
-    { label: "Chinese", value: "Chinese" },
-    { label: "Japanese", value: "Japanese" },
-    { label: "Korean", value: "Korean" },
-    { label: "Italian", value: "Italian" },
-    { label: "Portuguese", value: "Portuguese" },
-    { label: "Russian", value: "Russian" },
-    { label: "Arabic", value: "Arabic" },
-    { label: "Hindi", value: "Hindi" },
-    { label: "Bengali", value: "Bengali" },
-    { label: "Turkish", value: "Turkish" },
-    { label: "Dutch", value: "Dutch" },
-    { label: "Greek", value: "Greek" },
-    { label: "Hebrew", value: "Hebrew" },
-    { label: "Swedish", value: "Swedish" },
-    { label: "Norwegian", value: "Norwegian" },
-    { label: "Danish", value: "Danish" },
-    { label: "Finnish", value: "Finnish" },
-    { label: "Polish", value: "Polish" },
-    { label: "Czech", value: "Czech" },
-    { label: "Hungarian", value: "Hungarian" },
-    { label: "Thai", value: "Thai" }
-];
+
 
 //Main function
 const Searcher = ({holder = SEARCH, toUrl}) => {
-  //handle action (search)
-
   const navigate = useNavigate();
   const handleSearch = event => {
     event.preventDefault();
@@ -85,9 +58,6 @@ const Searcher = ({holder = SEARCH, toUrl}) => {
   const handleSelectedLanguagesChange = selectedOption => {
     setSelectedLanguages(selectedOption);
   };
-
-  // console.log( search,yearFrom.value,yearTo.value,selectedLanguages[0] ? selectedLanguages[0].label : ''
-  //);
 
   return (
     <section className="searcher">
