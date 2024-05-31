@@ -19,6 +19,7 @@ const genYearArray = (to = 1799) => {
 };
 const Years = genYearArray();
 
+
 //Main function
 const Searcher = ({holder = SEARCH, toUrl}) => {
   const navigate = useNavigate();
