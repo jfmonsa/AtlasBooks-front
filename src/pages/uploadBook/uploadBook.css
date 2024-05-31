@@ -1,0 +1,4 @@
+.uploadBook > p,
+.uploadBook > h2 {
+  max-width: 300px;
+}

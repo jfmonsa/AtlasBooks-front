@@ -9,7 +9,7 @@ import {AuthProvider, useAuth} from "./contexts/authContext.jsx";
 import Home from "./pages/home/Home.jsx";
 import Error from "./pages/error/Error.jsx";
 import BookSearchResults from "./pages/bookSearchResults/bookSearchResults.jsx";
-import UploadBook from "./pages/myaccount/UploadBook.jsx";
+import UploadBook from "./pages/uploadBook/UploadBook.jsx";
 import NewList from "./pages/myaccount/NewList.jsx";
 
 //Login related and recovery account
