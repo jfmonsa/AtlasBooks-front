@@ -4,6 +4,7 @@ import Card from "../../components/card/Card.jsx";
 //to fetch data
 import {useParams} from "react-router-dom";
 import useFetch from "../../utils/useFetch.js";
+import axios from "./../../api/axios.js";
 import {useAuth} from "../../contexts/authContext.jsx";
 
 //Rate starts
@@ -79,9 +80,9 @@ const BookInfoSection = ({
   numComments,
   listsOpts,
   bookFiles,
-  idBook,
+  bookId,
 }) => {
-  const {isAuthenticated} = useAuth();
+  const {isAuthenticated, user} = useAuth();
 
   const generateDownloadOptions = bookFiles => {
     return bookFiles.map(file => {
@@ -89,7 +90,7 @@ const BookInfoSection = ({
       return {
         iconPath: iconMap[fileExtension],
         text: fileExtension,
-        onClick: () => handleDownload(`/api/downloadBook/${file}`),
+        onClick: () => handleDownload(`/downloadBook/${file}`),
       };
     });
   };
@@ -99,11 +100,11 @@ const BookInfoSection = ({
       alert("You must be logged in to download this file.");
     } else {
       try {
-        const response = await fetch(url);
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        const blob = await response.blob();
+        const response = await axios.post(url, {
+          bookId,
+          userId: user.id,
+        });
+        const blob = new Blob([response.data]);
         const filename = url.split("/").pop(); // Obtenemos el nombre del archivo
         const objectURL = URL.createObjectURL(blob);
         const a = document.createElement("a");
@@ -311,7 +312,7 @@ const BookPage = () => {
     return (
       <>
         <BookInfoSection
-          idBook={id}
+          bookId={id}
           isbn={bookData.isbn}
           bookName={bookData.title}
           bookDescription={bookData.description}
