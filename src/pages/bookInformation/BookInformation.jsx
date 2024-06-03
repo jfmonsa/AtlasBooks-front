@@ -308,7 +308,6 @@ const BookPage = () => {
       text: list.title,
       onClick: () => handleSaveToList(list.id), // Assign handleSaveToList to onClick
     }));
-
     return (
       <>
         <BookInfoSection
@@ -325,9 +324,11 @@ const BookPage = () => {
           authorName={bookData.book_authors?.join(", ")}
           language={bookData.book_lang?.join(", ")}
           fileType={bookData.book_files_type?.join(", ")}
-          categories={bookData.book_subcategories?.join(", ")}
+          categories={bookData.book_subcategories
+            ?.concat(bookData?.book_category)
+            .join(", ")}
           numComments={bookData.comments.length}
-          listsOpts={listsOpts} // Pass listsOpts to BookInfoSection
+          listsOpts={listsOpts}
           bookFiles={bookData.book_files}
         />
         <RateStarsSection />
