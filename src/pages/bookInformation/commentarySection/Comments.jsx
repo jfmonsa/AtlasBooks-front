@@ -78,7 +78,11 @@ const Comments = ({comments, bookId}) => {
         handleSubmit={addComent}
         userName={user.nickname}
         idbook={bookId}
-        profilepic={user.pathprofilepic ? user.pathprofilepic : "../storage/usersProfilePic/default.webp"}
+        profilepic={
+          user.pathprofilepic
+            ? user.pathprofilepic
+            : "../storage/usersProfilePic/default.webp"
+        }
       />
       <h2 className="card__h1">Otros Comentarios</h2>
       {loading ? (

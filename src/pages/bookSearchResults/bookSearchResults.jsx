@@ -3,17 +3,11 @@ import Searcher from "../../components/searcher/Searcher";
 import {Link} from "react-router-dom";
 import {AiOutlineStar} from "react-icons/ai";
 import axios from "axios";
-import { useSearchParams } from 'react-router-dom';
+import {useSearchParams} from "react-router-dom";
 import useFetch from "../../utils/useFetch.js";
-import { useEffect,useState } from "react";
-
-
-
 
 //Aux functions
-const BookResult = (
-  
-  {
+const BookResult = ({
   title,
   autors,
   publisher,
@@ -24,7 +18,6 @@ const BookResult = (
   pathCoverBook,
 }) => {
   return (
-  
     <Link to={urlBook}>
       <div className="bookResult">
         <img className="bookResult__img" src={pathCoverBook}></img>
@@ -50,9 +43,7 @@ const BookResult = (
   );
 };
 
-const BookResultsContainer =  ({results, totalResults}) => {
-  //`/books/${bookId}`
-  //`http://localhost:3000/storage/books/${img}`
+const BookResultsContainer = ({results, totalResults}) => {
   return (
     <>
       <section className="results">
@@ -68,7 +59,7 @@ const BookResultsContainer =  ({results, totalResults}) => {
               language={book.language}
               rate={book.rate || 0}
               urlBook={`/books/${book.id}`}
-              pathCoverBook={ `http://localhost:3000/storage/books/${book.pathCoverBook}`}
+              pathCoverBook={`http://localhost:3000/storage/books/${book.pathCoverBook}`}
             />
           );
         })}
@@ -78,10 +69,24 @@ const BookResultsContainer =  ({results, totalResults}) => {
 };
 
 const BookSearch = () => {
-  const [searchParams] = useSearchParams()
-  const {data, isPending, error} = useFetch(`http://localhost:3000/api/searchFilter?search=${searchParams.get('search')}&yearFrom=${searchParams.get('yearFrom')}&yearTo=${searchParams.get('yearTo')}&language=${searchParams.get('language')}`);  
+  const [searchParams] = useSearchParams();
+  //TODO poner aquí todos los query params como null o el valor obtenido del get y en base a eso formar la url
+  const search = searchParams.get("search") || "";
+  const yearFrom = searchParams.get("yearFrom") || "";
+  const yearTo = searchParams.get("yearTo") || "";
+  const lang = searchParams.get("language") || "";
+  const cat = searchParams.get("category");
+  const subCat = searchParams.get("subCategory");
+
+  let parsedSearchParams = `search=${search}&yearFrom=${yearFrom}&yearTo=${yearTo}&language=${lang}`;
+  parsedSearchParams += `${cat ? `&category=${cat}` : ""}`;
+  parsedSearchParams += `${subCat ? `&subCategory=${subCat}` : ""}`;
+
+  const url = `http://localhost:3000/api/searchFilter?${parsedSearchParams}`;
+  console.log(url);
+  const {data, isPending, error} = useFetch(url);
   const books = [];
- 
+
   if (error) {
     return <p>{error}</p>;
   }
@@ -90,18 +95,14 @@ const BookSearch = () => {
   }
   if (data) {
     books.push(data.data);
-     return (
+    return (
       <>
         <h1 className="display--heading">Resultados</h1>
-        <Searcher toUrl={''} />
-        <BookResultsContainer
-          results={books[0]}
-          totalResults={20}
-        />
+        <Searcher toUrl={""} />
+        <BookResultsContainer results={books[0]} totalResults={20} />
       </>
     );
-  } 
- 
+  }
 };
 
 export default BookSearch;

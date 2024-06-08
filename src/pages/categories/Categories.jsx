@@ -1,52 +1,24 @@
 import Searcher from "../../components/searcher/Searcher";
 import Card from "../../components/card/Card";
 import useFetch from "../../utils/useFetch.js";
+import {Link} from "react-router-dom";
 
 import "./categoria.css";
-
-const CategoriesLists = [
-  {
-    primary_name: "Arte",
-    secundary: ["Arquitectura", "Danza", "Musica"],
-  },
-  {
-    primary_name: "Arte",
-    secundary: ["Arquitectura", "Danza", "Musica"],
-  },
-  {
-    primary_name: "Arte",
-    secundary: ["Arquitectura", "Danza", "Musica"],
-  },
-  {
-    primary_name: "Arte",
-    secundary: ["Arquitectura", "Danza", "Musica"],
-  },
-  {
-    primary_name: "Arte",
-    secundary: ["Arquitectura", "Danza", "Musica"],
-  },
-  {
-    primary_name: "Arte",
-    secundary: ["Arquitectura", "Danza", "Musica"],
-  },
-  {
-    primary_name: "Arte",
-    secundary: ["Arquitectura", "Danza", "Musica"],
-  },
-  {
-    primary_name: "Arte",
-    secundary: ["Arquitectura", "Danza", "Musica"],
-  },
-];
 
 const Catergorie = ({primaryCategory, secundaryCategories}) => {
   return (
     <ul className="category">
-      <li className="category__title">{primaryCategory}</li>
+      <li className="category__title">
+        <Link to={`/search-results?category=${primaryCategory.cat}`}>
+          {primaryCategory.name}
+        </Link>
+      </li>
       {secundaryCategories.map(sub => {
         return (
           <li key={sub.subcat_id} className="category__subcategory">
-            {sub.subcat_name}
+            <Link to={`/search-results?subCategory=${sub.subcat_id}`}>
+              {sub.subcat_name}
+            </Link>
           </li>
         );
       })}
@@ -62,7 +34,7 @@ const Categories = ({catLits}) => {
           return (
             <Catergorie
               key={cat.cat_id}
-              primaryCategory={cat.cat_name}
+              primaryCategory={cat}
               secundaryCategories={cat.subcategories}
             />
           );
