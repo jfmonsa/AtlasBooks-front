@@ -4,6 +4,7 @@ import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import {ChangePassProvider} from "./contexts/ChangePassContext.jsx";
 import {ChangeEmailProvider} from "./contexts/ChangeEmailContext.jsx";
 import {AuthProvider, useAuth} from "./contexts/authContext.jsx";
+import {ProtectedRoute} from "./components/protectedRoutes/ProtectedRoute.jsx";
 
 //pages
 import Home from "./pages/home/Home.jsx";
@@ -44,13 +45,6 @@ const LoggedAdminRouting = () => {
   else return <Error />;
 };
 
-const LoggedRouting = () => {
-  const {contextValue} = useAuth();
-  const context = contextValue;
-  if (context.logged) return <MyAccount />;
-  else return <Error />;
-};
-
 const router = createBrowserRouter([
   {
     path: "/",
@@ -70,19 +64,35 @@ const router = createBrowserRouter([
       },
       {
         path: "recovery-account",
-        element: <RecoveryAccount />,
+        element:( 
+          <ProtectedRoute>
+            <RecoveryAccount />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "send-email",
-        element: <SendEmail />,
+        element:( 
+          <ProtectedRoute>
+            <SendEmail />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "changePass",
-        element: <ChangePass />,
+        element:( 
+          <ProtectedRoute>
+            <ChangePass />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "my-account",
-        element: <LoggedRouting />,
+        element:( 
+          <ProtectedRoute>
+            <MyAccount />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "my-lists/:idList",
@@ -90,23 +100,43 @@ const router = createBrowserRouter([
       },
       {
         path: "lists-results",
-        element: <ListSearch />,
+        element:( 
+          <ProtectedRoute>
+            <ListSearch />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "confirm-password",
-        element: <PasswordConfirm />,
+        element:( 
+          <ProtectedRoute>
+            <PasswordConfirm />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "users-details",
-        element: <ChangeUserDetails />,
+        element:( 
+          <ProtectedRoute>
+            <ChangeUserDetails />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "upload-book",
-        element: <UploadBook />,
+        element:( 
+          <ProtectedRoute>
+            <UploadBook />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "new-list",
-        element: <NewList />,
+        element:( 
+          <ProtectedRoute>
+            <NewList />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "recommended",
@@ -138,7 +168,11 @@ const router = createBrowserRouter([
       },
       {
         path: "results",
-        element: <LoggedAdminRouting />,
+        element:( 
+          <ProtectedRoute>
+            <LoggedAdminRouting />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "received-email/:token",
@@ -146,11 +180,19 @@ const router = createBrowserRouter([
       },
       {
         path: "changeEmail",
-        element: <ChangeEmail />,
+        element:( 
+          <ProtectedRoute>
+            <ChangeEmail />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "newPassword/:token",
-        element: <NewPassword />,
+        element:( 
+          <ProtectedRoute>
+            <NewPassword />
+          </ProtectedRoute>
+        ),
       },
       // {
       //   path: "*",
