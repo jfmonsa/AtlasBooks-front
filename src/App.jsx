@@ -170,7 +170,7 @@ const router = createBrowserRouter([
         path: "results",
         element:( 
           <ProtectedRoute>
-            <LoggedAdminRouting />
+            <AdminResults />
           </ProtectedRoute>
         ),
       },
