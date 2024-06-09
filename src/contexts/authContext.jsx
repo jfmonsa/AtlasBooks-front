@@ -35,7 +35,7 @@ export const AuthProvider = ({children}) => {
         setUser(res.data);
       });
     } catch (error) {
-      setErrors(error.response.data);
+      setErrors([error.response.data]);
     }
   };
 
@@ -46,7 +46,7 @@ export const AuthProvider = ({children}) => {
         setUser(res.data);
       });
     } catch (error) {
-      setErrors(error.response.data);
+      setErrors([error.response.data]);
     }
   };
 
