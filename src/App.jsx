@@ -147,7 +147,7 @@ const router = createBrowserRouter([
         element: <BookSearchResults />,
       },
       {
-        path: "report",
+        path: "report/:id",
         element: <Report />,
       },
       {

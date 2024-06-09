@@ -1,23 +1,32 @@
 import Card from "../../components/card/Card.jsx";
 import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm.jsx";
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import TextArea from "../../components/inputText/TextArea.jsx";
 import {valNoEmpty} from "../../utils/validateFormFields.js";
 import {useState} from "react";
 import ErrorFormAccountMsg from "../../components/errorFormAccountMsg/ErrorFormAccountMsg.jsx";
+import { createReportApi } from "../../api/reports.js";
 
 const Report = () => {
   const navigate = useNavigate();
   const [contextReportText, setContextReportText] = useState("");
   const [error, setError] = useState(null);
+  const {id} = useParams();
 
   const handleSubmit = e => {
     e.preventDefault();
-    if (!valNoEmpty()) {
-      setError("Todos los valores");
+    if (!valNoEmpty(contextReportText)) {
+      setError("Por favor, ingrese un contexto para el reporte.");
       return;
     }
-    navigate("/book-information");
+    //Api to send report
+    createReportApi({context: contextReportText, idbook: id})
+      .then(res => {
+        navigate(`/books/${id}`);
+      })
+      .catch(err => {
+        setError("Ha ocurrido un error al enviar el reporte.");
+      });
   };
   return (
     <Card cardDialog h1_text="Reportar">

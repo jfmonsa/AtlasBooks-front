@@ -201,7 +201,7 @@ const BookInfoSection = ({
         <PrimaryBtnLink
           text="Reportar"
           cssClasses="warningBtn warningBtn--reportBook"
-          tolink="/report"
+          tolink={`/report/${bookId}`}
         />
       </div>
     </Card>
