@@ -3,6 +3,7 @@ import Card from "../../components/card/Card.jsx";
 
 //to fetch data
 import {useParams} from "react-router-dom";
+import baseUrl from "../../api/baseUrl.js";
 import useFetch from "../../utils/useFetch.js";
 import axios from "./../../api/axios.js";
 import {useAuth} from "../../contexts/authContext.jsx";
@@ -253,11 +254,6 @@ const BookPageComments = ({comments, bookId}) => {
   );
 };
 
-const URL = "development";
-
-const BD = URL === "Production" ? 
-  "https://atlas-books-back.vercel.app/api" : "http://localhost:3000/api";
-
 // main function
 const BookPage = () => {
   const {id} = useParams();
@@ -267,14 +263,14 @@ const BookPage = () => {
     data: bookData,
     error: bookError,
     isPending: bookIsPending,
-  } = useFetch(`${BD}/books/${id}`);
+  } = useFetch(`${baseUrl}/books/${id}`);
 
   // Fetch lists data
   const {
     data: listsData,
     error: listsError,
     isPending: listsIsPending,
-  } = useFetch(`${BD}/lists`);
+  } = useFetch(`${baseUrl}/lists`);
 
   // Define handleSaveToList outside of BookInfoSection
   const handleSaveToList = async listId => {

@@ -1,9 +1,10 @@
 import Searcher from "../../components/searcher/Searcher";
 import GridBooks from "../../components/gridBooks/GridBooks";
 import useFetch from "../../utils/useFetch.js";
+import baseUrl from "../../api/baseUrl.js";
 
 const Recommended = () => {
-  const {data, isPending, error} = useFetch("http://localhost:3000/api/feed");
+  const {data, isPending, error} = useFetch(`${baseUrl}/feed`);
 
   if (error) {
     return <p>{error}</p>;
