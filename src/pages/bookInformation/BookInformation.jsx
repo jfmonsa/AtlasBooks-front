@@ -253,6 +253,11 @@ const BookPageComments = ({comments, bookId}) => {
   );
 };
 
+const URL = "Production";
+
+const BD = URL === "Production" ? 
+  "https://atlas-books-back.vercel.app/api" : "http://localhost:3000/api";
+
 // main function
 const BookPage = () => {
   const {id} = useParams();
@@ -262,14 +267,14 @@ const BookPage = () => {
     data: bookData,
     error: bookError,
     isPending: bookIsPending,
-  } = useFetch(`http://localhost:3000/api/books/${id}`);
+  } = useFetch(`${BD}/books/${id}`);
 
   // Fetch lists data
   const {
     data: listsData,
     error: listsError,
     isPending: listsIsPending,
-  } = useFetch("http://localhost:3000/api/lists");
+  } = useFetch(`${BD}/lists`);
 
   // Define handleSaveToList outside of BookInfoSection
   const handleSaveToList = async listId => {
@@ -277,7 +282,7 @@ const BookPage = () => {
 
     try {
       // Realizar una solicitud al backend para guardar el libro en la lista
-      await fetch(`http://localhost:3000/api/lists/${listId}`, {
+      await fetch(`${BD}/lists/${listId}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

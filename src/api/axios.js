@@ -1,7 +1,14 @@
 import axios from "axios";
 
+const URL = "Production";
+
+const BD =
+  URL === "Production"
+    ? "https://atlas-books-back.vercel.app/api"
+    : "http://localhost:3000/api";
+
 const instance = axios.create({
-  baseURL: "http://localhost:3000/api",
+  baseURL: BD,
   withCredentials: true,
 });
 
