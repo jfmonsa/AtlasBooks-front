@@ -1,5 +1,6 @@
 import React from "react";
 import {Link, useSearchParams} from "react-router-dom";
+import baseUrl from "../../api/baseUrl.js";
 import useFetch from "../../utils/useFetch.js";
 import Searcher2 from "../../components/searcher/searcher2.jsx";
 
@@ -57,7 +58,7 @@ const ListSearch = () => {
   const listN = searchParams.get("listN");
 
   const {data, isPending, error} = useFetch(
-    listN ? `http://localhost:3000/api/searchFilterLists?listN=${listN}` : null,
+    listN ? `${baseUrl}/searchFilterLists?listN=${listN}` : null,
   );
 
   if (!listN) {
