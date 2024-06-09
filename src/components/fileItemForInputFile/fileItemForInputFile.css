@@ -1,0 +1,48 @@
+.dragAndDropFile__fileList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+.dragAndDropFile__fileListItem {
+  max-width: 300px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--bg-surf-subtle-light);
+  padding: 8px;
+  border-radius: var(--border-rad-comp);
+}
+
+.dragAndDropFile__fileListItem__fileIcon {
+  width: 32px;
+}
+.dragAndDropFile__fileListItem__fileName {
+  display: inline-block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: auto;
+  /* min-width: 100px; */
+  max-width: 40%;
+  white-space: nowrap;
+}
+
+.dragAndDropFile__fileListItem__fileRemove {
+  width: 20px;
+  margin-left: auto;
+  cursor: pointer;
+  transition: all;
+}
+.dragAndDropFile__fileListItem__fileRemove:hover {
+  background-color: #fff;
+  transform: scale(1.1);
+}
+
+.dragAndDropFile__fileListItem__fileSize,
+.dragAndDropFile__fileListItem__fileName {
+  font-size: var(--fs-1);
+}
+.dragAndDropFile__fileListItem__fileSize {
+  color: var(--black-text-light);
+  font-weight: 300;
+}
