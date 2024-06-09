@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const URL = "Production";
+const URL = "development";
 
 const BD =
   URL === "Production"

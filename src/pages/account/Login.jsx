@@ -39,9 +39,18 @@ export const Login = () => {
     }
     //validar que sea un email o nickname validos
     //nota: puede loggearse con nickname o email
-    if (!valNickname(userNickname) || !valEmail(userNickname)) {
-      setError("Email o nickname no valido");
-      return;
+    console.log(!valNickname(userNickname), !valEmail(userNickname));
+    console.log(userNickname.includes("@"));
+    if (userNickname.includes("@")) {
+      if (!valEmail(userNickname)) {
+        setError("Email o nickname no valido");
+        return;
+      }
+    } else {
+      if (!valNickname(userNickname)) {
+        setError("Email o nickname no valido");
+        return;
+      }
     }
     setError(null);
     //hacer validaciones en el backend para verificar que el usuario
@@ -70,7 +79,7 @@ export const Login = () => {
           onChange={e => setUserPassword(e.target.value)}
         />
 
-        <ErrorFormAccountMsg error={error} />
+        <ErrorFormAccountMsg error={error} index={0} />
         {loginErrors.map((error, index) => (
           <ErrorFormAccountMsg error={error} index={index} />
         ))}
