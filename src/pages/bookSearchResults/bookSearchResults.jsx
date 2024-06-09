@@ -2,8 +2,8 @@ import "./bookSearchResults.css";
 import Searcher from "../../components/searcher/Searcher";
 import {Link} from "react-router-dom";
 import {AiOutlineStar} from "react-icons/ai";
-import axios from "axios";
 import {useSearchParams} from "react-router-dom";
+import baseUrl from "../../api/baseUrl.js";
 import useFetch from "../../utils/useFetch.js";
 
 //Aux functions
@@ -82,7 +82,7 @@ const BookSearch = () => {
   parsedSearchParams += `${cat ? `&category=${cat}` : ""}`;
   parsedSearchParams += `${subCat ? `&subCategory=${subCat}` : ""}`;
 
-  const url = `http://localhost:3000/api/searchFilter?${parsedSearchParams}`;
+  const url = `${baseUrl}/searchFilter?${parsedSearchParams}`;
   console.log(url);
   const {data, isPending, error} = useFetch(url);
   const books = [];

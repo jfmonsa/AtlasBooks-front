@@ -1,5 +1,6 @@
 import Searcher from "../../components/searcher/Searcher";
 import Card from "../../components/card/Card";
+import baseUrl from "../../api/baseUrl.js";
 import useFetch from "../../utils/useFetch.js";
 import {Link} from "react-router-dom";
 
@@ -45,9 +46,7 @@ const Categories = ({catLits}) => {
 };
 
 const CategoriesMain = ({}) => {
-  const {error, isPending, data} = useFetch(
-    "http://localhost:3000/api/categories/groupped",
-  );
+  const {error, isPending, data} = useFetch(`${baseUrl}/categories/groupped`);
   if (error) {
     return <p>{error}</p>;
   }
