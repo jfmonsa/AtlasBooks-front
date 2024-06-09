@@ -10,7 +10,7 @@ export const getComments = async id => {
     const comments = await getCommentsApi(id);
     return comments;
   } catch (error) {
-    return error.message;
+    return error;
   }
 };
 
