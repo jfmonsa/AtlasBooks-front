@@ -1,10 +1,10 @@
 import "./book.css";
 import {Link} from "react-router-dom";
 
-const Book = ({title, authors, img, bookId}) => {
+const Book = ({title, authors, img, bookId,index}) => {
   return (
     <Link to={`/books/${bookId}`}>
-      <div className="bookContainer">
+      <div className="bookContainer" key={index}>
         <img
           className="img"
           //src={img}
