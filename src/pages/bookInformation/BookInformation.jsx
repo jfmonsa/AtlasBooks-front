@@ -7,6 +7,7 @@ import baseUrl from "../../api/baseUrl.js";
 import useFetch from "../../utils/useFetch.js";
 import axios from "./../../api/axios.js";
 import {useAuth} from "../../contexts/authContext.jsx";
+import { rateBookApi } from "../../api/rateBook.js";
 
 //Rate starts
 import {AiFillStar, AiOutlineStar} from "react-icons/ai";
@@ -208,9 +209,16 @@ const BookInfoSection = ({
   );
 };
 
-const RateStarsSection = () => {
+const RateStarsSection = ({id}) => {
   const [number, setNumber] = useState(0);
-
+  const handleRate = async (index) => {
+    setNumber(index);
+    try {
+      await rateBookApi({rate: number, idbook: id});
+    } catch (error) {
+      window.alert(error.response.data[0]);
+    }
+  }
   return (
     <Card h1Text="Califica este libro" h1Center id="rate-stars">
       <div className="stars_container">
@@ -222,14 +230,14 @@ const RateStarsSection = () => {
                 key={index}
                 className="stars"
                 style={{color: "orange"}}
-                onClick={() => setNumber(index + 1)}
+                onClick={() => handleRate(index + 1)}
               />
             ) : (
               <AiOutlineStar
                 key={index}
                 className="stars"
                 style={{color: "black"}}
-                onClick={() => setNumber(index + 1)}
+                onClick={() => handleRate(index + 1)}
               />
             ),
           )}
@@ -332,7 +340,7 @@ const BookPage = () => {
           listsOpts={listsOpts}
           bookFiles={bookData.book_files}
         />
-        <RateStarsSection />
+        <RateStarsSection id={id}/>
         <BookPageRelated books={bookData.related_books} />
         <BookPageComments
           comments={bookData.comments}
