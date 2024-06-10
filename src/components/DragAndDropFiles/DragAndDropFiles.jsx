@@ -4,7 +4,7 @@ import {useState, useCallback, useEffect} from "react";
 import addFileIcon from "../../assets/icons/dragAndDropFile.svg";
 import FileItemForInputFile from "../fileItemForInputFile/FileItemForInputFile";
 
-const DragAndDropFiles = ({onFilesSelected}) => {
+const DragAndDropFiles = ({onFilesSelected, id, classNameContainer}) => {
   const [files, setFiles] = useState([]);
   const onDrop = useCallback(
     acceptedFiles => {
@@ -24,7 +24,7 @@ const DragAndDropFiles = ({onFilesSelected}) => {
   const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop});
 
   return (
-    <div>
+    <div className={classNameContainer}>
       <div
         {...getRootProps()}
         className={`dragAndDropFile ${isDragActive ? "dragAndDropFile--active" : ""}`}
@@ -40,7 +40,7 @@ const DragAndDropFiles = ({onFilesSelected}) => {
             : "Arrastra y suelta varios archivos o haz clic para seleccionar archivos"}
         </p>
         <p className="dragAndDropFile__label-2">PDF, EPUB.</p>
-        <input {...getInputProps()} />
+        <input id={id} {...getInputProps()} />
       </div>
       <ul className="dragAndDropFile__fileList">
         {files.map((file, index) => (

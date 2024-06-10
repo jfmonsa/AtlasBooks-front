@@ -1,6 +1,8 @@
+import "./fileItemForInputFile.css";
 import getFileIcon from "../../utils/getFileIcon";
 import formatFileSize from "../../utils/formatFileSize";
 import {FaTrashAlt} from "react-icons/fa";
+import abbreviateStr from "../../utils/abbreviateStr.js";
 
 const FileItemForInputFile = ({file, removeFile}) => {
   return (
@@ -11,7 +13,7 @@ const FileItemForInputFile = ({file, removeFile}) => {
         alt={`Icono del archivo tipo ${file.type}`}
       />
       <span className="dragAndDropFile__fileListItem__fileName">
-        {file.name}
+        {abbreviateStr(file.name)}
       </span>
       <span>{" - "}</span>
       <span className="dragAndDropFile__fileListItem__fileSize">

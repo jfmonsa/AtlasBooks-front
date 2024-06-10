@@ -4,7 +4,7 @@ import {LuUpload} from "react-icons/lu";
 import {useDropzone} from "react-dropzone";
 import {useState, useCallback} from "react";
 
-const InputFileBtn = ({onFilesSelected}) => {
+const InputFileBtn = ({onFilesSelected, id, className}) => {
   const [file, setFile] = useState(null);
 
   const onDrop = useCallback(
@@ -27,14 +27,14 @@ const InputFileBtn = ({onFilesSelected}) => {
   });
 
   return (
-    <div>
+    <div className={className}>
       <div
         {...getRootProps()}
         className={`black2Btn baseBtn formCustomBtn inputFileBtn`}
       >
         <span>Sube una imagen</span>
         <LuUpload />
-        <input {...getInputProps()} />
+        <input id={id} {...getInputProps()} />
       </div>
       {file && (
         <ul className="dragAndDropFile__fileList">

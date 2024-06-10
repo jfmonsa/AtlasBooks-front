@@ -5,10 +5,10 @@ import Card from "../../components/card/Card.jsx";
 import InputText from "../../components/inputText/InputText.jsx";
 import TextArea from "../../components/inputText/TextArea.jsx";
 import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm.jsx";
-import MultiSelectSearch from "../../components/multiSelectSearch/MultiSelectSearch.jsx";
-import SingleSelect from "../../components/singleSelect/SingleSelect.jsx";
 import DragAndDropFiles from "../../components/DragAndDropFiles/DragAndDropFiles.jsx";
 import InputFileBtn from "../../components/inputFileBtn/InputFileBtn.jsx";
+import Select from "react-select";
+import {useNavigate} from "react-router-dom";
 
 //api related
 import baseUrl from "../../api/baseUrl.js";
@@ -47,17 +47,24 @@ const SubCategorySelect = ({
       {subCatIsPending && <p>Loading subcategories...</p>}
       {subCatData && (
         <>
-          <h3>Subcategorias</h3>
-          <p>Puede seleccionar una o más</p>
-          <MultiSelectSearch
+          <label className="input__label" for="subcategories">
+            Subcategorias
+          </label>
+          <p className="label_extra">Puede seleccionar una o más</p>
+          <Select
             options={subCatData.subcategories.map(subCat => ({
               value: subCat.id,
               label: subCat.subcategoryname,
             }))}
-            onChangeCallback={selectedOptions =>
-              onSubCategoriesChange(selectedOptions)
-            }
-            value={selectedSubCategories} // Pass the selected subcategories
+            onChange={selectedOptions => onSubCategoriesChange(selectedOptions)}
+            value={selectedSubCategories}
+            placeholder="Subcategorias..."
+            id="subcategories"
+            name="subcategories"
+            isMulti
+            isSearchable
+            className="basic-single formClassicSelector"
+            classNamePrefix="select"
           />
         </>
       )}
@@ -67,6 +74,7 @@ const SubCategorySelect = ({
 
 const UploadBook = () => {
   const {isAuthenticated, user} = useAuth();
+  const navigate = useNavigate();
 
   //form fields
   const [bookTitle, setBookTitle] = useState("");
@@ -113,20 +121,6 @@ const UploadBook = () => {
       alert("Debe subir al menos un archivo del libro");
       return;
     }
-
-    console.log("bookTitle:", bookTitle);
-    console.log("authors:", authors);
-    console.log("isbn:", isbn);
-    console.log("nPages:", nPages);
-    console.log("yearReleased:", yearReleased);
-    console.log("nVol:", nVol);
-    console.log("publisher:", publisher);
-    console.log("languages:", languages);
-    console.log("selectedCategory:", selectedCategory);
-    console.log("selectedSubCategories:", selectedSubCategories);
-    console.log("coverBookImage:", coverBookImage);
-    console.log("files:", files);
-    console.log("descriptionB:", descriptionB);
     try {
       const formData = new FormData();
 
@@ -163,12 +157,30 @@ const UploadBook = () => {
         },
       });
 
-      // Manejar la respuesta
-      console.log("Response:", response.data);
+      // Manejar la respuesta  response.data
+      //if the book creating was done successfully then clear de inputs
+      alert("Libro creado exitosamente!");
+      setBookTitle("");
+      setAuthors([""]);
+      setIsbn("");
+      setNPages("");
+      setYearReleased("");
+      setNVol("");
+      setPublisher("");
+      setLanguages([]);
+      setSelectedCategory(null);
+      setSelectedSubCategories([]);
+      setCoverBookImage(null);
+      setFiles([]);
+      setDescriptionB("");
     } catch (error) {
       console.error("Error uploading book:", error);
       alert("An error occurred while uploading the book. Please try again.");
     }
+  };
+
+  const handleCancell = e => {
+    navigate("/my-account");
   };
 
   const handleFilesSelected = selectedFiles => {
@@ -240,7 +252,7 @@ const UploadBook = () => {
           <PrimaryBtnForm
             type="button"
             text="Añadir autor"
-            cssClasses="formCustomBtn black2Btn"
+            cssClasses="formCustomBtn black2Btn addAuthorBtn"
             onClick={addAuthorInput}
           />
           <InputText
@@ -278,30 +290,63 @@ const UploadBook = () => {
             value={publisher}
             onChange={e => setPublisher(e.target.value)}
           />
-          <h3>Idomas </h3>
-          <p>Puede seleccionar uno o más</p>
-          <MultiSelectSearch
+          <label className="input__label" for="languages">
+            Idomas{" "}
+          </label>
+          <p className="label_extra">Puede seleccionar uno o más</p>
+          <Select
+            id="languages"
             options={mainLanguages}
-            onChangeCallback={handleSelectedLanguagesChange}
+            onChange={handleSelectedLanguagesChange}
             placeholder="Idiomas..."
-            selectName="languages"
+            name="languages"
             value={languages}
+            isMulti
+            isSearchable
+            className="basic-single formClassicSelector"
+            classNamePrefix="select"
           />
-          <h3>Categoria</h3>
-          <SingleSelect
+          <label className="input__label" for="category">
+            Categoria
+          </label>
+          <p className="label_extra">Selecciona solo una</p>
+          <Select
+            id="category"
             options={categories}
-            onChangeCallback={option => setSelectedCategory(option.value)}
+            onChange={option => setSelectedCategory(option)}
+            placeholder="Categorias..."
+            name="category"
+            value={selectedCategory}
+            isSearchable
+            isClearable
+            classNamePrefix="select"
+            className="basic-single formClassicSelector"
           />
           <SubCategorySelect
-            selectedCategory={selectedCategory}
+            selectedCategory={selectedCategory ? selectedCategory.value : null}
             selectedSubCategories={selectedSubCategories}
             onSubCategoriesChange={setSelectedSubCategories}
           />
-          <h3>Imagen de portada</h3>
-          <InputFileBtn onFilesSelected={handleCoverBookImage} />
-          <h3>Archivos</h3>
-          <p>Sube uno o mas archivos en distintos formatos</p>
-          <DragAndDropFiles onFilesSelected={handleFilesSelected} />
+          <label className="input__label" for="coverBookImage">
+            Imagen de portada
+          </label>
+          <p className="label_extra">Selecciona un archivo tipo imagen</p>
+          <InputFileBtn
+            onFilesSelected={handleCoverBookImage}
+            id="coverBookImage"
+            className="inputFileBookCover"
+          />
+          <label className="input__label" for="bookFiles">
+            Archivos
+          </label>
+          <p className="label_extra">
+            Sube uno o mas archivos en distintos formatos
+          </p>
+          <DragAndDropFiles
+            onFilesSelected={handleFilesSelected}
+            id="bookFiles"
+            classNameContainer="inputFileBookBookFiles"
+          />
           <TextArea
             text="Descripción"
             holder="Agrega la sipnosis del libro"
@@ -313,6 +358,7 @@ const UploadBook = () => {
             type="button"
             text="Cancelar"
             cssClasses="formCustomBtn black1Btn"
+            onClick={handleCancell}
           />
         </form>
       </Card>

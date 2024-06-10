@@ -1,4 +1,25 @@
 .uploadBook > p,
-.uploadBook > h2 {
+.uploadBook > h2,
+.uploadBook > .formClassicSelector {
   max-width: 300px;
+}
+
+.uploadBook > .addAuthorBtn {
+  margin-bottom: var(--spacing-4);
+}
+
+.formClassicSelector {
+  width: 300px;
+  margin-bottom: var(--spacing-4);
+  border: var(--border-1);
+  border-radius: var(--border-rad-comp);
+}
+
+.inputFileBookCover,
+.inputFileBookBookFiles {
+  margin-bottom: var(--spacing-4);
+}
+
+.uploadBook > .label_extra {
+  margin-bottom: var(--spacing-1);
 }

@@ -9,7 +9,6 @@
   border-radius: var(--border-rad-comp);
   border: 2px dashed var(--border-pruple-light);
   cursor: pointer;
-  margin-bottom: var(--spacing-3);
 }
 
 .dragAndDropFile__img {

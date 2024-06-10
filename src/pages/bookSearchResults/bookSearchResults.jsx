@@ -83,7 +83,6 @@ const BookSearch = () => {
   parsedSearchParams += `${subCat ? `&subCategory=${subCat}` : ""}`;
 
   const url = `${baseUrl}/searchFilter?${parsedSearchParams}`;
-  console.log(url);
   const {data, isPending, error} = useFetch(url);
   const books = [];
 
