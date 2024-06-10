@@ -12,9 +12,8 @@ const TextArea = ({text, holder, value = "", id, onChange}) => {
         id={id}
         onChange={onChange}
         className="input__textArea"
-      >
-        {value}
-      </textarea>
+        value={value}
+      ></textarea>
     </>
   );
 };

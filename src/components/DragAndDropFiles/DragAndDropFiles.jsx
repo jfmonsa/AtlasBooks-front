@@ -44,7 +44,11 @@ const DragAndDropFiles = ({onFilesSelected}) => {
       </div>
       <ul className="dragAndDropFile__fileList">
         {files.map((file, index) => (
-          <FileItemForInputFile file={file} removeFile={removeFile} />
+          <FileItemForInputFile
+            key={index}
+            file={file}
+            removeFile={removeFile}
+          />
         ))}
       </ul>
     </div>

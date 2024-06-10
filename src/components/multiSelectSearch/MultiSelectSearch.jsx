@@ -1,5 +1,3 @@
-import React, {useState} from "react";
-
 import Select from "react-select";
 
 const MultiSelectSearch = ({
@@ -8,13 +6,11 @@ const MultiSelectSearch = ({
   onChangeCallback,
   placeholder,
   className = "basic-single",
+  value = null, // Añadido el valor
 }) => {
-  // TODO: No eliminar, esperar a ver si son necesarios más adelante
-  //   const [isClearable, setIsClearable] = useState(true);
-  //   const [isDisabled, setIsDisabled] = useState(false);
-
   return (
     <Select
+      isMulti
       className={className}
       classNamePrefix="select"
       onChange={onChangeCallback}
@@ -22,6 +18,7 @@ const MultiSelectSearch = ({
       name={selectName}
       options={options}
       placeholder={placeholder}
+      value={value} // Pasa el valor al componente Select
     />
   );
 };
