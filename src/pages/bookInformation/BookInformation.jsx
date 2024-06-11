@@ -286,7 +286,7 @@ const BookPage = () => {
 
     try {
       // Realizar una solicitud al backend para guardar el libro en la lista
-      await fetch(`${BD}/lists/${listId}`, {
+      await fetch(`${baseUrl}/lists/${listId}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
