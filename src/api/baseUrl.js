@@ -1,4 +1,4 @@
-const typeBackend = "productionn";
+const typeBackend = "production";
 
 const baseUrl =
   typeBackend === "production"
