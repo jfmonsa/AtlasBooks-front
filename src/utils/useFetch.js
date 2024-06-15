@@ -1,4 +1,5 @@
 import {useState, useEffect} from "react";
+import axios from "../api/axios.js";
 
 const useFetch = url => {
   const [data, setData] = useState(null);
@@ -6,30 +7,21 @@ const useFetch = url => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    //1. get response from an api endpoint (url)
-    fetch(url)
-      //2. get an object response (res)
-      .then(res => {
-        if (!res.ok) {
-          //2.1 if and error came back from server
-          throw Error("could not fetch the data for that resource");
-        }
-        //2.2 if the response is ok, convert the json format
-        //    to a js object format
-        return res.json();
-      })
-      //2.2 -> 3. if no errors, use the data obtained
-      //  to get states: pending, data, error
-      .then(data => {
+    const fetchData = async () => {
+      setIsPending(true);
+      setError(null);
+
+      try {
+        const response = await axios.get(url);
+        setData(response.data);
         setIsPending(false);
-        setData(data);
-        setError(null);
-      })
-      .catch(err => {
-        // if and error ocurrs
+      } catch (err) {
         setIsPending(false);
         setError(err.message);
-      });
+      }
+    };
+
+    fetchData();
   }, [url]);
 
   return {data, isPending, error};
