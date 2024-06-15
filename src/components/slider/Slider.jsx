@@ -92,7 +92,7 @@ const CustomSlider = ({books}) => {
         {books.map(book => {
           return (
             <Book
-              index={book.bookId}
+              key={book.bookId}
               bookId={book.bookId}
               authors={book.authors}
               title={book.title}
