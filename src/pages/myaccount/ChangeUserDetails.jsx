@@ -4,6 +4,8 @@ import InputText from "../../components/inputText/InputText.jsx";
 import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm.jsx";
 import {EMAIL, NAME} from "../../utils/placeholder.js";
 
+//TODO: hacer el handle sumbit de ChangeUserDetails
+
 const ChangeUserDetails = () => {
   return (
     <Card cardDialog h1_text="Edita tus detalles" h1_center={true}>

@@ -3,14 +3,17 @@ import Card from "../../components/card/Card.jsx";
 import InputText from "../../components/inputText/InputText.jsx";
 import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm.jsx";
 import TextArea from "../../components/inputText/TextArea.jsx";
+import Switch from "@mui/material/Switch";
 import {useAuth} from "../../contexts/authContext.jsx";
 import {useNavigate} from "react-router-dom";
+import axios from "axios";
 
 const CreateList = () => {
+  const navigate = useNavigate();
   const {user} = useAuth();
   const [titulo, setTitulo] = useState("");
   const [descripcion, setDescripcion] = useState("");
-  const Navigate = useNavigate();
+  const [isPublic, setIsPublic] = useState(false);
 
   const handleTituloChange = event => {
     setTitulo(event.target.value);
@@ -22,40 +25,56 @@ const CreateList = () => {
 
   const handleSubmit = async event => {
     event.preventDefault();
-    const nuevaLista = {
-      title: titulo,
-      descriptionL: descripcion,
-      dateL: new Date().toISOString(),
-      idUserCreator: user.id,
-      isPublic: true,
-    };
+
+    // Validaciones del frontend
+    if (titulo.trim() === "") {
+      alert("El título es obligatorio.");
+      return;
+    }
+
+    if (titulo.length > 255) {
+      alert("El título no puede exceder los 255 caracteres.");
+      return;
+    }
+
+    if (descripcion.length > 0 && descripcion.length > 1000) {
+      alert("La descripción no puede exceder los 1000 caracteres.");
+      return;
+    }
 
     try {
-      const response = await fetch("http://localhost:3000/api/lists", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(nuevaLista),
+      const response = await axios.post("http://localhost:3000/api/lists", {
+        title: titulo,
+        descriptionL: descripcion,
+        dateL: new Date().toISOString(),
+        idUserCreator: user.id,
+        isPublic: isPublic,
       });
 
-      const data = await response.json();
-      if (data.error) {
-        alert(data.message);
-      } else {
-        alert(`Lista creada exitosamente. ID: ${data.listId}`);
-        Navigate("/my-account");
-        //Navigate("/my-lists/" + data.listId); para que me mande a la lista recien creada
-      }
+      alert(`Lista creada exitosamente`);
+      navigate("/my-account");
     } catch (error) {
-      console.error("Error al crear la lista:", error);
-      alert("Error al crear la lista");
+      alert(`Error al crear la lista: ${error.response.data.message}`);
+      console.error("Error al crear la lista:", error.response.data.message);
     }
+  };
+
+  const handleCancell = () => {
+    navigate("/my-account");
   };
 
   return (
     <Card h1Text="Crea una nueva lista" h1Center cardDialog>
       <form onSubmit={handleSubmit}>
+        <label className="input__label" htmlFor="isPublic">
+          La lista es publica?{" "}
+        </label>
+        <Switch
+          id="isPublic"
+          onChange={() => {
+            setIsPublic(!isPublic);
+          }}
+        />
         <InputText
           holder="P. ej Movie Dick"
           type="text"
@@ -71,7 +90,13 @@ const CreateList = () => {
           onChange={handleDescripcionChange}
         />
 
-        <PrimaryBtnForm text="Enviar" cssClasses="formCustomBtn black2Btn" />
+        <PrimaryBtnForm text="Crear" cssClasses="formCustomBtn black2Btn" />
+        <PrimaryBtnForm
+          type="button"
+          text="Cancelar"
+          cssClasses="formCustomBtn black1Btn"
+          onClick={handleCancell}
+        />
       </form>
     </Card>
   );
