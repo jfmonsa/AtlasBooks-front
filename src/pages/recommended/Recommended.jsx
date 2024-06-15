@@ -4,7 +4,7 @@ import useFetch from "../../utils/useFetch.js";
 import baseUrl from "../../api/baseUrl.js";
 
 const Recommended = () => {
-  const {data, isPending, error} = useFetch(`${baseUrl}/feed`);
+  const {data, isPending, error} = useFetch(`/feed`);
 
   if (error) {
     return <p>{error}</p>;

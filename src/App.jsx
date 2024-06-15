@@ -64,7 +64,7 @@ const router = createBrowserRouter([
       },
       {
         path: "recovery-account",
-        element:( 
+        element: (
           <ProtectedRoute>
             <RecoveryAccount />
           </ProtectedRoute>
@@ -72,7 +72,7 @@ const router = createBrowserRouter([
       },
       {
         path: "send-email",
-        element:( 
+        element: (
           <ProtectedRoute>
             <SendEmail />
           </ProtectedRoute>
@@ -80,7 +80,7 @@ const router = createBrowserRouter([
       },
       {
         path: "changePass",
-        element:( 
+        element: (
           <ProtectedRoute>
             <ChangePass />
           </ProtectedRoute>
@@ -88,7 +88,7 @@ const router = createBrowserRouter([
       },
       {
         path: "my-account",
-        element:( 
+        element: (
           <ProtectedRoute>
             <MyAccount />
           </ProtectedRoute>
@@ -100,7 +100,7 @@ const router = createBrowserRouter([
       },
       {
         path: "lists-results",
-        element:( 
+        element: (
           <ProtectedRoute>
             <ListSearch />
           </ProtectedRoute>
@@ -108,7 +108,7 @@ const router = createBrowserRouter([
       },
       {
         path: "confirm-password",
-        element:( 
+        element: (
           <ProtectedRoute>
             <PasswordConfirm />
           </ProtectedRoute>
@@ -116,7 +116,7 @@ const router = createBrowserRouter([
       },
       {
         path: "users-details",
-        element:( 
+        element: (
           <ProtectedRoute>
             <ChangeUserDetails />
           </ProtectedRoute>
@@ -124,7 +124,7 @@ const router = createBrowserRouter([
       },
       {
         path: "upload-book",
-        element:( 
+        element: (
           <ProtectedRoute>
             <UploadBook />
           </ProtectedRoute>
@@ -132,7 +132,7 @@ const router = createBrowserRouter([
       },
       {
         path: "new-list",
-        element:( 
+        element: (
           <ProtectedRoute>
             <NewList />
           </ProtectedRoute>
@@ -163,8 +163,8 @@ const router = createBrowserRouter([
         element: <DiscoverList />,
       },
       {
-        path: "results",
-        element:( 
+        path: "user-results",
+        element: (
           <ProtectedRoute>
             <AdminResults />
           </ProtectedRoute>
@@ -176,7 +176,7 @@ const router = createBrowserRouter([
       },
       {
         path: "changeEmail",
-        element:( 
+        element: (
           <ProtectedRoute>
             <ChangeEmail />
           </ProtectedRoute>
@@ -184,7 +184,7 @@ const router = createBrowserRouter([
       },
       {
         path: "newPassword/:token",
-        element:( 
+        element: (
           <ProtectedRoute>
             <NewPassword />
           </ProtectedRoute>

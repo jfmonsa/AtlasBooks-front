@@ -3,7 +3,6 @@ import Searcher from "../../components/searcher/Searcher";
 import {Link} from "react-router-dom";
 import {AiOutlineStar} from "react-icons/ai";
 import {useSearchParams} from "react-router-dom";
-import baseUrl from "../../api/baseUrl.js";
 import useFetch from "../../utils/useFetch.js";
 
 //Aux functions
@@ -82,7 +81,7 @@ const BookSearch = () => {
   parsedSearchParams += `${cat ? `&category=${cat}` : ""}`;
   parsedSearchParams += `${subCat ? `&subCategory=${subCat}` : ""}`;
 
-  const url = `${baseUrl}/searchFilter?${parsedSearchParams}`;
+  const url = `/searchFilter?${parsedSearchParams}`;
   const {data, isPending, error} = useFetch(url);
   const books = [];
 

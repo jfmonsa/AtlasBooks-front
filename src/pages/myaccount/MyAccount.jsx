@@ -2,7 +2,7 @@ import "./myaccount.css";
 import BtnAdd from "../../components/buttons/BtnAdd/BtnAdd.jsx";
 import Slider from "../../components/slider/Slider.jsx";
 import Card from "../../components/card/Card.jsx";
-import {Link,useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 //for option's section
 import IconPaypal from "../../assets/icons/icon-paypal.svg";
 import IconLogout from "../../assets/icons/menu-logout.svg";
@@ -16,16 +16,11 @@ import DropMenu from "../../components/dropMenu/DropMenu.jsx";
 import PrivateListIcon from "./../../assets/icons/icon-privatelist.svg";
 import PublicListIcon from "./../../assets/icons/icon-publiclist.svg";
 //Admin page
+import SearcherUsers from "../../components/searcher/SearcherUsers.jsx";
 import SearcherNoFilters from "../../components/searcher/SearcherNoFilters.jsx";
 
 //imgs para libros
-//TODO: reeemplzarlas por unas alamacenadas en el backend
-import Imagen1 from "../../assets/img/image1.png";
-import Imagen2 from "../../assets/img/image2.png";
-import Imagen3 from "../../assets/img/image3.png";
-import Imagen4 from "../../assets/img/image4.png";
-import Imagen5 from "../../assets/img/image5.png";
-import {  useAuth } from "../../contexts/authContext.jsx";
+import {useAuth} from "../../contexts/authContext.jsx";
 
 // Aux functions
 const SectionMyDataDatum = ({left, right}) => {
@@ -134,30 +129,16 @@ const SectionUploadABook = () => {
   );
 };
 
-const SectionOtherOptsOpt = ({text, toLink, iconSrc}) => {
-  return (
-    <li>
-      <Link to={toLink} className="options navHover">
-        <img
-          src={iconSrc}
-          alt={`icono opción ${text}`}
-          className="options__icon"
-        />
-        <span>{text}</span>
-      </Link>
-    </li>
-  );
-};
-
 const SectionOtherOpts = () => {
   const navigate = useNavigate();
- const {logout} = useAuth();
+  const {logout} = useAuth();
   const SectionOtherOptsOptions = [
     {
-      toLink: "#", 
-      iconPath: IconPaypal, 
-      text: "Donar"},
-    
+      toLink: "#",
+      iconPath: IconPaypal,
+      text: "Donar",
+    },
+
     {
       toLink: "/confirm-password",
       iconPath: IconEditDetails,
@@ -183,20 +164,19 @@ const SectionOtherOpts = () => {
   const handleLogout = () => {
     logout();
     navigate("/login");
-  }
+  };
 
   const onClickOptions = [
-      {
-        onClick: handleLogout,
-        iconPath: IconLogout, 
-        text: "Cerrar sesión"},
-    
-  ]
-  
+    {
+      onClick: handleLogout,
+      iconPath: IconLogout,
+      text: "Cerrar sesión",
+    },
+  ];
+
   return (
     <Card h1Text="Opciones">
-    
-      <DropMenu 
+      <DropMenu
         customOnclickOptions={onClickOptions}
         options={SectionOtherOptsOptions}
         cssClassContainer=" nonFloating"
@@ -206,21 +186,35 @@ const SectionOtherOpts = () => {
 };
 
 const MyAccountAdmin = () => {
+  const handleNoImplementada = () => {
+    alert("Feature no implementada aún, no usar");
+  };
+
   return (
     <>
       <Card h1Text="Administrar libros" h1Center>
-        <SearcherNoFilters toNavigate="/results" />
+        <SearcherNoFilters
+          // toNavigate="/results"
+          onClick={handleNoImplementada}
+        />
       </Card>
       <Card h1Text="Administrar usuarios" h1Center>
-        <SearcherNoFilters holder="Buscar usuarios" toNavigate="/results" />
+        <SearcherUsers
+          holder="Buscar usuarios por id, nickname, nombre, email..."
+          toNavigate="/results"
+        />
       </Card>
-      <Card h1Text="Administrar reportes" h1Center></Card>
+      <Card
+        h1Text="Administrar reportes"
+        h1Center
+        onClick={handleNoImplementada}
+      ></Card>
     </>
   );
 };
 
 const LoggedAdmin = () => {
-  const {contextValue} = useAuth()
+  const {contextValue} = useAuth();
   const context = contextValue;
   if (context.admin) {
     return <MyAccountAdmin />;
@@ -256,45 +250,42 @@ const downloadHistoryBooks = [
   {
     author: "Pepito Perez",
     title: "Pepe tenia una pipa",
-    pathBookCover: Imagen1,
+    pathBookCover: null,
   },
   {
     author: "Gogó manotas",
     title: "Bases de datos relacionales",
-    pathBookCover: Imagen2,
+    pathBookCover: null,
   },
   {
     author: "Carlos Delgado",
     title: "Salem's lot",
-    pathBookCover: Imagen3,
+    pathBookCover: null,
   },
   {
     author: "Jaimito el Carterito",
     title: "Odio al chavo",
-    pathBookCover: Imagen4,
+    pathBookCover: null,
   },
   {
     author: "Karl Marx",
     title: "Das Kapital",
-    pathBookCover: Imagen5,
+    pathBookCover: null,
   },
 ];
 
-
-
 // Main page
 const MyAccount = () => {
-
   const {user} = useAuth();
 
   return (
     <>
       <SectionMyData
-        name= {user.name}
-        nickname= {user.nickname}
-        email= {user.email}
-        country= {user.country}
-        registerDate= {user.registerDate.split("T")[0]}
+        name={user.name}
+        nickname={user.nickname}
+        email={user.email}
+        country={user.country}
+        registerDate={user.registerDate.split("T")[0]}
       />
       <LoggedAdmin />
       <SectionLists myLists={myBookLists} />

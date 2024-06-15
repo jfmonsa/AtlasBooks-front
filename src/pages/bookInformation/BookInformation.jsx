@@ -3,7 +3,6 @@ import Card from "../../components/card/Card.jsx";
 
 //to fetch data
 import {useParams} from "react-router-dom";
-import baseUrl from "../../api/baseUrl.js";
 import useFetch from "../../utils/useFetch.js";
 import axios from "./../../api/axios.js";
 import {useAuth} from "../../contexts/authContext.jsx";
@@ -11,7 +10,7 @@ import {rateBookApi} from "../../api/rateBook.js";
 
 //Rate starts
 import {AiFillStar, AiOutlineStar} from "react-icons/ai";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 
 //Book Info
 import DropdownBtn from "../../components/dropDownButtons/DropdownBtn.jsx";
@@ -28,7 +27,6 @@ import Telegram from "../../assets/icons/Icon-telegram.svg";
 import WhatsApp from "../../assets/icons/Icon-whatsapp.svg";
 import Enlace from "../../assets/icons/Icon-link.svg";
 import coment from "../../assets/icons/comentario-icon.svg";
-import mark from "../../assets/icons/marcador-icon.svg";
 //Relacionados
 import Slider from "../../components/slider/Slider.jsx";
 //Comments
@@ -271,7 +269,7 @@ const BookPage = () => {
     data: bookData,
     error: bookError,
     isPending: bookIsPending,
-  } = useFetch(`${baseUrl}/books/${id}`);
+  } = useFetch(`/books/${id}`);
   if (bookError) {
     return <p>{bookError}</p>;
   }
