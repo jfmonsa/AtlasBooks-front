@@ -1,6 +1,10 @@
 import "./adminResults.css";
 import Card from "../../components/card/Card";
-import Searcher from "../../components/searcher/Searcher";
+import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm.jsx";
+import SearcherUsers from "../../components/searcher/SearcherUsers.jsx";
+import useFetch from "../../utils/useFetch.js";
+import {useSearchParams} from "react-router-dom";
+
 //Table imports
 import {
   Table,
@@ -11,16 +15,12 @@ import {
   TablePagination,
   TableRow,
 } from "@mui/material";
-import {useEffect, useState} from "react";
-import {
-  getSearchUsers as getSearchUsersApi,
-  // deleteComment as deleteCommentApi,
-  // updateComment as updateCommentApi,
-} from "../../api/apiSearchUsers.js";
+import {useState, useEffect} from "react";
 
 const TableResults = () => {
+  //Aux functions
   const checkBool = value => {
-    if (typeof value == "boolean") {
+    if (typeof value === "boolean") {
       return value ? "true" : "false";
     }
     return value;
@@ -28,19 +28,22 @@ const TableResults = () => {
 
   const columns = [
     {id: "id", name: "Id"},
-    {id: "name", name: "Name"},
+    {id: "nameu", name: "Name"},
+    {id: "nickname", name: "Nickname"},
+    {id: "email", name: "Email"},
     {id: "country", name: "Country"},
-    {id: "status", name: "Status"},
-    {id: "admin", name: "Admin?"},
+    {id: "statusu", name: "Status"},
+    {id: "isadmin", name: "Admin?"},
     {id: "actions", name: "Actions"}, // Nueva columna para los botones
   ];
 
-  const handlechangepage = (event, newpage) => {
-    pagechange(newpage);
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
   };
-  const handleRowsPerPage = event => {
-    rowperpagechange(+event.target.value);
-    pagechange(0);
+
+  const handleRowsPerPageChange = event => {
+    setRowsPerPage(+event.target.value);
+    setPage(0);
   };
 
   //Actions
@@ -54,21 +57,32 @@ const TableResults = () => {
     console.log(`Hacer administrador al usuario con ID: ${userId}`);
   };
 
-  const [rows, setRowchange] = useState([]);
-  const [page, pagechange] = useState(0);
-  const [rowperpage, rowperpagechange] = useState(5);
+  //states
+  const [rows, setRows] = useState([]);
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
 
-  //Fetch data from api
+  //fetch to api
+  const [searchParams] = useSearchParams();
+  const search = searchParams.get("search") || "";
+  const {data, isPending, error} = useFetch(
+    `/searchFilterUsers?search=${search}`,
+  );
+
   useEffect(() => {
-    getSearchUsersApi()
-      .then(data => {
-        setRowchange(data);
-        console.log(data);
-      })
-      .catch(e => {
-        console.log(e.message);
-      });
-  }, []);
+    if (data) {
+      setRows(data.data);
+    }
+  }, [data]);
+
+  if (isPending) {
+    return <p>Is loading...</p>;
+  }
+
+  if (error) {
+    if (!search) return <p>Ingrese un termino de búsqueda</p>;
+    return <p>{error}</p>;
+  }
 
   return (
     <>
@@ -77,55 +91,58 @@ const TableResults = () => {
           <TableHead>
             <TableRow>
               {columns.map(column => (
-                <TableCell
-                  // style={{backgroundColor: "black", color: "white"}}
-                  key={column.id}
-                >
-                  {column.name}
-                </TableCell>
+                <TableCell key={column.id}>{column.name}</TableCell>
               ))}
             </TableRow>
           </TableHead>
           <TableBody>
             {rows &&
               rows
-                .slice(page * rowperpage, page * rowperpage + rowperpage)
+                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map(row => {
+                  console.log(row);
                   return (
                     <TableRow key={row.id}>
-                      {columns &&
-                        columns.map((column, colIndex) => {
-                          let value = checkBool(row[column.id]);
-                          if (column.id === "actions") {
-                            return (
-                              <TableCell key={colIndex}>
-                                <button
-                                  onClick={() => handleDeleteUser(row.id)}
-                                >
-                                  Eliminar
-                                </button>
-                                <button onClick={() => handleMakeAdmin(row.id)}>
-                                  Hacer Admin
-                                </button>
-                              </TableCell>
-                            );
-                          } else if (
-                            column.id === "status" ||
-                            column.id === "admin"
-                          ) {
-                            return (
-                              <TableCell key={colIndex}>
-                                {checkBool(value)}
-                              </TableCell>
+                      {columns.map((column, colIndex) => {
+                        let value = row[column.id];
+                        if (column.id === "actions") {
+                          let buttonAction;
+                          if (row.status) {
+                            buttonAction = (
+                              <PrimaryBtnForm
+                                onClick={() => handleDeleteUser(row.id)}
+                                type="button"
+                                text="Bannear"
+                                cssClasses="baseBtn commentsBtn blueBtn"
+                              />
                             );
                           } else {
-                            return (
-                              <TableCell key={colIndex}>
-                                {row[column.id]}
-                              </TableCell>
+                            buttonAction = (
+                              <PrimaryBtnForm
+                                onClick={() => handleDeleteUser(row.id)}
+                                type="button"
+                                text="Bannear"
+                                cssClasses="baseBtn commentsBtn blueBtn"
+                              />
                             );
                           }
-                        })}
+
+                          return (
+                            <TableCell key={colIndex}>{buttonAction}</TableCell>
+                          );
+                        } else if (
+                          column.id === "statusu" ||
+                          column.id === "isadmin"
+                        ) {
+                          return (
+                            <TableCell key={colIndex}>
+                              {checkBool(value)}
+                            </TableCell>
+                          );
+                        } else {
+                          return <TableCell key={colIndex}>{value}</TableCell>;
+                        }
+                      })}
                     </TableRow>
                   );
                 })}
@@ -134,22 +151,22 @@ const TableResults = () => {
       </TableContainer>
       <TablePagination
         rowsPerPageOptions={[5, 10, 25]}
-        rowsPerPage={rowperpage}
+        rowsPerPage={rowsPerPage}
         page={page}
         count={rows.length}
         component="div"
-        onPageChange={handlechangepage}
-        onRowsPerPageChange={handleRowsPerPage}
-      ></TablePagination>
+        onPageChange={handleChangePage}
+        onRowsPerPageChange={handleRowsPerPageChange}
+      />
     </>
   );
 };
 
-const AdminResults = ({kindOfQuery}) => {
+const AdminResults = () => {
   return (
     <>
       <Card h1Text="Administrar usuarios" h1Center>
-        <Searcher holder="Busca a un usuario" toNavigate="results"></Searcher>
+        <SearcherUsers holder="Busca a un usuario" toNavigate="results" />
       </Card>
       <Card h1Text="Resultados" h1Center>
         <TableResults />
@@ -157,4 +174,5 @@ const AdminResults = ({kindOfQuery}) => {
     </>
   );
 };
+
 export default AdminResults;

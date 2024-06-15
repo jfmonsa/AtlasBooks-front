@@ -58,7 +58,7 @@ const ListSearch = () => {
   const listN = searchParams.get("listN");
 
   const {data, isPending, error} = useFetch(
-    listN ? `${baseUrl}/searchFilterLists?listN=${listN}` : null,
+    listN ? `/searchFilterLists?listN=${listN}` : null,
   );
 
   if (!listN) {
