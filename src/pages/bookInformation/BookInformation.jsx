@@ -214,7 +214,7 @@ const RateStarsSection = ({id}) => {
   const handleRate = async index => {
     setNumber(index);
     try {
-      await rateBookApi({rate: number, idbook: id});
+      await rateBookApi({rate: index, idbook: id});
     } catch (error) {
       window.alert(error.response.data[0]);
     }
