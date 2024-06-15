@@ -2,14 +2,7 @@ import "./iconDropDown.css";
 import {useState} from "react";
 import {FaRegBookmark, FaBookmark} from "react-icons/fa";
 
-const IconDropMenuItem = ({
-  onClick,
-  text,
-  toLink,
-  iconPath,
-  cssClassItemCont,
-  itemSize,
-}) => {
+const IconDropMenuItem = ({onClick, text, itemSize}) => {
   const [mark, setMark] = useState(false);
   const handleClick = () => {
     setMark(!mark); // Esta es la acción adicional
@@ -17,7 +10,7 @@ const IconDropMenuItem = ({
   };
   return (
     <li
-      className={`dropMenu__item--${itemSize} dropMenu__item  navHover  ${cssClassItemCont}`}
+      className={`dropMenu__item--${itemSize} dropMenu__item  navHover`}
       onClick={handleClick}
     >
       <span className="dropMenu__item__icon">
@@ -31,7 +24,6 @@ const IconDropMenuItem = ({
 const IconDropMenu = ({
   options,
   cssClassContainer = "",
-  cssClassItemContainer = "",
   itemSizep = "avg",
   orientation = "left",
   infoText,
@@ -39,16 +31,17 @@ const IconDropMenu = ({
   return (
     <ul className={`dropMenu dropMenu--${orientation} ${cssClassContainer}`}>
       <li className="dropMenu--infoText"> {infoText} </li>
-      {options.map((option, index) => (
-        <IconDropMenuItem
-          key={index}
-          onClick={option.onClick}
-          icon={option.icon}
-          text={option.text}
-          cssClassItemCont={cssClassItemContainer}
-          itemSize={itemSizep}
-        />
-      ))}
+      {options &&
+        options.length > 0 &&
+        options.map((option, index) => (
+          <IconDropMenuItem
+            key={index}
+            onClick={option.onClick}
+            icon={option.icon}
+            text={option.text}
+            itemSize={itemSizep}
+          />
+        ))}
     </ul>
   );
 };
@@ -56,28 +49,30 @@ const IconDropMenu = ({
 const IconDropDown = ({
   icon,
   options,
-  cssClassContainer,
   cssClassIcon,
   menuContainerCssClass,
+  defaultTextNoData = "No hay datos",
 }) => {
   const [open, setOpen] = useState(false);
 
   return (
     <span className="iconDropDown">
       <span
-        className={cssClassContainer}
         onClick={() => {
           setOpen(!open);
         }}
       >
         {icon}
       </span>
-      {open && (
+      {open && options && options.lenght > 0 && (
         <IconDropMenu
           infoText="Guardar en lista:"
           options={options}
           cssClassContainer={menuContainerCssClass}
         />
+      )}
+      {open && !options && !options?.lenght > 0 && (
+        <IconDropMenu infoText={defaultTextNoData} options={null} />
       )}
     </span>
   );

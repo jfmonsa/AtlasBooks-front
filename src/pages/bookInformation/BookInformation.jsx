@@ -11,12 +11,11 @@ import {rateBookApi} from "../../api/rateBook.js";
 
 //Rate starts
 import {AiFillStar, AiOutlineStar} from "react-icons/ai";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 //Book Info
 import DropdownBtn from "../../components/dropDownButtons/DropdownBtn.jsx";
-import IconDropDown from "../../components/iconDropDown/IconDropDown.jsx";
-import {FaRegBookmark} from "react-icons/fa";
+import AddBookToList from "../../components/addBookToList/AddBookToList.jsx";
 import PrimaryBtnLink from "../../components/buttons/primaryBtn/PrimaryBtnLink.jsx";
 // -- Download option's icon
 import PdfIcon from "../../assets/icons/pdfIcon.svg";
@@ -66,6 +65,7 @@ const iconMap = {
 };
 
 const BookInfoSection = ({
+  bookId,
   bookName,
   authorName,
   rank,
@@ -80,9 +80,7 @@ const BookInfoSection = ({
   vol = 1,
   bookImg,
   numComments,
-  listsOpts,
   bookFiles,
-  bookId,
 }) => {
   const {isAuthenticated, user} = useAuth();
 
@@ -161,9 +159,11 @@ const BookInfoSection = ({
 
               <div>
                 <HeartButton className="relevantInfo__icon2 heartLike" />
-                <IconDropDown
-                  icon={<FaRegBookmark className="relevantInfo__icon2" />}
-                  options={listsOpts}
+                {/*TODO: Agregarle un estado de disabled cuando el usuario no esta autenticado*/}
+                <AddBookToList
+                  bookId={bookId}
+                  isAuthenticated={isAuthenticated}
+                  userId={user.id}
                 />
               </div>
             </div>
@@ -272,51 +272,13 @@ const BookPage = () => {
     error: bookError,
     isPending: bookIsPending,
   } = useFetch(`${baseUrl}/books/${id}`);
-
-  // Fetch lists data
-  const {
-    data: listsData,
-    error: listsError,
-    isPending: listsIsPending,
-  } = useFetch(`${baseUrl}/lists`);
-
-  // Define handleSaveToList outside of BookInfoSection
-  const handleSaveToList = async listId => {
-    if (!bookData || !listId) return;
-
-    try {
-      // Realizar una solicitud al backend para guardar el libro en la lista
-      await fetch(`${baseUrl}/lists/${listId}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          book: bookData.idBook, // Envía todos los datos del libro
-        }),
-      });
-      // Actualizar el estado u otra acción necesaria para reflejar el libro guardado en la lista
-      // setSelectedList(listId);
-    } catch (error) {
-      console.error("Error saving book to list:", error);
-    }
-  };
-
-  if (bookError || listsError) {
-    return <p>{bookError || listsError}</p>;
+  if (bookError) {
+    return <p>{bookError}</p>;
   }
-
-  if (bookIsPending || listsIsPending) {
+  if (bookIsPending) {
     return <p>Loading...</p>;
   }
-
-  if (bookData && listsData) {
-    const listsOpts = listsData.map(list => ({
-      toLink: "#",
-      iconPath: mark,
-      text: list.title,
-      onClick: () => handleSaveToList(list.id), // Assign handleSaveToList to onClick
-    }));
+  if (bookData) {
     return (
       <>
         <BookInfoSection
@@ -337,7 +299,6 @@ const BookPage = () => {
             ?.concat(bookData?.book_category)
             .join(", ")}
           numComments={bookData.comments.length}
-          listsOpts={listsOpts}
           bookFiles={bookData.book_files}
         />
         <RateStarsSection id={id} />
