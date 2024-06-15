@@ -1,8 +1,10 @@
 import "./adminResults.css";
 import Card from "../../components/card/Card";
+import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm.jsx";
 import SearcherUsers from "../../components/searcher/SearcherUsers.jsx";
 import useFetch from "../../utils/useFetch.js";
 import {useSearchParams} from "react-router-dom";
+
 //Table imports
 import {
   Table,
@@ -98,20 +100,35 @@ const TableResults = () => {
               rows
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map(row => {
+                  console.log(row);
                   return (
                     <TableRow key={row.id}>
                       {columns.map((column, colIndex) => {
                         let value = row[column.id];
                         if (column.id === "actions") {
+                          let buttonAction;
+                          if (row.status) {
+                            buttonAction = (
+                              <PrimaryBtnForm
+                                onClick={() => handleDeleteUser(row.id)}
+                                type="button"
+                                text="Bannear"
+                                cssClasses="baseBtn commentsBtn blueBtn"
+                              />
+                            );
+                          } else {
+                            buttonAction = (
+                              <PrimaryBtnForm
+                                onClick={() => handleDeleteUser(row.id)}
+                                type="button"
+                                text="Bannear"
+                                cssClasses="baseBtn commentsBtn blueBtn"
+                              />
+                            );
+                          }
+
                           return (
-                            <TableCell key={colIndex}>
-                              <button onClick={() => handleDeleteUser(row.id)}>
-                                Eliminar
-                              </button>
-                              <button onClick={() => handleMakeAdmin(row.id)}>
-                                Hacer Admin
-                              </button>
-                            </TableCell>
+                            <TableCell key={colIndex}>{buttonAction}</TableCell>
                           );
                         } else if (
                           column.id === "statusu" ||
