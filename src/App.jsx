@@ -151,10 +151,6 @@ const router = createBrowserRouter([
         element: <Report />,
       },
       {
-        path: "book-information",
-        element: <BookInformation />,
-      },
-      {
         path: "books/:id",
         element: <BookInformation />,
       },
