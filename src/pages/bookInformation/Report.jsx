@@ -5,7 +5,7 @@ import TextArea from "../../components/inputText/TextArea.jsx";
 import {valNoEmpty} from "../../utils/validateFormFields.js";
 import {useState} from "react";
 import ErrorFormAccountMsg from "../../components/errorFormAccountMsg/ErrorFormAccountMsg.jsx";
-import { createReportApi } from "../../api/reports.js";
+import {createReportApi} from "../../api/reports.js";
 
 const Report = () => {
   const navigate = useNavigate();
@@ -28,6 +28,10 @@ const Report = () => {
         setError("Ha ocurrido un error al enviar el reporte.");
       });
   };
+
+  const handleCancell = () => {
+    navigate(`/books/${id}`);
+  };
   return (
     <Card cardDialog h1_text="Reportar">
       {/* <DropDownButtonReport /> */}
@@ -40,6 +44,12 @@ const Report = () => {
         />
         <ErrorFormAccountMsg error={error} />
         <PrimaryBtnForm text="Enviar" cssClasses="formCustomBtn black2Btn" />
+        <PrimaryBtnForm
+          type="button"
+          text="Cancelar"
+          cssClasses="formCustomBtn black1Btn"
+          onClick={handleCancell}
+        />
       </form>
     </Card>
   );
