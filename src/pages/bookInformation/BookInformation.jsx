@@ -10,7 +10,7 @@ import {rateBookApi} from "../../api/rateBook.js";
 
 //Rate starts
 import {AiFillStar, AiOutlineStar} from "react-icons/ai";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 //Book Info
 import DropdownBtn from "../../components/dropDownButtons/DropdownBtn.jsx";
@@ -209,6 +209,17 @@ const BookInfoSection = ({
 
 const RateStarsSection = ({id}) => {
   const [number, setNumber] = useState(0);
+  useEffect(() => {
+    const getRate = async () => {
+      try {
+        const response = await axios.get(`/rateBook/${id}`);
+        setNumber(response.data[0].ratevalue);
+      } catch (error) {
+       console.error(error); 
+      }
+    };
+    getRate();
+  }, [id]);
   const handleRate = async index => {
     setNumber(index);
     try {
