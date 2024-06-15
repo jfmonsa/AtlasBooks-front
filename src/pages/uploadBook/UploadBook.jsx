@@ -47,7 +47,7 @@ const SubCategorySelect = ({
       {subCatIsPending && <p>Loading subcategories...</p>}
       {subCatData && (
         <>
-          <label className="input__label" for="subcategories">
+          <label className="input__label" htmlFor="subcategories">
             Subcategorias
           </label>
           <p className="label_extra">Puede seleccionar una o más</p>
@@ -290,7 +290,7 @@ const UploadBook = () => {
             value={publisher}
             onChange={e => setPublisher(e.target.value)}
           />
-          <label className="input__label" for="languages">
+          <label className="input__label" htmlFor="languages">
             Idomas{" "}
           </label>
           <p className="label_extra">Puede seleccionar uno o más</p>
@@ -306,7 +306,7 @@ const UploadBook = () => {
             className="basic-single formClassicSelector"
             classNamePrefix="select"
           />
-          <label className="input__label" for="category">
+          <label className="input__label" htmlFor="category">
             Categoria
           </label>
           <p className="label_extra">Selecciona solo una</p>
@@ -327,7 +327,7 @@ const UploadBook = () => {
             selectedSubCategories={selectedSubCategories}
             onSubCategoriesChange={setSelectedSubCategories}
           />
-          <label className="input__label" for="coverBookImage">
+          <label className="input__label" htmlFor="coverBookImage">
             Imagen de portada
           </label>
           <p className="label_extra">Selecciona un archivo tipo imagen</p>
@@ -336,7 +336,7 @@ const UploadBook = () => {
             id="coverBookImage"
             className="inputFileBookCover"
           />
-          <label className="input__label" for="bookFiles">
+          <label className="input__label" htmlFor="bookFiles">
             Archivos
           </label>
           <p className="label_extra">
@@ -353,7 +353,10 @@ const UploadBook = () => {
             value={descriptionB}
             onChange={e => setDescriptionB(e.target.value)}
           />
-          <PrimaryBtnForm text="Enviar" cssClasses="formCustomBtn black2Btn" />
+          <PrimaryBtnForm
+            text="Subir libro"
+            cssClasses="formCustomBtn black2Btn"
+          />
           <PrimaryBtnForm
             type="button"
             text="Cancelar"
