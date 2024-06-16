@@ -6,9 +6,7 @@ import useFetch from "../../utils/useFetch.js";
 
 const Lists = ({}) => {
   const {idList} = useParams();
-  const {data, error, isPending} = useFetch(
-    `http://localhost:3000/api/lists/${idList}`,
-  );
+  const {data, error, isPending} = useFetch(`/lists/${idList}`);
   if (error) {
     return <div>{error}</div>;
   }

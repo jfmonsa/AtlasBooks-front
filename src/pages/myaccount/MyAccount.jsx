@@ -92,12 +92,12 @@ const SectionLists = ({myLists}) => {
   if (myLists != null) {
     return (
       <Card h1Text="Mis listas" id="my-lists">
-        {myLists.map((list, index) => {
+        {myLists.map(list => {
           return (
             <SectionListsListCard
-              key={index}
+              key={list.id}
               listName={list.listName}
-              path={list.path}
+              path={`/lists/${list.id}`}
               desc={list.desc}
               numBooks={list.numBooks}
               publicList={list.publicList}
@@ -189,7 +189,6 @@ const SectionOtherOpts = () => {
 };
 
 const MyAccountAdmin = () => {
-
   const [report, setReport] = useState(["No hay reportes por el momento"]);
   useEffect(() => {
     getReportsApi()
@@ -226,7 +225,7 @@ const MyAccountAdmin = () => {
               <h3>{`Id del usuario: ${report.iduser}`}</h3>
               <p>{report.motivation}</p>
               <p>{`Libro que reportado por el usuario: ${report.idbook}`}</p>
-            </div>  
+            </div>
           );
         })}
       </Card>
@@ -243,68 +242,69 @@ const LoggedAdmin = () => {
 };
 
 // Aux Test data
-const myBookLists = [
- 
-];
-
+const myBookLists = [];
 
 // Main page
 const MyAccount = () => {
-const {user} = useAuth();
-const [myBookLists, setMyBookLists] = useState([]);
-const [downloadHistoryBooks, setDownloadHistoryBooks] = useState([]);
+  const {user} = useAuth();
+  const [myBookLists, setMyBookLists] = useState([]);
+  const [downloadHistoryBooks, setDownloadHistoryBooks] = useState([]);
 
-const userListsUrl = user ? `http://localhost:3000/api/userLists?id=${user.id}` : null;
-const downloadHistoryUrl = user ? `http://localhost:3000/api/downloadHistory?id=${user.id}` : null;
+  const userListsUrl = user ? `/userLists?id=${user.id}` : null;
+  const downloadHistoryUrl = user ? `/downloadHistory?id=${user.id}` : null;
 
-const { data: userListsData, isPending: userListsPending, error: userListsError } = useFetch(userListsUrl);
-const { data: downloadHistoryData, isPending: downloadHistoryPending, error: downloadHistoryError } = useFetch(downloadHistoryUrl);
+  const {
+    data: userListsData,
+    isPending: userListsPending,
+    error: userListsError,
+  } = useFetch(userListsUrl);
+  const {
+    data: downloadHistoryData,
+    isPending: downloadHistoryPending,
+    error: downloadHistoryError,
+  } = useFetch(downloadHistoryUrl);
 
-useEffect(() => {
-  if (userListsData) {
-    const filteredData = userListsData.data.map(list => ({
-      key: list.id,
-      listName: list.title,
-      path: list.path,
-      desc: list.description,
-      numBooks: '14', // Asumiendo que '14' es un dato fijo; ajusta según sea necesario
-      publicList: list.ispublic
-    }));
-    setMyBookLists(filteredData); // Actualiza el estado con los datos filtrados
-  }
-}, [userListsData]);
+  useEffect(() => {
+    if (userListsData) {
+      const filteredData = userListsData.data.map(list => ({
+        id: list.id,
+        listName: list.title,
+        desc: list.description,
+        numBooks: "14", // Asumiendo que '14' es un dato fijo; ajusta según sea necesario
+        publicList: list.ispublic,
+      }));
+      setMyBookLists(filteredData); // Actualiza el estado con los datos filtrados
+    }
+  }, [userListsData]);
 
-useEffect(() => {
-  if (downloadHistoryData) {
-    const filteredData = downloadHistoryData.data.map(book => ({
-      key: book.id,
-      title: book.title,
-      author: book.author,
-      pathBookCover: book.pathbookcover
-    }));
-    setDownloadHistoryBooks(filteredData); // Actualiza el estado con los datos filtrados
-  }
-}, [downloadHistoryData]);
+  useEffect(() => {
+    if (downloadHistoryData) {
+      const filteredData = downloadHistoryData.data.map(book => ({
+        bookId: book.book_id,
+        title: book.title,
+        author: book.author,
+        pathBookCover: book.pathbookcover,
+      }));
+      setDownloadHistoryBooks(filteredData); // Actualiza el estado con los datos filtrados
+    }
+  }, [downloadHistoryData]);
 
-if (userListsPending || downloadHistoryPending) return <div>Loading...</div>;
-if (userListsError) return <div>Error: {userListsError}</div>;
-if (downloadHistoryError) return <div>Error: {downloadHistoryError}</div>;
-
-       
+  if (userListsPending || downloadHistoryPending) return <div>Loading...</div>;
+  if (userListsError) return <div>Error: {userListsError}</div>;
+  if (downloadHistoryError) return <div>Error: {downloadHistoryError}</div>;
 
   return (
-   
     <>
       <SectionMyData
         name={user.name}
         nickname={user.nickname}
         email={user.email}
         country={user.country}
-       // registerDate={user.registerDate.split("T")[0]}
+        // registerDate={user.registerDate.split("T")[0]}
       />
       <LoggedAdmin />
       <SectionLists myLists={myBookLists} />
-      <SectionDownloadsHistory historyBooks={downloadHistoryBooks } />
+      <SectionDownloadsHistory historyBooks={downloadHistoryBooks} />
       <SectionUploadABook />
       <SectionOtherOpts />
     </>
