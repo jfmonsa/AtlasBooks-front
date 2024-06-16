@@ -21,15 +21,29 @@ const NewAccount = ({}) => {
   const [userEmail, setUserEmail] = useState("");
   const [userPass1, setUserPass1] = useState("");
   const [userPass2, setUserPass2] = useState("");
-  const countryReq = useFetch("https://ipapi.co/json/");
+  const [countryCode, setCountryCode] = useState(null);
+
   const navigate = useNavigate();
-
   const {signup, isAuthenticated, errors: RegisterErrors, user} = useAuth();
-
   const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchCountry = async () => {
+      try {
+        const response = await fetch("https://ipapi.co/json/");
+        const data = await response.json();
+        setCountryCode(data.country_code);
+      } catch (error) {
+        console.error("Error fetching country data:", error);
+      }
+    };
+
+    fetchCountry();
+  }, []);
+
   useEffect(() => {
     if (isAuthenticated) navigate("/");
-  }, [isAuthenticated]);
+  }, [isAuthenticated, navigate]);
 
   //validations and api request
   const handleSubmit = async e => {
@@ -43,37 +57,29 @@ const NewAccount = ({}) => {
     ) {
       setError("Todos los campos son obligatorios");
       return;
-    }
-    //val nickname
-    else if (!valNickname(userNick)) {
+    } else if (!valNickname(userNick)) {
       setError("No se permiten espacios en el nickname");
       return;
-    }
-    //val Email
-    else if (!valEmail(userEmail)) {
+    } else if (!valEmail(userEmail)) {
       setError("El email ingresado no es valido");
       return;
-    }
-    //val pass
-    else if (!valPassword(userPass1) || !valPassword(userPass2)) {
+    } else if (!valPassword(userPass1) || !valPassword(userPass2)) {
       setError(
         "Verifique que ambas claves tengan: minimo 8 caracteres, una mayuscula, un numero, un caracter especial. máximo 20 caracteres",
       );
       return;
-    } else if (userPass1 != userPass2) {
-      setError("Verifique que ambsa contraseñas ingresadas sean iguales");
+    } else if (userPass1 !== userPass2) {
+      setError("Verifique que ambas contraseñas ingresadas sean iguales");
       return;
     }
     setError(null);
-    //usemos country_code para almacenarlo en la columna de pais de usuario :)
-    //si se quiere el nombre, .country_name
-    //Enviar request al api para crear un usuario
+
     signup({
       name: userName,
       nickName: userNick,
       email: userEmail,
       password: userPass1,
-      country: countryReq.data.country_code,
+      country: countryCode,
     });
   };
 
@@ -103,7 +109,6 @@ const NewAccount = ({}) => {
             value={userEmail}
             onChange={e => setUserEmail(e.target.value)}
           />
-
           <InputText
             text="Contraseña"
             holder={PASSWD}
@@ -111,7 +116,6 @@ const NewAccount = ({}) => {
             value={userPass1}
             onChange={e => setUserPass1(e.target.value)}
           />
-
           <InputText
             text="Confirmar Contraseña"
             holder={PASSWD}
@@ -121,7 +125,7 @@ const NewAccount = ({}) => {
           />
           <ErrorFormAccountMsg error={error} />
           {RegisterErrors.map((error, index) => (
-            <ErrorFormAccountMsg error={error} index={index} />
+            <ErrorFormAccountMsg error={error} key={index} />
           ))}
 
           <PrimaryBtnForm
