@@ -16,6 +16,7 @@ import {
   TableRow,
 } from "@mui/material";
 import {useState, useEffect} from "react";
+import { getBannedUser } from "../../api/apiBanUser.js";
 
 const TableResults = () => {
   //Aux functions
@@ -50,6 +51,7 @@ const TableResults = () => {
   const handleDeleteUser = userId => {
     // Lógica para eliminar un usuario
     console.log(`Eliminar usuario con ID: ${userId}`);
+    getBannedUser({id: userId });
   };
 
   const handleMakeAdmin = userId => {
