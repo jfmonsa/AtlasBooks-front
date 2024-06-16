@@ -213,9 +213,9 @@ const RateStarsSection = ({id}) => {
     const getRate = async () => {
       try {
         const response = await axios.get(`/rateBook/${id}`);
-        setNumber(response.data[0].ratevalue);
+        setNumber(response.data.ratevalue);
       } catch (error) {
-       console.error(error); 
+        console.error(error);
       }
     };
     getRate();
