@@ -54,7 +54,8 @@ const Footer = () => {
           </a>
         </div>
       </div>
-      <div className="ft_right_conta">
+
+      {/* <div className="ft_right_conta">
         <div className="topic">
           <h2 className="topic__title">Topic 1</h2>
           <ul>
@@ -97,7 +98,7 @@ const Footer = () => {
             </li>
           </ul>
         </div>
-      </div>
+      </div> */}
     </footer>
   );
 };
