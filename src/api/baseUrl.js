@@ -1,7 +1,7 @@
-const typeBackend = "production";
+const typeBackend = "productionn";
 
 const baseUrl =
-  typeBackend === "productionn"
+  typeBackend === "production"
     ? "https://atlas-books-back.vercel.app/api"
     : "http://localhost:3000/api";
 
