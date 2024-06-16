@@ -12,15 +12,16 @@ import MenuRecommendedIcon from "../../../assets/icons/menu-recommended.svg";
 import MenuSearchIcon from "../../../assets/icons/menu-search.svg";
 import MenuSingupIcon from "../../../assets/icons/menu-singup.svg";
 
-import { useState} from "react";
-import { useAuth } from "../../../contexts/authContext.jsx";
+import {useState} from "react";
+import {useAuth} from "../../../contexts/authContext.jsx";
 
 import {NavLink} from "react-router-dom";
 import DropMenu from "../../dropMenu/DropMenu.jsx";
+import {useNavigate} from "react-router-dom";
 
 // Aux functions
 const userConditionalRenderingMenu = context => {
-  const menuOptions = [
+  let menuOptions = [
     {
       toLink: "/book-information",
       iconPath: MenuSearchIcon,
@@ -58,24 +59,17 @@ const userConditionalRenderingMenu = context => {
         text: "Mi cuenta",
       });
     }
+  } else {
     menuOptions.push({
       toLink: "/login",
-      iconPath: MenuLogoutIcon,
-      text: "Salir",
+      iconPath: MenuLoginIcon,
+      text: "Iniciar sesión",
     });
-  } else {
-    menuOptions.concat([
-      {
-        toLink: "/login",
-        iconPath: MenuLoginIcon,
-        text: "Iniciar sesión",
-      },
-      {
-        toLink: "/new-account",
-        iconPath: MenuSingupIcon,
-        text: "Crear cuenta",
-      },
-    ]);
+    menuOptions.push({
+      toLink: "/new-account",
+      iconPath: MenuSingupIcon,
+      text: "Registrarse",
+    });
   }
   return menuOptions;
 };
@@ -107,12 +101,29 @@ const VisibleHeaderOptions = ({opts}) => {
 // Main header component
 const Header = () => {
   //Login context
-  const {contextValue} = useAuth()
+  const {contextValue, logout} = useAuth();
+  const navigate = useNavigate();
   const context = contextValue;
   const [isOpen, setIsOpen] = useState(false);
   const setOpenedState = () => {
     setIsOpen(!isOpen);
   };
+
+  const handleLogout = () => {
+    logout();
+    navigate("/login");
+  };
+
+  let closeSession = context.logged
+    ? [
+        {
+          onClick: handleLogout,
+          iconPath: MenuLogoutIcon,
+          text: "Salir",
+        },
+      ]
+    : null;
+  console.log(closeSession);
 
   return (
     <header className="navbar">
@@ -141,7 +152,12 @@ const Header = () => {
           <div className="menu-button-burger"></div>
         </div>
       </div>
-      {isOpen && <DropMenu options={userConditionalRenderingMenu(context)} />}
+      {isOpen && (
+        <DropMenu
+          options={userConditionalRenderingMenu(context)}
+          customOnclickOptions={closeSession}
+        />
+      )}
     </header>
   );
 };
