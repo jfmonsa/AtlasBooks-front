@@ -251,6 +251,34 @@ const myBookLists = [
 const MyAccount = () => {
 const {user} = useAuth();
 const [downloadHistoryBooks, setDownloadHistoryBooks] = useState([]);
+const [myBookLists, setmyBookLists] = useState([]);
+
+useEffect(() => {
+  const fetchUserLists = async () => {
+    try {
+      const url = `http://localhost:3000/api/userLists?id=${user.id}`;
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data = await response.json();
+      // Extraer solo los campos necesarios
+      const filteredData = data.data.map(list => ({
+        key: list.id,
+        listName:list.title,
+        path:list.path,
+        desc:list.descriptionl,
+        numBooks:'14',
+        publicList:list.ispublic
+      }));
+      setmyBookLists(filteredData); // Actualiza el estado con los datos filtrados
+    } catch (error) {
+      console.error('There was a problem with your fetch operation:', error);
+    }
+  };
+
+  fetchUserLists();
+}, [user.id]);
 
 useEffect(() => {
   const fetchDownloadHistory = async () => {
@@ -263,6 +291,7 @@ useEffect(() => {
       const data = await response.json();
       // Extraer solo los campos necesarios
       const filteredData = data.data.map(book => ({
+        key: book.id,
         title: book.title,
         author: book.author,
         pathBookCover: book.pathbookcover
@@ -286,7 +315,7 @@ useEffect(() => {
         nickname={user.nickname}
         email={user.email}
         country={user.country}
-        //registerDate={user.registerDate.split("T")[0]}
+       // registerDate={user.registerDate.split("T")[0]}
       />
       <LoggedAdmin />
       <SectionLists myLists={myBookLists} />
