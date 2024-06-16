@@ -53,3 +53,14 @@
   background-color: var(--iconSurface-light);
   border-radius: var(--border-rad-comp);
 }
+
+.report_div{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-2) var(--spacing-3);
+  background-color: var(--bg-surf-subtle-light);
+  border-radius: var(--border-rad-comp);
+  border-bottom: var(--border-2);
+  color: var(--black-light);
+}

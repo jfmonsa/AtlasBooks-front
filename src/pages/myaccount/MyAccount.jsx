@@ -18,9 +18,11 @@ import PublicListIcon from "./../../assets/icons/icon-publiclist.svg";
 //Admin page
 import SearcherUsers from "../../components/searcher/SearcherUsers.jsx";
 import SearcherNoFilters from "../../components/searcher/SearcherNoFilters.jsx";
+import {getReportsApi} from "../../api/reports.js";
 
 //imgs para libros
 import {useAuth} from "../../contexts/authContext.jsx";
+import {useEffect, useState} from "react";
 
 // Aux functions
 const SectionMyDataDatum = ({left, right}) => {
@@ -186,8 +188,20 @@ const SectionOtherOpts = () => {
 };
 
 const MyAccountAdmin = () => {
-  const handleNoImplementada = () => {
-    alert("Feature no implementada aún, no usar");
+
+  const [report, setReport] = useState(["No hay reportes por el momento"]);
+  useEffect(() => {
+    getReportsApi()
+      .then(res => {
+        setReport(res.data);
+      })
+      .catch(error => {
+        console.log(error.message);
+      });
+  }, []);
+
+  const handleNoImplementada = async () => {
+    alert("Funcionalidad no implementada aún");
   };
 
   return (
@@ -204,11 +218,17 @@ const MyAccountAdmin = () => {
           toNavigate="/results"
         />
       </Card>
-      <Card
-        h1Text="Administrar reportes"
-        h1Center
-        onClick={handleNoImplementada}
-      ></Card>
+      <Card h1Text="Reportes" h1Center>
+        {report.map((report, index) => {
+          return (
+            <div className="report_div" key={index}>
+              <h3>{`Id del usuario: ${report.iduser}`}</h3>
+              <p>{report.motivation}</p>
+              <p>{`Libro que reportado por el usuario: ${report.idbook}`}</p>
+            </div>  
+          );
+        })}
+      </Card>
     </>
   );
 };
