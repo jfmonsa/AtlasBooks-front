@@ -21,6 +21,7 @@ import SearcherNoFilters from "../../components/searcher/SearcherNoFilters.jsx";
 
 //imgs para libros
 import {useAuth} from "../../contexts/authContext.jsx";
+import {useEffect, useState} from "react";
 
 // Aux functions
 const SectionMyDataDatum = ({left, right}) => {
@@ -223,73 +224,54 @@ const LoggedAdmin = () => {
 
 // Aux Test data
 const myBookLists = [
-  {
-    listName: "Mis Favoritos",
-    desc: "Lista de mis libros favoritos :3",
-    numBooks: 23,
-    path: "/my-lists",
-    publicList: true,
-  },
-  {
-    listName: "Clasicos de literatura",
-    desc: "No description",
-    numBooks: 13,
-    path: "/my-lists",
-    publicList: true,
-  },
-  {
-    listName: "Libros de la Universidad",
-    desc: "Libros de toda la carrera",
-    numBooks: 16,
-    path: "/my-lists",
-    publicList: false,
-  },
+ 
 ];
 
-const downloadHistoryBooks = [
-  {
-    author: "Pepito Perez",
-    title: "Pepe tenia una pipa",
-    pathBookCover: null,
-  },
-  {
-    author: "Gogó manotas",
-    title: "Bases de datos relacionales",
-    pathBookCover: null,
-  },
-  {
-    author: "Carlos Delgado",
-    title: "Salem's lot",
-    pathBookCover: null,
-  },
-  {
-    author: "Jaimito el Carterito",
-    title: "Odio al chavo",
-    pathBookCover: null,
-  },
-  {
-    author: "Karl Marx",
-    title: "Das Kapital",
-    pathBookCover: null,
-  },
-];
 
 // Main page
 const MyAccount = () => {
-  const {user} = useAuth();
+const {user} = useAuth();
+const [downloadHistoryBooks, setDownloadHistoryBooks] = useState([]);
+
+useEffect(() => {
+  const fetchDownloadHistory = async () => {
+    try {
+      const url = `http://localhost:3000/api/downloadHistory?id=${user.id}`;
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data = await response.json();
+      // Extraer solo los campos necesarios
+      const filteredData = data.data.map(book => ({
+        title: book.title,
+        author: book.author,
+        pathBookCover: book.pathbookcover
+      }));
+      setDownloadHistoryBooks(filteredData); // Actualiza el estado con los datos filtrados
+    } catch (error) {
+      console.error('There was a problem with your fetch operation:', error);
+    }
+  };
+
+  fetchDownloadHistory();
+}, [user.id]);
+      
+       
 
   return (
+   
     <>
       <SectionMyData
         name={user.name}
         nickname={user.nickname}
         email={user.email}
         country={user.country}
-        registerDate={user.registerDate.split("T")[0]}
+        //registerDate={user.registerDate.split("T")[0]}
       />
       <LoggedAdmin />
       <SectionLists myLists={myBookLists} />
-      <SectionDownloadsHistory historyBooks={downloadHistoryBooks} />
+      <SectionDownloadsHistory historyBooks={downloadHistoryBooks } />
       <SectionUploadABook />
       <SectionOtherOpts />
     </>
