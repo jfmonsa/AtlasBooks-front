@@ -48,10 +48,9 @@ const TableResults = () => {
   };
 
   //Actions
-  const handleDeleteUser = userId => {
+  const handleDeleteUser = (userId) => {
     // Lógica para eliminar un usuario
-    console.log(`Eliminar usuario con ID: ${userId}`);
-    getBannedUser({id: userId });
+    getBannedUser({idUser: userId.id, status: userId.status});
   };
 
   const handleMakeAdmin = userId => {
@@ -102,7 +101,6 @@ const TableResults = () => {
               rows
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map(row => {
-                  console.log(row);
                   return (
                     <TableRow key={row.id}>
                       {columns.map((column, colIndex) => {
@@ -121,7 +119,7 @@ const TableResults = () => {
                           } else {
                             buttonAction = (
                               <PrimaryBtnForm
-                                onClick={() => handleDeleteUser(row.id)}
+                                onClick={() => handleDeleteUser({id: row.id, status: row.statusu})}
                                 type="button"
                                 text="Bannear"
                                 cssClasses="baseBtn commentsBtn blueBtn"
