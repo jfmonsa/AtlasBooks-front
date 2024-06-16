@@ -270,7 +270,7 @@ const MyAccount = () => {
         id: list.id,
         listName: list.title,
         desc: list.description,
-        numBooks: "14", // Asumiendo que '14' es un dato fijo; ajusta según sea necesario
+        numBooks: list.book_count, // Asumiendo que '14' es un dato fijo; ajusta según sea necesario
         publicList: list.ispublic,
       }));
       setMyBookLists(filteredData); // Actualiza el estado con los datos filtrados
