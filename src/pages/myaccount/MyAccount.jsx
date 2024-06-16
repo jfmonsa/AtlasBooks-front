@@ -269,8 +269,8 @@ const MyAccount = () => {
       const filteredData = userListsData.data.map(list => ({
         id: list.id,
         listName: list.title,
-        desc: list.description,
-        numBooks: list.book_count, // Asumiendo que '14' es un dato fijo; ajusta según sea necesario
+        desc: list.descriptionl,
+        numBooks: list.book_count, 
         publicList: list.ispublic,
       }));
       setMyBookLists(filteredData); // Actualiza el estado con los datos filtrados

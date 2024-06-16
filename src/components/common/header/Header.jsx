@@ -134,8 +134,9 @@ const Header = () => {
         <ul className="navbar-right">
           <li>
             <PrimaryBtnLink
-              to="/"
+              tolink="https://paypal.me/Joker222735?country.x=CO&locale.x=es_XC"
               cssClasses="navbar-right__item navbar-right__item--donar"
+            
             >
               Donar
             </PrimaryBtnLink>
