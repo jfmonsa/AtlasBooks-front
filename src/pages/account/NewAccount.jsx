@@ -10,7 +10,6 @@ import {
   valNoEmpty,
   valPassword,
 } from "../../utils/validateFormFields.js";
-import useFetch from "../../utils/useFetch.js";
 import {useAuth} from "../../contexts/authContext.jsx";
 import {useNavigate} from "react-router-dom";
 import PrimaryBtnLink from "../../components/buttons/primaryBtn/PrimaryBtnLink.jsx";
