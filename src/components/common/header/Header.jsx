@@ -123,7 +123,6 @@ const Header = () => {
         },
       ]
     : null;
-  console.log(closeSession);
 
   return (
     <header className="navbar">

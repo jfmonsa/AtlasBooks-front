@@ -6,7 +6,7 @@ import TextArea from "../../components/inputText/TextArea.jsx";
 import Switch from "@mui/material/Switch";
 import {useAuth} from "../../contexts/authContext.jsx";
 import {useNavigate} from "react-router-dom";
-import axios from "axios";
+import axios from "../../api/axios.js";
 
 const CreateList = () => {
   const navigate = useNavigate();
