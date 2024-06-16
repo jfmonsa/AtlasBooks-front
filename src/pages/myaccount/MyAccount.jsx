@@ -23,6 +23,7 @@ import {getReportsApi} from "../../api/reports.js";
 //imgs para libros
 import {useAuth} from "../../contexts/authContext.jsx";
 import {useEffect, useState} from "react";
+import useFetch from "../../utils/useFetch.js";
 
 // Aux functions
 const SectionMyDataDatum = ({left, right}) => {
@@ -250,61 +251,45 @@ const myBookLists = [
 // Main page
 const MyAccount = () => {
 const {user} = useAuth();
+const [myBookLists, setMyBookLists] = useState([]);
 const [downloadHistoryBooks, setDownloadHistoryBooks] = useState([]);
-const [myBookLists, setmyBookLists] = useState([]);
+
+const userListsUrl = user ? `http://localhost:3000/api/userLists?id=${user.id}` : null;
+const downloadHistoryUrl = user ? `http://localhost:3000/api/downloadHistory?id=${user.id}` : null;
+
+const { data: userListsData, isPending: userListsPending, error: userListsError } = useFetch(userListsUrl);
+const { data: downloadHistoryData, isPending: downloadHistoryPending, error: downloadHistoryError } = useFetch(downloadHistoryUrl);
 
 useEffect(() => {
-  const fetchUserLists = async () => {
-    try {
-      const url = `http://localhost:3000/api/userLists?id=${user.id}`;
-      const response = await fetch(url);
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      const data = await response.json();
-      // Extraer solo los campos necesarios
-      const filteredData = data.data.map(list => ({
-        key: list.id,
-        listName:list.title,
-        path:list.path,
-        desc:list.descriptionl,
-        numBooks:'14',
-        publicList:list.ispublic
-      }));
-      setmyBookLists(filteredData); // Actualiza el estado con los datos filtrados
-    } catch (error) {
-      console.error('There was a problem with your fetch operation:', error);
-    }
-  };
-
-  fetchUserLists();
-}, [user.id]);
+  if (userListsData) {
+    const filteredData = userListsData.data.map(list => ({
+      key: list.id,
+      listName: list.title,
+      path: list.path,
+      desc: list.description,
+      numBooks: '14', // Asumiendo que '14' es un dato fijo; ajusta según sea necesario
+      publicList: list.ispublic
+    }));
+    setMyBookLists(filteredData); // Actualiza el estado con los datos filtrados
+  }
+}, [userListsData]);
 
 useEffect(() => {
-  const fetchDownloadHistory = async () => {
-    try {
-      const url = `http://localhost:3000/api/downloadHistory?id=${user.id}`;
-      const response = await fetch(url);
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      const data = await response.json();
-      // Extraer solo los campos necesarios
-      const filteredData = data.data.map(book => ({
-        key: book.id,
-        title: book.title,
-        author: book.author,
-        pathBookCover: book.pathbookcover
-      }));
-      setDownloadHistoryBooks(filteredData); // Actualiza el estado con los datos filtrados
-    } catch (error) {
-      console.error('There was a problem with your fetch operation:', error);
-    }
-  };
+  if (downloadHistoryData) {
+    const filteredData = downloadHistoryData.data.map(book => ({
+      key: book.id,
+      title: book.title,
+      author: book.author,
+      pathBookCover: book.pathbookcover
+    }));
+    setDownloadHistoryBooks(filteredData); // Actualiza el estado con los datos filtrados
+  }
+}, [downloadHistoryData]);
 
-  fetchDownloadHistory();
-}, [user.id]);
-      
+if (userListsPending || downloadHistoryPending) return <div>Loading...</div>;
+if (userListsError) return <div>Error: {userListsError}</div>;
+if (downloadHistoryError) return <div>Error: {downloadHistoryError}</div>;
+
        
 
   return (
