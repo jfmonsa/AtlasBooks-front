@@ -137,7 +137,7 @@ const SectionOtherOpts = () => {
   const {logout} = useAuth();
   const SectionOtherOptsOptions = [
     {
-      toLink: "#",
+      toLink: "https://paypal.me/Joker222735?country.x=CO&locale.x=es_XC",
       iconPath: IconPaypal,
       text: "Donar",
     },
