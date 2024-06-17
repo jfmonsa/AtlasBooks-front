@@ -25,7 +25,6 @@ const SubCategorySelect = ({
   selectedSubCategories,
   onSubCategoriesChange,
 }) => {
-  console.log("Selected Category:", selectedCategory);
   const {
     data: subCatData,
     isPending: subCatIsPending,
