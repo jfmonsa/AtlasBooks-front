@@ -23,7 +23,7 @@ import {useNavigate} from "react-router-dom";
 const userConditionalRenderingMenu = context => {
   let menuOptions = [
     {
-      toLink: "/book-information",
+      toLink: "/",
       iconPath: MenuSearchIcon,
       text: "Buscar libro",
     },
