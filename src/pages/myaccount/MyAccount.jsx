@@ -253,7 +253,7 @@ const MyAccount = () => {
   const userListsUrl = user ? `/userLists?id=${user.id}` : null;
   const downloadHistoryUrl = user ? `/downloadHistory?id=${user.id}` : null;
 
-  const {
+  const { 
     data: userListsData,
     isPending: userListsPending,
     error: userListsError,
@@ -300,6 +300,7 @@ const MyAccount = () => {
         nickname={user.nickname}
         email={user.email}
         country={user.country}
+        regusterDate={"17-06-2024"}
         // registerDate={user.registerDate.split("T")[0]}
       />
       <LoggedAdmin />
