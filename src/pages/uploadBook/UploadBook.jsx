@@ -25,13 +25,12 @@ const SubCategorySelect = ({
   selectedSubCategories,
   onSubCategoriesChange,
 }) => {
+  console.log("Selected Category:", selectedCategory);
   const {
     data: subCatData,
     isPending: subCatIsPending,
     error: subCatError,
-  } = useFetch(
-    selectedCategory ? `${baseUrl}/categories/${selectedCategory}` : null,
-  );
+  } = useFetch(selectedCategory ? `categories/${selectedCategory}` : null);
 
   useEffect(() => {
     if (subCatData && onSubCategoriesChange) {
@@ -41,37 +40,38 @@ const SubCategorySelect = ({
 
   if (!selectedCategory) return null;
 
-  return (
-    <>
-      {subCatError && <p>{subCatError}</p>}
-      {subCatIsPending && <p>Loading subcategories...</p>}
-      {subCatData && (
-        <>
-          <label className="input__label" htmlFor="subcategories">
-            Subcategorias
-          </label>
-          <p className="label_extra">Puede seleccionar una o más</p>
-          <Select
-            options={subCatData.subcategories.map(subCat => ({
-              value: subCat.id,
-              label: subCat.subcategoryname,
-            }))}
-            onChange={selectedOptions => onSubCategoriesChange(selectedOptions)}
-            value={selectedSubCategories}
-            placeholder="Subcategorias..."
-            id="subcategories"
-            name="subcategories"
-            isMulti
-            isSearchable
-            className="basic-single formClassicSelector"
-            classNamePrefix="select"
-          />
-        </>
-      )}
-    </>
-  );
+  if (subCatError) {
+    return <p>{subCatError}</p>;
+  } else if (subCatIsPending) {
+    return <p>Loading subcategories...</p>;
+  } else if (subCatData && subCatData.subcategories) {
+    return (
+      <>
+        <label className="input__label" htmlFor="subcategories">
+          Subcategorias
+        </label>
+        <p className="label_extra">Puede seleccionar una o más</p>
+        <Select
+          options={subCatData.subcategories.map(subCat => ({
+            value: subCat.id,
+            label: subCat.subcategoryname,
+          }))}
+          onChange={selectedOptions => onSubCategoriesChange(selectedOptions)}
+          value={selectedSubCategories}
+          placeholder="Subcategorias..."
+          id="subcategories"
+          name="subcategories"
+          isMulti
+          isSearchable
+          className="basic-single formClassicSelector"
+          classNamePrefix="select"
+        />
+      </>
+    );
+  } else {
+    return <p>No subcategories found.</p>;
+  }
 };
-
 const UploadBook = () => {
   const {isAuthenticated, user} = useAuth();
   const navigate = useNavigate();
