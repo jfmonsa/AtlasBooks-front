@@ -2,6 +2,7 @@ import "./searcher.css";
 import PrimaryBtnForm from "../buttons/primaryBtn/PrimaryBtnForm";
 import {useNavigate} from "react-router-dom";
 import {useState} from "react";
+import Select from "react-select";
 import MultiSelectSearch from "../multiSelectSearch/MultiSelectSearch";
 import MultiSelectNoSearch from "../multiSelecNoSearch/MultiSelectNoSearch";
 import {SEARCH} from "../../utils/placeholder.js";
@@ -86,24 +87,31 @@ const Searcher = ({holder = SEARCH, toUrl}) => {
           <div className="searcher__moreOpts">
             {viewMoreOptions && (
               <>
-                <MultiSelectSearch
-                  selectName="fromYear"
+                <Select
                   options={Years}
-                  onChangeCallback={handleYearFromChange}
+                  onChange={handleYearFromChange}
                   placeholder="Desde..."
+                  name="fromYear"
+                  isSearchable
+                  classNamePrefix="select"
                 />
-                <MultiSelectSearch
-                  selectName="toYear"
+                <Select
                   options={yearToOptions}
-                  onChangeCallback={handleYearToChange}
+                  onChange={handleYearToChange}
                   placeholder="Hasta..."
+                  name="toYear"
+                  isSearchable
+                  classNamePrefix="select"
                 />
-                <MultiSelectNoSearch
-                  labelText="Idiomas"
-                  selectName="languages"
+                <Select
+                  isMulti
+                  isSearchable
+                  isClearable
                   options={mainLanguages}
-                  onChangeCallback={handleSelectedLanguagesChange}
+                  onChange={handleSelectedLanguagesChange}
                   placeholder="Idiomas..."
+                  name="languages"
+                  classNamePrefix="select"
                 />
               </>
             )}
