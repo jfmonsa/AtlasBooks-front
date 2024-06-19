@@ -300,8 +300,7 @@ const MyAccount = () => {
         nickname={user.nickname}
         email={user.email}
         country={user.country}
-        regusterDate={"17-06-2024"}
-        // registerDate={user.registerDate.split("T")[0]}
+        registerDate={user.registerDate}
       />
       <LoggedAdmin />
       <SectionLists myLists={myBookLists} />
