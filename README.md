@@ -1,99 +1,51 @@
-# Get Started
+# Contributing Guide
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
-## Configurar entorno local
+## 1. First Steps
 
-### 1. Clone the repository
+### Install Node.js and Git on your device
+Ensure you have the latest versions of [Node.js](https://nodejs.org/) and [Git](https://git-scm.com/) installed.
 
-1. Ubicate en la carpeta donde quieres que el repositorio front resida
-2. Abre la carpeta del repo, abre la terminal ahí y clona el repositorio
+### Clone the repository and install its dependencies
+Execute the commands below:
+> [!NOTE]  
+> Before cloning, navigate to the location where you want to keep the project files.
 
 ```
 git clone git@github.com:jfmonsa/AtlasBooks-front.git
-```
-
-### 2. Install dependencies
-
-- Antes de ejecutar comandos `npm` debes tener instalado Node Js en tu equipo
-
-1. Abre la terminal en repositorio y ejecuta el siguiente comando
-
-```
+cd AtlasBooks-front
 npm install
 ```
 
-### 3. To run a developer server
-
+### To run developer server
 ```
 npm run dev
 ```
+This will start the server on the default port, usually `http://localhost:5173`.
 
-## Flujo de trabajo en Github, Guia para contribuir
+## 2. Contribute
+In general, this project follows the [Ship, Show, Ask](https://martinfowler.com/articles/ship-show-ask.html) methodology.
 
-### Idea global:
+### General Concerns
++ Make isolated commits as a good practice. This helps in tracking changes and rolling back if necessary.
 
-Por cada feature en la que trabajemos vamos a crear un Pull Request, todo ello implica que por cada feature (pej. crear un componente, una funcionalidad, arreglar un bug etc.) vamos a crear una rama `branch` sobre la cual vamos a hacer los cambios `commits` y cuando los tengamos listos (Todos los commits sobre dicha funcionalidad), vamos hacer la pull request. Esta metodología se conoce como Github Flow (No confundir con Git Flow), la cual es de las más sencillas para trabajar de manera colaborativa.
+### Naming Convention for Pull Requests
++ For each feature you want to work on, create a branch with the appropriate prefix:
+  - `feature/` for new features
+  - `update/` for updates to existing features
+  - `fix/` for bug fixes
+  
+  Follow this with a descriptive branch name, e.g., `feature/add-user-authentication`.
 
-> **_Nota importante_**: Por nada del mundo debemos subir cambios directamente a la rama main
+### Submitting Pull Requests
+1. Ensure your branch is up-to-date with the `main` branch.
+2. Open a pull request with a clear and descriptive title.
+3. Provide a detailed description of the changes you’ve made.
+4. Request reviews from relevant team members.
 
-### Importante antes de crear la rama
-
-Trae todos los cambios del repo de Github a tu local
-
-```
-git pull origin main
-```
-
-### Pasos para hacer una pull Request
-
-> **_Nota_**: Antes de contribuir, tener configurado el entorno (clonar e instalar las dependencias)
-
-**_1. Crear una rama_**: En tu respositorio local vas a crear una rama sobre la cual vas a hacer todos los cambios correspondientes a la feature, la naming convention recomendada para nombrar estas ramas es (Elige según corresponda):
-
-- feature/nombre-rama
-- fix/nombre-rama
-- update/nombre-rama
-
-Para crear la nueva rama y movernos para trabajar en ella, ejecuta (Recuerda que pones feature, fix o update segun hayas elegido antes en tu nombre):
-
-```
-git checkout -b feature/nombre-rama
-```
-
-**_2. Haz tus cambios y haz commit de tus cambios_**: Realiza los cambios que desees en los archivos del repositorio en tu máquina local.
-
-Una vez que hayas realizado tus cambios, agrega los archivos modificados y haz un commit con un mensaje descriptivo, intenta que sea un commit por cada :
-
-> Idealmente, cada commit debe contener cambios aislados entre si y completos. es decir si tenemos que hacer dos cosas distintas pero sobre la misma feature, por ejemplo: 1.arreglar un error ortografico (fix a typo) en un texto y 2. arreglar un bug en una función. hacemos dos commits uno para cada uno. Esto hace que los cambiso sea faciles de revertir en caso de quererlo
-
-Para hacer cada commit:
-
-```
-git add .
-git commit -m "Descripción breve de tus cambios en el commit"
-```
-
-**_3. Sube tu rama al repo en Github_**
-
-```
-git push origin nombre-de-tu-rama
-```
-
-**_4. Crea la Pull Request_**: Ve a la página del repositorio en GitHub. Deberías ver un mensaje indicando que has hecho cambios recientes en tu rama y un botón para crear una nueva pull request. Haz clic en él, completa la descripción de tu pull request y sigue las instrucciones para crearla.
-
-Una vez creada la pull request, todos los colaboradores del repositorio podrán revisar tus cambios, hacer comentarios y, si todo está bien, fusionar tus cambios en el repositorio principal.
-
-**_5. Eliminar rama (Ojo)_**: Una vez se termine de trabajar por completo en una feature es conveniente eliminar esa rama ya que no la vamos a usar más (Esto se podría hacer al final del sprint para revisar todo antes de eliminarla)
-
-> Es importante tener en cuenta que la eliminación de ramas debe hacerse con precaución, especialmente si otros miembros del equipo están trabajando en ellas o si contienen cambios que aún no se han fusionado. Siempre es recomendable comunicarse con el equipo y asegurarse de que la eliminación de una rama no afectará negativamente el trabajo en curso.
-
-Eliminar la rama localmente
-
-```
-git branch -d nombre-de-tu-rama
-```
-
-Eliminar la rama del repo en Github
-
-```
-git push origin --delete nombre-de-tu-rama
-```
+<!--
+### Code Style and Testing
+- Follow the project's coding standards as outlined in the [style guide](link-to-style-guide).
+- Write unit tests for new features and updates.
+- Run tests locally before submitting your pull request:
+-->
