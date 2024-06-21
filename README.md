@@ -1,51 +1,113 @@
-# Contributing Guide
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+# AtlasBooks
+![GitHub repo size](https://img.shields.io/github/repo-size/jfmonsa/AtlasBooks-front)
+![GitHub contributors](https://img.shields.io/github/contributors/jfmonsa/AtlasBooks-front)
+![GitHub last commit](https://img.shields.io/github/last-commit/jfmonsa/AtlasBooks-front)
 
-## 1. First Steps
+Welcome to AtlasBooks! This is an academic project developed by a group of systems engineering students, AtlasBooks is a web application that allows users to upload, download, comment on, and rate books freely. Inspired by [Z-Library](https://singlelogin.re/), we believe in their mission and have taken on the challenge to develop this project to showcase our skills in both frontend and backend development.
+PERN stack
 
-### Install Node.js and Git on your device
-Ensure you have the latest versions of [Node.js](https://nodejs.org/) and [Git](https://git-scm.com/) installed.
-
-### Clone the repository and install its dependencies
-Execute the commands below:
 > [!NOTE]  
-> Before cloning, navigate to the location where you want to keep the project files.
+> This repo contains the frontend part of AtlasBooks.
 
-```
-git clone git@github.com:jfmonsa/AtlasBooks-front.git
-cd AtlasBooks-front
-npm install
-```
+## Table of Contents
+1. [Project Overview](#1-project-overview)
+2. [Features](#2-features)
+3. [Technologies Used](#3-technologies-used-tech-stack)
+4. [Methodology](#4-methodology)
+5. [Future Improvements](#5-future-improvements-todo)
+6. [Installation and Contributing Guide](#6-installation-and-contributing-guide)
+7. [Team Members](#7-team-members)
 
-### To run developer server
-```
-npm run dev
-```
-This will start the server on the default port, usually `http://localhost:5173`.
 
-## 2. Contribute
-In general, this project follows the [Ship, Show, Ask](https://martinfowler.com/articles/ship-show-ask.html) methodology.
-
-### General Concerns
-+ Make isolated commits as a good practice. This helps in tracking changes and rolling back if necessary.
-
-### Naming Convention for Pull Requests
-+ For each feature you want to work on, create a branch with the appropriate prefix:
-  - `feature/` for new features
-  - `update/` for updates to existing features
-  - `fix/` for bug fixes
+## 1. Project Overview
+<details>
+  <summary>Click to expand!</summary>
   
-  Follow this with a descriptive branch name, e.g., `feature/add-user-authentication`.
+  The technical implementation of the PERN stack allowed us to structure and develop our virtual library project efficiently and organized. This combination facilitated a clear division between frontend and backend, promoting agile and collaborative     development that resulted in a robust and scalable product. Our project highlighted the importance and benefits of teamwork and effective communication through the Scrum methodology, ensuring continuous delivery of value.
 
-### Submitting Pull Requests
-1. Ensure your branch is up-to-date with the `main` branch.
-2. Open a pull request with a clear and descriptive title.
-3. Provide a detailed description of the changes you’ve made.
-4. Request reviews from relevant team members.
+  We hope you find AtlasBooks a useful and inspiring project. Thank you for your interest!
+</details>
+  
+## 2. Features
+<details>
+  <summary>Click to expand!</summary>
+  
+  ### Home Page
+  - **Recommended feed**: 50 books recommended by the backend algorithm.
+  - **Searcher**: Users can search for books using filters like author, title, publication date, and categories.
+  
+  ### User Profiles
+  - **Registration and Authentication**: Users can sign up and authenticate using JWT.
+  - **Profile Information**: Each user has a profile with personal information (name, email, country, etc.).
+  - **Download History**: Users can view a history of the books they have downloaded.
+  
+  ### Book Uploads
+  - **Add New Books**: Users can upload books to the library.
+  - **Upload Form**: Includes fields such as title, author, description, cover, and category also Drag and Drop custom inputs for book files and path cover files
+  
+  ### In the Page of each book
+  - **Download**: Users can download a book in the available formats
+  - **Add book to a list**: Users can add a book to a list.
+  - **Recommendations**: Based on users' book lists and download history, the application suggests books that might interest them.
+  - **Comments**: Users can comment on books to share their opinions.
+  - **Book Ratings**: Users can rate the books they have read.
+  - **Share**: Users can share a book page in the main social networks
+  - **Report a book**: Users can report a book to the atlasBooks' staff if there is inappropriate content.
+  
+  ### Book List Management
+  - **Create Lists**: Users can create personalized book lists.
+  - **View Lists**: Users can view their lists and the books they've added.
+  - **Public Lists**: Lists can be made visible to all users on the platform, users can search them by a Searcher.
+  
+  ### Admin options
+  - **Manage Users**: Admins have additional sections in its profile page that allow them to search for users and ban/un-ban also to look reports made by users
+</details>
 
-<!--
-### Code Style and Testing
-- Follow the project's coding standards as outlined in the [style guide](link-to-style-guide).
-- Write unit tests for new features and updates.
-- Run tests locally before submitting your pull request:
--->
+## 3. Technologies Used (Tech Stack)
+<details>
+  <summary>Click to expand!</summary>
+  
+  - **Frontend**: Developed with React.js using Vite, along with CSS (Responsive design), HTML, and JavaScript.
+  - **Backend**: Built using Node.js and Express.
+  - **Database**: PostgreSQL for efficient data storage and retrieval.
+  
+  ### Other Tools
+  - **Jira**: Used for managing user stories and tasks.
+  - **Figma**: Utilized for UI/UX design.
+</details>
+
+## 4. Methodology
+<details>
+  <summary>Click to expand!</summary>
+  
+  We used agile methodologies, specifically Scrum, to manage our project and Jira as the management tool for the project
+</details>
+
+## 5. Future Improvements (TODO)
+<details>
+    <summary>Click to expand!</summary>
+  
+  - Proper deployment: Mainly due to backend issues with dynamic storage for books.
+  - Replace cookies with local storage due to chrome third-party cookies policy.
+  - Discover list page pending (backend + frontend implementation).
+</details>
+
+## 6. Installation and Contributing Guide
+<details>
+    <summary>Click to expand!</summary>
+  
+  We welcome contributions! Please read our [contributing guidelines](CONTRIBUTING.md) before you start.
+</details>
+
+## 7. Team Members
+<details>
+    <summary>Click to expand!</summary>
+  
+  If you have any questions, feel free to reach out to us at:
+  
+  - [Juan Felipe Monsalve Vargas](https://github.com/jfmonsa) - [Email](mailto:juan.felipe.monsalve@correounivalle.edu.co)
+  - [Jose Luis Ramos Arango](https://github.com/RamSterB) - [Email](mailto:jose.luis.ramos@correounivalle.edu.co)
+  - [Juan Sebastian Marin Serna](https://github.com/JSebastianMarin) - [Email](mailto:juan.marin.serna@correounivalle.edu.co)
+  - [Juan Pablo Idarraga](https://github.com/JuanPidarraga) - [Email](mailto:idarraga.juan@correounivalle.edu.co)
+  - [Leider Santiago Cortez](https://github.com/LeiderCortes) - [Email](mailto:cortes.leider@correounivalle.edu.co)
+</details>
