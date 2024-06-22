@@ -91,7 +91,7 @@ const AddBookToListDropMenu = ({
 const AddBookToList = ({bookId, isAuthenticated, userId}) => {
   const [open, setOpen] = useState(false);
   const {data, isPending, error} = useFetch(
-    `${baseUrl}/lists/myLists/basicInfo/${userId}/${bookId}`,
+    userId ? `${baseUrl}/lists/myLists/basicInfo/${userId}/${bookId}` : null,
   );
 
   if (error) {
