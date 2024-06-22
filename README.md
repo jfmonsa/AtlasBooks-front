@@ -91,7 +91,7 @@ We hope you find AtlasBooks a useful and inspiring project. Thank you for your i
   
   ### Other Tools
   - **Jira**: Used for managing user stories and tasks.
-  - **Figma**: Utilized for UI/UX design.
+  - **Figma**: Utilized for UI/UX design. you can see the desing [here](https://www.figma.com/design/mgwoKhiK6PWJEddFpD78te/AtlasBooks?node-id=0-1&t=AN7QX4QfWvHQWtBI-1)
 </details>
 
 ## 4. Methodology
