@@ -10,9 +10,13 @@ PERN stack
 > [!NOTE]  
 > This repo contains the frontend part of AtlasBooks.
 
-<p style="text-align:center;">
+<p align="center">
   <img alt="" src="./public/home-screenshot.png"  style="height:400px">
 </p>
+
+## Demo Video
+https://github.com/jfmonsa/AtlasBooks-front/assets/81452967/8dd09f11-87a3-45e9-8479-ac7943c542ac
+
 
 ## Table of Contents
 
@@ -45,18 +49,10 @@ We hope you find AtlasBooks a useful and inspiring project. Thank you for your i
   - **Profile Information**: Each user has a profile with personal information (name, email, country, etc.).
   - **Download History**: Users can view a history of the books they have downloaded.
 
-  <p style="text-align:center;">
-    <img alt="" src="./public/home-screenshot.png"  style="height:400px">
-  </p>
-
 ### Home Page
 
 - **Recommended feed**: 50 books recommended by the backend algorithm.
 - **Searcher**: Users can search for books using filters like author, title, publication date, and categories.
-  <div style="text-align:center;">
-  <video src="feedAndSearch.mp4" autoplay>
-  </video>  
-  </div>
 
 ### Book Uploads
 
@@ -72,10 +68,6 @@ We hope you find AtlasBooks a useful and inspiring project. Thank you for your i
 - **Book Ratings**: Users can rate the books they have read.
 - **Share**: Users can share a book page in the main social networks
 - **Report a book**: Users can report a book to the atlasBooks' staff if there is inappropriate content.
-
-<p style="text-align:center;">
-  <img alt="" src="./public/home-screenshot.png"  style="height:400px">
-</p>
 
 ### Book List Management
 
