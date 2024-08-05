@@ -1,10 +1,10 @@
 import "./account.css";
+import {Link} from "react-router-dom";
+import {useState, useEffect} from "react";
+import {EMAIL, PASSWD, NICK} from "../../utils/placeholder.js";
 import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm.jsx";
 import PrimaryBtnLink from "../../components/buttons/primaryBtn/PrimaryBtnLink.jsx";
 import InputText from "../../components/inputText/InputText.jsx";
-import {EMAIL, PASSWD, NICK} from "../../utils/placeholder.js";
-import {Link} from "react-router-dom";
-import {useState, useEffect} from "react";
 import {
   valEmail,
   valNickname,
