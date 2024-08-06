@@ -4,7 +4,7 @@ import {ChangeEmailProvider} from "./contexts/ChangeEmailContext.jsx";
 import {AuthProvider, useAuth} from "./contexts/authContext.jsx";
 
 //router
-import {RouterProvider} from "./Router.jsx";
+import RouterProvider from "./Router.jsx";
 
 const LoggedAdminRouting = () => {
   const {contextValue} = useAuth();

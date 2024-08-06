@@ -19,7 +19,7 @@ import NewList from "./pages/myaccount/NewList.jsx";
 
 //Login related and recovery account
 import {Login} from "./pages/account/Login.jsx";
-import NewAccount from "./pages/account/NewAccount.jsx";
+import Register from "./pages/account/Register.jsx";
 import RecoveryAccount from "./pages/account/RecoveryAccount.jsx";
 import SendEmail from "./pages/account/SendEmail.jsx";
 import ChangePass from "./pages/account/ChangePass.jsx";
@@ -68,7 +68,7 @@ const router = createBrowserRouter([
       },
       {
         path: "new-account",
-        element: <NewAccount />,
+        element: <Register />,
       },
       {
         path: "recovery-account",
