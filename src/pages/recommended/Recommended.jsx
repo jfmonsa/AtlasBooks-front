@@ -1,17 +1,17 @@
 import Searcher from "../../components/searcher/Searcher";
 import GridBooks from "../../components/gridBooks/GridBooks";
 import useFetch from "../../utils/useFetch.js";
-import baseUrl from "../../api/baseUrl.js";
 
 const Recommended = () => {
-  const {data, isPending, error} = useFetch(`/feed`);
+  const data = true;
+  //const {data, isPending, error} = useFetch(`/feed`);
 
-  if (error) {
+  /*if (error) {
     return <p>{error}</p>;
   }
   if (isPending) {
     return <p>Loading...</p>;
-  }
+  }*/
   if (data) {
     return (
       <>
@@ -19,7 +19,7 @@ const Recommended = () => {
         <h2 className="display--subheading">Best ranked</h2>
 
         <Searcher toUrl="search-results" />
-        <GridBooks books={data.recommended_feed} />
+        {/* <GridBooks books={data.recommended_feed} /> */}
       </>
     );
   }

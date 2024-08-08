@@ -1,7 +1,8 @@
 //contexts
 import {ChangePassProvider} from "./contexts/ChangePassContext.jsx";
 import {ChangeEmailProvider} from "./contexts/ChangeEmailContext.jsx";
-import {AuthProvider, useAuth} from "./contexts/authContext.jsx";
+import {AuthProvider} from "./contexts/authContext.jsx";
+import {useAuth} from "./utils/useAuth.js";
 
 //router
 import RouterProvider from "./Router.jsx";

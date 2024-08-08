@@ -5,7 +5,7 @@ import Card from "../../components/card/Card.jsx";
 import {useParams} from "react-router-dom";
 import useFetch from "../../utils/useFetch.js";
 import axios from "./../../api/axios.js";
-import {useAuth} from "../../contexts/authContext.jsx";
+import {useAuth} from "../../utils/useAuth.js";
 import {rateBookApi} from "../../api/rateBook.js";
 
 //Rate starts

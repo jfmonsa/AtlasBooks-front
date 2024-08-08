@@ -1,4 +1,4 @@
-import {createContext, useState, useContext, useEffect} from "react";
+import {createContext, useState, useEffect} from "react";
 import {
   registerRequest,
   loginRequest,
@@ -6,45 +6,42 @@ import {
 } from "../api/auth.js";
 import Cookies from "js-cookie";
 
+// create context
 export const AuthContext = createContext({
   logged: false,
   admin: false,
 });
 
-export const useAuth = () => {
-  const context = useContext(AuthContext);
-  if (!context) {
-    throw new Error("useAuth must be used within an AuthProvider");
-  }
-  return context;
-};
-
+// create provider
 export const AuthProvider = ({children}) => {
-  const [user, setUser] = useState(false);
+  // user which can be read by every component in the app
+  const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [errors, setErrors] = useState([]);
+  // ??
   const [contextValue, setAuthContext] = useState({
     logged: false,
     admin: false,
   });
-  const [errors, setErrors] = useState([]);
+  // ?
 
   const signup = async userData => {
     try {
-      const res = await registerRequest(userData).then(res => {
-        setIsAuthenticated(true);
-        setUser(res.data);
-      });
+      const res = await registerRequest(userData);
+      console.log(res.data);
+      setIsAuthenticated(true);
+      setUser(res.data);
     } catch (error) {
+      console.error(error.response.data);
       setErrors([error.response.data]);
     }
   };
 
   const login = async userData => {
     try {
-      await loginRequest(userData).then(res => {
-        setIsAuthenticated(true);
-        setUser(res.data);
-      });
+      const res = await loginRequest(userData);
+      setIsAuthenticated(true);
+      setUser(res.data);
     } catch (error) {
       setErrors([error.response.data]);
     }
@@ -56,6 +53,7 @@ export const AuthProvider = ({children}) => {
     setUser(false);
   };
 
+  // clear errors after 5 seconds
   useEffect(() => {
     if (errors.length > 0) {
       const timer = setTimeout(() => {
@@ -71,16 +69,17 @@ export const AuthProvider = ({children}) => {
     }
   }, [isAuthenticated, user]);
 
+  // check if user is logged in
   useEffect(() => {
     const checkLogin = async () => {
-      const cookie = Cookies.get();
-
-      if (!cookie.token) {
-        setIsAuthenticated(false);
-        return setUser(false);
-      }
-
       try {
+        const cookie = Cookies.get();
+
+        if (!cookie.token) {
+          setIsAuthenticated(false);
+          return setUser(false);
+        }
+
         const res = await verifyTokenRequest(cookie.token);
         if (!res.data) {
           setIsAuthenticated(false);
@@ -91,6 +90,7 @@ export const AuthProvider = ({children}) => {
       } catch (error) {
         setIsAuthenticated(false);
         setUser(false);
+        console.log(error);
       }
     };
     checkLogin();

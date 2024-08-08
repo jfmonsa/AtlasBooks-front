@@ -10,7 +10,7 @@ import {
   updateComment as updateCommentApi,
 } from "../../../api/apiComments.js";
 
-import {useAuth} from "../../../contexts/authContext.jsx";
+import {useAuth} from "../../../utils/useAuth.js";
 
 const Comments = ({comments, bookId}) => {
   const [activeComent, setActiveComent] = useState(null);

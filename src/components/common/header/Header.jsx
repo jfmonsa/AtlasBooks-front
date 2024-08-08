@@ -13,7 +13,7 @@ import MenuSearchIcon from "../../../assets/icons/menu-search.svg";
 import MenuSingupIcon from "../../../assets/icons/menu-singup.svg";
 
 import {useState} from "react";
-import {useAuth} from "../../../contexts/authContext.jsx";
+import {useAuth} from "../../../utils/useAuth.js";
 
 import {NavLink} from "react-router-dom";
 import DropMenu from "../../dropMenu/DropMenu.jsx";
@@ -136,7 +136,6 @@ const Header = () => {
             <PrimaryBtnLink
               tolink="https://paypal.me/Joker222735?country.x=CO&locale.x=es_XC"
               cssClasses="navbar-right__item navbar-right__item--donar"
-            
             >
               Donar
             </PrimaryBtnLink>

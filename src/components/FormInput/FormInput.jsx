@@ -5,8 +5,18 @@ const FormInput = props => {
   const [focused, setFocused] = useState(false);
   const {label, errorMessage, onChange, id, validate, ...inputProps} = props;
 
-  const handleFocus = () => {
+  const handleBlur = e => {
     setFocused(true);
+    if (inputProps.onBlur) {
+      inputProps.onBlur(e);
+    }
+  };
+
+  const handleChange = e => {
+    onChange(e);
+    if (validate) {
+      validate(e.target.value);
+    }
   };
 
   return (
@@ -17,14 +27,14 @@ const FormInput = props => {
       <input
         className="input__typeText"
         {...inputProps}
-        onChange={onChange}
-        onBlur={handleFocus}
+        onChange={handleChange}
+        onBlur={handleBlur}
         onFocus={() =>
           inputProps.name === "confirmPassword" && setFocused(true)
         }
         data-focused={focused.toString()}
       />
-      <span className="form__errorMsg">{errorMessage}</span>
+      {focused && <span className="form__errorMsg">{errorMessage}</span>}
     </>
   );
 };

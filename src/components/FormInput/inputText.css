@@ -73,10 +73,10 @@
   display: none;
 }
 
-.input__typeText:invalid[data-focused="true"] ~ .form__errorMsg {
+.input__typeText:invalid[data-focused="true"] + .form__errorMsg {
   display: block;
 }
 
-.input__typeText:valid[data-focused="true"] ~ .form__errorMsg {
+.input__typeText:valid[data-focused="true"] + .form__errorMsg {
   display: none;
 }

@@ -1,5 +1,5 @@
 import {NewComment} from "./NewComment";
-import {useAuth} from "../../../contexts/authContext";
+import {useAuth} from "../../../utils/useAuth";
 import PrimaryBtnForm from "../../../components/buttons/primaryBtn/PrimaryBtnForm";
 
 // TODO: Revisar pq no salen las funccione de elimar y editar comentario

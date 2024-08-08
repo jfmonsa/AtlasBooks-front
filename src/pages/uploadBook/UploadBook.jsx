@@ -14,7 +14,7 @@ import {useNavigate} from "react-router-dom";
 import baseUrl from "../../api/baseUrl.js";
 import useFetch from "../../utils/useFetch.js";
 import axios from "../../api/axios.js";
-import {useAuth} from "../../contexts/authContext.jsx";
+import {useAuth} from "../../utils/useAuth.js";
 
 //others
 import {useState, useEffect} from "react";

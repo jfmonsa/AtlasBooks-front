@@ -1,7 +1,8 @@
 import "./account.css";
 import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
-import {useAuth} from "../../contexts/authContext.jsx";
+import {useAuth} from "../../utils/useAuth.js";
+import ErrorFormAccount from "../../components/errorFormAccountMsg/ErrorFormAccountMsg.jsx";
 
 // components
 import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm.jsx";
@@ -13,25 +14,7 @@ import {NAME, NICK, EMAIL, PASSWD} from "../../utils/placeholder.js";
 
 const Register = () => {
   const navigate = useNavigate();
-  const {signup, isAuthenticated, errors: RegisterErrors, user} = useAuth();
-
-  useEffect(() => {
-    const fetchCountry = async () => {
-      try {
-        const response = await fetch("https://ipapi.co/json/");
-        const data = await response.json();
-        setValues(prev => ({...prev, countryCode: data.country_code}));
-      } catch (error) {
-        console.error("Error fetching country data:", error);
-      }
-    };
-
-    fetchCountry();
-  }, []);
-
-  useEffect(() => {
-    if (isAuthenticated) navigate("/");
-  }, [isAuthenticated, navigate]);
+  const {signup, isAuthenticated, errors: registerErrors} = useAuth();
 
   // state for inputs
   const [values, setValues] = useState({
@@ -46,6 +29,22 @@ const Register = () => {
   const handleChange = e => {
     setValues({...values, [e.target.name]: e.target.value});
   };
+
+  // fetching
+  // don't use useFetch custom hook here cause cors error with axios instance
+  // because we're acceding different api from the baseUrl defined in axios instance
+  useEffect(() => {
+    fetch("https://ipapi.co/json/")
+      .then(response => response.json())
+      .then(data =>
+        setValues(prev => ({...prev, countryCode: data.country_code})),
+      )
+      .catch(error => console.error("Error fetching country data:", error));
+  }, []);
+
+  useEffect(() => {
+    if (isAuthenticated) navigate("/");
+  }, [isAuthenticated, navigate]);
 
   //validations and api request
   const handleSubmit = async e => {
@@ -66,8 +65,8 @@ const Register = () => {
       type: "text",
       placeholder: NAME,
       errorMessage:
-        "El nombre de usuario debe tener entre 3 a 16 y no incluir caracteres especiales",
-      pattern: "^[a-zA-Z0-9]{3,16}$",
+        "El nombre de usuario no debe tener caracteres especiales y no tener mas de 16 caracteres",
+      pattern: "^[a-zA-Z0-9]{0,16}$",
       required: true,
     },
     {
@@ -76,8 +75,8 @@ const Register = () => {
       type: "text",
       placeholder: NICK,
       errorMessage:
-        "El nickname debe tener entre 3 a 16 y no incluir caracteres especiales",
-      pattern: "^[a-zA-Z0-9]{3,16}$",
+        "El nickname no debe tener caracteres especiales y no tener mas de 16 caracteres",
+      pattern: "^[a-zA-Z0-9]{0,16}$",
       required: true,
     },
     {
@@ -95,8 +94,8 @@ const Register = () => {
       type: "password",
       placeholder: PASSWD,
       errorMessage:
-        "La clave debe tener entre 8 a 20 caracteres, una mayuscula, un numero y un caracter especial",
-      pattern: "(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{8,20}",
+        "La clave debe tener al menos: 8 caracteres, 1 mayuscula, 1 minuscula y 1 numero",
+      pattern: "^(?=.*d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$",
       required: true,
     },
     {
@@ -107,7 +106,6 @@ const Register = () => {
       errorMessage: "Las contraseñas no coinciden",
       pattern: values.password,
       required: true,
-      validate: value => value === values.password,
     },
   ];
 
@@ -124,6 +122,12 @@ const Register = () => {
             onChange={handleChange}
           />
         ))}
+        {
+          // TODO: test this
+          registerErrors?.map((error, index) => (
+            <ErrorFormAccount key={index} errors={error} />
+          ))
+        }
         <PrimaryBtnForm
           text="Crear cuenta"
           cssClasses="formCustomBtn purpleBtn"

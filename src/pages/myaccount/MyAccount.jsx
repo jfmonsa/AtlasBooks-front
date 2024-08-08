@@ -21,7 +21,7 @@ import SearcherNoFilters from "../../components/searcher/SearcherNoFilters.jsx";
 import {getReportsApi} from "../../api/reports.js";
 
 //imgs para libros
-import {useAuth} from "../../contexts/authContext.jsx";
+import {useAuth} from "../../utils/useAuth.js";
 import {useEffect, useState} from "react";
 import useFetch from "../../utils/useFetch.js";
 
@@ -253,7 +253,7 @@ const MyAccount = () => {
   const userListsUrl = user ? `/userLists?id=${user.id}` : null;
   const downloadHistoryUrl = user ? `/downloadHistory?id=${user.id}` : null;
 
-  const { 
+  const {
     data: userListsData,
     isPending: userListsPending,
     error: userListsError,
@@ -270,7 +270,7 @@ const MyAccount = () => {
         id: list.id,
         listName: list.title,
         desc: list.descriptionl,
-        numBooks: list.book_count, 
+        numBooks: list.book_count,
         publicList: list.ispublic,
       }));
       setMyBookLists(filteredData); // Actualiza el estado con los datos filtrados
