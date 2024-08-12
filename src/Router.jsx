@@ -4,7 +4,7 @@ import Footer from "./components/common/footer/Footer.jsx";
 import {Outlet} from "react-router-dom";
 
 // --- imports for the router ---
-import {ProtectedRoute} from "./components/protectedRoutes/ProtectedRoute.jsx";
+import ProtectedRoute from "./components/protectedRoutes/ProtectedRoute.jsx";
 import {
   createBrowserRouter,
   RouterProvider as RouterProviderDefault,
@@ -12,7 +12,8 @@ import {
 
 // --- imports for the routes (pages) ---
 import Home from "./pages/home/Home.jsx";
-import Error from "./pages/error/Error.jsx";
+// TODO: set error page in router
+//import Error from "./pages/error/Error.jsx";
 import BookSearchResults from "./pages/bookSearchResults/bookSearchResults.jsx";
 import UploadBook from "./pages/uploadBook/UploadBook.jsx";
 import NewList from "./pages/myaccount/NewList.jsx";
@@ -73,29 +74,33 @@ const router = createBrowserRouter([
       {
         path: "recovery-account",
         element: (
-          //ProtectedRoute
-          <RecoveryAccount />
+          <ProtectedRoute>
+            <RecoveryAccount />
+          </ProtectedRoute>
         ),
       },
       {
         path: "send-email",
         element: (
-          //ProtectedRoute
-          <SendEmail />
+          <ProtectedRoute>
+            <SendEmail />
+          </ProtectedRoute>
         ),
       },
       {
         path: "changePass",
         element: (
-          //ProtectedRoute
-          <ChangePass />
+          <ProtectedRoute>
+            <ChangePass />
+          </ProtectedRoute>
         ),
       },
       {
         path: "my-account",
         element: (
-          //ProtectedRoute
-          <MyAccount />
+          <ProtectedRoute>
+            <MyAccount />
+          </ProtectedRoute>
         ),
       },
       {
@@ -105,37 +110,41 @@ const router = createBrowserRouter([
       {
         path: "lists-results",
         element: (
-          //ProtectedRoute
-          <ListSearch />
+          <ProtectedRoute>
+            <ListSearch />
+          </ProtectedRoute>
         ),
       },
       {
         path: "confirm-password",
         element: (
-          //ProtectedRoute
-          <PasswordConfirm />
+          <ProtectedRoute>
+            <PasswordConfirm />
+          </ProtectedRoute>
         ),
       },
       {
         path: "users-details",
         element: (
-          //ProtectedRoute
-          <ChangeUserDetails />
-          //ProtectedRoute
+          <ProtectedRoute>
+            <ChangeUserDetails />
+          </ProtectedRoute>
         ),
       },
       {
         path: "upload-book",
         element: (
-          //ProtectedRoute
-          <UploadBook />
+          <ProtectedRoute>
+            <UploadBook />
+          </ProtectedRoute>
         ),
       },
       {
         path: "new-list",
         element: (
-          //ProtectedRoute
-          <NewList />
+          <ProtectedRoute>
+            <NewList />
+          </ProtectedRoute>
         ),
       },
       {
@@ -165,8 +174,9 @@ const router = createBrowserRouter([
       {
         path: "user-results",
         element: (
-          //ProtectedRoute
-          <AdminResults />
+          <ProtectedRoute>
+            <AdminResults />
+          </ProtectedRoute>
         ),
       },
       {
@@ -176,15 +186,17 @@ const router = createBrowserRouter([
       {
         path: "changeEmail",
         element: (
-          //ProtectedRoute
-          <ChangeEmail />
+          <ProtectedRoute>
+            <ChangeEmail />
+          </ProtectedRoute>
         ),
       },
       {
         path: "newPassword/:token",
         element: (
-          //ProtectedRoute
-          <NewPassword />
+          <ProtectedRoute>
+            <NewPassword />
+          </ProtectedRoute>
         ),
       },
     ],

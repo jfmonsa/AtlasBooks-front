@@ -70,16 +70,16 @@ export const AuthProvider = ({children}) => {
   }, [isAuthenticated, user]);
 
   // check if user is logged in
+  // token verification
   useEffect(() => {
     const checkLogin = async () => {
+      const cookie = Cookies.get();
+
+      if (!cookie.token) {
+        setIsAuthenticated(false);
+        return setUser(false);
+      }
       try {
-        const cookie = Cookies.get();
-
-        if (!cookie.token) {
-          setIsAuthenticated(false);
-          return setUser(false);
-        }
-
         const res = await verifyTokenRequest(cookie.token);
         if (!res.data) {
           setIsAuthenticated(false);
@@ -90,7 +90,6 @@ export const AuthProvider = ({children}) => {
       } catch (error) {
         setIsAuthenticated(false);
         setUser(false);
-        console.log(error);
       }
     };
     checkLogin();

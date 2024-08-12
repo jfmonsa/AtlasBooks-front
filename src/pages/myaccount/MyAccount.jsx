@@ -241,9 +241,6 @@ const LoggedAdmin = () => {
   }
 };
 
-// Aux Test data
-const myBookLists = [];
-
 // Main page
 const MyAccount = () => {
   const {user} = useAuth();

@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 import "./account.css";
 import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
@@ -85,7 +86,6 @@ const Register = () => {
       type: "email",
       placeholder: EMAIL,
       errorMessage: "El email ingresado no es valido",
-      pattern: "[^@s]+@[^@s]+.[^@s]",
       required: true,
     },
     {

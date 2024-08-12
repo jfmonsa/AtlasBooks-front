@@ -299,7 +299,7 @@ const BookPage = () => {
           vol={bookData.vol}
           pages={bookData.n_pages}
           editory={bookData.publisher}
-          bookImg={`http://localhost:3000/storage/books/${bookData.cover_path}`}
+          bookImg={`http://localhost:3000/storage/bookCoverPics/${bookData.cover_path}`}
           rank={bookData.book_rate}
           authorName={bookData.book_authors?.join(", ")}
           language={bookData.book_lang?.join(", ")}
