@@ -31,6 +31,7 @@ import coment from "../../assets/icons/comentario-icon.svg";
 import Slider from "../../components/slider/Slider.jsx";
 //Comments
 import Comments from "./commentarySection/Comments.jsx";
+import baseUrl from "../../api/baseUrl.js";
 
 //Aux functions
 const HeartButton = ({className}) => {
@@ -299,7 +300,12 @@ const BookPage = () => {
           vol={bookData.vol}
           pages={bookData.n_pages}
           editory={bookData.publisher}
-          bookImg={`http://localhost:3000/storage/bookCoverPics/${bookData.cover_path}`}
+          //TODO: Cambiar las cosas para obtener el default image desde cloudinary
+          bookImg={
+            bookData.cover_path.includes("default")
+              ? `${baseUrl}/../../storage/bookCoverPics/${bookData.cover_path}`
+              : bookData.cover_path
+          }
           rank={bookData.book_rate}
           authorName={bookData.book_authors?.join(", ")}
           language={bookData.book_lang?.join(", ")}
