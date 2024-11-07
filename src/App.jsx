@@ -65,17 +65,13 @@ const router = createBrowserRouter([
       {
         path: "recovery-account",
         element: (
-          <ProtectedRoute>
             <RecoveryAccount />
-          </ProtectedRoute>
         ),
       },
       {
         path: "send-email",
         element: (
-          <ProtectedRoute>
             <SendEmail />
-          </ProtectedRoute>
         ),
       },
       {
@@ -185,9 +181,7 @@ const router = createBrowserRouter([
       {
         path: "newPassword/:token",
         element: (
-          <ProtectedRoute>
             <NewPassword />
-          </ProtectedRoute>
         ),
       },
       // {

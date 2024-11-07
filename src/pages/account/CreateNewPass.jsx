@@ -15,11 +15,6 @@ const NewPassword = () => {
     const [error, setError] = useState(null);
     const navigate = useNavigate();
     const {token} = useParams();
-    // useEffect(() => {
-    //   if(params){
-    //     getChangePass(params.currentPassword, params.newPassword, params.confirmPassword);
-    //   }
-    // }, []); 
   
     const handleSubmit = e => {
       e.preventDefault();
@@ -37,9 +32,8 @@ const NewPassword = () => {
         return;
       }
       //enviar datos post al api
-      //createChangePass({currentPassword: pass1, newPassword: pass2, confirmPassword: pass3});
-        
-        createRecoveryAccount({password:pass2, confirmPassword:pass3, token:token});    
+      createRecoveryAccount({newPassword:pass2, token:token});
+
       //navegar hacia la pagina indicada
       navigate("/login");
     };
