@@ -55,7 +55,7 @@ export const Login = () => {
     setError(null);
     //hacer validaciones en el backend para verificar que el usuario
     //exista
-    login({userNickname: userNickname, userPassword: userPassword});
+    login({userNicknameOrEmail: userNickname, userPassword: userPassword});
   };
 
   return (

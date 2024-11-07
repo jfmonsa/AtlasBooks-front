@@ -74,8 +74,8 @@ const NewAccount = ({}) => {
     setError(null);
 
     signup({
-      name: userName,
-      nickName: userNick,
+      fullName: userName,
+      nickname: userNick,
       email: userEmail,
       password: userPass1,
       country: countryCode,

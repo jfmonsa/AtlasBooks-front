@@ -30,7 +30,7 @@ export const AuthProvider = ({children}) => {
 
   const signup = async userData => {
     try {
-      const res = await registerRequest(userData).then(res => {
+        await registerRequest(userData).then(res => {
         setIsAuthenticated(true);
         setUser(res.data);
       });
