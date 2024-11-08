@@ -8,7 +8,7 @@ const Book = ({title, authors, img, bookId,index}) => {
         <img
           className="img"
           //src={img}
-          src={`http://localhost:3000/storage/books/${img}`}
+          src={img}
           alt={`Imagen de la portada del libro: ${title}, por ${authors}`}
         />
         <h2 className="tittleContainer">{title}</h2>

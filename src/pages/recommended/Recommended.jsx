@@ -4,7 +4,7 @@ import useFetch from "../../utils/useFetch.js";
 import baseUrl from "../../api/baseUrl.js";
 
 const Recommended = () => {
-  const {data, isPending, error} = useFetch(`/feed`);
+  const {data, isPending, error} = useFetch(`/feed-recommended`);
 
   if (error) {
     return <p>{error}</p>;
@@ -19,7 +19,7 @@ const Recommended = () => {
         <h2 className="display--subheading">Best ranked</h2>
 
         <Searcher toUrl="search-results" />
-        <GridBooks books={data.recommended_feed} />
+        <GridBooks books={data.data} />
       </>
     );
   }
