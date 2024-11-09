@@ -251,7 +251,7 @@ const MyAccount = () => {
   const [downloadHistoryBooks, setDownloadHistoryBooks] = useState([]);
 
   const userListsUrl = user ? `/book-lists/my-lists` : null;
-  const downloadHistoryUrl = user ? `/downloadHistory?id=${user.id}` : null;
+  const downloadHistoryUrl = user ? `/user/download-history` : null;
 
   const { 
     data: userListsData,

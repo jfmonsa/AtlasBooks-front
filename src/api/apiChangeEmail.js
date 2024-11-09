@@ -1,9 +1,9 @@
 import axios from "./axios";
 
 export const GetChangeEmail = email => {
-  axios.post(`/ChangeEmailSend`, email);
+  axios.post(`/auth/change-email`, email);
 };
 
 export const GetChangeEmailToken = token => {
-  axios.post(`/ChangeEmailReceived`, token);
+  axios.post(`/auth/change-email-confirmed`, token);
 };
