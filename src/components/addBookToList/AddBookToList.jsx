@@ -15,18 +15,16 @@ const handleAddDeleteBookToList = async (
   try {
     if (currentStatus) {
       //si esta en true, make a deletion
-      const response = await axios.delete("/lists/deleteBookToList", {
+      const response = await axios.delete("/book-lists/remove-book", {
         data: {
           bookId,
-          userId,
           listId,
         },
       });
     } else {
       //si esta en false, make an insertion
-      const response = await axios.put("/lists/addBookToList", {
+      const response = await axios.put("/bool-lists/add-book", {
         bookId,
-        userId,
         listId,
       });
     }

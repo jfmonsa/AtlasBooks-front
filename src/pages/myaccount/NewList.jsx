@@ -43,11 +43,9 @@ const CreateList = () => {
     }
 
     try {
-      const response = await axios.post("http://localhost:3000/api/lists", {
+      const response = await axios.post("http://localhost:3000/api/book-lists", {
         title: titulo,
         descriptionL: descripcion,
-        dateL: new Date().toISOString(),
-        idUserCreator: user.id,
         isPublic: isPublic,
       });
 

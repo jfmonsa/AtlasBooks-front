@@ -44,7 +44,7 @@ const ListResultsContainer = ({results, totalResults}) => {
               descriptionL={list.descriptionL} // Asegúrate de que los nombres de los campos coincidan
               dateL={list.dateL}
               idUserCreator={list.idUserCreator}
-              urlList={`/my-lists/${list.id}`} // Asegúrate de que esto sea correcto
+              urlList={`/book-lists/${list.id}`} // Asegúrate de que esto sea correcto
             />
           );
         })}
