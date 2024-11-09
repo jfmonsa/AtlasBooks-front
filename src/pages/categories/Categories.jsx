@@ -1,3 +1,4 @@
+
 import Searcher from "../../components/searcher/Searcher";
 import Card from "../../components/card/Card";
 import baseUrl from "../../api/baseUrl.js";
@@ -9,16 +10,16 @@ import "./categoria.css";
 const Catergorie = ({primaryCategory, secundaryCategories}) => {
   return (
     <ul className="category">
-      <li className="category__title">
-        <Link to={`/search-results?category=${primaryCategory.cat}`}>
-          {primaryCategory.name}
+      <li key={primaryCategory.categoryId} className="category__title">
+        <Link to={`/search-results?category=${primaryCategory.categoryId}`}>
+          {primaryCategory.category}
         </Link>
       </li>
       {secundaryCategories.map(sub => {
         return (
-          <li key={sub.subcat_id} className="category__subcategory">
-            <Link to={`/search-results?subCategory=${sub.subcat_id}`}>
-              {sub.subcat_name}
+          <li key={sub.id} className="category__subcategory">
+            <Link to={`/search-results?subCategory=${sub.id}`}>
+              {sub.name}
             </Link>
           </li>
         );
@@ -28,6 +29,7 @@ const Catergorie = ({primaryCategory, secundaryCategories}) => {
 };
 
 const Categories = ({catLits}) => {
+  console.log(catLits);
   return (
     <Card h1Text={"Todas las Categorias"} h1Center>
       <div className="all-categories">
@@ -46,7 +48,7 @@ const Categories = ({catLits}) => {
 };
 
 const CategoriesMain = ({}) => {
-  const {error, isPending, data} = useFetch(`${baseUrl}/categories/groupped`);
+  const {error, isPending, data} = useFetch(`${baseUrl}/book-categories/groupped`);
   if (error) {
     return <p>{error}</p>;
   }
@@ -58,10 +60,11 @@ const CategoriesMain = ({}) => {
       <>
         <h1 className="display--heading">Categorias</h1>
         <Searcher holder={"Buscar libro..."}></Searcher>
-        <Categories catLits={data.groupedData} />
+        <Categories catLits={data.data} />
       </>
     );
   }
 };
 
 export default CategoriesMain;
+
