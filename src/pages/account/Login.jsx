@@ -39,8 +39,6 @@ export const Login = () => {
     }
     //validar que sea un email o nickname validos
     //nota: puede loggearse con nickname o email
-    console.log(!valNickname(userNickname), !valEmail(userNickname));
-    console.log(userNickname.includes("@"));
     if (userNickname.includes("@")) {
       if (!valEmail(userNickname)) {
         setError("Email o nickname no valido");
