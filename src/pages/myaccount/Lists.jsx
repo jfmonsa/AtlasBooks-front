@@ -6,7 +6,7 @@ import useFetch from "../../utils/useFetch.js";
 
 const Lists = ({}) => {
   const {idList} = useParams();
-  const {data, error, isPending} = useFetch(`/lists/${idList}`);
+  const {data, error, isPending} = useFetch(`/book-lists/${idList}`);
   if (error) {
     return <div>{error}</div>;
   }
