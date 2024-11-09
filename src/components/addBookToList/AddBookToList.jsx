@@ -23,7 +23,7 @@ const handleAddDeleteBookToList = async (
       });
     } else {
       //si esta en false, make an insertion
-      const response = await axios.put("/bool-lists/add-book", {
+      const response = await axios.put("/book-lists/add-book", {
         bookId,
         listId,
       });
