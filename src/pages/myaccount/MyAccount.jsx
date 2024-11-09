@@ -89,6 +89,7 @@ const SectionListsListCard = ({
 };
 
 const SectionLists = ({myLists}) => {
+  console.log(myLists);
   if (myLists != null) {
     return (
       <Card h1Text="Mis listas" id="my-lists">
@@ -97,7 +98,7 @@ const SectionLists = ({myLists}) => {
             <SectionListsListCard
               key={list.id}
               listName={list.listName}
-              path={`/lists/${list.id}`}
+              path={`/book-lists/${list.id}`}
               desc={list.desc}
               numBooks={list.numBooks}
               publicList={list.publicList}
@@ -269,9 +270,9 @@ const MyAccount = () => {
       const filteredData = userListsData.data.map(list => ({
         id: list.id,
         listName: list.title,
-        desc: list.descriptionl,
-        numBooks: list.book_count, 
-        publicList: list.ispublic,
+        desc: list.description,
+        numBooks: list.bookCount, 
+        publicList: list.isPublic,
       }));
       setMyBookLists(filteredData); // Actualiza el estado con los datos filtrados
     }

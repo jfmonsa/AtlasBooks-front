@@ -2,6 +2,9 @@ import "./gridBooks.css";
 import Book from "../book/Book.jsx";
 
 const GridBooks = ({books}) => {
+  if (!books) {
+    return <div>No books in list. Please add books.</div>;
+  }
   return (
     <section className="gridBooks">
       <div className="gridBooks__grid">
