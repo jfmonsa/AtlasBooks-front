@@ -9,5 +9,4 @@ export const logoutRequest = () => axios.post(`/auth/logout`);
 
 export const verifyTokenRequest = () => axios.post(`/auth/verifyToken`);
 
-export const verifyTokenEmail = token => axios.post(`/auth/verifyTokenEmail`, token);
-// TODO: This endpoint changed to (probably) /auth/change-email-confirmed
+export const verifyTokenEmail = token => axios.post(`/auth/change-email-confirmed`, token);
