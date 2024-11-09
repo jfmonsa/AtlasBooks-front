@@ -10,16 +10,16 @@ import "./categoria.css";
 const Catergorie = ({primaryCategory, secundaryCategories}) => {
   return (
     <ul className="category">
-      <li className="category__title">
-        <Link to={`/search-results?category=${primaryCategory.cat}`}>
+      <li key={primaryCategory.categoryId} className="category__title">
+        <Link to={`/search-results?category=${primaryCategory.categoryId}`}>
           {primaryCategory.category}
         </Link>
       </li>
       {secundaryCategories.map(sub => {
         return (
-          <li key={sub.subcat_id} className="category__subcategory">
-            <Link to={`/search-results?subCategory=${sub.subcat_id}`}>
-              {sub}
+          <li key={sub.id} className="category__subcategory">
+            <Link to={`/search-results?subCategory=${sub.id}`}>
+              {sub.name}
             </Link>
           </li>
         );
