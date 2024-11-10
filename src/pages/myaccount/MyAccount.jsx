@@ -25,6 +25,8 @@ import {useAuth} from "../../contexts/authContext.jsx";
 import {useEffect, useState} from "react";
 import useFetch from "../../utils/useFetch.js";
 
+import {verifyTokenRequest} from "../../api/auth.js";
+
 // Aux functions
 const SectionMyDataDatum = ({left, right}) => {
   return (
@@ -247,7 +249,7 @@ const myBookLists = [];
 
 // Main page
 const MyAccount = () => {
-  const {user} = useAuth();
+  const user = useAuth().user.data.user;
   const [myBookLists, setMyBookLists] = useState([]);
   const [downloadHistoryBooks, setDownloadHistoryBooks] = useState([]);
 
