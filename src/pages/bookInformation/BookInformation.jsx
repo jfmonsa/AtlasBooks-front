@@ -85,6 +85,7 @@ const BookInfoSection = (
   bookImg,
   numComments,
   bookFiles ,
+  fileName,
 }) => {
   const {isAuthenticated, user} = useAuth();
   const generateDownloadOptions = bookFiles => {
@@ -105,18 +106,21 @@ const BookInfoSection = (
       try {
         const response = await axios.post(url, {
           bookId,
-          filename,
+          fileName,
         });
-        const blob = new Blob([response.data]);
-        const filename = url.split("/").pop(); // Obtenemos el nombre del archivo
-        const objectURL = URL.createObjectURL(blob);
-        const a = document.createElement("a");
-        a.href = objectURL;
-        a.download = filename; // Le asignamos el nombre al archivo descargado
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(objectURL);
+        console.log("response", response);
+        // const blob = new Blob([response.data]);
+        // const filename = url.split("/").pop(); // Obtenemos el nombre del archivo
+        // const objectURL = URL.createObjectURL(blob);
+        // const a = document.createElement("a");
+        // a.href = objectURL;
+        // a.download = filename; // Le asignamos el nombre al archivo descargado
+        // document.body.appendChild(a);
+        // a.click();
+        // document.body.removeChild(a);
+        // URL.revokeObjectURL(objectURL);
+        const urlFile = response.data.data.fileCloudUrl
+        window.open(urlFile , '_blank');
       } catch (error) {
         console.error("Error downloading file:", error);
         alert("An error occurred while downloading the file.");
@@ -304,6 +308,7 @@ const BookPage = () => {
   }
   if (bookData) {
     return (
+      console.log(bookData.data),
       <>
       <BookInfoSection
         bookId={id}
@@ -324,6 +329,7 @@ const BookPage = () => {
         .join(", ")}
         numComments={bookData.data.comments.length}
         bookFiles={bookData.data.files}
+        fileName={bookData.data.files[0]}
       />
       <RateStarsSection id={bookData.data.id} />
       <BookPageRelated books={bookData.data.relatedBooks} />
