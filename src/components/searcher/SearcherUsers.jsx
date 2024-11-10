@@ -16,7 +16,7 @@ const SearcherUsers = ({holder = SEARCH}) => {
 
   const handleSearch = event => {
     event.preventDefault();
-    navigate(`/user-results?search=${userSearch}`);
+    navigate(`/search-filters/users?search=${userSearch}`);
   };
 
   return (

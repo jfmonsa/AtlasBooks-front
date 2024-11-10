@@ -43,7 +43,7 @@ const SectionMyData = ({
   email,
   country,
   registerDate,
-  isAdmin,
+  role,
   pathProfilePic = null,
 }) => {
   return (
@@ -55,7 +55,7 @@ const SectionMyData = ({
         <SectionMyDataDatum left="País" right={country} />
         <SectionMyDataDatum left="Fecha de Registro" right={registerDate} />
         {/* TODO: mejorar los estilos del admin y la alinación en los lists, mirar como incluir la imagen de perfil */}
-        {isAdmin ? <p>Admin del sitio</p> : null}
+        {role === "ADMIN" ?<p>Admin del sitio</p> : null}
       </ul>
     </Card>
   );
@@ -237,11 +237,12 @@ const MyAccountAdmin = () => {
 };
 
 const LoggedAdmin = () => {
-  const {contextValue} = useAuth();
-  const context = contextValue;
-  if (context.admin) {
+  const { contextValue } = useAuth();
+  console.log(contextValue);
+  if (contextValue.role === "ADMIN") {
     return <MyAccountAdmin />;
   }
+  return null;
 };
 
 // Aux Test data
