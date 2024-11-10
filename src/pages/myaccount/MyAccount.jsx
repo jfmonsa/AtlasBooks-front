@@ -267,7 +267,7 @@ const MyAccount = () => {
     isPending: downloadHistoryPending,
     error: downloadHistoryError,
   } = useFetch(downloadHistoryUrl);
-
+console.log("DOWNLOAD",downloadHistoryData)
   useEffect(() => {
     if (userListsData) {
       const filteredData = userListsData.data.map(list => ({
