@@ -29,8 +29,7 @@ const SubCategorySelect = ({
     data: subCatData,
     isPending: subCatIsPending,
     error: subCatError,
-  } = useFetch(selectedCategory ? `categories/${selectedCategory}` : null);
-
+  } = useFetch(selectedCategory ? `book-categories/subcategories/${selectedCategory}` : null);
   useEffect(() => {
     if (subCatData && onSubCategoriesChange) {
       onSubCategoriesChange([]); // Clear selected subcategories when category changes
@@ -43,17 +42,18 @@ const SubCategorySelect = ({
     return <p>{subCatError}</p>;
   } else if (subCatIsPending) {
     return <p>Loading subcategories...</p>;
-  } else if (subCatData && subCatData.subcategories) {
+  } else if (subCatData) {
     return (
+    
       <>
         <label className="input__label" htmlFor="subcategories">
           Subcategorias
         </label>
         <p className="label_extra">Puede seleccionar una o más</p>
         <Select
-          options={subCatData.subcategories.map(subCat => ({
+          options={subCatData.data.map(subCat => ({
             value: subCat.id,
-            label: subCat.subcategoryname,
+            label: subCat.subcategoryName,
           }))}
           onChange={selectedOptions => onSubCategoriesChange(selectedOptions)}
           value={selectedSubCategories}
@@ -72,7 +72,7 @@ const SubCategorySelect = ({
   }
 };
 const UploadBook = () => {
-  const {isAuthenticated, user} = useAuth();
+  const {isAuthenticated} = useAuth();
   const navigate = useNavigate();
 
   //form fields
@@ -126,20 +126,14 @@ const UploadBook = () => {
       // Añadir los datos del formulario al FormData
       formData.append("isbn", isbn);
       formData.append("title", bookTitle);
-      formData.append("descriptionB", descriptionB);
+      formData.append("description", descriptionB);
       formData.append("yearReleased", yearReleased);
-      formData.append("vol", nVol);
-      formData.append("nPages", nPages);
+      formData.append("volume", nVol);
+      formData.append("numberOfPages", nPages);
       formData.append("publisher", publisher);
-      formData.append("authors", JSON.stringify(authors));
-      formData.append(
-        "languages",
-        JSON.stringify(languages.map(lang => lang.value)),
-      );
-      formData.append(
-        "subcategoryIds",
-        JSON.stringify(selectedSubCategories.map(subCat => subCat.value)),
-      );
+      authors.forEach(author => formData.append("authors", author));
+  languages.forEach(lang => formData.append("languages", lang.value));
+  selectedSubCategories.forEach(subCat => formData.append("subcategoryIds", subCat.value));
 
       // Añadir la imagen de portada al FormData
       formData.append("cover", coverBookImage);
@@ -149,20 +143,20 @@ const UploadBook = () => {
         formData.append("bookFiles", file);
       });
 
-      // Realizar la solicitud POST
-      const response = await axios.post("/books", formData, {
+      //Realizar la solicitud POST
+      const response = await axios.post("/book", formData, {
         headers: {
-          "Content-Type": "multipart/form-data",
+         "Content-Type": "multipart/form-data",
         },
       });
-
+      console.log(formData)
       // Manejar la respuesta  response.data
       //if the book creating was done successfully then clear de inputs
       alert("Libro creado exitosamente!");
-      setBookTitle("");
-      setAuthors([""]);
-      setIsbn("");
-      setNPages("");
+      setBookTitle(response.data.title);
+      setAuthors([response.data.authors]);
+      setIsbn(response.data.isbn || "none");
+      setNPages(response.data.nPages);
       setYearReleased("");
       setNVol("");
       setPublisher("");
@@ -179,7 +173,7 @@ const UploadBook = () => {
   };
 
   const handleCancell = e => {
-    navigate("/my-account");
+    e.navigate("/my-account");
   };
 
   const handleFilesSelected = selectedFiles => {
@@ -214,21 +208,20 @@ const UploadBook = () => {
     data: catData,
     isPending: catIsPending,
     error: catError,
-  } = useFetch(`${baseUrl}/categories/onlyCategories`);
-
+  } = useFetch(`/book-categories`);
+  
   useEffect(() => {
     setSelectedSubCategories([]);
   }, [selectedCategory]);
-
   if (catError) {
     console.error(catError);
     return <p>{catError}</p>;
   } else if (catIsPending) {
     return <p>Loading...</p>;
   } else if (catData) {
-    const categories = catData.categories.map(cat => ({
+    const categories = catData.data.map(cat => ({
       value: cat.id,
-      label: cat.categoryname,
+      label: cat.name,
     }));
     return (
       <Card cardDialog h1Text="Sube un libro" h1Center>

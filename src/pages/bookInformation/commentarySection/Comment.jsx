@@ -13,7 +13,6 @@ export function Comment({
   activeComent,
   setActiveComent,
   updateComment,
-  profilepic,
 }) {
   const {user} = useAuth();
   const userIdLogged = user.id;
@@ -21,18 +20,17 @@ export function Comment({
   const timePased = new Date() - date > fiveMinutes;
   const canEdit = userIdLogged == userId && !timePased;
   const canDelete = userIdLogged == userId && !timePased;
-  const createdAt = date.split("T")[0];
+  const createdAt = user.date ? user.date.split("T")[0] : [];
   const isEditing =
     activeComent && activeComent.type == "editing" && activeComent.id == id;
   const submitUpdate = text => {
     updateComment(text, id);
   };
-
   return (
     <div className="comment">
       <img
         className="comment__image"
-        src={`http://localhost:3000/storage/${profilepic}`}
+        src={user.data.user.profileImgPath ? user.data.user.profileImgPath : "../storage/usersProfilePic/default.webp"}
         alt="userIcon"
       />
 
@@ -46,7 +44,7 @@ export function Comment({
         {!isEditing && <div className="comment__text">{comment}</div>}
         {isEditing && (
           <NewComment
-            profilepic={profilepic}
+            profilepic={user.data.user.profileImgPath}
             submitLabel="Actualizar"
             hasCancelButton
             initialText={comment}

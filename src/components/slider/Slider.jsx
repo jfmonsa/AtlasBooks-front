@@ -6,7 +6,7 @@ import ArrowLeft from "../../assets/icons/icon-arrowLeft.svg";
 import ArrowRight from "../../assets/icons/icon-arrowRight.svg";
 import Book from "../book/Book.jsx";
 
-const CustomSlider = ({books}) => {
+const CustomSlider = ({ books }) => {
   const SamplePrevArrow = props => {
     const {className, onClick} = props;
     return (
@@ -31,7 +31,7 @@ const CustomSlider = ({books}) => {
     );
   };
 
-  var settings = {
+  const settings = {
     dots: false,
     infinite: true,
     speed: 300,
@@ -85,12 +85,12 @@ const CustomSlider = ({books}) => {
       },
     ],
   };
-
+console.log(books)
   return (
     <>
       <Slider {...settings}>
-        {books.map(book => {
-          return (
+        {Array.isArray(books) && books.length > 0 ? (
+          books.map(book => (
             <Book
               key={book.bookId}
               bookId={book.bookId}
@@ -98,8 +98,10 @@ const CustomSlider = ({books}) => {
               title={book.title}
               img={book.pathBookCover}
             />
-          );
-        })}
+          ))
+        ) : (
+          <p>No books available</p>
+        )}
       </Slider>
     </>
   );
