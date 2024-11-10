@@ -85,7 +85,6 @@ const CustomSlider = ({ books }) => {
       },
     ],
   };
-console.log(books)
   return (
     <>
       <Slider {...settings}>

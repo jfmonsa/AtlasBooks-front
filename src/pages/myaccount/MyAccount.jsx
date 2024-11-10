@@ -91,7 +91,6 @@ const SectionListsListCard = ({
 };
 
 const SectionLists = ({myLists}) => {
-  console.log(myLists);
   if (myLists != null) {
     return (
       <Card h1Text="Mis listas" id="my-lists">
@@ -196,7 +195,7 @@ const MyAccountAdmin = () => {
   useEffect(() => {
     getReportsApi()
       .then(res => {
-        setReport(res.data);
+        setReport(res.data.data);
       })
       .catch(error => {
         console.log(error.message);
@@ -222,15 +221,16 @@ const MyAccountAdmin = () => {
         />
       </Card>
       <Card h1Text="Reportes" h1Center>
-        {report.map((report, index) => {
+        {report? report.map((report, index) => {
           return (
             <div className="report_div" key={index}>
-              <h3>{`Id del usuario: ${report.iduser}`}</h3>
+              <h3>{`Id del usuario: ${report.idUser}`}</h3>
               <p>{report.motivation}</p>
-              <p>{`Libro que reportado por el usuario: ${report.idbook}`}</p>
+              <p>{`Libro que reportado por el usuario: ${report.idBook}`}</p>
             </div>
           );
-        })}
+        }):
+        <p>No hay reportes por el momento</p>}
       </Card>
     </>
   );
