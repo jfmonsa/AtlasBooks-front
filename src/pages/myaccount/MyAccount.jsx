@@ -299,7 +299,7 @@ const MyAccount = () => {
   return (
     <>
       <SectionMyData
-        name={user.name}
+        name={user.fullName}
         nickname={user.nickname}
         email={user.email}
         country={user.country}
