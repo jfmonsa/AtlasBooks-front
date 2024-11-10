@@ -33,7 +33,7 @@ const TableResults = () => {
     {id: "nickname", name: "Nickname"},
     {id: "email", name: "Email"},
     {id: "country", name: "Country"},
-    {id: "statusu", name: "Status"},
+    {id: "isActive", name: "Status"},
     {id: "isadmin", name: "Admin?"},
     {id: "actions", name: "Actions"}, // Nueva columna para los botones
   ];
@@ -50,7 +50,7 @@ const TableResults = () => {
   //Actions
   const handleDeleteUser = (userId) => {
     // Lógica para eliminar un usuario
-    getBannedUser({idUser: userId.id, status: userId.status});
+    getBannedUser({userIdToBan: userId.id, status: userId.status});
   };
 
   const handleMakeAdmin = userId => {
@@ -86,6 +86,7 @@ const TableResults = () => {
   }
 
   return (
+    console.log("ROWS", rows),
     <>
       <TableContainer>
         <Table stickyHeader>
@@ -107,7 +108,7 @@ const TableResults = () => {
                         let value = row[column.id];
                         if (column.id === "actions") {
                           let buttonAction;
-                          if (row.status) {
+                          if (row.isActive) {
                             buttonAction = (
                               <PrimaryBtnForm
                                 onClick={() => handleDeleteUser(row.id)}
@@ -119,7 +120,7 @@ const TableResults = () => {
                           } else {
                             buttonAction = (
                               <PrimaryBtnForm
-                                onClick={() => handleDeleteUser({id: row.id, status: row.statusu})}
+                                onClick={() => handleDeleteUser({id: row.id, status: row.isActive})}
                                 type="button"
                                 text="Bannear"
                                 cssClasses="baseBtn commentsBtn blueBtn"
@@ -131,7 +132,7 @@ const TableResults = () => {
                             <TableCell key={colIndex}>{buttonAction}</TableCell>
                           );
                         } else if (
-                          column.id === "statusu" ||
+                          column.id === "isActive" ||
                           column.id === "isadmin"
                         ) {
                           return (

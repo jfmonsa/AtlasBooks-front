@@ -213,27 +213,28 @@ const BookInfoSection = (
 };
 
 const RateStarsSection = ({id}) => {
-
+  const user = useAuth();
   const [rate, setRate] = useState(null);
   const [number, setNumber] = useState(0);
-
   useEffect(() => {
     const getRate = async () => {
       try {
-        const response = await getBookRatingApi(id);
-        setRate(response.data.data.rate);
+        const rateData = await getBookRatingApi(id, user?.user.data.user.id);
+        setRate(rateData.data.data.rate);
+        console.log("rate", rateData.data.data.rate);
+
       } catch (error) {
         console.error("Error fetching book rating:", error);
       }
     };
 
     getRate();
-  }, [id]);
-    console.log(rate);
+  }, [id, user?.id]);
+    
   const handleRate = async index => {
-    setNumber(index);
+    setRate(index);
     try {
-      await rateBookApi({rate: index, idbook: id});
+      await rateBookApi({rate: index, idBook: id});
     } catch (error) {
       window.alert(error.response.data[0]);
     }
@@ -244,12 +245,14 @@ const RateStarsSection = ({id}) => {
         {Array(5)
           .fill()
           .map((_, index) =>
-            number >= index + 1 ? (
+            (number || rate) >= index + 1 ? (
               <AiFillStar
                 key={index}
                 className="stars"
                 style={{color: "orange"}}
                 onClick={() => handleRate(index + 1)}
+                onMouseEnter={() => setNumber(index + 1)}
+                onMouseLeave={() => setNumber(0)}
               />
             ) : (
               <AiOutlineStar
@@ -257,6 +260,8 @@ const RateStarsSection = ({id}) => {
                 className="stars"
                 style={{color: "black"}}
                 onClick={() => handleRate(index + 1)}
+                onMouseEnter={() => setNumber(index + 1)}
+                onMouseLeave={() => setNumber(0)}
               />
             ),
           )}
@@ -310,7 +315,7 @@ const BookPage = () => {
         pages={bookData.data.numberOfPages || "None"}
         editory={bookData.data.publisher || "None"}
         bookImg={bookData.data.coverImgPath}
-        rank={bookData.data.rate}
+        rank={bookData.data.rate}  
         authorName={bookData.data.authors?.join(", ")}
         language={bookData.data.languages?.join(", ")}
         fileType={bookData.data.fileExtensions?.join(", ")}
