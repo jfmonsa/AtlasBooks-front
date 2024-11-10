@@ -64,7 +64,7 @@ const NewAccount = ({}) => {
       return;
     } else if (!valPassword(userPass1) || !valPassword(userPass2)) {
       setError(
-        "Verifique que ambas claves tengan: minimo 8 caracteres, una mayuscula, un numero, un caracter especial. máximo 20 caracteres",
+        "Verifique que la clave tenga: minimo 8 caracteres, máximo 20, una mayuscula, un numero y un caracter especial (@#$%^&+=).",
       );
       return;
     } else if (userPass1 !== userPass2) {
@@ -80,6 +80,7 @@ const NewAccount = ({}) => {
       password: userPass1,
       country: countryCode,
     });
+    
   };
 
   return (

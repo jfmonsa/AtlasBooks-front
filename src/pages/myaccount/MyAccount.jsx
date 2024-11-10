@@ -25,6 +25,8 @@ import {useAuth} from "../../contexts/authContext.jsx";
 import {useEffect, useState} from "react";
 import useFetch from "../../utils/useFetch.js";
 
+import {verifyTokenRequest} from "../../api/auth.js";
+
 // Aux functions
 const SectionMyDataDatum = ({left, right}) => {
   return (
@@ -41,7 +43,7 @@ const SectionMyData = ({
   email,
   country,
   registerDate,
-  isAdmin,
+  role,
   pathProfilePic = null,
 }) => {
   return (
@@ -53,7 +55,7 @@ const SectionMyData = ({
         <SectionMyDataDatum left="País" right={country} />
         <SectionMyDataDatum left="Fecha de Registro" right={registerDate} />
         {/* TODO: mejorar los estilos del admin y la alinación en los lists, mirar como incluir la imagen de perfil */}
-        {isAdmin ? <p>Admin del sitio</p> : null}
+        {role === "ADMIN" ?<p>Admin del sitio</p> : null}
       </ul>
     </Card>
   );
@@ -89,6 +91,7 @@ const SectionListsListCard = ({
 };
 
 const SectionLists = ({myLists}) => {
+  console.log(myLists);
   if (myLists != null) {
     return (
       <Card h1Text="Mis listas" id="my-lists">
@@ -97,7 +100,7 @@ const SectionLists = ({myLists}) => {
             <SectionListsListCard
               key={list.id}
               listName={list.listName}
-              path={`/lists/${list.id}`}
+              path={`/book-lists/${list.id}`}
               desc={list.desc}
               numBooks={list.numBooks}
               publicList={list.publicList}
@@ -234,11 +237,12 @@ const MyAccountAdmin = () => {
 };
 
 const LoggedAdmin = () => {
-  const {contextValue} = useAuth();
-  const context = contextValue;
-  if (context.admin) {
+  const { contextValue } = useAuth();
+  console.log(contextValue);
+  if (contextValue.role === "ADMIN") {
     return <MyAccountAdmin />;
   }
+  return null;
 };
 
 // Aux Test data
@@ -246,7 +250,7 @@ const myBookLists = [];
 
 // Main page
 const MyAccount = () => {
-  const {user} = useAuth();
+  const user = useAuth().user.data.user;
   const [myBookLists, setMyBookLists] = useState([]);
   const [downloadHistoryBooks, setDownloadHistoryBooks] = useState([]);
 
@@ -269,9 +273,9 @@ const MyAccount = () => {
       const filteredData = userListsData.data.map(list => ({
         id: list.id,
         listName: list.title,
-        desc: list.descriptionl,
-        numBooks: list.book_count, 
-        publicList: list.ispublic,
+        desc: list.description,
+        numBooks: list.bookCount, 
+        publicList: list.isPublic,
       }));
       setMyBookLists(filteredData); // Actualiza el estado con los datos filtrados
     }
@@ -296,7 +300,7 @@ const MyAccount = () => {
   return (
     <>
       <SectionMyData
-        name={user.name}
+        name={user.fullName}
         nickname={user.nickname}
         email={user.email}
         country={user.country}

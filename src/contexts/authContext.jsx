@@ -1,4 +1,4 @@
-import {createContext, useState, useContext, useEffect} from "react";
+import { createContext, useState, useContext, useEffect } from "react";
 import {
   registerRequest,
   loginRequest,
@@ -8,7 +8,7 @@ import {
 
 export const AuthContext = createContext({
   logged: false,
-  admin: false,
+  role: null,  // Cambiado a null para indicar que inicialmente no tiene rol
 });
 
 export const useAuth = () => {
@@ -19,18 +19,18 @@ export const useAuth = () => {
   return context;
 };
 
-export const AuthProvider = ({children}) => {
+export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [contextValue, setAuthContext] = useState({
     logged: false,
-    admin: false,
+    role: null,
   });
   const [errors, setErrors] = useState([]);
 
   const signup = async userData => {
     try {
-        await registerRequest(userData).then(res => {
+      await registerRequest(userData).then(res => {
         setIsAuthenticated(true);
         setUser(res.data);
       });
@@ -54,6 +54,7 @@ export const AuthProvider = ({children}) => {
     logoutRequest();
     setIsAuthenticated(false);
     setUser(false);
+    setAuthContext({ logged: false, role: null });
   };
 
   useEffect(() => {
@@ -67,7 +68,7 @@ export const AuthProvider = ({children}) => {
 
   useEffect(() => {
     if (user) {
-      setAuthContext({logged: isAuthenticated, admin: user.isAdmin});
+      setAuthContext({ logged: isAuthenticated, role: user.data.user.role });
     }
   }, [isAuthenticated, user]);
 

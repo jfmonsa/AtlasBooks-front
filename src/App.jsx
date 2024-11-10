@@ -91,7 +91,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "lists/:idList",
+        path: "book-lists/:idList",
         element: <Lists />,
       },
       {

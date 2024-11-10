@@ -37,7 +37,7 @@ const Comments = ({comments, bookId}) => {
   useEffect(() => {
     getCommentsApi(bookId);
     setBackendComents(comments);
-  }, []);
+  }, [bookId, comments]);
 
   const deleteComment = commentId => {
     if (window.confirm("Estas seguro de querer eliminar este comentario?")) {
@@ -70,7 +70,6 @@ const Comments = ({comments, bookId}) => {
       setLoading(false);
     }
   };
-
   return (
     <>
       <NewComment
@@ -79,8 +78,8 @@ const Comments = ({comments, bookId}) => {
         userName={user.nickname}
         idbook={bookId}
         profilepic={
-          user.pathprofilepic
-            ? user.pathprofilepic
+          user.data.user.profileImgPath
+            ? user.data.user.profileImgPath
             : "../storage/usersProfilePic/default.webp"
         }
       />
@@ -89,25 +88,28 @@ const Comments = ({comments, bookId}) => {
         <div className="loading">Cargando...</div>
       ) : (
         <div className="comments-container">
-          {backendComents.map(rootComment => (
-            <Comment
-              key={rootComment.idcoment}
-              id={rootComment.idcoment}
-              comment={rootComment.text}
-              userId={rootComment.iduser}
-              userName={rootComment.nickname}
-              date={rootComment.date}
-              deleteComment={deleteComment}
-              activeComent={activeComent}
-              updateComment={updateComment}
-              setActiveComent={setActiveComent}
-              profilepic={
-                rootComment.pathprofilepic
-                  ? rootComment.pathprofilepic
-                  : "default.jpg"
-              }
-            />
-          ))}
+         {Array.isArray(backendComents) && backendComents.length > 0 ? (
+            backendComents.map(rootComment => (
+              <Comment
+                key={rootComment.id}
+                comment={rootComment.textCommented}
+                userId={rootComment.idUser}
+                userName={rootComment.nickname}
+                date={rootComment.date}
+                deleteComment={deleteComment}
+                activeComent={activeComent}
+                updateComment={updateComment}
+                setActiveComent={setActiveComent}
+                profilepic={
+                  rootComment.profileImgPath
+                    ? rootComment.profileImgPath
+                    : "../storage/usersProfilePic/default.webp"
+                }
+              />
+            ))
+          ) : (
+            <p>No comments available</p>
+          )}
         </div>
       )}
     </>

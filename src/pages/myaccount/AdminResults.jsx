@@ -67,7 +67,7 @@ const TableResults = () => {
   const [searchParams] = useSearchParams();
   const search = searchParams.get("search") || "";
   const {data, isPending, error} = useFetch(
-    `/searchFilterUsers?search=${search}`,
+    `/search-filters/users?search=${search}`,
   );
 
   useEffect(() => {
