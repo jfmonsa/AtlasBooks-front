@@ -20,7 +20,7 @@ const Report = () => {
       return;
     }
     //Api to send report
-    createReportApi({context: contextReportText, idbook: id})
+    createReportApi({idBook: id, motivation: contextReportText})
       .then(res => {
         navigate(`/books/${id}`);
       })
