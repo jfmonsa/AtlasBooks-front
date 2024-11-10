@@ -36,7 +36,7 @@ const ChangePass = () => {
       return;
     } else if (!valPassword(pass2) || !valPassword(pass3)) {
       setError(
-        "Verifique que ambas claves tengan: minimo 8 caracteres, una mayuscula, un numero, un caracter especial",
+        "Verifique que la clave tenga: minimo 8 caracteres, máximo 20, una mayuscula, un numero y un caracter especial (@#$%^&+=).",
       );
       return;
     }
