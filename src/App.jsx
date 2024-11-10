@@ -161,9 +161,7 @@ const router = createBrowserRouter([
       {
         path: "user-results",
         element: (
-          <ProtectedRoute>
             <AdminResults />
-          </ProtectedRoute>
         ),
       },
       {
