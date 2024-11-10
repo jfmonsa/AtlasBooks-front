@@ -67,7 +67,6 @@ export const AuthProvider = ({ children }) => {
   }, [errors]);
 
   useEffect(() => {
-    console.log(user.data.user.role)
     if (user) {
       setAuthContext({ logged: isAuthenticated, role: user.data.user.role });
     }
