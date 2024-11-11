@@ -25,7 +25,8 @@ const Comments = ({comments, bookId}) => {
       if (comment.length == 0) {
         throw new Error("Error al crear el comentario");
       }
-      setBackendComents([comment.data, ...backendComents]);
+      console.log("COMMENT DATA", comment.data);
+      setBackendComents([comment.data.data, ...backendComents]);
       setActiveComent(null);
     } catch (error) {
       error.message;
@@ -39,11 +40,12 @@ const Comments = ({comments, bookId}) => {
     setBackendComents(comments);
   }, [bookId, comments]);
 
-  const deleteComment = commentId => {
+  const deleteComment = async commentId => {
     if (window.confirm("Estas seguro de querer eliminar este comentario?")) {
       deleteCommentApi(commentId).then(() => {
+        
         const updateBackendComments = backendComents.filter(
-          backendComent => backendComent.idcoment != commentId,
+          backendComent => backendComent.id != commentId,
         );
         setBackendComents(updateBackendComments);
       });
@@ -62,7 +64,7 @@ const Comments = ({comments, bookId}) => {
           ? {...backendComent, text: updatedComment.data.text}
           : backendComent,
       );
-      setBackendComents(updateBackendComments);
+      setBackendComents(updateBackendComments.data);
       setActiveComent(null);
     } catch (error) {
       error.message;
@@ -71,6 +73,7 @@ const Comments = ({comments, bookId}) => {
     }
   };
   return (
+    console.log("COMMENTS"),
     <>
       <NewComment
         submitLabel="Comentar"
@@ -90,6 +93,8 @@ const Comments = ({comments, bookId}) => {
         <div className="comments-container">
           {Array.isArray(backendComents) && backendComents.length > 0 ? (
             backendComents.map(rootComment => (
+              console.log("Backend coments", backendComents),
+              console.log("Root comment", rootComment.id),
               <Comment
                 key={rootComment.id}
                 comment={rootComment.textCommented}
