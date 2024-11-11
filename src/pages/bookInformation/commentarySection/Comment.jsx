@@ -15,18 +15,21 @@ export function Comment({
   updateComment,
 }) {
   const {user} = useAuth();
-  const userIdLogged = user.id;
+  const userIdLogged = user.data.user.id;
   const fiveMinutes = 3000;
   const timePased = new Date() - date > fiveMinutes;
-  const canEdit = userIdLogged == userId && !timePased;
+  const canEdit = (userIdLogged == userId) && !timePased;
   const canDelete = userIdLogged == userId && !timePased;
   const createdAt = user.date ? user.date.split("T")[0] : [];
   const isEditing =
     activeComent && activeComent.type == "editing" && activeComent.id == id;
+   
   const submitUpdate = text => {
     updateComment(text, id);
+    
   };
   return (
+  
     <div className="comment">
       <img
         className="comment__image"
@@ -68,7 +71,8 @@ export function Comment({
             <PrimaryBtnForm
               text="Eliminar"
               onClick={() => {
-                deleteComment(id);
+                deleteComment(comment.id);
+                console.log("deleteComment", id);
               }}
               cssClasses="baseBtn commentsBtn black2Btn"
             />
