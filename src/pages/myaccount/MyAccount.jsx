@@ -26,6 +26,9 @@ import {useEffect, useState} from "react";
 import useFetch from "../../utils/useFetch.js";
 
 import {verifyTokenRequest} from "../../api/auth.js";
+import axios from 'axios';
+import {  getBannedUser } from "../../api/apiBanUser.js";
+
 
 // Aux functions
 const SectionMyDataDatum = ({left, right}) => {
@@ -134,9 +137,29 @@ const SectionUploadABook = () => {
   );
 };
 
+
+
+
+
 const SectionOtherOpts = () => {
+  const { logout } = useAuth();
   const navigate = useNavigate();
-  const {logout} = useAuth();
+
+  const handleDeleteUser = async () => {
+    // Lógica para eliminar un usuario
+    const response = await axios.delete(`/user`)
+    console.log("RESPONSE",response)
+      .then(response => {
+      console.log("User deleted successfully:", response.data);
+      logout();
+      navigate("/login");
+      })
+      .catch(error => {
+      console.error("There was an error deleting the user!", error);
+      alert("Error deleting user: " + error.message);
+      });
+  };
+  
   const SectionOtherOptsOptions = [
     {
       toLink: "https://paypal.me/Joker222735?country.x=CO&locale.x=es_XC",
@@ -159,23 +182,26 @@ const SectionOtherOpts = () => {
       iconPath: IconShieldPass,
       text: "Cambiar contraseña",
     },
-    {
-      toLink: "/confirm-password",
-      iconPath: IconDelAccount,
-      text: "Eliminar cuenta",
-    },
   ];
+ 
 
   const handleLogout = () => {
     logout();
     navigate("/login");
   };
 
+ 
+
   const onClickOptions = [
-    {
+     {
       onClick: handleLogout,
       iconPath: IconLogout,
       text: "Cerrar sesión",
+    },
+    {
+      onClick: handleDeleteUser, 
+      iconPath: IconDelAccount,
+      text: "Eliminar cuenta",
     },
   ];
 
@@ -256,7 +282,7 @@ const MyAccount = () => {
 
   const userListsUrl = user ? `/book-lists/my-lists` : null;
   const downloadHistoryUrl = user ? `/user/download-history` : null;
-
+  console.log(user)
   const { 
     data: userListsData,
     isPending: userListsPending,
@@ -287,7 +313,7 @@ console.log("DOWNLOAD",downloadHistoryData)
         bookId: book.book_id,
         title: book.title,
         author: book.author,
-        pathBookCover: book.pathbookcover,
+        pathBookCover: book.coverImgPath,
       }));
       setDownloadHistoryBooks(filteredData); // Actualiza el estado con los datos filtrados
     }
@@ -311,6 +337,8 @@ console.log("DOWNLOAD",downloadHistoryData)
       <SectionDownloadsHistory historyBooks={downloadHistoryBooks} />
       <SectionUploadABook />
       <SectionOtherOpts />
+      
+      
     </>
   );
 };
