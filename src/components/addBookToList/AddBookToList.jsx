@@ -13,6 +13,7 @@ const handleAddDeleteBookToList = async (
   userId,
 ) => {
   try {
+    
     if (currentStatus) {
       //si esta en true, make a deletion
       const response = await axios.delete("/book-lists/remove-book", {
@@ -43,6 +44,7 @@ const AddBookToListDropMenuItem = ({
   const [mark, setMark] = useState(currentBookIn);
   const handleClick = () => {
     //cambiar el estado de la opción
+    
     handleAddDeleteBookToList(mark, listId, bookId, userId);
     setMark(!mark);
   };
@@ -67,6 +69,7 @@ const AddBookToListDropMenu = ({
   bookId,
   userId,
 }) => {
+
   return (
     <ul className={`dropMenu dropMenu--${orientation}`}>
       <li className="dropMenu--infoText"> {infoText} </li>
@@ -75,9 +78,9 @@ const AddBookToListDropMenu = ({
         options.map(option => (
           <AddBookToListDropMenuItem
             key={option.listId}
-            listTitle={option.listTitle}
+            listTitle={option.listtitle}
             listId={option.listId}
-            currentBookIn={option.currentBookIn}
+            currentBookIn={option.currentbookin}
             bookId={bookId}
             userId={userId}
           />
@@ -89,7 +92,8 @@ const AddBookToListDropMenu = ({
 const AddBookToList = ({bookId, isAuthenticated, userId}) => {
   const [open, setOpen] = useState(false);
   const {data, isPending, error} = useFetch(
-    userId ? `${baseUrl}/lists/myLists/basicInfo/${userId}/${bookId}` : null,
+    //userId ? `${baseUrl}/lists/myLists/basicInfo/${userId}/${bookId}` : null,
+    userId ? `${baseUrl}/book-lists/my-lists/${bookId}` : null
   );
 
   if (error) {
@@ -119,10 +123,10 @@ const AddBookToList = ({bookId, isAuthenticated, userId}) => {
       >
         <FaRegBookmark className="relevantInfo__icon2" />
       </span>
-      {open && (
+      {data && open && (
         <AddBookToListDropMenu
           infoText={infoTextDropMenu}
-          options={data}
+          options={data.data}
           bookId={bookId}
           userId={userId}
         />

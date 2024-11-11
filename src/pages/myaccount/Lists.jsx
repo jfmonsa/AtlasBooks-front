@@ -16,10 +16,10 @@ const Lists = ({}) => {
   if (data) {
     return (
       <>
-        <h1 className="title1">{data.title}</h1>
+        <h1 className="title1">{data.data.title}</h1>
         <h2 className="display--subheading">{data.description}</h2>
         {/* TODO: hacer un boton de acciones para editar detalles de la lista o eliminarla */}
-        <GridBooks books={data.books} />
+        <GridBooks books={data.data.books} />
       </>
     );
   }

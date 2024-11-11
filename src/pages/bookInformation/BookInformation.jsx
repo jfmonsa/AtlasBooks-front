@@ -165,7 +165,7 @@ const BookInfoSection = ({
                 <AddBookToList
                   bookId={bookId}
                   isAuthenticated={isAuthenticated}
-                  userId={user.id}
+                  userId={user.data.user.id}
                 />
               </div>
             </div>
@@ -302,7 +302,6 @@ const BookPage = () => {
   }
   if (bookData) {
     return (
-      console.log(bookData.data),
       (
         <>
           <BookInfoSection
