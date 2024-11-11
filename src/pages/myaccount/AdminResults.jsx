@@ -48,9 +48,9 @@ const TableResults = () => {
   };
 
   //Actions
-  const handleDeleteUser = (userId) => {
+  const handleDeleteUser = (userIdToBan,status) => {
     // Lógica para eliminar un usuario
-    getBannedUser({userIdToBan: userId.id, status: userId.status});
+    getBannedUser({userIdToBan, status});
   };
 
   const handleMakeAdmin = userId => {
@@ -86,7 +86,7 @@ const TableResults = () => {
   }
 
   return (
-    console.log("ROWS", rows),
+    
     <>
       <TableContainer>
         <Table stickyHeader>
@@ -102,6 +102,7 @@ const TableResults = () => {
               rows
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map(row => {
+                 
                   return (
                     <TableRow key={row.id}>
                       {columns.map((column, colIndex) => {
@@ -109,9 +110,10 @@ const TableResults = () => {
                         if (column.id === "actions") {
                           let buttonAction;
                           if (row.isActive) {
+                            console.log("ROWS", row.id);
                             buttonAction = (
                               <PrimaryBtnForm
-                                onClick={() => handleDeleteUser(row.id)}
+                                onClick={() => handleDeleteUser( row.id)}
                                 type="button"
                                 text="Bannear"
                                 cssClasses="baseBtn commentsBtn blueBtn"
@@ -120,7 +122,7 @@ const TableResults = () => {
                           } else {
                             buttonAction = (
                               <PrimaryBtnForm
-                                onClick={() => handleDeleteUser({id: row.id, status: row.isActive})}
+                                onClick={() => handleDeleteUser(row.id, row.isActive)}
                                 type="button"
                                 text="Bannear"
                                 cssClasses="baseBtn commentsBtn blueBtn"
