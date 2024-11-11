@@ -1,5 +1,5 @@
 import {NewComment} from "./NewComment";
-import {useAuth} from "../../../contexts/authContext";
+import {useAuth} from "../../../hooks/useAuth.js";
 import PrimaryBtnForm from "../../../components/buttons/primaryBtn/PrimaryBtnForm";
 
 // TODO: Revisar pq no salen las funccione de elimar y editar comentario
@@ -30,7 +30,11 @@ export function Comment({
     <div className="comment">
       <img
         className="comment__image"
-        src={user.data.user.profileImgPath ? user.data.user.profileImgPath : "../storage/usersProfilePic/default.webp"}
+        src={
+          user.data.user.profileImgPath
+            ? user.data.user.profileImgPath
+            : "../storage/usersProfilePic/default.webp"
+        }
         alt="userIcon"
       />
 

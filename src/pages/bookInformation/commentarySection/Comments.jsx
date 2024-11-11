@@ -10,7 +10,7 @@ import {
   updateComment as updateCommentApi,
 } from "../../../api/apiComments.js";
 
-import {useAuth} from "../../../contexts/authContext.jsx";
+import {useAuth} from "../../../hooks/useAuth.js";
 
 const Comments = ({comments, bookId}) => {
   const [activeComent, setActiveComent] = useState(null);
@@ -88,7 +88,7 @@ const Comments = ({comments, bookId}) => {
         <div className="loading">Cargando...</div>
       ) : (
         <div className="comments-container">
-         {Array.isArray(backendComents) && backendComents.length > 0 ? (
+          {Array.isArray(backendComents) && backendComents.length > 0 ? (
             backendComents.map(rootComment => (
               <Comment
                 key={rootComment.id}

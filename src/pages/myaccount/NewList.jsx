@@ -4,7 +4,7 @@ import InputText from "../../components/inputText/InputText.jsx";
 import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm.jsx";
 import TextArea from "../../components/inputText/TextArea.jsx";
 import Switch from "@mui/material/Switch";
-import {useAuth} from "../../contexts/authContext.jsx";
+import {useAuth} from "../../hooks/useAuth.js";
 import {useNavigate} from "react-router-dom";
 import axios from "../../api/axios.js";
 

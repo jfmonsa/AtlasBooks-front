@@ -11,10 +11,9 @@ import Select from "react-select";
 import {useNavigate} from "react-router-dom";
 
 //api related
-import baseUrl from "../../api/baseUrl.js";
 import useFetch from "../../utils/useFetch.js";
 import axios from "../../api/axios.js";
-import {useAuth} from "../../contexts/authContext.jsx";
+import {useAuth} from "../../hooks/useAuth.js";
 
 //others
 import {useState, useEffect} from "react";
@@ -29,7 +28,11 @@ const SubCategorySelect = ({
     data: subCatData,
     isPending: subCatIsPending,
     error: subCatError,
-  } = useFetch(selectedCategory ? `book-categories/subcategories/${selectedCategory}` : null);
+  } = useFetch(
+    selectedCategory
+      ? `book-categories/subcategories/${selectedCategory}`
+      : null,
+  );
   useEffect(() => {
     if (subCatData && onSubCategoriesChange) {
       onSubCategoriesChange([]); // Clear selected subcategories when category changes
@@ -44,7 +47,6 @@ const SubCategorySelect = ({
     return <p>Loading subcategories...</p>;
   } else if (subCatData) {
     return (
-    
       <>
         <label className="input__label" htmlFor="subcategories">
           Subcategorias
@@ -132,8 +134,10 @@ const UploadBook = () => {
       formData.append("numberOfPages", nPages);
       formData.append("publisher", publisher);
       authors.forEach(author => formData.append("authors", author));
-  languages.forEach(lang => formData.append("languages", lang.value));
-  selectedSubCategories.forEach(subCat => formData.append("subcategoryIds", subCat.value));
+      languages.forEach(lang => formData.append("languages", lang.value));
+      selectedSubCategories.forEach(subCat =>
+        formData.append("subcategoryIds", subCat.value),
+      );
 
       // Añadir la imagen de portada al FormData
       formData.append("cover", coverBookImage);
@@ -146,10 +150,10 @@ const UploadBook = () => {
       //Realizar la solicitud POST
       const response = await axios.post("/book", formData, {
         headers: {
-         "Content-Type": "multipart/form-data",
+          "Content-Type": "multipart/form-data",
         },
       });
-      console.log(formData)
+      console.log(formData);
       // Manejar la respuesta  response.data
       //if the book creating was done successfully then clear de inputs
       alert("Libro creado exitosamente!");
@@ -209,7 +213,7 @@ const UploadBook = () => {
     isPending: catIsPending,
     error: catError,
   } = useFetch(`/book-categories`);
-  
+
   useEffect(() => {
     setSelectedSubCategories([]);
   }, [selectedCategory]);

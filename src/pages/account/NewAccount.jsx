@@ -10,11 +10,11 @@ import {
   valNoEmpty,
   valPassword,
 } from "../../utils/validateFormFields.js";
-import {useAuth} from "../../contexts/authContext.jsx";
+import {useAuth} from "../../hooks/useAuth.js";
 import {useNavigate} from "react-router-dom";
 import PrimaryBtnLink from "../../components/buttons/primaryBtn/PrimaryBtnLink.jsx";
 
-const NewAccount = ({}) => {
+const NewAccount = () => {
   const [userName, setUserName] = useState("");
   const [userNick, setUserNick] = useState("");
   const [userEmail, setUserEmail] = useState("");
@@ -80,7 +80,6 @@ const NewAccount = ({}) => {
       password: userPass1,
       country: countryCode,
     });
-    
   };
 
   return (

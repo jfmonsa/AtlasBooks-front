@@ -5,8 +5,8 @@ import Card from "../../components/card/Card.jsx";
 import {useParams} from "react-router-dom";
 import useFetch from "../../utils/useFetch.js";
 import axios from "./../../api/axios.js";
-import {useAuth} from "../../contexts/authContext.jsx";
-import {rateBookApi,getBookRatingApi} from "../../api/rateBook.js";
+import {useAuth} from "../../hooks/useAuth.js";
+import {rateBookApi, getBookRatingApi} from "../../api/rateBook.js";
 
 //Rate starts
 import {AiFillStar, AiOutlineStar} from "react-icons/ai";
@@ -33,7 +33,6 @@ import Slider from "../../components/slider/Slider.jsx";
 import Comments from "./commentarySection/Comments.jsx";
 
 //Aux functions
-
 
 const HeartButton = ({className}) => {
   const [likeBook, setLikeBook] = useState(false);
@@ -64,11 +63,7 @@ const iconMap = {
   EPUB: EpubIcon,
 };
 
-
-
-const BookInfoSection = (
-  
-  {
+const BookInfoSection = ({
   bookId,
   bookName,
   authorName,
@@ -84,7 +79,7 @@ const BookInfoSection = (
   vol = 1,
   bookImg,
   numComments,
-  bookFiles ,
+  bookFiles,
   fileName,
 }) => {
   const {isAuthenticated, user} = useAuth();
@@ -119,8 +114,8 @@ const BookInfoSection = (
         // a.click();
         // document.body.removeChild(a);
         // URL.revokeObjectURL(objectURL);
-        const urlFile = response.data.data.fileCloudUrl
-        window.open(urlFile , '_blank');
+        const urlFile = response.data.data.fileCloudUrl;
+        window.open(urlFile, "_blank");
       } catch (error) {
         console.error("Error downloading file:", error);
         alert("An error occurred while downloading the file.");
@@ -226,7 +221,6 @@ const RateStarsSection = ({id}) => {
         const rateData = await getBookRatingApi(id, user?.user.data.user.id);
         setRate(rateData.data.data.rate);
         console.log("rate", rateData.data.data.rate);
-
       } catch (error) {
         console.error("Error fetching book rating:", error);
       }
@@ -234,7 +228,7 @@ const RateStarsSection = ({id}) => {
 
     getRate();
   }, [id, user?.id]);
-    
+
   const handleRate = async index => {
     setRate(index);
     try {
@@ -309,35 +303,37 @@ const BookPage = () => {
   if (bookData) {
     return (
       console.log(bookData.data),
-      <>
-      <BookInfoSection
-        bookId={id}
-        isbn={bookData.data.isbn || "None"}
-        bookName={bookData.data.title}
-        bookDescription={bookData.data.description}
-        year={bookData.data.yearReleased}
-        vol={bookData.data.volume || "None"}
-        pages={bookData.data.numberOfPages || "None"}
-        editory={bookData.data.publisher || "None"}
-        bookImg={bookData.data.coverImgPath}
-        rank={bookData.data.rate}  
-        authorName={bookData.data.authors?.join(", ")}
-        language={bookData.data.languages?.join(", ")}
-        fileType={bookData.data.fileExtensions?.join(", ")}
-        categories={bookData.data.subcategories.subcategories
-        ?.concat(bookData.data?.subcategories.category)
-        .join(", ")}
-        numComments={bookData.data.comments.length}
-        bookFiles={bookData.data.files}
-        fileName={bookData.data.files[0]}
-      />
-      <RateStarsSection id={bookData.data.id} />
-      <BookPageRelated books={bookData.data.relatedBooks} />
-      <BookPageComments
-        comments={bookData.data.comments}
-        bookId={bookData.data.id}
-      />
-      </>
+      (
+        <>
+          <BookInfoSection
+            bookId={id}
+            isbn={bookData.data.isbn || "None"}
+            bookName={bookData.data.title}
+            bookDescription={bookData.data.description}
+            year={bookData.data.yearReleased}
+            vol={bookData.data.volume || "None"}
+            pages={bookData.data.numberOfPages || "None"}
+            editory={bookData.data.publisher || "None"}
+            bookImg={bookData.data.coverImgPath}
+            rank={bookData.data.rate}
+            authorName={bookData.data.authors?.join(", ")}
+            language={bookData.data.languages?.join(", ")}
+            fileType={bookData.data.fileExtensions?.join(", ")}
+            categories={bookData.data.subcategories.subcategories
+              ?.concat(bookData.data?.subcategories.category)
+              .join(", ")}
+            numComments={bookData.data.comments.length}
+            bookFiles={bookData.data.files}
+            fileName={bookData.data.files[0]}
+          />
+          <RateStarsSection id={bookData.data.id} />
+          <BookPageRelated books={bookData.data.relatedBooks} />
+          <BookPageComments
+            comments={bookData.data.comments}
+            bookId={bookData.data.id}
+          />
+        </>
+      )
     );
   }
 

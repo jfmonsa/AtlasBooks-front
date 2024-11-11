@@ -1,4 +1,4 @@
-import { createContext, useState, useContext, useEffect } from "react";
+import {createContext, useState, useEffect} from "react";
 import {
   registerRequest,
   loginRequest,
@@ -8,18 +8,10 @@ import {
 
 export const AuthContext = createContext({
   logged: false,
-  role: null,  // Cambiado a null para indicar que inicialmente no tiene rol
+  role: null, // Cambiado a null para indicar que inicialmente no tiene rol
 });
 
-export const useAuth = () => {
-  const context = useContext(AuthContext);
-  if (!context) {
-    throw new Error("useAuth must be used within an AuthProvider");
-  }
-  return context;
-};
-
-export const AuthProvider = ({ children }) => {
+export const AuthProvider = ({children}) => {
   const [user, setUser] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [contextValue, setAuthContext] = useState({
@@ -54,7 +46,7 @@ export const AuthProvider = ({ children }) => {
     logoutRequest();
     setIsAuthenticated(false);
     setUser(false);
-    setAuthContext({ logged: false, role: null });
+    setAuthContext({logged: false, role: null});
   };
 
   useEffect(() => {
@@ -68,7 +60,7 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     if (user) {
-      setAuthContext({ logged: isAuthenticated, role: user.data.user.role });
+      setAuthContext({logged: isAuthenticated, role: user.data.user.role});
     }
   }, [isAuthenticated, user]);
 

@@ -21,14 +21,13 @@ import SearcherNoFilters from "../../components/searcher/SearcherNoFilters.jsx";
 import {getReportsApi} from "../../api/reports.js";
 
 //imgs para libros
-import {useAuth} from "../../contexts/authContext.jsx";
+import {useAuth} from "../../hooks/useAuth.js";
 import {useEffect, useState} from "react";
 import useFetch from "../../utils/useFetch.js";
+import axios from "../../api/axios.js";
 
 import {verifyTokenRequest} from "../../api/auth.js";
-import axios from 'axios';
-import {  getBannedUser } from "../../api/apiBanUser.js";
-
+import {getBannedUser} from "../../api/apiBanUser.js";
 
 // Aux functions
 const SectionMyDataDatum = ({left, right}) => {
@@ -58,7 +57,7 @@ const SectionMyData = ({
         <SectionMyDataDatum left="País" right={country} />
         <SectionMyDataDatum left="Fecha de Registro" right={registerDate} />
         {/* TODO: mejorar los estilos del admin y la alinación en los lists, mirar como incluir la imagen de perfil */}
-        {role === "ADMIN" ?<p>Admin del sitio</p> : null}
+        {role === "ADMIN" ? <p>Admin del sitio</p> : null}
       </ul>
     </Card>
   );
@@ -137,29 +136,26 @@ const SectionUploadABook = () => {
   );
 };
 
-
-
-
-
 const SectionOtherOpts = () => {
-  const { logout } = useAuth();
+  const {logout} = useAuth();
   const navigate = useNavigate();
 
+  const handleLogout = () => {
+    logout();
+    navigate("/login");
+  };
+
   const handleDeleteUser = async () => {
-    // Lógica para eliminar un usuario
-    const response = await axios.delete(`/user`)
-    console.log("RESPONSE",response)
-      .then(response => {
+    try {
+      const response = await axios.delete(`/user`);
       console.log("User deleted successfully:", response.data);
-      logout();
-      navigate("/login");
-      })
-      .catch(error => {
+      handleLogout();
+    } catch (error) {
       console.error("There was an error deleting the user!", error);
       alert("Error deleting user: " + error.message);
-      });
+    }
   };
-  
+
   const SectionOtherOptsOptions = [
     {
       toLink: "https://paypal.me/Joker222735?country.x=CO&locale.x=es_XC",
@@ -183,23 +179,15 @@ const SectionOtherOpts = () => {
       text: "Cambiar contraseña",
     },
   ];
- 
-
-  const handleLogout = () => {
-    logout();
-    navigate("/login");
-  };
-
- 
 
   const onClickOptions = [
-     {
+    {
       onClick: handleLogout,
       iconPath: IconLogout,
       text: "Cerrar sesión",
     },
     {
-      onClick: handleDeleteUser, 
+      onClick: handleDeleteUser,
       iconPath: IconDelAccount,
       text: "Eliminar cuenta",
     },
@@ -247,23 +235,26 @@ const MyAccountAdmin = () => {
         />
       </Card>
       <Card h1Text="Reportes" h1Center>
-        {report? report.map((report, index) => {
-          return (
-            <div className="report_div" key={index}>
-              <h3>{`Id del usuario: ${report.idUser}`}</h3>
-              <p>{report.motivation}</p>
-              <p>{`Libro que reportado por el usuario: ${report.idBook}`}</p>
-            </div>
-          );
-        }):
-        <p>No hay reportes por el momento</p>}
+        {report ? (
+          report.map((report, index) => {
+            return (
+              <div className="report_div" key={index}>
+                <h3>{`Id del usuario: ${report.idUser}`}</h3>
+                <p>{report.motivation}</p>
+                <p>{`Libro que reportado por el usuario: ${report.idBook}`}</p>
+              </div>
+            );
+          })
+        ) : (
+          <p>No hay reportes por el momento</p>
+        )}
       </Card>
     </>
   );
 };
 
 const LoggedAdmin = () => {
-  const { contextValue } = useAuth();
+  const {contextValue} = useAuth();
   console.log(contextValue);
   if (contextValue.role === "ADMIN") {
     return <MyAccountAdmin />;
@@ -271,19 +262,16 @@ const LoggedAdmin = () => {
   return null;
 };
 
-// Aux Test data
-const myBookLists = [];
-
 // Main page
 const MyAccount = () => {
-  const user = useAuth().user.data.user;
+  const auth = useAuth();
+  const user = auth && auth.user ? auth.user.data.user : null;
   const [myBookLists, setMyBookLists] = useState([]);
   const [downloadHistoryBooks, setDownloadHistoryBooks] = useState([]);
 
   const userListsUrl = user ? `/book-lists/my-lists` : null;
   const downloadHistoryUrl = user ? `/user/download-history` : null;
-  console.log(user)
-  const { 
+  const {
     data: userListsData,
     isPending: userListsPending,
     error: userListsError,
@@ -293,14 +281,14 @@ const MyAccount = () => {
     isPending: downloadHistoryPending,
     error: downloadHistoryError,
   } = useFetch(downloadHistoryUrl);
-console.log("DOWNLOAD",downloadHistoryData)
+
   useEffect(() => {
     if (userListsData) {
       const filteredData = userListsData.data.map(list => ({
         id: list.id,
         listName: list.title,
         desc: list.description,
-        numBooks: list.bookCount, 
+        numBooks: list.bookCount,
         publicList: list.isPublic,
       }));
       setMyBookLists(filteredData); // Actualiza el estado con los datos filtrados
@@ -337,8 +325,6 @@ console.log("DOWNLOAD",downloadHistoryData)
       <SectionDownloadsHistory historyBooks={downloadHistoryBooks} />
       <SectionUploadABook />
       <SectionOtherOpts />
-      
-      
     </>
   );
 };

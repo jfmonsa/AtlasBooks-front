@@ -3,7 +3,8 @@ import {createBrowserRouter, RouterProvider} from "react-router-dom";
 //contexts
 import {ChangePassProvider} from "./contexts/ChangePassContext.jsx";
 import {ChangeEmailProvider} from "./contexts/ChangeEmailContext.jsx";
-import {AuthProvider, useAuth} from "./contexts/authContext.jsx";
+import {AuthProvider} from "./contexts/authContext.jsx";
+import {useAuth} from "./hooks/useAuth.js";
 import {ProtectedRoute} from "./components/protectedRoutes/ProtectedRoute.jsx";
 
 //pages
@@ -64,15 +65,11 @@ const router = createBrowserRouter([
       },
       {
         path: "recovery-account",
-        element: (
-            <RecoveryAccount />
-        ),
+        element: <RecoveryAccount />,
       },
       {
         path: "send-email",
-        element: (
-            <SendEmail />
-        ),
+        element: <SendEmail />,
       },
       {
         path: "changePass",
@@ -160,9 +157,7 @@ const router = createBrowserRouter([
       },
       {
         path: "user-results",
-        element: (
-            <AdminResults />
-        ),
+        element: <AdminResults />,
       },
       {
         path: "received-email/:token",
@@ -178,9 +173,7 @@ const router = createBrowserRouter([
       },
       {
         path: "newPassword/:token",
-        element: (
-            <NewPassword />
-        ),
+        element: <NewPassword />,
       },
       // {
       //   path: "*",

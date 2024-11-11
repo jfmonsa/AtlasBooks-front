@@ -11,7 +11,7 @@ import {
   valNoEmpty,
 } from "../../utils/validateFormFields.js";
 import ErrorFormAccountMsg from "../../components/errorFormAccountMsg/ErrorFormAccountMsg.jsx";
-import {useAuth} from "../../contexts/authContext.jsx";
+import {useAuth} from "../../hooks/useAuth.js";
 import {useNavigate} from "react-router-dom";
 
 export const Login = () => {
@@ -79,7 +79,7 @@ export const Login = () => {
 
         <ErrorFormAccountMsg error={error} index={0} />
         {loginErrors.map((error, index) => (
-          <ErrorFormAccountMsg error={error} index={index} />
+          <ErrorFormAccountMsg error={error} key={index} />
         ))}
         <PrimaryBtnForm
           text="Iniciar Sesion"
