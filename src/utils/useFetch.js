@@ -11,6 +11,12 @@ const useFetch = url => {
       setIsPending(true);
       setError(null);
 
+      // TODO: solución temproal revisar esto
+      if (!url) {
+        setIsPending(false);
+        return;
+      }
+
       try {
         const response = await axios.get(url);
         setData(response.data);
