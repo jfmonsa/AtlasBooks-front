@@ -25,7 +25,6 @@ const Comments = ({comments, bookId}) => {
       if (comment.length == 0) {
         throw new Error("Error al crear el comentario");
       }
-      console.log("COMMENT DATA", comment.data);
       setBackendComents([comment.data.data, ...backendComents]);
       setActiveComent(null);
     } catch (error) {
@@ -42,7 +41,7 @@ const Comments = ({comments, bookId}) => {
 
   const deleteComment = async commentId => {
     if (window.confirm("Estas seguro de querer eliminar este comentario?")) {
-      deleteCommentApi(commentId).then(() => {
+     await deleteCommentApi(commentId).then(() => {
         
         const updateBackendComments = backendComents.filter(
           backendComent => backendComent.id != commentId,
@@ -56,15 +55,16 @@ const Comments = ({comments, bookId}) => {
     setLoading(true);
     try {
       const updatedComment = await updateCommentApi({text, commentId});
+      console.log("TEXT",text)
       if (updatedComment.length == 0) {
         throw new Error("Error al actualizar el comentario");
       }
       const updateBackendComments = backendComents.map(backendComent =>
-        backendComent.idcoment == commentId
-          ? {...backendComent, text: updatedComment.data.text}
+        backendComent.id == commentId
+          ? {...backendComent, text: updatedComment.textCommented}
           : backendComent,
       );
-      setBackendComents(updateBackendComments.data);
+      setBackendComents(updateBackendComments);
       setActiveComent(null);
     } catch (error) {
       error.message;
@@ -73,12 +73,11 @@ const Comments = ({comments, bookId}) => {
     }
   };
   return (
-    console.log("COMMENTS"),
     <>
       <NewComment
         submitLabel="Comentar"
         handleSubmit={addComent}
-        userName={user.nickname}
+        userName={user.data.user.nickname}
         idbook={bookId}
         profilepic={
           user.data.user.profileImgPath
@@ -93,10 +92,9 @@ const Comments = ({comments, bookId}) => {
         <div className="comments-container">
          {Array.isArray(backendComents) && backendComents.length > 0 ? (
             backendComents.map(rootComment => (
-              console.log("Backend coments", backendComents),
-              console.log("Root comment", rootComment.id),
               <Comment
                 key={rootComment.id}
+                commentId={rootComment.id}
                 comment={rootComment.textCommented}
                 userId={rootComment.idUser}
                 userName={rootComment.nickname}
