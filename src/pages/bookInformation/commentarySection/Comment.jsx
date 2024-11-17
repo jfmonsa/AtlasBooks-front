@@ -20,7 +20,7 @@ export function Comment({
   const timePased = new Date() - date > fiveMinutes;
   const canEdit = (userIdLogged == userId) && !timePased;
   const canDelete = userIdLogged == userId && !timePased;
-  const createdAt = user.date ? user.date.split("T")[0] : [];
+  const createdAt = date ? date.split("T")[0] : [];
   const isEditing =
     activeComent && activeComent.type == "editing" && activeComent.id == commentId;
    
