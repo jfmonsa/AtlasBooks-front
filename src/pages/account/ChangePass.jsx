@@ -20,18 +20,18 @@ const ChangePass = () => {
   //   if(params){
   //     getChangePass(params.currentPassword, params.newPassword, params.confirmPassword);
   //   }
-  // }, []); 
+  // }, []);
 
   const handleSubmit = e => {
     e.preventDefault();
 
-    if (!valNoEmpty(pass1) || !valNoEmpty(pass2) || !valNoEmpty(pass3)) { 
+    if (!valNoEmpty(pass1) || !valNoEmpty(pass2) || !valNoEmpty(pass3)) {
       setError("Todos los campos son obligatorios");
       return;
-    }else if (pass1 == pass2) {
+    } else if (pass1 == pass2) {
       setError("La nueva contraseña no puede ser igual a la actual");
       return;
-    }else if (pass2 != pass3) {
+    } else if (pass2 != pass3) {
       setError("Verifique que ambas contraseñas ingresadas sean iguales");
       return;
     } else if (!valPassword(pass2) || !valPassword(pass3)) {
@@ -41,7 +41,11 @@ const ChangePass = () => {
       return;
     }
     //enviar datos post al api
-    createChangePass({currentPassword: pass1, newPassword: pass2, confirmPassword: pass3});
+    createChangePass({
+      currentPassword: pass1,
+      newPassword: pass2,
+      confirmPassword: pass3,
+    });
     //navegar hacia la pagina indicada
     navigate("/my-account");
   };

@@ -18,18 +18,18 @@ export function Comment({
   const userIdLogged = user.data.user.id;
   const fiveMinutes = 3000;
   const timePased = new Date() - date > fiveMinutes;
-  const canEdit = (userIdLogged == userId) && !timePased;
+  const canEdit = userIdLogged == userId && !timePased;
   const canDelete = userIdLogged == userId && !timePased;
   const createdAt = date ? date.split("T")[0] : [];
   const isEditing =
-    activeComent && activeComent.type == "editing" && activeComent.id == commentId;
-   
+    activeComent &&
+    activeComent.type == "editing" &&
+    activeComent.id == commentId;
+
   const submitUpdate = text => {
     updateComment(text, commentId);
-    
   };
   return (
-  
     <div className="comment">
       <img
         className="comment__image"

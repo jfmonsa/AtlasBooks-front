@@ -3,7 +3,6 @@ import Footer from "./components/common/footer/Footer.jsx";
 import {Outlet} from "react-router-dom";
 
 const RootLayout = () => {
-
   return (
     <>
       <Header />

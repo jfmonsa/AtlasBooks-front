@@ -3,16 +3,18 @@ import icon_mail from "../../assets/icons/icon-mail.svg";
 import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm.jsx";
 import {GetChangeEmailToken} from "../../api/apiChangeEmail.js";
 import {Link, useParams} from "react-router-dom";
-import { verifyTokenEmail} from "../../api/auth.js";
+import {verifyTokenEmail} from "../../api/auth.js";
 
 const ReceivedEmail = () => {
-
   const {token} = useParams();
-  
-  const  OnClick = async() => {
+
+  const OnClick = async () => {
     const user = await verifyTokenEmail({token});
-    GetChangeEmailToken({id: user.data.user.id, newEmail: user.data.user.newEmail});
-  }
+    GetChangeEmailToken({
+      id: user.data.user.id,
+      newEmail: user.data.user.newEmail,
+    });
+  };
 
   return (
     <>
@@ -24,7 +26,8 @@ const ReceivedEmail = () => {
 
       <img src={icon_mail} alt="" className="icon_mail" />
       <Link to="/my-account">
-        <PrimaryBtnForm onClick={OnClick}
+        <PrimaryBtnForm
+          onClick={OnClick}
           text="Confirmar"
           cssClasses="formCustomBtn purpleBtn"
           id="4"

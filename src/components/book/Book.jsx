@@ -1,7 +1,7 @@
 import "./book.css";
 import {Link} from "react-router-dom";
 
-const Book = ({title, authors, img, bookId,index}) => {
+const Book = ({title, authors, img, bookId, index}) => {
   return (
     <Link to={`/books/${bookId}`}>
       <div className="bookContainer" key={index}>

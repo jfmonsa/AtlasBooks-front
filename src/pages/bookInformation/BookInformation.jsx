@@ -145,8 +145,9 @@ const BookInfoSection = ({
           <div className="relevantInfo">
             <a className="relevantInfo__subCont" href="#rate-stars">
               <AiOutlineStar className="relevantInfo__icon1" />
-              <span className="rank__real">{rank}</span>/
-              <span className="rank__total">5.0</span>
+              <span className="rank__real">
+                {rank}
+              </span>/<span className="rank__total">5.0</span>
             </a>
 
             <div className="relevantInfo__subCont">

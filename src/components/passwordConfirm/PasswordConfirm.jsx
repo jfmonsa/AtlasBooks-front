@@ -3,9 +3,7 @@ import InputText from "../../components/inputText/InputText.jsx";
 import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm.jsx";
 import {useNavigate} from "react-router-dom";
 
-
 const ConfPassUs = () => {
-  
   const navigate = useNavigate();
   const handleSubmit = e => {
     e.preventDefault();

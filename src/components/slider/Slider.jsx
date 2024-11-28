@@ -6,7 +6,7 @@ import ArrowLeft from "../../assets/icons/icon-arrowLeft.svg";
 import ArrowRight from "../../assets/icons/icon-arrowRight.svg";
 import Book from "../book/Book.jsx";
 
-const CustomSlider = ({ books }) => {
+const CustomSlider = ({books}) => {
   const SamplePrevArrow = props => {
     const {className, onClick} = props;
     return (

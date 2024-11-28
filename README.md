@@ -15,8 +15,8 @@ PERN stack
 </p>
 
 ## Demo Video
-https://github.com/jfmonsa/AtlasBooks-front/assets/81452967/8dd09f11-87a3-45e9-8479-ac7943c542ac
 
+https://github.com/jfmonsa/AtlasBooks-front/assets/81452967/8dd09f11-87a3-45e9-8479-ac7943c542ac
 
 ## Table of Contents
 

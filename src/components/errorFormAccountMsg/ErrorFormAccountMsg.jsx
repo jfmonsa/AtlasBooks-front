@@ -2,7 +2,7 @@ import "./errorFormAccountMsg.css";
 
 const ErrorFormAccountMsg = ({error, index = 1}) => {
   let errorMessage = error;
-  if (typeof error === 'object' && error !== null && 'error' in error) {
+  if (typeof error === "object" && error !== null && "error" in error) {
     errorMessage = error.error;
   }
 

@@ -54,7 +54,7 @@
   border-radius: var(--border-rad-comp);
 }
 
-.report_div{
+.report_div {
   display: flex;
   justify-content: space-between;
   align-items: center;

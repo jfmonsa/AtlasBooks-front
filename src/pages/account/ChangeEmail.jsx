@@ -18,10 +18,10 @@ const ChangeEmail = () => {
   const handleSubmit = e => {
     e.preventDefault();
 
-    if (!valNoEmpty(mail1) || !valNoEmpty(mail2)) { 
+    if (!valNoEmpty(mail1) || !valNoEmpty(mail2)) {
       setError("Todos los campos son obligatorios");
       return;
-    }else if (mail1 === mail2) {
+    } else if (mail1 === mail2) {
       setError("Verifique que los correos ingresadas sean diferentes");
       return;
     } else if (!valEmail(mail1) || !valEmail(mail2)) {

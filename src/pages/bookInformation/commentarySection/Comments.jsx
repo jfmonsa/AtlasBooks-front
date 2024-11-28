@@ -19,14 +19,13 @@ const Comments = ({comments, bookId}) => {
   const [loading, setLoading] = useState(false);
 
   const addComent = async body => {
-   
     setLoading(true);
     try {
       const comment = await createCommentApi(body);
       if (comment.length == 0) {
         throw new Error("Error al crear el comentario");
       }
-    console.log("comment", comment);
+      console.log("comment", comment);
       setBackendComents([comment.data.data[0], ...backendComents]);
       setActiveComent(null);
     } catch (error) {
@@ -43,8 +42,7 @@ const Comments = ({comments, bookId}) => {
 
   const deleteComment = async commentId => {
     if (window.confirm("Estas seguro de querer eliminar este comentario?")) {
-     await deleteCommentApi(commentId).then(() => {
-        
+      await deleteCommentApi(commentId).then(() => {
         const updateBackendComments = backendComents.filter(
           backendComent => backendComent.id != commentId,
         );
@@ -60,9 +58,12 @@ const Comments = ({comments, bookId}) => {
       if (updatedComment.length == 0) {
         throw new Error("Error al actualizar el comentario");
       }
-      const updateBackendComments = backendComents.map(
-        backendComent => backendComent.id == commentId
-          ? {...backendComent, textCommented: updatedComment.data.data.textCommented}
+      const updateBackendComments = backendComents.map(backendComent =>
+        backendComent.id == commentId
+          ? {
+              ...backendComent,
+              textCommented: updatedComment.data.data.textCommented,
+            }
           : backendComent,
       );
       setBackendComents(updateBackendComments);
@@ -75,53 +76,55 @@ const Comments = ({comments, bookId}) => {
   };
   return (
     console.log("backendComents", backendComents),
-    <>
-      {user ? (
-        <NewComment
-        submitLabel="Comentar"
-        handleSubmit={addComent}
-        userName={user.data.user.nickname}
-        idbook={bookId}
-        profilepic={
-          user.data.user.profileImgPath
-            ? user.data.user.profileImgPath
-            : "../storage/usersProfilePic/default.webp"
-        }/>) : (
+    (
+      <>
+        {user ? (
+          <NewComment
+            submitLabel="Comentar"
+            handleSubmit={addComent}
+            userName={user.data.user.nickname}
+            idbook={bookId}
+            profilepic={
+              user.data.user.profileImgPath
+                ? user.data.user.profileImgPath
+                : "../storage/usersProfilePic/default.webp"
+            }
+          />
+        ) : (
           <p> Debes estar logueado para poder comentar </p>
-        )
-        }
-      <h2 className="card__h1">Otros Comentarios</h2>
-      {loading ? (
-        <div className="loading">Cargando...</div>
-      ) : (
-        <div className="comments-container">
-        
-          {Array.isArray(backendComents) && backendComents.length > 0 ? (
-            backendComents.map(rootComment => (
-              <Comment
-                key={rootComment.id}
-                commentId={rootComment.id}
-                comment={rootComment.textCommented}
-                userId={rootComment.idUser}
-                userName={rootComment.nickname}
-                date={rootComment.dateCommented}
-                deleteComment={deleteComment}
-                activeComent={activeComent}
-                updateComment={updateComment}
-                setActiveComent={setActiveComent}
-                profilepic={
-                  rootComment.profileImgPath
-                    ? rootComment.profileImgPath
-                    : "../storage/usersProfilePic/default.webp"
-                }
-              />
-            ))
-          ) : (
-            <p>No comments available</p>
-          )}
-        </div>
-      )}
-    </>
+        )}
+        <h2 className="card__h1">Otros Comentarios</h2>
+        {loading ? (
+          <div className="loading">Cargando...</div>
+        ) : (
+          <div className="comments-container">
+            {Array.isArray(backendComents) && backendComents.length > 0 ? (
+              backendComents.map(rootComment => (
+                <Comment
+                  key={rootComment.id}
+                  commentId={rootComment.id}
+                  comment={rootComment.textCommented}
+                  userId={rootComment.idUser}
+                  userName={rootComment.nickname}
+                  date={rootComment.dateCommented}
+                  deleteComment={deleteComment}
+                  activeComent={activeComent}
+                  updateComment={updateComment}
+                  setActiveComent={setActiveComent}
+                  profilepic={
+                    rootComment.profileImgPath
+                      ? rootComment.profileImgPath
+                      : "../storage/usersProfilePic/default.webp"
+                  }
+                />
+              ))
+            ) : (
+              <p>No comments available</p>
+            )}
+          </div>
+        )}
+      </>
+    )
   );
 };
 export default Comments;
