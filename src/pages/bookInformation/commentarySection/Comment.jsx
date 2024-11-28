@@ -4,7 +4,7 @@ import PrimaryBtnForm from "../../../components/buttons/primaryBtn/PrimaryBtnFor
 
 // TODO: Revisar pq no salen las funccione de elimar y editar comentario
 export function Comment({
-  id,
+  commentId,
   comment,
   userId,
   userName,
@@ -15,18 +15,21 @@ export function Comment({
   updateComment,
 }) {
   const {user} = useAuth();
-  const userIdLogged = user.id;
+  const userIdLogged = user.data.user.id;
   const fiveMinutes = 3000;
   const timePased = new Date() - date > fiveMinutes;
-  const canEdit = userIdLogged == userId && !timePased;
+  const canEdit = (userIdLogged == userId) && !timePased;
   const canDelete = userIdLogged == userId && !timePased;
-  const createdAt = user.date ? user.date.split("T")[0] : [];
+  const createdAt = date ? date.split("T")[0] : [];
   const isEditing =
-    activeComent && activeComent.type == "editing" && activeComent.id == id;
+    activeComent && activeComent.type == "editing" && activeComent.id == commentId;
+   
   const submitUpdate = text => {
-    updateComment(text, id);
+    updateComment(text, commentId);
+    
   };
   return (
+  
     <div className="comment">
       <img
         className="comment__image"
@@ -53,18 +56,18 @@ export function Comment({
             hasCancelButton
             initialText={comment}
             handleSubmit={text => {
-              submitUpdate(text);
+              submitUpdate(text.text, commentId);
             }}
             handleCancel={() => setActiveComent(null)}
             userName={userName}
-            idcomment={id}
+            idcomment={commentId}
           />
         )}
         <div className="comment__btns">
           {canEdit && (
             <PrimaryBtnForm
               text="Editar"
-              onClick={() => setActiveComent({id: id, type: "editing"})}
+              onClick={() => setActiveComent({id: commentId, type: "editing"})}
               cssClasses="baseBtn commentsBtn blueBtn"
             />
           )}
@@ -72,7 +75,8 @@ export function Comment({
             <PrimaryBtnForm
               text="Eliminar"
               onClick={() => {
-                deleteComment(id);
+                deleteComment(commentId);
+                console.log("deleteComment", commentId);
               }}
               cssClasses="baseBtn commentsBtn black2Btn"
             />

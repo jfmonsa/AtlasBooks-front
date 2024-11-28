@@ -162,11 +162,11 @@ const BookInfoSection = ({
               <div>
                 <HeartButton className="relevantInfo__icon2 heartLike" />
                 {/*TODO: Agregarle un estado de disabled cuando el usuario no esta autenticado*/}
-                <AddBookToList
+                {user ? (<AddBookToList
                   bookId={bookId}
                   isAuthenticated={isAuthenticated}
-                  userId={user.id}
-                />
+                  userId={user.data.user.id}
+                />) : null}
               </div>
             </div>
           </div>
@@ -302,7 +302,6 @@ const BookPage = () => {
   }
   if (bookData) {
     return (
-      console.log(bookData.data),
       (
         <>
           <BookInfoSection

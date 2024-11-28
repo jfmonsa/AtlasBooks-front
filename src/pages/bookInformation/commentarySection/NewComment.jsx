@@ -23,7 +23,7 @@ export function NewComment({
     <div className="comment comment--new">
       <img
         className="comment__image comment__image--i"
-        src={`http://localhost:3000/storage/${profilepic}`}
+        src={profilepic}
         alt="userIcon"
       />
       <form className="comment__right" onSubmit={onSubmit}>

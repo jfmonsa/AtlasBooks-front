@@ -144,7 +144,6 @@ const SectionOtherOpts = () => {
   const handleDeleteUser = async () => {
     try {
       const response = await axios.delete(`/user`);
-      console.log("User deleted successfully:", response.data);
       handleLogout();
     } catch (error) {
       console.error("There was an error deleting the user!", error);
@@ -251,7 +250,6 @@ const MyAccountAdmin = () => {
 
 const LoggedAdmin = () => {
   const {contextValue} = useAuth();
-  console.log(contextValue);
   if (contextValue.role === "ADMIN") {
     return <MyAccountAdmin />;
   }

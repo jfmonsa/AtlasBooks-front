@@ -10,11 +10,11 @@ const GridBooks = ({books}) => {
       <div className="gridBooks__grid">
         {books.map(book => (
           <Book
-            bookId={book.bookId}
-            key={book.bookId}
+            bookId={book.id || book.bookId}
+            key={book.id || book.bookId}
             title={book.title}
             authors={book.authors}
-            img={book.pathBookCover}
+            img={book.pathBookCover || book.coverImgPath}
           />
         ))}
       </div>

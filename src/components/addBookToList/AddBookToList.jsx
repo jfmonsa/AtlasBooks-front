@@ -37,6 +37,7 @@ const AddBookToListDropMenuItem = ({
   const [mark, setMark] = useState(currentBookIn);
   const handleClick = () => {
     //cambiar el estado de la opción
+
     handleAddDeleteBookToList(mark, listId, bookId, userId);
     setMark(!mark);
   };
@@ -69,9 +70,9 @@ const AddBookToListDropMenu = ({
         options.map(option => (
           <AddBookToListDropMenuItem
             key={option.listId}
-            listTitle={option.listTitle}
+            listTitle={option.listtitle}
             listId={option.listId}
-            currentBookIn={option.currentBookIn}
+            currentBookIn={option.currentbookin}
             bookId={bookId}
             userId={userId}
           />
@@ -82,8 +83,9 @@ const AddBookToListDropMenu = ({
 
 const AddBookToList = ({bookId, isAuthenticated, userId}) => {
   const [open, setOpen] = useState(false);
+
   const {data, error} = useFetch(
-    userId ? `/lists/myLists/basicInfo/${userId}/${bookId}` : null,
+    userId ? `/book-lists/my-lists/${bookId}` : null,
   );
 
   if (error) {
@@ -113,10 +115,10 @@ const AddBookToList = ({bookId, isAuthenticated, userId}) => {
       >
         <FaRegBookmark className="relevantInfo__icon2" />
       </span>
-      {open && (
+      {data && open && (
         <AddBookToListDropMenu
           infoText={infoTextDropMenu}
-          options={data}
+          options={data.data}
           bookId={bookId}
           userId={userId}
         />
