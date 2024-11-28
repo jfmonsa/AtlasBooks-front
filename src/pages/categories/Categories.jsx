@@ -1,4 +1,3 @@
-
 import Searcher from "../../components/searcher/Searcher";
 import Card from "../../components/card/Card";
 import baseUrl from "../../api/baseUrl.js";
@@ -18,9 +17,7 @@ const Catergorie = ({primaryCategory, secundaryCategories}) => {
       {secundaryCategories.map(sub => {
         return (
           <li key={sub.id} className="category__subcategory">
-            <Link to={`/search-results?subCategory=${sub.id}`}>
-              {sub.name}
-            </Link>
+            <Link to={`/search-results?subCategory=${sub.id}`}>{sub.name}</Link>
           </li>
         );
       })}
@@ -47,8 +44,10 @@ const Categories = ({catLits}) => {
   );
 };
 
-const CategoriesMain = ({}) => {
-  const {error, isPending, data} = useFetch(`${baseUrl}/book-categories/groupped`);
+const CategoriesMain = () => {
+  const {error, isPending, data} = useFetch(
+    `${baseUrl}/book-categories/groupped`,
+  );
   if (error) {
     return <p>{error}</p>;
   }
@@ -67,4 +66,3 @@ const CategoriesMain = ({}) => {
 };
 
 export default CategoriesMain;
-

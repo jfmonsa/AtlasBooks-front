@@ -1,6 +1,6 @@
 import "./dragAndDropFiles.css";
 import {useDropzone} from "react-dropzone";
-import {useState, useCallback, useEffect} from "react";
+import {useState, useCallback} from "react";
 import addFileIcon from "../../assets/icons/dragAndDropFile.svg";
 import FileItemForInputFile from "../fileItemForInputFile/FileItemForInputFile";
 

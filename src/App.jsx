@@ -4,12 +4,10 @@ import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import {ChangePassProvider} from "./contexts/ChangePassContext.jsx";
 import {ChangeEmailProvider} from "./contexts/ChangeEmailContext.jsx";
 import {AuthProvider} from "./contexts/authContext.jsx";
-import {useAuth} from "./hooks/useAuth.js";
 import {ProtectedRoute} from "./components/protectedRoutes/ProtectedRoute.jsx";
 
 //pages
 import Home from "./pages/home/Home.jsx";
-import Error from "./pages/error/Error.jsx";
 import BookSearchResults from "./pages/bookSearchResults/bookSearchResults.jsx";
 import UploadBook from "./pages/uploadBook/UploadBook.jsx";
 import NewList from "./pages/myaccount/NewList.jsx";
@@ -39,12 +37,13 @@ import Categories from "./pages/categories/Categories.jsx";
 //layouts
 import RootLayout from "./RootLayout.jsx";
 
-const LoggedAdminRouting = () => {
-  const {contextValue} = useAuth();
-  const context = contextValue;
-  if (context.admin) return <AdminResults />;
-  else return <Error />;
-};
+// TODO: revisar esto no se esta usando
+// const LoggedAdminRouting = () => {
+//   const {contextValue} = useAuth();
+//   const context = contextValue;
+//   if (context.admin) return <AdminResults />;
+//   else return <Error />;
+// };
 
 const router = createBrowserRouter([
   {

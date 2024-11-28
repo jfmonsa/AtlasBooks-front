@@ -49,7 +49,6 @@ const IconDropMenu = ({
 const IconDropDown = ({
   icon,
   options,
-  cssClassIcon,
   menuContainerCssClass,
   defaultTextNoData = "No hay datos",
 }) => {

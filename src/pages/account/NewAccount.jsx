@@ -23,7 +23,7 @@ const NewAccount = () => {
   const [countryCode, setCountryCode] = useState(null);
 
   const navigate = useNavigate();
-  const {signup, isAuthenticated, errors: RegisterErrors, user} = useAuth();
+  const {signup, isAuthenticated, errors: RegisterErrors} = useAuth();
   const [error, setError] = useState(null);
 
   useEffect(() => {

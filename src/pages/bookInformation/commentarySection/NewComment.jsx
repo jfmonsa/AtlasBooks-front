@@ -1,11 +1,8 @@
 import {useState} from "react";
-import DefaultUser from "../../../assets/img/user-i.png";
 import PrimaryBtnForm from "../../../components/buttons/primaryBtn/PrimaryBtnForm";
 
 export function NewComment({
   handleSubmit,
-  handleUpdate,
-  submitLabel,
   userName,
   hasCancelButton = true,
   initialText = "",

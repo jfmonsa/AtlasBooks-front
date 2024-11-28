@@ -16,7 +16,7 @@ import {
   TableRow,
 } from "@mui/material";
 import {useState, useEffect} from "react";
-import { getBannedUser } from "../../api/apiBanUser.js";
+import {getBannedUser} from "../../api/apiBanUser.js";
 
 const TableResults = () => {
   //Aux functions
@@ -48,15 +48,16 @@ const TableResults = () => {
   };
 
   //Actions
-  const handleDeleteUser = (userIdToBan,status) => {
+  const handleDeleteUser = (userIdToBan, status) => {
     // Lógica para eliminar un usuario
     getBannedUser({userIdToBan, status});
   };
 
-  const handleMakeAdmin = userId => {
-    // Lógica para hacer administrador a un usuario
-    console.log(`Hacer administrador al usuario con ID: ${userId}`);
-  };
+  // TODO: what is this for?
+  // const handleMakeAdmin = userId => {
+  //   // Lógica para hacer administrador a un usuario
+  //   console.log(`Hacer administrador al usuario con ID: ${userId}`);
+  // };
 
   //states
   const [rows, setRows] = useState([]);
@@ -86,7 +87,6 @@ const TableResults = () => {
   }
 
   return (
-    
     <>
       <TableContainer>
         <Table stickyHeader>
@@ -102,7 +102,6 @@ const TableResults = () => {
               rows
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map(row => {
-                 
                   return (
                     <TableRow key={row.id}>
                       {columns.map((column, colIndex) => {
@@ -113,7 +112,7 @@ const TableResults = () => {
                             console.log("ROWS", row.id);
                             buttonAction = (
                               <PrimaryBtnForm
-                                onClick={() => handleDeleteUser( row.id)}
+                                onClick={() => handleDeleteUser(row.id)}
                                 type="button"
                                 text="Bannear"
                                 cssClasses="baseBtn commentsBtn blueBtn"
@@ -122,7 +121,9 @@ const TableResults = () => {
                           } else {
                             buttonAction = (
                               <PrimaryBtnForm
-                                onClick={() => handleDeleteUser(row.id, row.isActive)}
+                                onClick={() =>
+                                  handleDeleteUser(row.id, row.isActive)
+                                }
                                 type="button"
                                 text="Bannear"
                                 cssClasses="baseBtn commentsBtn blueBtn"

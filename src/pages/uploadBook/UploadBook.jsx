@@ -8,7 +8,6 @@ import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm.j
 import DragAndDropFiles from "../../components/DragAndDropFiles/DragAndDropFiles.jsx";
 import InputFileBtn from "../../components/inputFileBtn/InputFileBtn.jsx";
 import Select from "react-select";
-import {useNavigate} from "react-router-dom";
 
 //api related
 import useFetch from "../../utils/useFetch.js";
@@ -75,7 +74,6 @@ const SubCategorySelect = ({
 };
 const UploadBook = () => {
   const {isAuthenticated} = useAuth();
-  const navigate = useNavigate();
 
   //form fields
   const [bookTitle, setBookTitle] = useState("");

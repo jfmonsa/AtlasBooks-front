@@ -1,16 +1,14 @@
-import React, {useState} from "react";
+import {useState} from "react";
 import Card from "../../components/card/Card.jsx";
 import InputText from "../../components/inputText/InputText.jsx";
 import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm.jsx";
 import TextArea from "../../components/inputText/TextArea.jsx";
 import Switch from "@mui/material/Switch";
-import {useAuth} from "../../hooks/useAuth.js";
 import {useNavigate} from "react-router-dom";
 import axios from "../../api/axios.js";
 
 const CreateList = () => {
   const navigate = useNavigate();
-  const {user} = useAuth();
   const [titulo, setTitulo] = useState("");
   const [descripcion, setDescripcion] = useState("");
   const [isPublic, setIsPublic] = useState(false);
@@ -43,7 +41,7 @@ const CreateList = () => {
     }
 
     try {
-      const response = await axios.post("/book-lists", {
+      await axios.post("/book-lists", {
         title: titulo,
         description: descripcion,
         isPublic: isPublic,

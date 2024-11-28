@@ -1,7 +1,6 @@
 import "./searcher.css";
 import PrimaryBtnForm from "../buttons/primaryBtn/PrimaryBtnForm";
 import {useNavigate} from "react-router-dom";
-import {useState} from "react";
 import {SEARCH} from "../../utils/placeholder.js";
 
 //Main functions

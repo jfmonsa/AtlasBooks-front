@@ -23,7 +23,7 @@ export const Login = () => {
 
   useEffect(() => {
     if (isAuthenticated) navigate("/");
-  }, [isAuthenticated]);
+  }, [isAuthenticated, navigate]);
 
   //El error es una string, cuando no hay error es null,
   //cuando el error existe se settea a una string que se va mostrar

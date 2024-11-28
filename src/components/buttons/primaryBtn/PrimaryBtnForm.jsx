@@ -5,7 +5,6 @@ const PrimaryBtnForm = ({
   children,
   cssClasses,
   onClick,
-  disabled = false,
   type = "submit",
 }) => {
   return (

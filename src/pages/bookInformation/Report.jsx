@@ -21,10 +21,10 @@ const Report = () => {
     }
     //Api to send report
     createReportApi({idBook: id, motivation: contextReportText})
-      .then(res => {
+      .then(() => {
         navigate(`/books/${id}`);
       })
-      .catch(err => {
+      .catch(() => {
         setError("Ha ocurrido un error al enviar el reporte.");
       });
   };

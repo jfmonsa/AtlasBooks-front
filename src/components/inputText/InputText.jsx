@@ -4,7 +4,6 @@ const InputText = ({
   text,
   holder,
   type = "text",
-  name,
   value = "",
   id,
   onChange,

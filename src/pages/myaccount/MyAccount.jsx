@@ -26,9 +26,6 @@ import {useEffect, useState} from "react";
 import useFetch from "../../utils/useFetch.js";
 import axios from "../../api/axios.js";
 
-import {verifyTokenRequest} from "../../api/auth.js";
-import {getBannedUser} from "../../api/apiBanUser.js";
-
 // Aux functions
 const SectionMyDataDatum = ({left, right}) => {
   return (
@@ -46,7 +43,6 @@ const SectionMyData = ({
   country,
   registerDate,
   role,
-  pathProfilePic = null,
 }) => {
   return (
     <Card h1Text="Mis datos">

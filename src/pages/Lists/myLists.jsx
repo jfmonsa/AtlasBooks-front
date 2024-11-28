@@ -1,17 +1,8 @@
-import React from "react";
 import {Link, useSearchParams} from "react-router-dom";
-import baseUrl from "../../api/baseUrl.js";
 import useFetch from "../../utils/useFetch.js";
 import Searcher2 from "../../components/searcher/searcher2.jsx";
 
-const ListResult = ({
-  id,
-  title,
-  descriptionL,
-  dateL,
-  idUserCreator,
-  urlList,
-}) => {
+const ListResult = ({title, descriptionL, dateL, idUserCreator, urlList}) => {
   return (
     <Link to={urlList}>
       <div className="bookResult">

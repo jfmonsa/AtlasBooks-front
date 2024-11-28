@@ -1,21 +1,16 @@
 //save to list component
 import {useState} from "react";
-import {FaRegBookmark, FaBookmark} from "react-icons/fa";
+import {FaRegBookmark} from "react-icons/fa";
 import axios from "./../../api/axios.js";
 import useFetch from "../../utils/useFetch.js";
 import baseUrl from "../../api/baseUrl.js";
 import Checkbox from "@mui/material/Checkbox";
 
-const handleAddDeleteBookToList = async (
-  currentStatus,
-  listId,
-  bookId,
-  userId,
-) => {
+const handleAddDeleteBookToList = async (currentStatus, listId, bookId) => {
   try {
     if (currentStatus) {
       //si esta en true, make a deletion
-      const response = await axios.delete("/book-lists/remove-book", {
+      await axios.delete("/book-lists/remove-book", {
         data: {
           bookId,
           listId,
@@ -23,7 +18,7 @@ const handleAddDeleteBookToList = async (
       });
     } else {
       //si esta en false, make an insertion
-      const response = await axios.put("/book-lists/add-book", {
+      await axios.put("/book-lists/add-book", {
         bookId,
         listId,
       });
@@ -88,7 +83,7 @@ const AddBookToListDropMenu = ({
 
 const AddBookToList = ({bookId, isAuthenticated, userId}) => {
   const [open, setOpen] = useState(false);
-  const {data, isPending, error} = useFetch(
+  const {data, error} = useFetch(
     userId ? `${baseUrl}/lists/myLists/basicInfo/${userId}/${bookId}` : null,
   );
 

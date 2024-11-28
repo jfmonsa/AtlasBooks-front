@@ -3,8 +3,6 @@ import PrimaryBtnForm from "../buttons/primaryBtn/PrimaryBtnForm";
 import {useNavigate} from "react-router-dom";
 import {useState} from "react";
 import Select from "react-select";
-import MultiSelectSearch from "../multiSelectSearch/MultiSelectSearch";
-import MultiSelectNoSearch from "../multiSelecNoSearch/MultiSelectNoSearch";
 import {SEARCH} from "../../utils/placeholder.js";
 import {mainLanguages} from "../../utils/languagesArray.js";
 
@@ -21,7 +19,7 @@ const genYearArray = (to = 1799) => {
 const Years = genYearArray();
 
 //Main function
-const Searcher = ({holder = SEARCH, toUrl}) => {
+const Searcher = ({holder = SEARCH}) => {
   const navigate = useNavigate();
   const handleSearch = event => {
     event.preventDefault();

@@ -21,7 +21,7 @@ const InputFileBtn = ({onFilesSelected, id, className}) => {
     onFilesSelected(null); // Llama al callback con null
   };
 
-  const {getRootProps, getInputProps, isDragActive} = useDropzone({
+  const {getRootProps, getInputProps} = useDropzone({
     onDrop,
     multiple: false, // Solo acepta un archivo
   });

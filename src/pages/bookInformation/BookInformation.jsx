@@ -227,7 +227,7 @@ const RateStarsSection = ({id}) => {
     };
 
     getRate();
-  }, [id, user?.id]);
+  }, [id, user.id, user?.user.data.user.id]);
 
   const handleRate = async index => {
     setRate(index);
