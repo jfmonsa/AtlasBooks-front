@@ -3,7 +3,6 @@ import {useState} from "react";
 import {FaRegBookmark} from "react-icons/fa";
 import axios from "./../../api/axios.js";
 import useFetch from "../../utils/useFetch.js";
-import baseUrl from "../../api/baseUrl.js";
 import Checkbox from "@mui/material/Checkbox";
 
 const handleAddDeleteBookToList = async (currentStatus, listId, bookId) => {
@@ -84,7 +83,7 @@ const AddBookToListDropMenu = ({
 const AddBookToList = ({bookId, isAuthenticated, userId}) => {
   const [open, setOpen] = useState(false);
   const {data, error} = useFetch(
-    userId ? `${baseUrl}/lists/myLists/basicInfo/${userId}/${bookId}` : null,
+    userId ? `/lists/myLists/basicInfo/${userId}/${bookId}` : null,
   );
 
   if (error) {
