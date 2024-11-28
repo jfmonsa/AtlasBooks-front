@@ -27,4 +27,5 @@ dist-ssr
 *.sln
 *.sw?
 
-# cluttered compile html and css files
+# Husky generated files
+.husky/_
