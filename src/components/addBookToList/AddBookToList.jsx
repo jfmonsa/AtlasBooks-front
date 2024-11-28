@@ -2,7 +2,7 @@
 import {useState} from "react";
 import {FaRegBookmark} from "react-icons/fa";
 import axios from "./../../api/axios.js";
-import useFetch from "../../utils/useFetch.js";
+import useFetch from "../../hooks/useFetch.js";
 import Checkbox from "@mui/material/Checkbox";
 
 const handleAddDeleteBookToList = async (currentStatus, listId, bookId) => {

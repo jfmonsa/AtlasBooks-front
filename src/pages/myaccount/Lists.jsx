@@ -2,7 +2,7 @@ import GridBooks from "../../components/gridBooks/GridBooks";
 
 //to fetch data
 import {useParams} from "react-router-dom";
-import useFetch from "../../utils/useFetch.js";
+import useFetch from "../../hooks/useFetch.js";
 
 const Lists = () => {
   const {idList} = useParams();

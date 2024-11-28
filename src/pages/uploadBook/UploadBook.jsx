@@ -10,7 +10,7 @@ import InputFileBtn from "../../components/inputFileBtn/InputFileBtn.jsx";
 import Select from "react-select";
 
 //api related
-import useFetch from "../../utils/useFetch.js";
+import useFetch from "../../hooks/useFetch.js";
 import axios from "../../api/axios.js";
 import {useAuth} from "../../hooks/useAuth.js";
 

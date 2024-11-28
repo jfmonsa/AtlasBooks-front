@@ -3,7 +3,7 @@ import Card from "../../components/card/Card.jsx";
 
 //to fetch data
 import {useParams} from "react-router-dom";
-import useFetch from "../../utils/useFetch.js";
+import useFetch from "../../hooks/useFetch.js";
 import axios from "./../../api/axios.js";
 import {useAuth} from "../../hooks/useAuth.js";
 import {rateBookApi, getBookRatingApi} from "../../api/rateBook.js";
@@ -162,11 +162,13 @@ const BookInfoSection = ({
               <div>
                 <HeartButton className="relevantInfo__icon2 heartLike" />
                 {/*TODO: Agregarle un estado de disabled cuando el usuario no esta autenticado*/}
-                {user ? (<AddBookToList
-                  bookId={bookId}
-                  isAuthenticated={isAuthenticated}
-                  userId={user.data.user.id}
-                />) : null}
+                {user ? (
+                  <AddBookToList
+                    bookId={bookId}
+                    isAuthenticated={isAuthenticated}
+                    userId={user.data.user.id}
+                  />
+                ) : null}
               </div>
             </div>
           </div>
@@ -302,37 +304,35 @@ const BookPage = () => {
   }
   if (bookData) {
     return (
-      (
-        <>
-          <BookInfoSection
-            bookId={id}
-            isbn={bookData.data.isbn || "None"}
-            bookName={bookData.data.title}
-            bookDescription={bookData.data.description}
-            year={bookData.data.yearReleased}
-            vol={bookData.data.volume || "None"}
-            pages={bookData.data.numberOfPages || "None"}
-            editory={bookData.data.publisher || "None"}
-            bookImg={bookData.data.coverImgPath}
-            rank={bookData.data.rate}
-            authorName={bookData.data.authors?.join(", ")}
-            language={bookData.data.languages?.join(", ")}
-            fileType={bookData.data.fileExtensions?.join(", ")}
-            categories={bookData.data.subcategories.subcategories
-              ?.concat(bookData.data?.subcategories.category)
-              .join(", ")}
-            numComments={bookData.data.comments.length}
-            bookFiles={bookData.data.files}
-            fileName={bookData.data.files[0]}
-          />
-          <RateStarsSection id={bookData.data.id} />
-          <BookPageRelated books={bookData.data.relatedBooks} />
-          <BookPageComments
-            comments={bookData.data.comments}
-            bookId={bookData.data.id}
-          />
-        </>
-      )
+      <>
+        <BookInfoSection
+          bookId={id}
+          isbn={bookData.data.isbn || "None"}
+          bookName={bookData.data.title}
+          bookDescription={bookData.data.description}
+          year={bookData.data.yearReleased}
+          vol={bookData.data.volume || "None"}
+          pages={bookData.data.numberOfPages || "None"}
+          editory={bookData.data.publisher || "None"}
+          bookImg={bookData.data.coverImgPath}
+          rank={bookData.data.rate}
+          authorName={bookData.data.authors?.join(", ")}
+          language={bookData.data.languages?.join(", ")}
+          fileType={bookData.data.fileExtensions?.join(", ")}
+          categories={bookData.data.subcategories.subcategories
+            ?.concat(bookData.data?.subcategories.category)
+            .join(", ")}
+          numComments={bookData.data.comments.length}
+          bookFiles={bookData.data.files}
+          fileName={bookData.data.files[0]}
+        />
+        <RateStarsSection id={bookData.data.id} />
+        <BookPageRelated books={bookData.data.relatedBooks} />
+        <BookPageComments
+          comments={bookData.data.comments}
+          bookId={bookData.data.id}
+        />
+      </>
     );
   }
 

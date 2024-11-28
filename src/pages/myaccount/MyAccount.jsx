@@ -23,7 +23,7 @@ import {getReportsApi} from "../../api/reports.js";
 //imgs para libros
 import {useAuth} from "../../hooks/useAuth.js";
 import {useEffect, useState} from "react";
-import useFetch from "../../utils/useFetch.js";
+import useFetch from "../../hooks/useFetch.js";
 import axios from "../../api/axios.js";
 
 // Aux functions
@@ -143,7 +143,7 @@ const SectionOtherOpts = () => {
 
   const handleDeleteUser = async () => {
     try {
-      const response = await axios.delete(`/user`);
+      await axios.delete(`/user`);
       handleLogout();
     } catch (error) {
       console.error("There was an error deleting the user!", error);

@@ -1,6 +1,6 @@
 import Searcher from "../../components/searcher/Searcher";
 import Card from "../../components/card/Card";
-import useFetch from "../../utils/useFetch.js";
+import useFetch from "../../hooks/useFetch.js";
 import {Link} from "react-router-dom";
 
 import "./categoria.css";

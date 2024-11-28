@@ -1,5 +1,5 @@
 import {Link, useSearchParams} from "react-router-dom";
-import useFetch from "../../utils/useFetch.js";
+import useFetch from "../../hooks/useFetch.js";
 import Searcher2 from "../../components/searcher/searcher2.jsx";
 
 const ListResult = ({title, descriptionL, dateL, idUserCreator, urlList}) => {

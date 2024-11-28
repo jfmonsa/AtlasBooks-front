@@ -2,7 +2,7 @@ import "./adminResults.css";
 import Card from "../../components/card/Card";
 import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm.jsx";
 import SearcherUsers from "../../components/searcher/SearcherUsers.jsx";
-import useFetch from "../../utils/useFetch.js";
+import useFetch from "../../hooks/useFetch.js";
 import {useSearchParams} from "react-router-dom";
 
 //Table imports
