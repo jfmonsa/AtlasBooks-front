@@ -25,7 +25,6 @@ const Catergorie = ({ primaryCategory, secundaryCategories }) => {
 };
 
 const Categories = ({ catLits }) => {
-  console.log(catLits);
   return (
     <Card h1Text={"Todas las Categorias"} h1Center>
       <div className="all-categories">

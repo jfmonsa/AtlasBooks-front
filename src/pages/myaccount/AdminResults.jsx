@@ -53,12 +53,6 @@ const TableResults = () => {
     getBannedUser({ userIdToBan, status });
   };
 
-  // TODO: what is this for?
-  // const handleMakeAdmin = userId => {
-  //   // Lógica para hacer administrador a un usuario
-  //   console.log(`Hacer administrador al usuario con ID: ${userId}`);
-  // };
-
   //states
   const [rows, setRows] = useState([]);
   const [page, setPage] = useState(0);
@@ -109,7 +103,6 @@ const TableResults = () => {
                         if (column.id === "actions") {
                           let buttonAction;
                           if (row.isActive) {
-                            console.log("ROWS", row.id);
                             buttonAction = (
                               <PrimaryBtnForm
                                 onClick={() => handleDeleteUser(row.id)}

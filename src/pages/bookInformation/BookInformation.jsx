@@ -205,7 +205,6 @@ const RateStarsSection = ({ id }) => {
       try {
         const rateData = await getBookRatingApi(id, user?.id);
         setRate(rateData.data.data.rate);
-        console.log("rate", rateData.data.data.rate);
       } catch (error) {
         console.error("Error fetching book rating:", error);
       }

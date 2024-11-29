@@ -151,7 +151,6 @@ const UploadBook = () => {
           "Content-Type": "multipart/form-data",
         },
       });
-      console.log(formData);
       // Manejar la respuesta  response.data
       //if the book creating was done successfully then clear de inputs
       alert("Libro creado exitosamente!");

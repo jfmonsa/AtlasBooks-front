@@ -73,7 +73,6 @@ export function Comment({
               text="Eliminar"
               onClick={() => {
                 deleteComment(commentId);
-                console.log("deleteComment", commentId);
               }}
               cssClasses="baseBtn commentsBtn black2Btn"
             />

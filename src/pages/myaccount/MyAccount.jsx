@@ -207,7 +207,7 @@ const MyAccountAdmin = () => {
         setReport(res.data.data);
       })
       .catch((error) => {
-        console.log(error.message);
+        console.error(error.message);
       });
   }, []);
 

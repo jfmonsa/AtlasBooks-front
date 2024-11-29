@@ -25,7 +25,6 @@ const Comments = ({ comments, bookId }) => {
       if (comment.length == 0) {
         throw new Error("Error al crear el comentario");
       }
-      console.log("comment", comment);
       setBackendComents([comment.data.data[0], ...backendComents]);
       setActiveComent(null);
     } catch (error) {
@@ -75,56 +74,53 @@ const Comments = ({ comments, bookId }) => {
     }
   };
   return (
-    console.log("backendComents", backendComents),
-    (
-      <>
-        {user ? (
-          <NewComment
-            submitLabel="Comentar"
-            handleSubmit={addComent}
-            userName={user.nickname}
-            idbook={bookId}
-            profilepic={
-              user.profileImgPath
-                ? user.profileImgPath
-                : "https://res.cloudinary.com/dlja4vnrd/image/upload/v1730346383/default_f2wovz.png"
-            }
-          />
-        ) : (
-          <p> Debes estar logueado para poder comentar </p>
-        )}
-        <h2 className="card__h1">Otros Comentarios</h2>
-        {loading ? (
-          <div className="loading">Cargando...</div>
-        ) : (
-          <div className="comments-container">
-            {Array.isArray(backendComents) && backendComents.length > 0 ? (
-              backendComents.map((rootComment) => (
-                <Comment
-                  key={rootComment.id}
-                  commentId={rootComment.id}
-                  comment={rootComment.textCommented}
-                  userId={rootComment.idUser}
-                  userName={rootComment.nickname}
-                  date={rootComment.dateCommented}
-                  deleteComment={deleteComment}
-                  activeComent={activeComent}
-                  updateComment={updateComment}
-                  setActiveComent={setActiveComent}
-                  profilepic={
-                    rootComment.profileImgPath
-                      ? rootComment.profileImgPath
-                      : "https://res.cloudinary.com/dlja4vnrd/image/upload/v1730346383/default_f2wovz.png"
-                  }
-                />
-              ))
-            ) : (
-              <p>No comments available</p>
-            )}
-          </div>
-        )}
-      </>
-    )
+    <>
+      {user ? (
+        <NewComment
+          submitLabel="Comentar"
+          handleSubmit={addComent}
+          userName={user.nickname}
+          idbook={bookId}
+          profilepic={
+            user.profileImgPath
+              ? user.profileImgPath
+              : "https://res.cloudinary.com/dlja4vnrd/image/upload/v1730346383/default_f2wovz.png"
+          }
+        />
+      ) : (
+        <p> Debes estar logueado para poder comentar </p>
+      )}
+      <h2 className="card__h1">Otros Comentarios</h2>
+      {loading ? (
+        <div className="loading">Cargando...</div>
+      ) : (
+        <div className="comments-container">
+          {Array.isArray(backendComents) && backendComents.length > 0 ? (
+            backendComents.map((rootComment) => (
+              <Comment
+                key={rootComment.id}
+                commentId={rootComment.id}
+                comment={rootComment.textCommented}
+                userId={rootComment.idUser}
+                userName={rootComment.nickname}
+                date={rootComment.dateCommented}
+                deleteComment={deleteComment}
+                activeComent={activeComent}
+                updateComment={updateComment}
+                setActiveComent={setActiveComent}
+                profilepic={
+                  rootComment.profileImgPath
+                    ? rootComment.profileImgPath
+                    : "https://res.cloudinary.com/dlja4vnrd/image/upload/v1730346383/default_f2wovz.png"
+                }
+              />
+            ))
+          ) : (
+            <p>No comments available</p>
+          )}
+        </div>
+      )}
+    </>
   );
 };
 export default Comments;

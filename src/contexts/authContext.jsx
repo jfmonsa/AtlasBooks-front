@@ -1,12 +1,11 @@
-import { createContext, useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
 import {
   registerRequest,
   loginRequest,
   verifyTokenRequest,
   logoutRequest,
 } from "../api/auth.js";
-
-export const AuthContext = createContext();
+import { AuthContext } from "../contexts/authContextCreated.js";
 
 /**
  * AuthProvider component that provides authentication context to its children.
@@ -48,7 +47,8 @@ export const AuthProvider = ({ children }) => {
       const response = await registerRequest(userData);
       setUser(response.data.data.user);
     } catch (error) {
-      setErrors([error.response.data.error]);
+      const errorMessage = error.response?.data?.error || "Registration failed";
+      setErrors([errorMessage]);
     }
   }, []);
 
@@ -62,7 +62,8 @@ export const AuthProvider = ({ children }) => {
       const response = await loginRequest(userData);
       setUser(response.data.data.user);
     } catch (error) {
-      setErrors([error.response.data]);
+      const errorMessage = error.response?.data?.error || "Registration failed";
+      setErrors([errorMessage]);
     }
   }, []);
 
