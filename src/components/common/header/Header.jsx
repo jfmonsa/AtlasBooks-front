@@ -12,22 +12,22 @@ import MenuRecommendedIcon from "../../../assets/icons/menu-recommended.svg";
 import MenuSearchIcon from "../../../assets/icons/menu-search.svg";
 import MenuSingupIcon from "../../../assets/icons/menu-singup.svg";
 
-import {useState} from "react";
-import {useAuth} from "../../../hooks/useAuth.js";
+import { useState } from "react";
+import { useAuth } from "../../../hooks/useAuth.js";
 
-import {NavLink} from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import DropMenu from "../../dropMenu/DropMenu.jsx";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 // Aux functions
-const userConditionalRenderingMenu = context => {
+const userConditionalRenderingMenu = (userData) => {
   let menuOptions = [
     {
       toLink: "/",
       iconPath: MenuSearchIcon,
       text: "Buscar libro",
     },
-    {toLink: "/categories", iconPath: MenuCategoriesIcon, text: "Categorias"},
+    { toLink: "/categories", iconPath: MenuCategoriesIcon, text: "Categorias" },
     {
       toLink: "/recommended",
       iconPath: MenuRecommendedIcon,
@@ -45,8 +45,8 @@ const userConditionalRenderingMenu = context => {
     },
   ];
 
-  if (context.logged) {
-    if (context.admin) {
+  if (userData) {
+    if (userData.role === "ADMIN") {
       menuOptions.unshift({
         toLink: "/my-account",
         iconPath: MenuControlpanelIcon,
@@ -73,16 +73,17 @@ const userConditionalRenderingMenu = context => {
   }
   return menuOptions;
 };
-const userConditionalRenderingHederOptions = context => {
-  if (context.logged) {
-    return [{url: "/my-account", text: "Mi Cuenta"}];
+const userConditionalRenderingHederOptions = (userData) => {
+  if (userData) {
+    return [{ url: "/my-account", text: "Mi Cuenta" }];
   }
   return [
-    {url: "/new-account", text: "Registrarse"},
-    {url: "/login", text: "Iniciar Sesion"},
+    { url: "/new-account", text: "Registrarse" },
+    { url: "/login", text: "Iniciar Sesion" },
   ];
 };
-const VisibleHeaderOptions = ({opts}) => {
+
+const VisibleHeaderOptions = ({ opts }) => {
   return (
     <>
       {opts.map((opt, index) => {
@@ -101,9 +102,9 @@ const VisibleHeaderOptions = ({opts}) => {
 // Main header component
 const Header = () => {
   //Login context
-  const {contextValue, logout} = useAuth();
+  const { user, logout } = useAuth();
   const navigate = useNavigate();
-  const context = contextValue;
+  // const context = contextValue;
   const [isOpen, setIsOpen] = useState(false);
   const setOpenedState = () => {
     setIsOpen(!isOpen);
@@ -114,7 +115,7 @@ const Header = () => {
     navigate("/login");
   };
 
-  let closeSession = context.logged
+  let closeSession = user
     ? [
         {
           onClick: handleLogout,
@@ -141,7 +142,7 @@ const Header = () => {
             </PrimaryBtnLink>
           </li>
           <VisibleHeaderOptions
-            opts={userConditionalRenderingHederOptions(context)}
+            opts={userConditionalRenderingHederOptions(user)}
           />
         </ul>
         <div
@@ -153,7 +154,7 @@ const Header = () => {
       </div>
       {isOpen && (
         <DropMenu
-          options={userConditionalRenderingMenu(context)}
+          options={userConditionalRenderingMenu(user)}
           customOnclickOptions={closeSession}
         />
       )}

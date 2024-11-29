@@ -2,28 +2,28 @@ import "./account.css";
 import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm.jsx";
 import PrimaryBtnLink from "../../components/buttons/primaryBtn/PrimaryBtnLink.jsx";
 import InputText from "../../components/inputText/InputText.jsx";
-import {EMAIL, PASSWD, NICK} from "../../utils/placeholder.js";
-import {Link} from "react-router-dom";
-import {useState, useEffect} from "react";
+import { EMAIL, PASSWD, NICK } from "../../utils/placeholder.js";
+import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 import {
   valEmail,
   valNickname,
   valNoEmpty,
 } from "../../utils/validateFormFields.js";
 import ErrorFormAccountMsg from "../../components/errorFormAccountMsg/ErrorFormAccountMsg.jsx";
-import {useAuth} from "../../hooks/useAuth.js";
-import {useNavigate} from "react-router-dom";
+import { useAuth } from "../../hooks/useAuth.js";
+import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
   const [userNickname, setUserNickname] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const navigate = useNavigate();
 
-  const {login, isAuthenticated, errors: loginErrors} = useAuth();
+  const { login, user, errors: loginErrors } = useAuth();
 
   useEffect(() => {
-    if (isAuthenticated) navigate("/");
-  }, [isAuthenticated, navigate]);
+    if (user) navigate("/");
+  }, [user, navigate]);
 
   //El error es una string, cuando no hay error es null,
   //cuando el error existe se settea a una string que se va mostrar
@@ -31,7 +31,7 @@ export const Login = () => {
   const [error, setError] = useState(null);
 
   //Validations and post request to api
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (!valNoEmpty(userNickname) || !valNoEmpty(userPassword)) {
       setError("Todos los campos son obligatorios");
@@ -51,9 +51,10 @@ export const Login = () => {
       }
     }
     setError(null);
-    //hacer validaciones en el backend para verificar que el usuario
-    //exista
-    login({userNicknameOrEmail: userNickname, userPassword: userPassword});
+    login({
+      userNicknameOrEmail: userNickname,
+      userPassword: userPassword,
+    });
   };
 
   return (
@@ -66,7 +67,7 @@ export const Login = () => {
           value={userNickname}
           id="email"
           text="Email o Nickname"
-          onChange={e => setUserNickname(e.target.value)}
+          onChange={(e) => setUserNickname(e.target.value)}
         />
         <InputText
           type="password"
@@ -74,7 +75,7 @@ export const Login = () => {
           value={userPassword}
           id="password"
           text="Contraseña"
-          onChange={e => setUserPassword(e.target.value)}
+          onChange={(e) => setUserPassword(e.target.value)}
         />
 
         <ErrorFormAccountMsg error={error} index={0} />

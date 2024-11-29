@@ -1,18 +1,18 @@
 import "./account.css";
 import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm.jsx";
 import InputText from "../../components/inputText/InputText.jsx";
-import {useNavigate, Link} from "react-router-dom";
-import {useState} from "react";
-import {EMAIL} from "../../utils/placeholder.js";
+import { useNavigate, Link } from "react-router-dom";
+import { useState } from "react";
+import { EMAIL } from "../../utils/placeholder.js";
 import ErrorFormAccountMsg from "../../components/errorFormAccountMsg/ErrorFormAccountMsg.jsx";
-import {valEmail, valNoEmpty} from "../../utils/validateFormFields.js";
-import {verifyEmail} from "../../api/apiRecoveyAccount.js";
+import { valEmail, valNoEmpty } from "../../utils/validateFormFields.js";
+import { verifyEmail } from "../../api/apiRecoveyAccount.js";
 const RecoveryAccount = () => {
   const [userEmail, setUserEmail] = useState("");
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (!valNoEmpty(userEmail)) {
       setError("Todos los campos son obligatorios");
@@ -22,7 +22,7 @@ const RecoveryAccount = () => {
       return;
     }
     //request al api
-    verifyEmail({email: userEmail});
+    verifyEmail({ email: userEmail });
     navigate("/send-email");
   };
 
@@ -38,7 +38,7 @@ const RecoveryAccount = () => {
           type="email"
           holder={EMAIL}
           value={userEmail}
-          onChange={e => setUserEmail(e.target.value)}
+          onChange={(e) => setUserEmail(e.target.value)}
         />
         <PrimaryBtnForm text="Enviar" cssClasses="formCustomBtn purpleBtn" />
       </form>

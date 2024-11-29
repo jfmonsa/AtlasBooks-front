@@ -1,6 +1,6 @@
 //save to list component
-import {useState} from "react";
-import {FaRegBookmark} from "react-icons/fa";
+import { useState } from "react";
+import { FaRegBookmark } from "react-icons/fa";
 import axios from "./../../api/axios.js";
 import useFetch from "../../hooks/useFetch.js";
 import Checkbox from "@mui/material/Checkbox";
@@ -67,7 +67,7 @@ const AddBookToListDropMenu = ({
       <li className="dropMenu--infoText"> {infoText} </li>
       {options &&
         options.length > 0 &&
-        options.map(option => (
+        options.map((option) => (
           <AddBookToListDropMenuItem
             key={option.listId}
             listTitle={option.listtitle}
@@ -81,10 +81,10 @@ const AddBookToListDropMenu = ({
   );
 };
 
-const AddBookToList = ({bookId, isAuthenticated, userId}) => {
+const AddBookToList = ({ bookId, userId }) => {
   const [open, setOpen] = useState(false);
 
-  const {data, error} = useFetch(
+  const { data, error } = useFetch(
     userId ? `/book-lists/my-lists/${bookId}` : null,
   );
 
@@ -95,9 +95,7 @@ const AddBookToList = ({bookId, isAuthenticated, userId}) => {
   }
   //if user is no logged don't show any data
   let infoTextDropMenu;
-  if (!isAuthenticated) {
-    infoTextDropMenu = "Debe loggearse";
-  } else if (!data) {
+  if (!data) {
     infoTextDropMenu = "No Tienes listas";
   } else {
     infoTextDropMenu = "Guardar en lista:";
@@ -105,14 +103,7 @@ const AddBookToList = ({bookId, isAuthenticated, userId}) => {
 
   return (
     <span className="iconDropDown">
-      <span
-        onClick={() => {
-          setOpen(!open);
-          if (open && !isAuthenticated) {
-            alert("Debe loggearse para guaradar libros en sus listas");
-          }
-        }}
-      >
+      <span onClick={() => setOpen(!open)}>
         <FaRegBookmark className="relevantInfo__icon2" />
       </span>
       {data && open && (

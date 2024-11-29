@@ -1,8 +1,8 @@
 import "./account.css";
-import {NAME, NICK, EMAIL, PASSWD} from "../../utils/placeholder.js";
+import { NAME, NICK, EMAIL, PASSWD } from "../../utils/placeholder.js";
 import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm.jsx";
 import InputText from "../../components/inputText/InputText.jsx";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import ErrorFormAccountMsg from "../../components/errorFormAccountMsg/ErrorFormAccountMsg.jsx";
 import {
   valEmail,
@@ -10,8 +10,8 @@ import {
   valNoEmpty,
   valPassword,
 } from "../../utils/validateFormFields.js";
-import {useAuth} from "../../hooks/useAuth.js";
-import {useNavigate} from "react-router-dom";
+import { useAuth } from "../../hooks/useAuth.js";
+import { useNavigate } from "react-router-dom";
 import PrimaryBtnLink from "../../components/buttons/primaryBtn/PrimaryBtnLink.jsx";
 
 const NewAccount = () => {
@@ -23,7 +23,7 @@ const NewAccount = () => {
   const [countryCode, setCountryCode] = useState(null);
 
   const navigate = useNavigate();
-  const {signup, isAuthenticated, errors: RegisterErrors} = useAuth();
+  const { signup, user, errors: RegisterErrors } = useAuth();
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -41,11 +41,11 @@ const NewAccount = () => {
   }, []);
 
   useEffect(() => {
-    if (isAuthenticated) navigate("/");
-  }, [isAuthenticated, navigate]);
+    if (user) navigate("/");
+  }, [user, navigate]);
 
   //validations and api request
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (
       !valNoEmpty(userName) ||
@@ -92,35 +92,35 @@ const NewAccount = () => {
             holder={NAME}
             type="text"
             value={userName}
-            onChange={e => setUserName(e.target.value)}
+            onChange={(e) => setUserName(e.target.value)}
           />
           <InputText
             text="Nickname (Nombre de usuario)"
             holder={NICK}
             type="text"
             value={userNick}
-            onChange={e => setUserNick(e.target.value)}
+            onChange={(e) => setUserNick(e.target.value)}
           />
           <InputText
             text="Email"
             holder={EMAIL}
             type="email"
             value={userEmail}
-            onChange={e => setUserEmail(e.target.value)}
+            onChange={(e) => setUserEmail(e.target.value)}
           />
           <InputText
             text="Contraseña"
             holder={PASSWD}
             type="password"
             value={userPass1}
-            onChange={e => setUserPass1(e.target.value)}
+            onChange={(e) => setUserPass1(e.target.value)}
           />
           <InputText
             text="Confirmar Contraseña"
             holder={PASSWD}
             type="password"
             value={userPass2}
-            onChange={e => setUserPass2(e.target.value)}
+            onChange={(e) => setUserPass2(e.target.value)}
           />
           <ErrorFormAccountMsg error={error} />
           {RegisterErrors.map((error, index) => (

@@ -30,24 +30,17 @@ https://github.com/jfmonsa/AtlasBooks-front/assets/81452967/8dd09f11-87a3-45e9-8
 
 ## 1. Project Overview
 
-<details>
-  <summary>Click to expand!</summary>
-  
-  The technical implementation of the PERN stack allowed us to structure and develop our virtual library project efficiently and organized. This combination facilitated a clear division between frontend and backend, promoting agile and collaborative     development that resulted in a robust and scalable product. Our project highlighted the importance and benefits of teamwork and effective communication through the Scrum methodology, ensuring continuous delivery of value.
+The technical implementation of the PERN stack allowed us to structure and develop our virtual library project efficiently and organized. This combination facilitated a clear division between frontend and backend, promoting agile and collaborative development that resulted in a robust and scalable product. Our project highlighted the importance and benefits of teamwork and effective communication through the Scrum methodology, ensuring continuous delivery of value.
 
 We hope you find AtlasBooks a useful and inspiring project. Thank you for your interest!
 
-</details>
-  
 ## 2. Features
-<details>
-  <summary>Click to expand!</summary>
-  
-  
-  ### User Profiles
-  - **Registration and Authentication**: Users can sign up and authenticate using JWT.
-  - **Profile Information**: Each user has a profile with personal information (name, email, country, etc.).
-  - **Download History**: Users can view a history of the books they have downloaded.
+
+### User Profiles
+
+- **Registration and Authentication**: Users can sign up and authenticate using JWT.
+- **Profile Information**: Each user has a profile with personal information (name, email, country, etc.).
+- **Download History**: Users can view a history of the books they have downloaded.
 
 ### Home Page
 
@@ -78,58 +71,38 @@ We hope you find AtlasBooks a useful and inspiring project. Thank you for your i
 ### Admin options
 
 - **Manage Users**: Admins have additional sections in its profile page that allow them to search for users and ban/un-ban also to look reports made by users
-</details>
 
 ## 3. Technologies Used (Tech Stack)
 
-<details>
-  <summary>Click to expand!</summary>
-  
-  - **Frontend**: Developed with React.js using Vite, along with CSS (Responsive design), HTML, and JavaScript.
-  - **Backend**: Built using Node.js and Express.
-  - **Database**: PostgreSQL for efficient data storage and retrieval.
-  
-  ### Other Tools
-  - **Jira**: Used for managing user stories and tasks.
-  - **Figma**: Utilized for UI/UX design. you can see the desing [here](https://www.figma.com/design/mgwoKhiK6PWJEddFpD78te/AtlasBooks?node-id=0-1&t=AN7QX4QfWvHQWtBI-1)
-</details>
+- **Frontend**: Developed with React.js using Vite, along with CSS (Responsive design), HTML, and JavaScript.
+- **Backend**: Built using Node.js and Express.
+- **Database**: PostgreSQL for efficient data storage and retrieval.
+
+### Other Tools
+
+- **Jira**: Used for managing user stories and tasks.
+- **Figma**: Utilized for UI/UX design. you can see the desing [here](https://www.figma.com/design/mgwoKhiK6PWJEddFpD78te/AtlasBooks?node-id=0-1&t=AN7QX4QfWvHQWtBI-1)
 
 ## 4. Methodology
 
-<details>
-  <summary>Click to expand!</summary>
-  
-  We used agile methodologies, specifically Scrum, to manage our project and Jira as the management tool for the project
-</details>
+We used agile methodologies, specifically Scrum, to manage our project and Jira as the management tool for the project
 
 ## 5. Future Improvements (TODO)
 
-<details>
-    <summary>Click to expand!</summary>
-  
-  - Proper deployment: Mainly due to backend issues with dynamic storage for books.
-  - Replace cookies with local storage due to chrome third-party cookies policy.
-  - Discover list page pending (backend + frontend implementation).
-</details>
+- Proper deployment: Mainly due to backend issues with dynamic storage for books.
+- Replace cookies with local storage due to chrome third-party cookies policy.
+- Discover list page pending (backend + frontend implementation).
 
 ## 6. Installation and Contributing Guide
 
-<details>
-    <summary>Click to expand!</summary>
-  
-  We welcome contributions! Please read our [contributing guidelines](CONTRIBUTING.md) before you start.
-</details>
+We welcome contributions! Please read our [contributing guidelines](CONTRIBUTING.md) before you start.
 
 ## 7. Team Members
 
-<details>
-    <summary>Click to expand!</summary>
-  
-  If you have any questions, feel free to reach out to us at:
-  
-  - [Juan Felipe Monsalve Vargas](https://github.com/jfmonsa) - [Email](mailto:juan.felipe.monsalve@correounivalle.edu.co)
-  - [Jose Luis Ramos Arango](https://github.com/RamSterB) - [Email](mailto:jose.luis.ramos@correounivalle.edu.co)
-  - [Juan Sebastian Marin Serna](https://github.com/JSebastianMarin) - [Email](mailto:juan.marin.serna@correounivalle.edu.co)
-  - [Juan Pablo Idarraga](https://github.com/JuanPidarraga) - [Email](mailto:idarraga.juan@correounivalle.edu.co)
-  - [Leider Santiago Cortez](https://github.com/LeiderCortes) - [Email](mailto:cortes.leider@correounivalle.edu.co)
-</details>
+If you have any questions, feel free to reach out to us at:
+
+- [Juan Felipe Monsalve Vargas](https://github.com/jfmonsa) - [Email](mailto:juan.felipe.monsalve@correounivalle.edu.co)
+- [Jose Luis Ramos Arango](https://github.com/RamSterB) - [Email](mailto:jose.luis.ramos@correounivalle.edu.co)
+- [Juan Sebastian Marin Serna](https://github.com/JSebastianMarin) - [Email](mailto:juan.marin.serna@correounivalle.edu.co)
+- [Juan Pablo Idarraga](https://github.com/JuanPidarraga) - [Email](mailto:idarraga.juan@correounivalle.edu.co)
+- [Leider Santiago Cortes](https://github.com/LeiderCortes) - [Email](mailto:cortes.leider@correounivalle.edu.co)

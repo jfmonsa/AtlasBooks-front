@@ -1,11 +1,11 @@
 import Searcher from "../../components/searcher/Searcher";
 import Card from "../../components/card/Card";
 import useFetch from "../../hooks/useFetch.js";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import "./categoria.css";
 
-const Catergorie = ({primaryCategory, secundaryCategories}) => {
+const Catergorie = ({ primaryCategory, secundaryCategories }) => {
   return (
     <ul className="category">
       <li key={primaryCategory.categoryId} className="category__title">
@@ -13,7 +13,7 @@ const Catergorie = ({primaryCategory, secundaryCategories}) => {
           {primaryCategory.category}
         </Link>
       </li>
-      {secundaryCategories.map(sub => {
+      {secundaryCategories.map((sub) => {
         return (
           <li key={sub.id} className="category__subcategory">
             <Link to={`/search-results?subCategory=${sub.id}`}>{sub.name}</Link>
@@ -24,12 +24,11 @@ const Catergorie = ({primaryCategory, secundaryCategories}) => {
   );
 };
 
-const Categories = ({catLits}) => {
-  console.log(catLits);
+const Categories = ({ catLits }) => {
   return (
     <Card h1Text={"Todas las Categorias"} h1Center>
       <div className="all-categories">
-        {catLits.map(cat => {
+        {catLits.map((cat) => {
           return (
             <Catergorie
               key={cat.cat_id}
@@ -44,7 +43,7 @@ const Categories = ({catLits}) => {
 };
 
 const CategoriesMain = () => {
-  const {error, isPending, data} = useFetch(`/book-categories/groupped`);
+  const { error, isPending, data } = useFetch(`/book-categories/groupped`);
   if (error) {
     return <p>{error}</p>;
   }

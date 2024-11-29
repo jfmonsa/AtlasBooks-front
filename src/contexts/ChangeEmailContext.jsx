@@ -1,5 +1,5 @@
-import {createContext, useContext, useState} from "react";
-import {GetChangeEmail} from "../api/apiChangeEmail";
+import { createContext, useContext, useState } from "react";
+import { GetChangeEmail } from "../api/apiChangeEmail";
 
 const ChangeEmailContext = createContext();
 
@@ -13,16 +13,16 @@ export const UseChangeEmail = () => {
   return context;
 };
 
-export const ChangeEmailProvider = ({children}) => {
+export const ChangeEmailProvider = ({ children }) => {
   // TODO: revisar esto
   const [changeEmail, setChangeEmail] = useState([]);
 
-  const createChangeEmail = async emails => {
+  const createChangeEmail = async (emails) => {
     const res = GetChangeEmail(emails);
     setChangeEmail(res);
   };
   return (
-    <ChangeEmailContext.Provider value={{changeEmail, createChangeEmail}}>
+    <ChangeEmailContext.Provider value={{ changeEmail, createChangeEmail }}>
       {children}
     </ChangeEmailContext.Provider>
   );

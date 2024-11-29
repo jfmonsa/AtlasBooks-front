@@ -1,12 +1,12 @@
 import "./searcher.css";
 import PrimaryBtnForm from "../buttons/primaryBtn/PrimaryBtnForm";
-import {useNavigate} from "react-router-dom";
-import {SEARCH} from "../../utils/placeholder.js";
+import { useNavigate } from "react-router-dom";
+import { SEARCH } from "../../utils/placeholder.js";
 
 //Main functions
-const Searcher = ({holder = SEARCH, toUrl}) => {
+const Searcher = ({ holder = SEARCH, toUrl }) => {
   const navigate = useNavigate();
-  const handleSearch = event => {
+  const handleSearch = (event) => {
     event.preventDefault();
     navigate(toUrl);
   };

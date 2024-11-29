@@ -1,7 +1,7 @@
 import "./dropdownButton.sass";
-import {FaChevronLeft} from "react-icons/fa";
-import {FaChevronDown} from "react-icons/fa";
-import {useState} from "react";
+import { FaChevronLeft } from "react-icons/fa";
+import { FaChevronDown } from "react-icons/fa";
+import { useState } from "react";
 import DropMenu from "../dropMenu/DropMenu";
 
 const DropdownBtn = ({

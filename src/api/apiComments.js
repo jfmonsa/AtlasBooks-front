@@ -5,7 +5,7 @@ import {
   deleteCommentApi,
 } from "./comments";
 
-export const getComments = async id => {
+export const getComments = async (id) => {
   try {
     const comments = await getCommentsApi(id);
     return comments;
@@ -14,7 +14,7 @@ export const getComments = async id => {
   }
 };
 
-export const createComment = async body => {
+export const createComment = async (body) => {
   try {
     const comment = await createCommentApi(body);
     return comment;
@@ -23,7 +23,7 @@ export const createComment = async body => {
   }
 };
 
-export const updateComment = async comment => {
+export const updateComment = async (comment) => {
   try {
     const updateComment = await updateCommentApi(comment);
     return updateComment;
@@ -32,7 +32,7 @@ export const updateComment = async comment => {
   }
 };
 
-export const deleteComment = async id => {
+export const deleteComment = async (id) => {
   try {
     await deleteCommentApi(id);
   } catch (error) {

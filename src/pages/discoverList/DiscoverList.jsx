@@ -3,7 +3,7 @@ import Searcher2 from "../../components/searcher/searcher2.jsx";
 import Card from "../../components/card/Card.jsx";
 import "./discoverList.css";
 import "../../components/gridBooks/gridBooks.css";
-import {useState} from "react";
+import { useState } from "react";
 
 //Images for temporal array of books
 //TODO: Borrar esto cuando se haga la conexión a la db y los libros se obtengan de ahí

@@ -1,10 +1,10 @@
 import "./searcher.css";
 import PrimaryBtnForm from "../buttons/primaryBtn/PrimaryBtnForm";
-import {useNavigate} from "react-router-dom";
-import {useState} from "react";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import Select from "react-select";
-import {SEARCH} from "../../utils/placeholder.js";
-import {mainLanguages} from "../../utils/languagesArray.js";
+import { SEARCH } from "../../utils/placeholder.js";
+import { mainLanguages } from "../../utils/languagesArray.js";
 
 //Aux function for data of the select inputs
 const genYearArray = (to = 1799) => {
@@ -12,16 +12,16 @@ const genYearArray = (to = 1799) => {
   const years = [];
   for (let year = currentYear; year >= to; year--) {
     // append the year generated to the years array
-    years.push({value: `${year}`, label: `${year}`});
+    years.push({ value: `${year}`, label: `${year}` });
   }
   return years;
 };
 const Years = genYearArray();
 
 //Main function
-const Searcher = ({holder = SEARCH}) => {
+const Searcher = ({ holder = SEARCH }) => {
   const navigate = useNavigate();
-  const handleSearch = event => {
+  const handleSearch = (event) => {
     event.preventDefault();
     navigate(
       `/search-results?search=${search}&yearFrom=${yearFrom.value}&yearTo=${yearTo.value}&language=${selectedLanguages[0] ? selectedLanguages[0].label : ""}`,
@@ -33,27 +33,27 @@ const Searcher = ({holder = SEARCH}) => {
   const [viewMoreOptions, setViewMoreOptions] = useState(false);
   // -- states for filters
   const [yearToOptions, setYearToOptions] = useState(Years);
-  const [yearFrom, setYearFrom] = useState({value: "1", label: "1"});
-  const [yearTo, setYearTo] = useState({value: "2030", label: "2030"});
+  const [yearFrom, setYearFrom] = useState({ value: "1", label: "1" });
+  const [yearTo, setYearTo] = useState({ value: "2030", label: "2030" });
   const [selectedLanguages, setSelectedLanguages] = useState([]);
   const [search, setSearch] = useState("");
 
-  const handleTextChange = ({target}) => {
+  const handleTextChange = ({ target }) => {
     setSearch(target.value);
   };
 
-  const handleYearFromChange = selectedOption => {
+  const handleYearFromChange = (selectedOption) => {
     setYearFrom(selectedOption);
     setYearToOptions(
       Years.filter(
-        year => parseInt(year.value) >= parseInt(selectedOption.value),
+        (year) => parseInt(year.value) >= parseInt(selectedOption.value),
       ),
     );
   };
-  const handleYearToChange = selectedOption => {
+  const handleYearToChange = (selectedOption) => {
     setYearTo(selectedOption);
   };
-  const handleSelectedLanguagesChange = selectedOption => {
+  const handleSelectedLanguagesChange = (selectedOption) => {
     setSelectedLanguages(selectedOption);
   };
 

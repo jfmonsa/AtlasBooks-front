@@ -1,20 +1,20 @@
 import "./searcher.css";
 import PrimaryBtnForm from "../buttons/primaryBtn/PrimaryBtnForm";
-import {useNavigate} from "react-router-dom";
-import {useState} from "react";
-import {SEARCH} from "../../utils/placeholder.js";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { SEARCH } from "../../utils/placeholder.js";
 
-const Searcher = ({holder = SEARCH}) => {
+const Searcher = ({ holder = SEARCH }) => {
   const navigate = useNavigate();
 
   // States for filters
   const [listN, setlistN] = useState("");
 
-  const handleTextChange = ({target}) => {
+  const handleTextChange = ({ target }) => {
     setlistN(target.value);
   };
 
-  const handleSearch = event => {
+  const handleSearch = (event) => {
     event.preventDefault();
     navigate(`/lists-results?listN=${listN}`);
   };

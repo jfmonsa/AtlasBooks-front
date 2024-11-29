@@ -1,8 +1,7 @@
-import {NewComment} from "./NewComment";
-import {useAuth} from "../../../hooks/useAuth.js";
+import { NewComment } from "./NewComment";
+import { useAuth } from "../../../hooks/useAuth.js";
 import PrimaryBtnForm from "../../../components/buttons/primaryBtn/PrimaryBtnForm";
 
-// TODO: Revisar pq no salen las funccione de elimar y editar comentario
 export function Comment({
   commentId,
   comment,
@@ -14,32 +13,28 @@ export function Comment({
   setActiveComent,
   updateComment,
 }) {
-  const {user} = useAuth();
-  const userIdLogged = user.data.user.id;
+  const { user } = useAuth();
+  const userIdLogged = user?.id;
+  const profileImgPath =
+    user?.profileImgPath ||
+    "https://res.cloudinary.com/dlja4vnrd/image/upload/v1730346383/default_f2wovz.png";
   const fiveMinutes = 3000;
   const timePased = new Date() - date > fiveMinutes;
-  const canEdit = userIdLogged == userId && !timePased;
-  const canDelete = userIdLogged == userId && !timePased;
+  const canEdit = userIdLogged === userId && !timePased;
+  const canDelete = userIdLogged === userId && !timePased;
   const createdAt = date ? date.split("T")[0] : [];
   const isEditing =
     activeComent &&
-    activeComent.type == "editing" &&
-    activeComent.id == commentId;
+    activeComent.type === "editing" &&
+    activeComent.id === commentId;
 
-  const submitUpdate = text => {
+  const submitUpdate = (text) => {
     updateComment(text, commentId);
   };
+
   return (
     <div className="comment">
-      <img
-        className="comment__image"
-        src={
-          user.data.user.profileImgPath
-            ? user.data.user.profileImgPath
-            : "../storage/usersProfilePic/default.webp"
-        }
-        alt="userIcon"
-      />
+      <img className="comment__image" src={profileImgPath} alt="userIcon" />
 
       <div className="comment__right">
         <p className="comment__info">
@@ -51,11 +46,11 @@ export function Comment({
         {!isEditing && <div className="comment__text">{comment}</div>}
         {isEditing && (
           <NewComment
-            profilepic={user.data.user.profileImgPath}
+            profilepic={profileImgPath}
             submitLabel="Actualizar"
             hasCancelButton
             initialText={comment}
-            handleSubmit={text => {
+            handleSubmit={(text) => {
               submitUpdate(text.text, commentId);
             }}
             handleCancel={() => setActiveComent(null)}
@@ -67,7 +62,9 @@ export function Comment({
           {canEdit && (
             <PrimaryBtnForm
               text="Editar"
-              onClick={() => setActiveComent({id: commentId, type: "editing"})}
+              onClick={() =>
+                setActiveComent({ id: commentId, type: "editing" })
+              }
               cssClasses="baseBtn commentsBtn blueBtn"
             />
           )}
@@ -76,7 +73,6 @@ export function Comment({
               text="Eliminar"
               onClick={() => {
                 deleteComment(commentId);
-                console.log("deleteComment", commentId);
               }}
               cssClasses="baseBtn commentsBtn black2Btn"
             />

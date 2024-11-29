@@ -3,7 +3,7 @@ import GridBooks from "../../components/gridBooks/GridBooks";
 import useFetch from "../../hooks/useFetch.js";
 
 const Recommended = () => {
-  const {data, isPending, error} = useFetch(`/feed-recommended`);
+  const { data, isPending, error } = useFetch(`/feed-recommended`);
 
   if (error) {
     return <p>{error}</p>;

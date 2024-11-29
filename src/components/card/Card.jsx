@@ -1,6 +1,6 @@
 import "./card.css";
 
-const CardH1Logic = ({customH1, h1Center, h1ClassName, h1Text}) => {
+const CardH1Logic = ({ customH1, h1Center, h1ClassName, h1Text }) => {
   if (!customH1) {
     return (
       <h1

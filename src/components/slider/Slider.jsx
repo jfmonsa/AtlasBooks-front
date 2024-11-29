@@ -6,9 +6,9 @@ import ArrowLeft from "../../assets/icons/icon-arrowLeft.svg";
 import ArrowRight from "../../assets/icons/icon-arrowRight.svg";
 import Book from "../book/Book.jsx";
 
-const CustomSlider = ({books}) => {
-  const SamplePrevArrow = props => {
-    const {className, onClick} = props;
+const CustomSlider = ({ books }) => {
+  const SamplePrevArrow = (props) => {
+    const { className, onClick } = props;
     return (
       <img
         onClick={onClick}
@@ -19,8 +19,8 @@ const CustomSlider = ({books}) => {
     );
   };
 
-  const SampleNextArrow = props => {
-    const {className, onClick} = props;
+  const SampleNextArrow = (props) => {
+    const { className, onClick } = props;
     return (
       <img
         onClick={onClick}
@@ -89,7 +89,7 @@ const CustomSlider = ({books}) => {
     <>
       <Slider {...settings}>
         {Array.isArray(books) && books.length > 0 ? (
-          books.map(book => (
+          books.map((book) => (
             <Book
               key={book.bookId}
               bookId={book.bookId}

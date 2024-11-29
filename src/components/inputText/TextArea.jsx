@@ -1,6 +1,6 @@
 import "./inputText.css";
 
-const TextArea = ({text, holder, value = "", id, onChange}) => {
+const TextArea = ({ text, holder, value = "", id, onChange }) => {
   return (
     <>
       <label htmlFor={id} className="input__label">

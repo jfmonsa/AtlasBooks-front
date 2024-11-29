@@ -1,10 +1,10 @@
-import {useState} from "react";
+import { useState } from "react";
 import Card from "../../components/card/Card.jsx";
 import InputText from "../../components/inputText/InputText.jsx";
 import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm.jsx";
 import TextArea from "../../components/inputText/TextArea.jsx";
 import Switch from "@mui/material/Switch";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "../../api/axios.js";
 
 const CreateList = () => {
@@ -13,15 +13,15 @@ const CreateList = () => {
   const [descripcion, setDescripcion] = useState("");
   const [isPublic, setIsPublic] = useState(false);
 
-  const handleTituloChange = event => {
+  const handleTituloChange = (event) => {
     setTitulo(event.target.value);
   };
 
-  const handleDescripcionChange = event => {
+  const handleDescripcionChange = (event) => {
     setDescripcion(event.target.value);
   };
 
-  const handleSubmit = async event => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     // Validaciones del frontend

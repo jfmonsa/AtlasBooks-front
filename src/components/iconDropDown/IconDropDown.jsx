@@ -1,8 +1,8 @@
 import "./iconDropDown.css";
-import {useState} from "react";
-import {FaRegBookmark, FaBookmark} from "react-icons/fa";
+import { useState } from "react";
+import { FaRegBookmark, FaBookmark } from "react-icons/fa";
 
-const IconDropMenuItem = ({onClick, text, itemSize}) => {
+const IconDropMenuItem = ({ onClick, text, itemSize }) => {
   const [mark, setMark] = useState(false);
   const handleClick = () => {
     setMark(!mark); // Esta es la acción adicional
