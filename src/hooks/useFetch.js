@@ -13,13 +13,14 @@ import axios from "../api/axios.js";
  * @returns {boolean} return.isPending - The loading state.
  * @returns {string|null} return.error - The error message, if any.
  */
-const useFetch = (url) => {
+export default function useFetch(url) {
   const [data, setData] = useState(null);
   const [isPending, setIsPending] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     const controller = new AbortController();
+
     const fetchData = async () => {
       setIsPending(true);
       setError(null);
@@ -33,9 +34,8 @@ const useFetch = (url) => {
         const response = await axios.get(url, { signal: controller.signal });
         setData(response.data);
       } catch (err) {
-        if (axios.isCancel(err)) {
-          console.log("Request canceled", err.message);
-        } else {
+        // Verificar si es un error de cancelación
+        if (err.name !== "CanceledError" || err.code !== "ERR_CANCELED") {
           setError(err.message);
         }
       } finally {
@@ -52,6 +52,4 @@ const useFetch = (url) => {
   }, [url]);
 
   return { data, isPending, error };
-};
-
-export default useFetch;
+}
