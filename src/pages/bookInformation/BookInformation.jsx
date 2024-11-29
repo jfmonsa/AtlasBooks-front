@@ -82,7 +82,7 @@ const BookInfoSection = ({
   bookFiles,
   fileName,
 }) => {
-  const {isAuthenticated, user} = useAuth();
+  const {user} = useAuth();
   const generateDownloadOptions = bookFiles => {
     return bookFiles.map(file => {
       const fileExtension = file.split(".").pop().toUpperCase();
@@ -95,7 +95,7 @@ const BookInfoSection = ({
   };
 
   const handleDownload = async url => {
-    if (!isAuthenticated) {
+    if (!user) {
       alert("You must be logged in to download this file.");
     } else {
       try {
@@ -103,17 +103,6 @@ const BookInfoSection = ({
           bookId,
           fileName,
         });
-        console.log("response", response);
-        // const blob = new Blob([response.data]);
-        // const filename = url.split("/").pop(); // Obtenemos el nombre del archivo
-        // const objectURL = URL.createObjectURL(blob);
-        // const a = document.createElement("a");
-        // a.href = objectURL;
-        // a.download = filename; // Le asignamos el nombre al archivo descargado
-        // document.body.appendChild(a);
-        // a.click();
-        // document.body.removeChild(a);
-        // URL.revokeObjectURL(objectURL);
         const urlFile = response.data.data.fileCloudUrl;
         window.open(urlFile, "_blank");
       } catch (error) {
@@ -145,9 +134,8 @@ const BookInfoSection = ({
           <div className="relevantInfo">
             <a className="relevantInfo__subCont" href="#rate-stars">
               <AiOutlineStar className="relevantInfo__icon1" />
-              <span className="rank__real">
-                {rank}
-              </span>/<span className="rank__total">5.0</span>
+              <span className="rank__real">{rank}</span>
+              <span className="rank__total">5.0</span>
             </a>
 
             <div className="relevantInfo__subCont">
@@ -163,13 +151,7 @@ const BookInfoSection = ({
               <div>
                 <HeartButton className="relevantInfo__icon2 heartLike" />
                 {/*TODO: Agregarle un estado de disabled cuando el usuario no esta autenticado*/}
-                {user ? (
-                  <AddBookToList
-                    bookId={bookId}
-                    isAuthenticated={isAuthenticated}
-                    userId={user.data.user.id}
-                  />
-                ) : null}
+                {user && <AddBookToList bookId={bookId} userId={user.id} />}
               </div>
             </div>
           </div>
@@ -221,7 +203,7 @@ const RateStarsSection = ({id}) => {
   useEffect(() => {
     const getRate = async () => {
       try {
-        const rateData = await getBookRatingApi(id, user?.user.data.user.id);
+        const rateData = await getBookRatingApi(id, user?.id);
         setRate(rateData.data.data.rate);
         console.log("rate", rateData.data.data.rate);
       } catch (error) {
@@ -230,7 +212,7 @@ const RateStarsSection = ({id}) => {
     };
 
     getRate();
-  }, [id, user.id, user?.user.data.user.id]);
+  }, [id, user?.id]);
 
   const handleRate = async index => {
     setRate(index);

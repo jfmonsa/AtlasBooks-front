@@ -249,8 +249,8 @@ const MyAccountAdmin = () => {
 };
 
 const LoggedAdmin = () => {
-  const {contextValue} = useAuth();
-  if (contextValue.role === "ADMIN") {
+  const {user} = useAuth();
+  if (user.role === "ADMIN") {
     return <MyAccountAdmin />;
   }
   return null;
@@ -259,7 +259,7 @@ const LoggedAdmin = () => {
 // Main page
 const MyAccount = () => {
   const auth = useAuth();
-  const user = auth && auth.user ? auth.user.data.user : null;
+  const user = auth && auth.user;
   const [myBookLists, setMyBookLists] = useState([]);
   const [downloadHistoryBooks, setDownloadHistoryBooks] = useState([]);
 

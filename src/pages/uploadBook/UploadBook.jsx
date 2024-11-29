@@ -73,7 +73,7 @@ const SubCategorySelect = ({
   }
 };
 const UploadBook = () => {
-  const {isAuthenticated} = useAuth();
+  const {user} = useAuth();
 
   //form fields
   const [bookTitle, setBookTitle] = useState("");
@@ -93,7 +93,7 @@ const UploadBook = () => {
   const handleSubmit = async e => {
     e.preventDefault();
 
-    if (!isAuthenticated) {
+    if (!user) {
       alert("Debe iniciar sesión para subir un libro");
       return;
     }

@@ -82,12 +82,12 @@ const Comments = ({comments, bookId}) => {
           <NewComment
             submitLabel="Comentar"
             handleSubmit={addComent}
-            userName={user.data.user.nickname}
+            userName={user.nickname}
             idbook={bookId}
             profilepic={
-              user.data.user.profileImgPath
-                ? user.data.user.profileImgPath
-                : "../storage/usersProfilePic/default.webp"
+              user.profileImgPath
+                ? user.profileImgPath
+                : "https://res.cloudinary.com/dlja4vnrd/image/upload/v1730346383/default_f2wovz.png"
             }
           />
         ) : (
@@ -114,7 +114,7 @@ const Comments = ({comments, bookId}) => {
                   profilepic={
                     rootComment.profileImgPath
                       ? rootComment.profileImgPath
-                      : "../storage/usersProfilePic/default.webp"
+                      : "https://res.cloudinary.com/dlja4vnrd/image/upload/v1730346383/default_f2wovz.png"
                   }
                 />
               ))

@@ -23,7 +23,7 @@ const NewAccount = () => {
   const [countryCode, setCountryCode] = useState(null);
 
   const navigate = useNavigate();
-  const {signup, isAuthenticated, errors: RegisterErrors} = useAuth();
+  const {signup, user, errors: RegisterErrors} = useAuth();
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -41,8 +41,8 @@ const NewAccount = () => {
   }, []);
 
   useEffect(() => {
-    if (isAuthenticated) navigate("/");
-  }, [isAuthenticated, navigate]);
+    if (user) navigate("/");
+  }, [user, navigate]);
 
   //validations and api request
   const handleSubmit = async e => {

@@ -19,11 +19,11 @@ export const Login = () => {
   const [userPassword, setUserPassword] = useState("");
   const navigate = useNavigate();
 
-  const {login, isAuthenticated, errors: loginErrors} = useAuth();
+  const {login, user, errors: loginErrors} = useAuth();
 
   useEffect(() => {
-    if (isAuthenticated) navigate("/");
-  }, [isAuthenticated, navigate]);
+    if (user) navigate("/");
+  }, [user, navigate]);
 
   //El error es una string, cuando no hay error es null,
   //cuando el error existe se settea a una string que se va mostrar
@@ -51,9 +51,10 @@ export const Login = () => {
       }
     }
     setError(null);
-    //hacer validaciones en el backend para verificar que el usuario
-    //exista
-    login({userNicknameOrEmail: userNickname, userPassword: userPassword});
+    login({
+      userNicknameOrEmail: userNickname,
+      userPassword: userPassword,
+    });
   };
 
   return (

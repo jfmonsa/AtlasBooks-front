@@ -81,7 +81,7 @@ const AddBookToListDropMenu = ({
   );
 };
 
-const AddBookToList = ({bookId, isAuthenticated, userId}) => {
+const AddBookToList = ({bookId, userId}) => {
   const [open, setOpen] = useState(false);
 
   const {data, error} = useFetch(
@@ -95,9 +95,7 @@ const AddBookToList = ({bookId, isAuthenticated, userId}) => {
   }
   //if user is no logged don't show any data
   let infoTextDropMenu;
-  if (!isAuthenticated) {
-    infoTextDropMenu = "Debe loggearse";
-  } else if (!data) {
+  if (!data) {
     infoTextDropMenu = "No Tienes listas";
   } else {
     infoTextDropMenu = "Guardar en lista:";
@@ -105,14 +103,7 @@ const AddBookToList = ({bookId, isAuthenticated, userId}) => {
 
   return (
     <span className="iconDropDown">
-      <span
-        onClick={() => {
-          setOpen(!open);
-          if (open && !isAuthenticated) {
-            alert("Debe loggearse para guaradar libros en sus listas");
-          }
-        }}
-      >
+      <span onClick={() => setOpen(!open)}>
         <FaRegBookmark className="relevantInfo__icon2" />
       </span>
       {data && open && (

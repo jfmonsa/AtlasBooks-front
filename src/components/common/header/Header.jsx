@@ -20,7 +20,7 @@ import DropMenu from "../../dropMenu/DropMenu.jsx";
 import {useNavigate} from "react-router-dom";
 
 // Aux functions
-const userConditionalRenderingMenu = context => {
+const userConditionalRenderingMenu = userData => {
   let menuOptions = [
     {
       toLink: "/",
@@ -45,8 +45,8 @@ const userConditionalRenderingMenu = context => {
     },
   ];
 
-  if (context.logged) {
-    if (context.admin) {
+  if (userData) {
+    if (userData.role === "ADMIN") {
       menuOptions.unshift({
         toLink: "/my-account",
         iconPath: MenuControlpanelIcon,
@@ -73,8 +73,8 @@ const userConditionalRenderingMenu = context => {
   }
   return menuOptions;
 };
-const userConditionalRenderingHederOptions = context => {
-  if (context.logged) {
+const userConditionalRenderingHederOptions = userData => {
+  if (userData) {
     return [{url: "/my-account", text: "Mi Cuenta"}];
   }
   return [
@@ -82,6 +82,7 @@ const userConditionalRenderingHederOptions = context => {
     {url: "/login", text: "Iniciar Sesion"},
   ];
 };
+
 const VisibleHeaderOptions = ({opts}) => {
   return (
     <>
@@ -101,9 +102,9 @@ const VisibleHeaderOptions = ({opts}) => {
 // Main header component
 const Header = () => {
   //Login context
-  const {contextValue, logout} = useAuth();
+  const {user, logout} = useAuth();
   const navigate = useNavigate();
-  const context = contextValue;
+  // const context = contextValue;
   const [isOpen, setIsOpen] = useState(false);
   const setOpenedState = () => {
     setIsOpen(!isOpen);
@@ -114,7 +115,7 @@ const Header = () => {
     navigate("/login");
   };
 
-  let closeSession = context.logged
+  let closeSession = user
     ? [
         {
           onClick: handleLogout,
@@ -141,7 +142,7 @@ const Header = () => {
             </PrimaryBtnLink>
           </li>
           <VisibleHeaderOptions
-            opts={userConditionalRenderingHederOptions(context)}
+            opts={userConditionalRenderingHederOptions(user)}
           />
         </ul>
         <div
@@ -153,7 +154,7 @@ const Header = () => {
       </div>
       {isOpen && (
         <DropMenu
-          options={userConditionalRenderingMenu(context)}
+          options={userConditionalRenderingMenu(user)}
           customOnclickOptions={closeSession}
         />
       )}
