@@ -131,10 +131,12 @@ const UploadBook = () => {
       formData.append("volume", nVol);
       formData.append("numberOfPages", nPages);
       formData.append("publisher", publisher);
-      authors.forEach(author => formData.append("authors", author));
-      languages.forEach(lang => formData.append("languages", lang.value));
+
+      // Append arrays directly
+      authors.forEach(author => formData.append("authors[]", author));
+      languages.forEach(lang => formData.append("languages[]", lang.value));
       selectedSubCategories.forEach(subCat =>
-        formData.append("subcategoryIds", subCat.value),
+        formData.append("subcategoryIds[]", subCat.value),
       );
 
       // Añadir la imagen de portada al FormData
@@ -167,10 +169,9 @@ const UploadBook = () => {
       setSelectedSubCategories([]);
       setCoverBookImage(null);
       setFiles([]);
-      setDescriptionB("");
     } catch (error) {
-      console.error("Error uploading book:", error);
-      alert("An error occurred while uploading the book. Please try again.");
+      console.error("Error al crear el libro:", error);
+      alert("Hubo un error al crear el libro. Por favor, inténtelo de nuevo.");
     }
   };
 
@@ -285,7 +286,7 @@ const UploadBook = () => {
             onChange={e => setPublisher(e.target.value)}
           />
           <label className="input__label" htmlFor="languages">
-            Idomas{" "}
+            Idiomas{" "}
           </label>
           <p className="label_extra">Puede seleccionar uno o más</p>
           <Select
