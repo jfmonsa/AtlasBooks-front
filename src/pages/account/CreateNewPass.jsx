@@ -1,22 +1,22 @@
 import "./account.css";
 import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm.jsx";
 import InputText from "../../components/inputText/InputText.jsx";
-import {useNavigate} from "react-router-dom";
-import {PASSWD} from "../../utils/placeholder.js";
-import {useState} from "react";
-import {valNoEmpty, valPassword} from "../../utils/validateFormFields.js";
+import { useNavigate } from "react-router-dom";
+import { PASSWD } from "../../utils/placeholder.js";
+import { useState } from "react";
+import { valNoEmpty, valPassword } from "../../utils/validateFormFields.js";
 import ErrorFormAccountMsg from "../../components/errorFormAccountMsg/ErrorFormAccountMsg.jsx";
-import {createRecoveryAccount} from "../../api/apiRecoveyAccount.js";
-import {useParams} from "react-router-dom";
+import { createRecoveryAccount } from "../../api/apiRecoveyAccount.js";
+import { useParams } from "react-router-dom";
 
 const NewPassword = () => {
   const [pass2, setPass2] = useState("");
   const [pass3, setPass3] = useState("");
   const [error, setError] = useState(null);
   const navigate = useNavigate();
-  const {token} = useParams();
+  const { token } = useParams();
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     if (!valNoEmpty(pass2) || !valNoEmpty(pass3)) {
@@ -32,7 +32,7 @@ const NewPassword = () => {
       return;
     }
     //enviar datos post al api
-    createRecoveryAccount({newPassword: pass2, token: token});
+    createRecoveryAccount({ newPassword: pass2, token: token });
 
     //navegar hacia la pagina indicada
     navigate("/login");
@@ -51,7 +51,7 @@ const NewPassword = () => {
         type="password"
         holder={PASSWD}
         value={pass2}
-        onChange={e => setPass2(e.target.value)}
+        onChange={(e) => setPass2(e.target.value)}
         text="Nueva contraseña"
       />
 
@@ -59,7 +59,7 @@ const NewPassword = () => {
         type="password"
         holder={PASSWD}
         value={pass3}
-        onChange={e => setPass3(e.target.value)}
+        onChange={(e) => setPass3(e.target.value)}
         text="Repite tu nueva contraseña"
       />
 

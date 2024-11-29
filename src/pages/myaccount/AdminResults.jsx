@@ -3,7 +3,7 @@ import Card from "../../components/card/Card";
 import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm.jsx";
 import SearcherUsers from "../../components/searcher/SearcherUsers.jsx";
 import useFetch from "../../hooks/useFetch.js";
-import {useSearchParams} from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
 //Table imports
 import {
@@ -15,12 +15,12 @@ import {
   TablePagination,
   TableRow,
 } from "@mui/material";
-import {useState, useEffect} from "react";
-import {getBannedUser} from "../../api/apiBanUser.js";
+import { useState, useEffect } from "react";
+import { getBannedUser } from "../../api/apiBanUser.js";
 
 const TableResults = () => {
   //Aux functions
-  const checkBool = value => {
+  const checkBool = (value) => {
     if (typeof value === "boolean") {
       return value ? "true" : "false";
     }
@@ -28,21 +28,21 @@ const TableResults = () => {
   };
 
   const columns = [
-    {id: "id", name: "Id"},
-    {id: "nameu", name: "Name"},
-    {id: "nickname", name: "Nickname"},
-    {id: "email", name: "Email"},
-    {id: "country", name: "Country"},
-    {id: "isActive", name: "Status"},
-    {id: "isadmin", name: "Admin?"},
-    {id: "actions", name: "Actions"}, // Nueva columna para los botones
+    { id: "id", name: "Id" },
+    { id: "nameu", name: "Name" },
+    { id: "nickname", name: "Nickname" },
+    { id: "email", name: "Email" },
+    { id: "country", name: "Country" },
+    { id: "isActive", name: "Status" },
+    { id: "isadmin", name: "Admin?" },
+    { id: "actions", name: "Actions" }, // Nueva columna para los botones
   ];
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
 
-  const handleRowsPerPageChange = event => {
+  const handleRowsPerPageChange = (event) => {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
@@ -50,7 +50,7 @@ const TableResults = () => {
   //Actions
   const handleDeleteUser = (userIdToBan, status) => {
     // Lógica para eliminar un usuario
-    getBannedUser({userIdToBan, status});
+    getBannedUser({ userIdToBan, status });
   };
 
   // TODO: what is this for?
@@ -67,7 +67,7 @@ const TableResults = () => {
   //fetch to api
   const [searchParams] = useSearchParams();
   const search = searchParams.get("search") || "";
-  const {data, isPending, error} = useFetch(
+  const { data, isPending, error } = useFetch(
     `/search-filters/users?search=${search}`,
   );
 
@@ -92,7 +92,7 @@ const TableResults = () => {
         <Table stickyHeader>
           <TableHead>
             <TableRow>
-              {columns.map(column => (
+              {columns.map((column) => (
                 <TableCell key={column.id}>{column.name}</TableCell>
               ))}
             </TableRow>
@@ -101,7 +101,7 @@ const TableResults = () => {
             {rows &&
               rows
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                .map(row => {
+                .map((row) => {
                   return (
                     <TableRow key={row.id}>
                       {columns.map((column, colIndex) => {

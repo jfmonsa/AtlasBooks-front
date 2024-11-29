@@ -1,11 +1,11 @@
 import "./account.css";
 import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm.jsx";
 import InputText from "../../components/inputText/InputText.jsx";
-import {UseChangePass} from "../../contexts/ChangePassContext.jsx";
-import {useNavigate} from "react-router-dom";
-import {PASSWD} from "../../utils/placeholder.js";
-import {useState} from "react";
-import {valNoEmpty, valPassword} from "../../utils/validateFormFields.js";
+import { UseChangePass } from "../../contexts/ChangePassContext.jsx";
+import { useNavigate } from "react-router-dom";
+import { PASSWD } from "../../utils/placeholder.js";
+import { useState } from "react";
+import { valNoEmpty, valPassword } from "../../utils/validateFormFields.js";
 import ErrorFormAccountMsg from "../../components/errorFormAccountMsg/ErrorFormAccountMsg.jsx";
 
 const ChangePass = () => {
@@ -13,7 +13,7 @@ const ChangePass = () => {
   const [pass2, setPass2] = useState("");
   const [pass3, setPass3] = useState("");
   const [error, setError] = useState(null);
-  const {createChangePass} = UseChangePass();
+  const { createChangePass } = UseChangePass();
   const navigate = useNavigate();
 
   // useEffect(() => {
@@ -22,7 +22,7 @@ const ChangePass = () => {
   //   }
   // }, []);
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     if (!valNoEmpty(pass1) || !valNoEmpty(pass2) || !valNoEmpty(pass3)) {
@@ -64,7 +64,7 @@ const ChangePass = () => {
         type="password"
         holder={PASSWD}
         value={pass1}
-        onChange={e => setPass1(e.target.value)}
+        onChange={(e) => setPass1(e.target.value)}
         text="Contraseña actual"
       />
 
@@ -75,7 +75,7 @@ const ChangePass = () => {
         type="password"
         holder={PASSWD}
         value={pass2}
-        onChange={e => setPass2(e.target.value)}
+        onChange={(e) => setPass2(e.target.value)}
         text="Nueva contraseña"
       />
 
@@ -83,7 +83,7 @@ const ChangePass = () => {
         type="password"
         holder={PASSWD}
         value={pass3}
-        onChange={e => setPass3(e.target.value)}
+        onChange={(e) => setPass3(e.target.value)}
         text="Repite tu nueva contraseña"
       />
 

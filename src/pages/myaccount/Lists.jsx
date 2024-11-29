@@ -1,12 +1,12 @@
 import GridBooks from "../../components/gridBooks/GridBooks";
 
 //to fetch data
-import {useParams} from "react-router-dom";
+import { useParams } from "react-router-dom";
 import useFetch from "../../hooks/useFetch.js";
 
 const Lists = () => {
-  const {idList} = useParams();
-  const {data, error, isPending} = useFetch(`/book-lists/${idList}`);
+  const { idList } = useParams();
+  const { data, error, isPending } = useFetch(`/book-lists/${idList}`);
   if (error) {
     return <div>{error}</div>;
   }

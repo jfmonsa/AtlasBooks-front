@@ -2,15 +2,15 @@ import "./bookInformation.css";
 import Card from "../../components/card/Card.jsx";
 
 //to fetch data
-import {useParams} from "react-router-dom";
+import { useParams } from "react-router-dom";
 import useFetch from "../../hooks/useFetch.js";
 import axios from "./../../api/axios.js";
-import {useAuth} from "../../hooks/useAuth.js";
-import {rateBookApi, getBookRatingApi} from "../../api/rateBook.js";
+import { useAuth } from "../../hooks/useAuth.js";
+import { rateBookApi, getBookRatingApi } from "../../api/rateBook.js";
 
 //Rate starts
-import {AiFillStar, AiOutlineStar} from "react-icons/ai";
-import {useEffect, useState} from "react";
+import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+import { useEffect, useState } from "react";
 
 //Book Info
 import DropdownBtn from "../../components/dropDownButtons/DropdownBtn.jsx";
@@ -20,7 +20,7 @@ import PrimaryBtnLink from "../../components/buttons/primaryBtn/PrimaryBtnLink.j
 import PdfIcon from "../../assets/icons/pdfIcon.svg";
 import EpubIcon from "../../assets/icons/otherFile.svg";
 // -- Share option's icon
-import {FaRegHeart, FaHeart} from "react-icons/fa";
+import { FaRegHeart, FaHeart } from "react-icons/fa";
 import Facebook from "../../assets/icons/Icon-facebook.svg";
 import Instagram from "../../assets/icons/Icon-instagram.svg";
 import Telegram from "../../assets/icons/Icon-telegram.svg";
@@ -34,7 +34,7 @@ import Comments from "./commentarySection/Comments.jsx";
 
 //Aux functions
 
-const HeartButton = ({className}) => {
+const HeartButton = ({ className }) => {
   const [likeBook, setLikeBook] = useState(false);
   return likeBook ? (
     <FaHeart
@@ -49,7 +49,7 @@ const HeartButton = ({className}) => {
   );
 };
 
-const BookInfoSectionSpecs = ({left, right}) => {
+const BookInfoSectionSpecs = ({ left, right }) => {
   return (
     <li className="specs__item">
       <span className="specs__item__left">{left}</span>
@@ -82,9 +82,9 @@ const BookInfoSection = ({
   bookFiles,
   fileName,
 }) => {
-  const {user} = useAuth();
-  const generateDownloadOptions = bookFiles => {
-    return bookFiles.map(file => {
+  const { user } = useAuth();
+  const generateDownloadOptions = (bookFiles) => {
+    return bookFiles.map((file) => {
       const fileExtension = file.split(".").pop().toUpperCase();
       return {
         iconPath: iconMap[fileExtension],
@@ -94,7 +94,7 @@ const BookInfoSection = ({
     });
   };
 
-  const handleDownload = async url => {
+  const handleDownload = async (url) => {
     if (!user) {
       alert("You must be logged in to download this file.");
     } else {
@@ -112,11 +112,11 @@ const BookInfoSection = ({
     }
   };
   const shareOptions = [
-    {toLink: "#", iconPath: Facebook, text: "Facebook"},
-    {toLink: "#", iconPath: Instagram, text: "Instagram"},
-    {toLink: "#", iconPath: Telegram, text: "Telegram"},
-    {toLink: "#", iconPath: WhatsApp, text: "WhatsApp"},
-    {toLink: "#", iconPath: Enlace, text: "Copiar enlace"},
+    { toLink: "#", iconPath: Facebook, text: "Facebook" },
+    { toLink: "#", iconPath: Instagram, text: "Instagram" },
+    { toLink: "#", iconPath: Telegram, text: "Telegram" },
+    { toLink: "#", iconPath: WhatsApp, text: "WhatsApp" },
+    { toLink: "#", iconPath: Enlace, text: "Copiar enlace" },
   ];
 
   return (
@@ -196,7 +196,7 @@ const BookInfoSection = ({
   );
 };
 
-const RateStarsSection = ({id}) => {
+const RateStarsSection = ({ id }) => {
   const user = useAuth();
   const [rate, setRate] = useState(null);
   const [number, setNumber] = useState(0);
@@ -214,10 +214,10 @@ const RateStarsSection = ({id}) => {
     getRate();
   }, [id, user?.id]);
 
-  const handleRate = async index => {
+  const handleRate = async (index) => {
     setRate(index);
     try {
-      await rateBookApi({rate: index, idBook: id});
+      await rateBookApi({ rate: index, idBook: id });
     } catch (error) {
       window.alert(error.response.data[0]);
     }
@@ -232,7 +232,7 @@ const RateStarsSection = ({id}) => {
               <AiFillStar
                 key={index}
                 className="stars"
-                style={{color: "orange"}}
+                style={{ color: "orange" }}
                 onClick={() => handleRate(index + 1)}
                 onMouseEnter={() => setNumber(index + 1)}
                 onMouseLeave={() => setNumber(0)}
@@ -241,7 +241,7 @@ const RateStarsSection = ({id}) => {
               <AiOutlineStar
                 key={index}
                 className="stars"
-                style={{color: "black"}}
+                style={{ color: "black" }}
                 onClick={() => handleRate(index + 1)}
                 onMouseEnter={() => setNumber(index + 1)}
                 onMouseLeave={() => setNumber(0)}
@@ -253,7 +253,7 @@ const RateStarsSection = ({id}) => {
   );
 };
 
-const BookPageRelated = ({books}) => {
+const BookPageRelated = ({ books }) => {
   return (
     <Card h1Text="Relacionados" id="Books-relacionados">
       <Slider books={books} />
@@ -261,7 +261,7 @@ const BookPageRelated = ({books}) => {
   );
 };
 
-const BookPageComments = ({comments, bookId}) => {
+const BookPageComments = ({ comments, bookId }) => {
   return (
     <Card h1Text="Comentarios" id="comments">
       <Comments comments={comments} bookId={bookId} />
@@ -271,7 +271,7 @@ const BookPageComments = ({comments, bookId}) => {
 
 // main function
 const BookPage = () => {
-  const {id} = useParams();
+  const { id } = useParams();
 
   // Fetch book data
   const {

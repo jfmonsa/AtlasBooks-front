@@ -1,10 +1,10 @@
-import {createBrowserRouter, RouterProvider} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 //contexts
-import {ChangePassProvider} from "./contexts/ChangePassContext.jsx";
-import {ChangeEmailProvider} from "./contexts/ChangeEmailContext.jsx";
-import {AuthProvider} from "./contexts/authContext.jsx";
-import {ProtectedRoute} from "./components/protectedRoutes/ProtectedRoute.jsx";
+import { ChangePassProvider } from "./contexts/ChangePassContext.jsx";
+import { ChangeEmailProvider } from "./contexts/ChangeEmailContext.jsx";
+import { AuthProvider } from "./contexts/authContext.jsx";
+import { ProtectedRoute } from "./components/protectedRoutes/ProtectedRoute.jsx";
 
 //pages
 import Home from "./pages/home/Home.jsx";
@@ -13,7 +13,7 @@ import UploadBook from "./pages/uploadBook/UploadBook.jsx";
 import NewList from "./pages/myaccount/NewList.jsx";
 
 //Login related and recovery account
-import {Login} from "./pages/account/Login.jsx";
+import { Login } from "./pages/account/Login.jsx";
 import NewAccount from "./pages/account/NewAccount.jsx";
 import RecoveryAccount from "./pages/account/RecoveryAccount.jsx";
 import SendEmail from "./pages/account/SendEmail.jsx";

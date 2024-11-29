@@ -1,4 +1,4 @@
-import {useState} from "react";
+import { useState } from "react";
 import PrimaryBtnForm from "../../../components/buttons/primaryBtn/PrimaryBtnForm";
 
 export function NewComment({
@@ -13,9 +13,9 @@ export function NewComment({
 }) {
   const [text, setText] = useState(initialText);
   const isTextAreaDisabled = text.length == 0;
-  const onSubmit = event => {
+  const onSubmit = (event) => {
     event.preventDefault();
-    handleSubmit({text: text, bookId: idbook, commentId: idcomment});
+    handleSubmit({ text: text, bookId: idbook, commentId: idcomment });
     setText("");
   };
 
@@ -35,7 +35,7 @@ export function NewComment({
           placeholder="Escribe un comentario..."
           className="comment__textarea"
           value={text}
-          onChange={e => setText(e.target.value)}
+          onChange={(e) => setText(e.target.value)}
         ></textarea>
         <div className="comment__btns">
           <PrimaryBtnForm

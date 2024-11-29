@@ -2,7 +2,7 @@ import Card from "../../components/card/Card.jsx";
 import InputText from "../../components/inputText/InputText.jsx";
 
 import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm.jsx";
-import {EMAIL, NAME} from "../../utils/placeholder.js";
+import { EMAIL, NAME } from "../../utils/placeholder.js";
 
 //TODO: hacer el handle sumbit de ChangeUserDetails
 

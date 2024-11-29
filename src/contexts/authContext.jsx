@@ -1,4 +1,4 @@
-import {createContext, useState, useEffect, useCallback} from "react";
+import { createContext, useState, useEffect, useCallback } from "react";
 import {
   registerRequest,
   loginRequest,
@@ -15,7 +15,7 @@ export const AuthContext = createContext();
  * @param {React.ReactNode} props.children - The child components that will have access to the authentication context.
  * @returns {React.ReactNode} The provider component that wraps its children with authentication context.
  */
-export const AuthProvider = ({children}) => {
+export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [errors, setErrors] = useState([]);
 
@@ -43,7 +43,7 @@ export const AuthProvider = ({children}) => {
    *
    * @param {Object} userData - The user data for registration.
    */
-  const signup = useCallback(async userData => {
+  const signup = useCallback(async (userData) => {
     try {
       const response = await registerRequest(userData);
       setUser(response.data.data.user);
@@ -57,7 +57,7 @@ export const AuthProvider = ({children}) => {
    *
    * @param {Object} userData - The user data for login.
    */
-  const login = useCallback(async userData => {
+  const login = useCallback(async (userData) => {
     try {
       const response = await loginRequest(userData);
       setUser(response.data.data.user);

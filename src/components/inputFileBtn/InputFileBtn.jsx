@@ -1,14 +1,14 @@
 import "./inputFileBtn.css";
 import FileItemForInputFile from "../fileItemForInputFile/FileItemForInputFile";
-import {LuUpload} from "react-icons/lu";
-import {useDropzone} from "react-dropzone";
-import {useState, useCallback} from "react";
+import { LuUpload } from "react-icons/lu";
+import { useDropzone } from "react-dropzone";
+import { useState, useCallback } from "react";
 
-const InputFileBtn = ({onFilesSelected, id, className}) => {
+const InputFileBtn = ({ onFilesSelected, id, className }) => {
   const [file, setFile] = useState(null);
 
   const onDrop = useCallback(
-    acceptedFiles => {
+    (acceptedFiles) => {
       const newFile = acceptedFiles[0];
       setFile(newFile);
       onFilesSelected(newFile); // Llama al callback con el nuevo archivo
@@ -21,7 +21,7 @@ const InputFileBtn = ({onFilesSelected, id, className}) => {
     onFilesSelected(null); // Llama al callback con null
   };
 
-  const {getRootProps, getInputProps} = useDropzone({
+  const { getRootProps, getInputProps } = useDropzone({
     onDrop,
     multiple: false, // Solo acepta un archivo
   });

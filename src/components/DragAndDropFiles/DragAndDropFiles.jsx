@@ -1,13 +1,13 @@
 import "./dragAndDropFiles.css";
-import {useDropzone} from "react-dropzone";
-import {useState, useCallback} from "react";
+import { useDropzone } from "react-dropzone";
+import { useState, useCallback } from "react";
 import addFileIcon from "../../assets/icons/dragAndDropFile.svg";
 import FileItemForInputFile from "../fileItemForInputFile/FileItemForInputFile";
 
-const DragAndDropFiles = ({onFilesSelected, id, classNameContainer}) => {
+const DragAndDropFiles = ({ onFilesSelected, id, classNameContainer }) => {
   const [files, setFiles] = useState([]);
   const onDrop = useCallback(
-    acceptedFiles => {
+    (acceptedFiles) => {
       const updatedFiles = [...files, ...acceptedFiles];
       setFiles(updatedFiles);
       onFilesSelected(updatedFiles); // Llama al callback con los archivos actualizados
@@ -15,13 +15,13 @@ const DragAndDropFiles = ({onFilesSelected, id, classNameContainer}) => {
     [files, onFilesSelected],
   );
 
-  const removeFile = file => {
-    const updatedFiles = files.filter(f => f !== file);
+  const removeFile = (file) => {
+    const updatedFiles = files.filter((f) => f !== file);
     setFiles(updatedFiles);
     onFilesSelected(updatedFiles); // Llama al callback con los archivos actualizados
   };
 
-  const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop});
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
   return (
     <div className={classNameContainer}>

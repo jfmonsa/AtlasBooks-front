@@ -2,7 +2,7 @@ import "./myaccount.css";
 import BtnAdd from "../../components/buttons/BtnAdd/BtnAdd.jsx";
 import Slider from "../../components/slider/Slider.jsx";
 import Card from "../../components/card/Card.jsx";
-import {Link, useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 //for option's section
 import IconPaypal from "../../assets/icons/icon-paypal.svg";
 import IconLogout from "../../assets/icons/menu-logout.svg";
@@ -18,16 +18,16 @@ import PublicListIcon from "./../../assets/icons/icon-publiclist.svg";
 //Admin page
 import SearcherUsers from "../../components/searcher/SearcherUsers.jsx";
 import SearcherNoFilters from "../../components/searcher/SearcherNoFilters.jsx";
-import {getReportsApi} from "../../api/reports.js";
+import { getReportsApi } from "../../api/reports.js";
 
 //imgs para libros
-import {useAuth} from "../../hooks/useAuth.js";
-import {useEffect, useState} from "react";
+import { useAuth } from "../../hooks/useAuth.js";
+import { useEffect, useState } from "react";
 import useFetch from "../../hooks/useFetch.js";
 import axios from "../../api/axios.js";
 
 // Aux functions
-const SectionMyDataDatum = ({left, right}) => {
+const SectionMyDataDatum = ({ left, right }) => {
   return (
     <li className="card-myData">
       <span className="card-myData__left">{left}</span>
@@ -88,11 +88,11 @@ const SectionListsListCard = ({
   );
 };
 
-const SectionLists = ({myLists}) => {
+const SectionLists = ({ myLists }) => {
   if (myLists != null) {
     return (
       <Card h1Text="Mis listas" id="my-lists">
-        {myLists.map(list => {
+        {myLists.map((list) => {
           return (
             <SectionListsListCard
               key={list.id}
@@ -110,7 +110,7 @@ const SectionLists = ({myLists}) => {
   }
 };
 
-const SectionDownloadsHistory = ({historyBooks}) => {
+const SectionDownloadsHistory = ({ historyBooks }) => {
   if (historyBooks != null) {
     return (
       <Card h1Text="Historial de descargas">
@@ -133,7 +133,7 @@ const SectionUploadABook = () => {
 };
 
 const SectionOtherOpts = () => {
-  const {logout} = useAuth();
+  const { logout } = useAuth();
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -203,10 +203,10 @@ const MyAccountAdmin = () => {
   const [report, setReport] = useState(["No hay reportes por el momento"]);
   useEffect(() => {
     getReportsApi()
-      .then(res => {
+      .then((res) => {
         setReport(res.data.data);
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error.message);
       });
   }, []);
@@ -249,7 +249,7 @@ const MyAccountAdmin = () => {
 };
 
 const LoggedAdmin = () => {
-  const {user} = useAuth();
+  const { user } = useAuth();
   if (user.role === "ADMIN") {
     return <MyAccountAdmin />;
   }
@@ -278,7 +278,7 @@ const MyAccount = () => {
 
   useEffect(() => {
     if (userListsData) {
-      const filteredData = userListsData.data.map(list => ({
+      const filteredData = userListsData.data.map((list) => ({
         id: list.id,
         listName: list.title,
         desc: list.description,
@@ -291,7 +291,7 @@ const MyAccount = () => {
 
   useEffect(() => {
     if (downloadHistoryData) {
-      const filteredData = downloadHistoryData.data.map(book => ({
+      const filteredData = downloadHistoryData.data.map((book) => ({
         bookId: book.book_id,
         title: book.title,
         author: book.author,

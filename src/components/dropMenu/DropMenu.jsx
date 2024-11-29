@@ -3,7 +3,7 @@ This component objective is to be a menu, in components like a
 dropDownItem of a dropDownBtn or the burguer menu
 */
 import "./dropMenu.sass";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const DropMenuItemOnclick = ({
   text,

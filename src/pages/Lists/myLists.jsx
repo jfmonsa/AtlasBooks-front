@@ -1,8 +1,8 @@
-import {Link, useSearchParams} from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import useFetch from "../../hooks/useFetch.js";
 import Searcher2 from "../../components/searcher/searcher2.jsx";
 
-const ListResult = ({title, descriptionL, dateL, idUserCreator, urlList}) => {
+const ListResult = ({ title, descriptionL, dateL, idUserCreator, urlList }) => {
   return (
     <Link to={urlList}>
       <div className="bookResult">
@@ -21,12 +21,12 @@ const ListResult = ({title, descriptionL, dateL, idUserCreator, urlList}) => {
   );
 };
 
-const ListResultsContainer = ({results, totalResults}) => {
+const ListResultsContainer = ({ results, totalResults }) => {
   return (
     <>
       <section className="results">
         <p className="results__total">Total: {totalResults} listas</p>
-        {results.map(list => {
+        {results.map((list) => {
           return (
             <ListResult
               key={list.id} // Usa una clave única
@@ -48,7 +48,7 @@ const ListSearch = () => {
   const [searchParams] = useSearchParams();
   const listN = searchParams.get("listN");
 
-  const {data, isPending, error} = useFetch(
+  const { data, isPending, error } = useFetch(
     listN ? `/search-filters/public-lists?listName=${listN}` : null,
   );
 

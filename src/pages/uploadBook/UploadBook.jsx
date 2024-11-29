@@ -12,11 +12,11 @@ import Select from "react-select";
 //api related
 import useFetch from "../../hooks/useFetch.js";
 import axios from "../../api/axios.js";
-import {useAuth} from "../../hooks/useAuth.js";
+import { useAuth } from "../../hooks/useAuth.js";
 
 //others
-import {useState, useEffect} from "react";
-import {mainLanguages} from "../../utils/languagesArray.js";
+import { useState, useEffect } from "react";
+import { mainLanguages } from "../../utils/languagesArray.js";
 
 const SubCategorySelect = ({
   selectedCategory,
@@ -52,11 +52,11 @@ const SubCategorySelect = ({
         </label>
         <p className="label_extra">Puede seleccionar una o más</p>
         <Select
-          options={subCatData.data.map(subCat => ({
+          options={subCatData.data.map((subCat) => ({
             value: subCat.id,
             label: subCat.subcategoryName,
           }))}
-          onChange={selectedOptions => onSubCategoriesChange(selectedOptions)}
+          onChange={(selectedOptions) => onSubCategoriesChange(selectedOptions)}
           value={selectedSubCategories}
           placeholder="Subcategorias..."
           id="subcategories"
@@ -73,7 +73,7 @@ const SubCategorySelect = ({
   }
 };
 const UploadBook = () => {
-  const {user} = useAuth();
+  const { user } = useAuth();
 
   //form fields
   const [bookTitle, setBookTitle] = useState("");
@@ -90,7 +90,7 @@ const UploadBook = () => {
   const [files, setFiles] = useState([]);
   const [descriptionB, setDescriptionB] = useState("");
 
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!user) {
@@ -106,7 +106,7 @@ const UploadBook = () => {
       alert("La descripción no puede estar vacía");
       return;
     }
-    if (authors.length === 0 || authors.some(author => !author.trim())) {
+    if (authors.length === 0 || authors.some((author) => !author.trim())) {
       alert(
         "Debe haber al menos un autor y los nombres de los autores no pueden estar vacíos",
       );
@@ -131,9 +131,9 @@ const UploadBook = () => {
       formData.append("volume", nVol);
       formData.append("numberOfPages", nPages);
       formData.append("publisher", publisher);
-      authors.forEach(author => formData.append("authors", author));
-      languages.forEach(lang => formData.append("languages", lang.value));
-      selectedSubCategories.forEach(subCat =>
+      authors.forEach((author) => formData.append("authors", author));
+      languages.forEach((lang) => formData.append("languages", lang.value));
+      selectedSubCategories.forEach((subCat) =>
         formData.append("subcategoryIds", subCat.value),
       );
 
@@ -141,7 +141,7 @@ const UploadBook = () => {
       formData.append("cover", coverBookImage);
 
       // Añadir los archivos del libro al FormData
-      files.forEach(file => {
+      files.forEach((file) => {
         formData.append("bookFiles", file);
       });
 
@@ -174,19 +174,19 @@ const UploadBook = () => {
     }
   };
 
-  const handleCancell = e => {
+  const handleCancell = (e) => {
     e.navigate("/my-account");
   };
 
-  const handleFilesSelected = selectedFiles => {
+  const handleFilesSelected = (selectedFiles) => {
     setFiles(selectedFiles);
   };
 
-  const handleCoverBookImage = selectedFile => {
+  const handleCoverBookImage = (selectedFile) => {
     setCoverBookImage(selectedFile);
   };
 
-  const handleSelectedLanguagesChange = selectedOption => {
+  const handleSelectedLanguagesChange = (selectedOption) => {
     setLanguages(selectedOption);
   };
 
@@ -221,7 +221,7 @@ const UploadBook = () => {
   } else if (catIsPending) {
     return <p>Loading...</p>;
   } else if (catData) {
-    const categories = catData.data.map(cat => ({
+    const categories = catData.data.map((cat) => ({
       value: cat.id,
       label: cat.name,
     }));
@@ -232,7 +232,7 @@ const UploadBook = () => {
             text="Titulo"
             holder="P. ej Movie Dick"
             value={bookTitle}
-            onChange={e => setBookTitle(e.target.value)}
+            onChange={(e) => setBookTitle(e.target.value)}
           />
           {authors.map((author, index) => (
             <InputText
@@ -240,7 +240,7 @@ const UploadBook = () => {
               text={`Autor ${index + 1}`}
               holder={`Autor ${index + 1}`}
               value={author}
-              onChange={e => handleAuthorChange(index, e.target.value)}
+              onChange={(e) => handleAuthorChange(index, e.target.value)}
             />
           ))}
           <PrimaryBtnForm
@@ -253,7 +253,7 @@ const UploadBook = () => {
             text={`ISBN`}
             holder={`978-3-16-148410-0`}
             value={isbn}
-            onChange={e => setIsbn(e.target.value)}
+            onChange={(e) => setIsbn(e.target.value)}
           />
 
           <InputText
@@ -261,28 +261,28 @@ const UploadBook = () => {
             holder={`pej. 1973`}
             type="number"
             value={yearReleased}
-            onChange={e => setYearReleased(e.target.value)}
+            onChange={(e) => setYearReleased(e.target.value)}
           />
           <InputText
             text={`Número de páginas`}
             holder={`pej. 273`}
             type="number"
             value={nPages}
-            onChange={e => setNPages(e.target.value)}
+            onChange={(e) => setNPages(e.target.value)}
           />
           <InputText
             text={`Número de volumen`}
             holder={`pej. 1`}
             type="number"
             value={nVol}
-            onChange={e => setNVol(e.target.value)}
+            onChange={(e) => setNVol(e.target.value)}
           />
           <InputText
             text={`Editorial / Publicador`}
             holder={`pej. Fondo de Cultura Económica`}
             type="text"
             value={publisher}
-            onChange={e => setPublisher(e.target.value)}
+            onChange={(e) => setPublisher(e.target.value)}
           />
           <label className="input__label" htmlFor="languages">
             Idomas{" "}
@@ -307,7 +307,7 @@ const UploadBook = () => {
           <Select
             id="category"
             options={categories}
-            onChange={option => setSelectedCategory(option)}
+            onChange={(option) => setSelectedCategory(option)}
             placeholder="Categorias..."
             name="category"
             value={selectedCategory}
@@ -345,7 +345,7 @@ const UploadBook = () => {
             text="Descripción"
             holder="Agrega la sipnosis del libro"
             value={descriptionB}
-            onChange={e => setDescriptionB(e.target.value)}
+            onChange={(e) => setDescriptionB(e.target.value)}
           />
           <PrimaryBtnForm
             text="Subir libro"

@@ -1,8 +1,8 @@
 import "./comments.css";
-import {Comment} from "./Comment.jsx";
-import {NewComment} from "./NewComment.jsx";
+import { Comment } from "./Comment.jsx";
+import { NewComment } from "./NewComment.jsx";
 //api and logic
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import {
   getComments as getCommentsApi,
   createComment as createCommentApi,
@@ -10,15 +10,15 @@ import {
   updateComment as updateCommentApi,
 } from "../../../api/apiComments.js";
 
-import {useAuth} from "../../../hooks/useAuth.js";
+import { useAuth } from "../../../hooks/useAuth.js";
 
-const Comments = ({comments, bookId}) => {
+const Comments = ({ comments, bookId }) => {
   const [activeComent, setActiveComent] = useState(null);
-  const {user} = useAuth();
+  const { user } = useAuth();
   const [backendComents, setBackendComents] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const addComent = async body => {
+  const addComent = async (body) => {
     setLoading(true);
     try {
       const comment = await createCommentApi(body);
@@ -40,11 +40,11 @@ const Comments = ({comments, bookId}) => {
     setBackendComents(comments);
   }, [bookId, comments]);
 
-  const deleteComment = async commentId => {
+  const deleteComment = async (commentId) => {
     if (window.confirm("Estas seguro de querer eliminar este comentario?")) {
       await deleteCommentApi(commentId).then(() => {
         const updateBackendComments = backendComents.filter(
-          backendComent => backendComent.id != commentId,
+          (backendComent) => backendComent.id != commentId,
         );
         setBackendComents(updateBackendComments);
       });
@@ -54,11 +54,11 @@ const Comments = ({comments, bookId}) => {
   const updateComment = async (text, commentId) => {
     setLoading(true);
     try {
-      const updatedComment = await updateCommentApi({text, commentId});
+      const updatedComment = await updateCommentApi({ text, commentId });
       if (updatedComment.length == 0) {
         throw new Error("Error al actualizar el comentario");
       }
-      const updateBackendComments = backendComents.map(backendComent =>
+      const updateBackendComments = backendComents.map((backendComent) =>
         backendComent.id == commentId
           ? {
               ...backendComent,
@@ -99,7 +99,7 @@ const Comments = ({comments, bookId}) => {
         ) : (
           <div className="comments-container">
             {Array.isArray(backendComents) && backendComents.length > 0 ? (
-              backendComents.map(rootComment => (
+              backendComents.map((rootComment) => (
                 <Comment
                   key={rootComment.id}
                   commentId={rootComment.id}

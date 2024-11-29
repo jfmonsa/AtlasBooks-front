@@ -1,7 +1,7 @@
 import "./primarybtn.css";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const PrimaryBtnLink = ({text, tolink, cssClasses, children}) => {
+const PrimaryBtnLink = ({ text, tolink, cssClasses, children }) => {
   return (
     <Link to={tolink} className={"baseBtn" + " " + cssClasses}>
       {text}

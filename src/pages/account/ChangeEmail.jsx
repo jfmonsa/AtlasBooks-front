@@ -1,21 +1,21 @@
 import "./account.css";
 import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm.jsx";
 import InputText from "../../components/inputText/InputText.jsx";
-import {UseChangeEmail} from "../../contexts/ChangeEmailContext.jsx";
-import {useNavigate} from "react-router-dom";
-import {EMAIL} from "../../utils/placeholder.js";
-import {useState} from "react";
-import {valEmail, valNoEmpty} from "../../utils/validateFormFields.js";
+import { UseChangeEmail } from "../../contexts/ChangeEmailContext.jsx";
+import { useNavigate } from "react-router-dom";
+import { EMAIL } from "../../utils/placeholder.js";
+import { useState } from "react";
+import { valEmail, valNoEmpty } from "../../utils/validateFormFields.js";
 import ErrorFormAccountMsg from "../../components/errorFormAccountMsg/ErrorFormAccountMsg.jsx";
 
 const ChangeEmail = () => {
   const [mail1, setMail1] = useState("");
   const [mail2, setMail2] = useState("");
   const [error, setError] = useState(null);
-  const {createChangeEmail} = UseChangeEmail();
+  const { createChangeEmail } = UseChangeEmail();
   const navigate = useNavigate();
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     if (!valNoEmpty(mail1) || !valNoEmpty(mail2)) {
@@ -31,7 +31,7 @@ const ChangeEmail = () => {
       return;
     }
     //enviar datos post al api
-    createChangeEmail({currentEmail: mail1, newEmail: mail2});
+    createChangeEmail({ currentEmail: mail1, newEmail: mail2 });
     //navegar hacia la pagina indicada
     navigate("/send-email");
   };
@@ -49,7 +49,7 @@ const ChangeEmail = () => {
         type="text"
         holder={EMAIL}
         value={mail1}
-        onChange={e => setMail1(e.target.value)}
+        onChange={(e) => setMail1(e.target.value)}
         text="Correo actual"
       />
 
@@ -57,7 +57,7 @@ const ChangeEmail = () => {
         type="text"
         holder={EMAIL}
         value={mail2}
-        onChange={e => setMail2(e.target.value)}
+        onChange={(e) => setMail2(e.target.value)}
         text="Correo nuevo"
       />
 

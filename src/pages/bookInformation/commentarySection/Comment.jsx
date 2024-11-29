@@ -1,5 +1,5 @@
-import {NewComment} from "./NewComment";
-import {useAuth} from "../../../hooks/useAuth.js";
+import { NewComment } from "./NewComment";
+import { useAuth } from "../../../hooks/useAuth.js";
 import PrimaryBtnForm from "../../../components/buttons/primaryBtn/PrimaryBtnForm";
 
 export function Comment({
@@ -13,7 +13,7 @@ export function Comment({
   setActiveComent,
   updateComment,
 }) {
-  const {user} = useAuth();
+  const { user } = useAuth();
   const userIdLogged = user?.id;
   const profileImgPath =
     user?.profileImgPath ||
@@ -28,7 +28,7 @@ export function Comment({
     activeComent.type === "editing" &&
     activeComent.id === commentId;
 
-  const submitUpdate = text => {
+  const submitUpdate = (text) => {
     updateComment(text, commentId);
   };
 
@@ -50,7 +50,7 @@ export function Comment({
             submitLabel="Actualizar"
             hasCancelButton
             initialText={comment}
-            handleSubmit={text => {
+            handleSubmit={(text) => {
               submitUpdate(text.text, commentId);
             }}
             handleCancel={() => setActiveComent(null)}
@@ -62,7 +62,9 @@ export function Comment({
           {canEdit && (
             <PrimaryBtnForm
               text="Editar"
-              onClick={() => setActiveComent({id: commentId, type: "editing"})}
+              onClick={() =>
+                setActiveComent({ id: commentId, type: "editing" })
+              }
               cssClasses="baseBtn commentsBtn blueBtn"
             />
           )}

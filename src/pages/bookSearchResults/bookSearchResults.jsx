@@ -1,8 +1,8 @@
 import "./bookSearchResults.css";
 import Searcher from "../../components/searcher/Searcher";
-import {Link} from "react-router-dom";
-import {AiOutlineStar} from "react-icons/ai";
-import {useSearchParams} from "react-router-dom";
+import { Link } from "react-router-dom";
+import { AiOutlineStar } from "react-icons/ai";
+import { useSearchParams } from "react-router-dom";
 import useFetch from "../../hooks/useFetch.js";
 
 //Aux functions
@@ -42,11 +42,11 @@ const BookResult = ({
   );
 };
 
-const BookResultsContainer = ({results, totalResults}) => {
+const BookResultsContainer = ({ results, totalResults }) => {
   return (
     <section className="results">
       <p className="results__total">Total: {totalResults} libros</p>
-      {results.map(book => (
+      {results.map((book) => (
         <BookResult
           key={book.id}
           title={book.title}
@@ -82,7 +82,7 @@ const BookSearch = () => {
   if (subCat) params.append("subCategoryId", subCat);
 
   const url = `/search-filters/books?${params.toString()}`;
-  const {data, isPending, error} = useFetch(url);
+  const { data, isPending, error } = useFetch(url);
 
   if (error) {
     return <p>{error}</p>;

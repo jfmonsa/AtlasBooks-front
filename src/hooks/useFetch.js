@@ -1,4 +1,4 @@
-import {useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import axios from "../api/axios.js";
 
 /**
@@ -13,7 +13,7 @@ import axios from "../api/axios.js";
  * @returns {boolean} return.isPending - The loading state.
  * @returns {string|null} return.error - The error message, if any.
  */
-const useFetch = url => {
+const useFetch = (url) => {
   const [data, setData] = useState(null);
   const [isPending, setIsPending] = useState(true);
   const [error, setError] = useState(null);
@@ -30,7 +30,7 @@ const useFetch = url => {
       }
 
       try {
-        const response = await axios.get(url, {signal: controller.signal});
+        const response = await axios.get(url, { signal: controller.signal });
         setData(response.data);
       } catch (err) {
         if (axios.isCancel(err)) {
@@ -51,7 +51,7 @@ const useFetch = url => {
     };
   }, [url]);
 
-  return {data, isPending, error};
+  return { data, isPending, error };
 };
 
 export default useFetch;

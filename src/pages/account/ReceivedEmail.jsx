@@ -1,15 +1,15 @@
 import "./account.css";
 import icon_mail from "../../assets/icons/icon-mail.svg";
 import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm.jsx";
-import {GetChangeEmailToken} from "../../api/apiChangeEmail.js";
-import {Link, useParams} from "react-router-dom";
-import {verifyTokenEmail} from "../../api/auth.js";
+import { GetChangeEmailToken } from "../../api/apiChangeEmail.js";
+import { Link, useParams } from "react-router-dom";
+import { verifyTokenEmail } from "../../api/auth.js";
 
 const ReceivedEmail = () => {
-  const {token} = useParams();
+  const { token } = useParams();
 
   const OnClick = async () => {
-    const user = await verifyTokenEmail({token});
+    const user = await verifyTokenEmail({ token });
     GetChangeEmailToken({
       id: user.data.user.id,
       newEmail: user.data.user.newEmail,

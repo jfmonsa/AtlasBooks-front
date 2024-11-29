@@ -1,10 +1,10 @@
 import "./fileItemForInputFile.css";
 import getFileIcon from "../../utils/getFileIcon";
 import formatFileSize from "../../utils/formatFileSize";
-import {FaTrashAlt} from "react-icons/fa";
+import { FaTrashAlt } from "react-icons/fa";
 import abbreviateStr from "../../utils/abbreviateStr.js";
 
-const FileItemForInputFile = ({file, removeFile}) => {
+const FileItemForInputFile = ({ file, removeFile }) => {
   return (
     <li className="dragAndDropFile__fileListItem">
       <img
