@@ -7,6 +7,7 @@ import ArrowRight from "../../assets/icons/icon-arrowRight.svg";
 import Book from "../book/Book.jsx";
 
 const CustomSlider = ({ books }) => {
+
   const SamplePrevArrow = (props) => {
     const { className, onClick } = props;
     return (
@@ -30,16 +31,14 @@ const CustomSlider = ({ books }) => {
       />
     );
   };
-
+    
   const settings = {
-    dots: false,
-    infinite: true,
-    speed: 300,
-    slidesToShow: 6,
-    slidesToScroll: 6,
-    centerPadding: 30,
-    initialSlide: 0,
-    className: "slides",
+
+    draggable: false,
+    infinite: books.length > 6,
+    speed: 500,
+    slidesToShow: Math.min(books.length, 6),
+    slidesToScroll: Math.min(books.length, 6),
     prevArrow: <SampleNextArrow to="next" />,
     nextArrow: <SamplePrevArrow to="prev" />,
 
@@ -47,63 +46,67 @@ const CustomSlider = ({ books }) => {
       {
         breakpoint: 1224,
         settings: {
-          slidesToShow: 6,
-          slidesToScroll: 6,
-          infinite: true,
+          infinite: books.length > 6,
+          slidesToShow: Math.min(books.length, 6),
+          slidesToScroll: Math.min(books.length, 6),
         },
       },
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 5,
-          slidesToScroll: 5,
-          infinite: true,
+          infinite: books.length > 5,
+          slidesToShow: Math.min(books.length, 5),
+          slidesToScroll: Math.min(books.length, 5),
         },
       },
       {
         breakpoint: 800,
         settings: {
-          slidesToShow: 4,
-          slidesToScroll: 4,
-          infinite: true,
+          infinite: books.length > 4,
+          slidesToShow: Math.min(books.length, 4),
+          slidesToScroll: Math.min(books.length, 4),
         },
       },
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          initialSlide: 2,
+          slidesToShow: Math.min(books.length, 3),
+          slidesToScroll: Math.min(books.length, 3),
         },
       },
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
+          slidesToShow: Math.min(books.length, 2),
+          slidesToScroll: Math.min(books.length, 2),
         },
       },
     ],
   };
+
   return (
     <>
-      <Slider {...settings}>
-        {Array.isArray(books) && books.length > 0 ? (
-          books.map((book) => (
-            <Book
-              key={book.bookId}
-              bookId={book.bookId}
-              authors={book.authors}
-              title={book.title}
-              img={book.pathBookCover}
-            />
-          ))
-        ) : (
-          <p>No books available</p>
-        )}
-      </Slider>
+      {books.length > 0 ? (
+        <Slider {...settings}>
+          {Array.isArray(books) && books.length > 0 ? (
+            books.map((book, index) => (
+              <Book
+                key={index}
+                bookId={book.bookId}
+                authors={book.authors}
+                title={book.title}
+                img={book.pathBookCover}
+              />
+            ))
+          ) : (
+            <p>No books available</p>
+          )}
+        </Slider>
+      ) : (
+        <p>You haven’t downloaded any books yet. Explore our library and find your next great read!</p>
+      )}
     </>
   );
-};
+}
 
 export default CustomSlider;

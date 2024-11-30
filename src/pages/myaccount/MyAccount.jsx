@@ -292,7 +292,7 @@ const MyAccount = () => {
   useEffect(() => {
     if (downloadHistoryData) {
       const filteredData = downloadHistoryData.data.map((book) => ({
-        bookId: book.book_id,
+        bookId: book.bookId,
         title: book.title,
         author: book.author,
         pathBookCover: book.coverImgPath,
