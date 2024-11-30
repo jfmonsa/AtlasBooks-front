@@ -6,13 +6,16 @@
 .slick-track {
   display: flex !important;
   justify-content: center !important;
-  align-items: center !important;
+  align-items: start !important;
 }
 
 .slick-slide {
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
+  width: max-content;
+  height: 200px; /* Establece una altura fija */
+  overflow: hidden; /* Oculta el contenido desbordado */
 }
 
 .slick-slide > div {
@@ -21,6 +24,13 @@
   height: max-content;
   justify-content: center;
   align-items: center;
+}
+
+.slider-book .tittleContainer {
+  height: 50px; /* Ajusta esta altura según sea necesario */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 /* Ajustar los botones de navegación */
