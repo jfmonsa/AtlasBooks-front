@@ -28,6 +28,16 @@ button {
   color: var(--compSurface-light);
 }
 
+.redBtn {
+  background-color: var(--red);
+  color: var(--compSurface-light);
+}
+
+.greenBtn {
+  background-color: var(--green);
+  color: var(--compSurface-light);
+}
+
 .purpleBtn {
   background-color: var(--bg-purple-light);
   border: var(--border-1);
