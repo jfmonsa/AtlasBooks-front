@@ -7,7 +7,6 @@ const Book = ({ title, authors, img, bookId, index }) => {
       <div className="bookContainer" key={index}>
         <img
           className="img"
-          //src={img}
           src={img}
           alt={`Imagen de la portada del libro: ${title}, por ${authors}`}
         />
