@@ -285,6 +285,13 @@ const BookPage = () => {
     return <p>Loading...</p>;
   }
   if (bookData) {
+    // Combine categories and subcategories, removing duplicates
+    const categoriesSet = new Set([
+      ...bookData.data.subcategories.subcategories,
+      bookData.data.subcategories.category,
+    ]);
+    const categories = Array.from(categoriesSet).join(", ");
+
     return (
       <>
         <BookInfoSection
@@ -301,9 +308,7 @@ const BookPage = () => {
           authorName={bookData.data.authors?.join(", ")}
           language={bookData.data.languages?.join(", ")}
           fileType={bookData.data.fileExtensions?.join(", ")}
-          categories={bookData.data.subcategories.subcategories
-            ?.concat(bookData.data?.subcategories.category)
-            .join(", ")}
+          categories={categories}
           numComments={bookData.data.comments.length}
           bookFiles={bookData.data.files}
           fileName={bookData.data.files[0]}

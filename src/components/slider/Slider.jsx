@@ -7,7 +7,6 @@ import ArrowRight from "../../assets/icons/icon-arrowRight.svg";
 import Book from "../book/Book.jsx";
 
 const CustomSlider = ({ books }) => {
-
   const SamplePrevArrow = (props) => {
     const { className, onClick } = props;
     return (
@@ -31,9 +30,8 @@ const CustomSlider = ({ books }) => {
       />
     );
   };
-    
-  const settings = {
 
+  const settings = {
     draggable: false,
     infinite: books.length > 6,
     speed: 500,
@@ -103,10 +101,13 @@ const CustomSlider = ({ books }) => {
           )}
         </Slider>
       ) : (
-        <p>You haven’t downloaded any books yet. Explore our library and find your next great read!</p>
+        <p>
+          You haven’t downloaded any books yet. Explore our library and find
+          your next great read!
+        </p>
       )}
     </>
   );
-}
+};
 
 export default CustomSlider;

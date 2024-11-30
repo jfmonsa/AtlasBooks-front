@@ -43,10 +43,15 @@ const BookResult = ({
 };
 
 const BookResultsContainer = ({ results, totalResults }) => {
+  // Remove duplicate books based on their ID
+  const uniqueBooks = results.filter(
+    (book, index, self) => index === self.findIndex((b) => b.id === book.id),
+  );
+
   return (
     <section className="results">
       <p className="results__total">Total: {totalResults} libros</p>
-      {results.map((book) => (
+      {uniqueBooks.map((book) => (
         <BookResult
           key={book.id}
           title={book.title}
