@@ -16,7 +16,8 @@ import {
   TableRow,
 } from "@mui/material";
 import { useState, useEffect } from "react";
-import { getBannedUser } from "../../api/apiBanUser.js";
+import { BanUser } from "../../api/apiBanUser.js";
+import { UnbanUser } from "../../api/apiBanUser.js";
 
 const TableResults = () => {
   //Aux functions
@@ -29,12 +30,12 @@ const TableResults = () => {
 
   const columns = [
     { id: "id", name: "Id" },
-    { id: "nameu", name: "Name" },
+    { id: "fullName", name: "Name" },
     { id: "nickname", name: "Nickname" },
     { id: "email", name: "Email" },
     { id: "country", name: "Country" },
     { id: "isActive", name: "Status" },
-    { id: "isadmin", name: "Admin?" },
+    { id: "role", name: "Admin?" },
     { id: "actions", name: "Actions" }, // Nueva columna para los botones
   ];
 
@@ -47,29 +48,41 @@ const TableResults = () => {
     setPage(0);
   };
 
-  //Actions
-  const handleDeleteUser = (userIdToBan, status) => {
-    // Lógica para eliminar un usuario
-    getBannedUser({ userIdToBan, status });
-  };
-
   //states
   const [rows, setRows] = useState([]);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
+  const [reload, setReload] = useState(false);
 
   //fetch to api
   const [searchParams] = useSearchParams();
   const search = searchParams.get("search") || "";
   const { data, isPending, error } = useFetch(
-    `/search-filters/users?search=${search}`,
+    `/search-filters/users?search=${search}&reload=${reload}`,
   );
+
+  const reloadUsers = () => {
+    setReload(prev => !prev);
+  };
 
   useEffect(() => {
     if (data) {
       setRows(data.data);
     }
   }, [data]);
+
+  //Actions
+  const handleBanUser = (userIdToBan, status) => {
+    // Lógica para eliminar un usuario
+    BanUser({ userIdToBan, status });
+    reloadUsers();
+  };
+
+  const handleUnbanUser = (userIdToUnban, status) => {
+    // Lógica para eliminar un usuario
+    UnbanUser({ userIdToUnban, status });
+    reloadUsers();
+  }
 
   if (isPending) {
     return <p>Is loading...</p>;
@@ -99,27 +112,28 @@ const TableResults = () => {
                   return (
                     <TableRow key={row.id}>
                       {columns.map((column, colIndex) => {
+                        console.log(row);
                         let value = row[column.id];
                         if (column.id === "actions") {
                           let buttonAction;
                           if (row.isActive) {
                             buttonAction = (
                               <PrimaryBtnForm
-                                onClick={() => handleDeleteUser(row.id)}
+                                onClick={() => handleBanUser(row.id)}
                                 type="button"
-                                text="Bannear"
-                                cssClasses="baseBtn commentsBtn blueBtn"
+                                text="Ban"
+                                cssClasses="baseBtn commentsBtn redBtn"
                               />
                             );
                           } else {
                             buttonAction = (
                               <PrimaryBtnForm
                                 onClick={() =>
-                                  handleDeleteUser(row.id, row.isActive)
+                                  handleUnbanUser(row.id, row.isActive)
                                 }
                                 type="button"
-                                text="Bannear"
-                                cssClasses="baseBtn commentsBtn blueBtn"
+                                text="Unban"
+                                cssClasses="baseBtn commentsBtn greenBtn"
                               />
                             );
                           }
@@ -129,7 +143,7 @@ const TableResults = () => {
                           );
                         } else if (
                           column.id === "isActive" ||
-                          column.id === "isadmin"
+                          column.id === "ADMIN"
                         ) {
                           return (
                             <TableCell key={colIndex}>

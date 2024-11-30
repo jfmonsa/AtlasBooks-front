@@ -1,5 +1,9 @@
 import axios from "./axios";
 
-export const getBannedUser = (info) => {
-  axios.post(`/user/ban`, info);
+export const BanUser = (info) => {
+  axios.patch(`/user/ban`, info);
+};
+
+export const UnbanUser = (info) => {
+  axios.patch(`/user/unban`, info);
 };
