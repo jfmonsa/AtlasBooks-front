@@ -287,7 +287,7 @@ const BookPage = () => {
   if (bookData) {
     // Combine categories and subcategories, removing duplicates
     const categoriesSet = new Set([
-      ...bookData.data.subcategories.subcategories,
+      ...(bookData.data.subcategories.subcategories, ["None"]),
       bookData.data.subcategories.category,
     ]);
     const categories = Array.from(categoriesSet).join(", ");
@@ -322,8 +322,6 @@ const BookPage = () => {
       </>
     );
   }
-
-  return null;
 };
 
 export default BookPage;
