@@ -62,7 +62,7 @@ const TableResults = () => {
   );
 
   const reloadUsers = () => {
-    setReload(prev => !prev);
+    setReload((prev) => !prev);
   };
 
   useEffect(() => {
@@ -82,7 +82,7 @@ const TableResults = () => {
     // Lógica para eliminar un usuario
     UnbanUser({ userIdToUnban, status });
     reloadUsers();
-  }
+  };
 
   if (isPending) {
     return <p>Is loading...</p>;
