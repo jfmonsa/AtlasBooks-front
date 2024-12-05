@@ -33,7 +33,7 @@ export function RateBookSection({ id }) {
     }
   };
   return (
-    <Card h1Text="Califica este libro" h1Center id="rate-stars">
+    <Card h1Text="Califica este libro" h1Center id="rate-stars" notFullWidth>
       <div className="stars_container">
         {Array(5)
           .fill()

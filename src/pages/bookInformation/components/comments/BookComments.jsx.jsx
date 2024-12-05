@@ -75,7 +75,7 @@ export function BookComments({ comments, bookId }) {
     }
   };
   return (
-    <Card h1Text="Comentarios" id="comments">
+    <Card h1Text="Comentarios" id="comments" notFullWidth>
       {user ? (
         <NewComment
           submitLabel="Comentar"

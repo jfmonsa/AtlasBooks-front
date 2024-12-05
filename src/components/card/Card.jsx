@@ -16,23 +16,19 @@ const CardH1Logic = ({ customH1, h1Center, h1ClassName, h1Text }) => {
 const Card = ({
   h1Text,
   children,
-  customCssClassesSection = "",
-  customCssClasesH1 = "",
   id,
   h1Center = false,
   cardDialog = false,
   customH1 = false,
+  notFullWidth = false,
 }) => {
-  const h1ClassName = "card__h1 " + customCssClasesH1;
-  const sectionClassName = "cardSection " + customCssClassesSection;
+  const h1ClassName = "card__h1 ";
+  const sectionClassName = `cardSection 
+  ${notFullWidth ? "cardSection--notFullWidth" : ""} 
+  ${cardDialog ? "cardSection-dialog" : ""}`;
 
   return (
-    <section
-      id={id}
-      className={
-        cardDialog ? sectionClassName + " cardSection-dialog" : sectionClassName
-      }
-    >
+    <section id={id} className={sectionClassName}>
       <div className="cardSection__childrenContainer">
         <CardH1Logic
           customH1={customH1}

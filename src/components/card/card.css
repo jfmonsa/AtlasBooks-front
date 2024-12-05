@@ -2,9 +2,13 @@ main {
   padding: var(--spacing-7) var(--spacing-4);
 }
 /* Only selector for full-width cards */
-.cardSection:not(.cardSection-dialog) {
+.cardSection:not(.cardSection-dialog, .cardSection--notFullWidth) {
   width: 100%;
   max-width: 1400px;
+}
+
+.cardSection--notFullWidth {
+  width: 80%;
 }
 
 .cardSection {

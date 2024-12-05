@@ -102,7 +102,7 @@ export function BookDetailsSection({
   );
 
   return (
-    <Card h1Text="Inicio / libro">
+    <Card h1Text="Inicio / libro" notFullWidth>
       <div className="bookInfo">
         <img
           className="bookInfo__img"
