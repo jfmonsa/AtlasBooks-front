@@ -18,7 +18,7 @@ import NewAccount from "./pages/account/NewAccount.jsx";
 import RecoveryAccount from "./pages/account/RecoveryAccount.jsx";
 import SendEmail from "./pages/account/SendEmail.jsx";
 import ChangePass from "./pages/account/ChangePass.jsx";
-import BookInformation from "./pages/bookInformation/BookInformation.jsx";
+import { BookDetailsPage } from "./pages/bookInformation/BookDetailsPage.jsx";
 import ReceivedEmail from "./pages/account/ReceivedEmail.jsx";
 import ChangeEmail from "./pages/account/ChangeEmail.jsx";
 import NewPassword from "./pages/account/CreateNewPass.jsx";
@@ -144,7 +144,7 @@ const router = createBrowserRouter([
       },
       {
         path: "books/:id",
-        element: <BookInformation />,
+        element: <BookDetailsPage />,
       },
       {
         path: "categories",

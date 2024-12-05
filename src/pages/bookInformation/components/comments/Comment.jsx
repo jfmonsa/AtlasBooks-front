@@ -1,6 +1,6 @@
 import { NewComment } from "./NewComment";
-import { useAuth } from "../../../hooks/useAuth.js";
-import PrimaryBtnForm from "../../../components/buttons/primaryBtn/PrimaryBtnForm";
+import { useAuth } from "../../../../hooks/useAuth.js";
+import PrimaryBtnForm from "../../../../components/buttons/primaryBtn/PrimaryBtnForm.jsx";
 
 export function Comment({
   commentId,

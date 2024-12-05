@@ -53,10 +53,3 @@ In general, this project follows the [Ship, Show, Ask](https://martinfowler.com/
 2. Open a pull request with a clear and descriptive title.
 3. Provide a detailed description of the changes you’ve made.
 4. Request reviews from relevant team members.
-
-<!--
-### Code Style and Testing
-- Follow the project's coding standards as outlined in the [style guide](link-to-style-guide).
-- Write unit tests for new features and updates.
-- Run tests locally before submitting your pull request:
--->

@@ -1,6 +1,7 @@
 import "./comments.css";
 import { Comment } from "./Comment.jsx";
 import { NewComment } from "./NewComment.jsx";
+import Card from "../../../../components/card/Card.jsx";
 //api and logic
 import { useEffect, useState } from "react";
 import {
@@ -8,11 +9,11 @@ import {
   createComment as createCommentApi,
   deleteComment as deleteCommentApi,
   updateComment as updateCommentApi,
-} from "../../../api/apiComments.js";
+} from "../../../../api/apiComments.js";
 
-import { useAuth } from "../../../hooks/useAuth.js";
+import { useAuth } from "../../../../hooks/useAuth.js";
 
-const Comments = ({ comments, bookId }) => {
+export function BookComments({ comments, bookId }) {
   const [activeComent, setActiveComent] = useState(null);
   const { user } = useAuth();
   const [backendComents, setBackendComents] = useState([]);
@@ -74,7 +75,7 @@ const Comments = ({ comments, bookId }) => {
     }
   };
   return (
-    <>
+    <Card h1Text="Comentarios" id="comments">
       {user ? (
         <NewComment
           submitLabel="Comentar"
@@ -120,7 +121,6 @@ const Comments = ({ comments, bookId }) => {
           )}
         </div>
       )}
-    </>
+    </Card>
   );
-};
-export default Comments;
+}

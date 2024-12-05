@@ -1,5 +1,5 @@
 import { useState } from "react";
-import PrimaryBtnForm from "../../../components/buttons/primaryBtn/PrimaryBtnForm";
+import PrimaryBtnForm from "../../../../components/buttons/primaryBtn/PrimaryBtnForm";
 
 export function NewComment({
   handleSubmit,
