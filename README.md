@@ -1,6 +1,7 @@
 # AtlasBooks 📚
 
 [![en](https://img.shields.io/badge/lang-en-red.svg)](https://github.com/jfmonsa/AtlasBooks-front/blob/main/README.md)
+[![es](https://img.shields.io/badge/lang-es-red.svg)](https://github.com/jfmonsa/AtlasBooks-front/blob/main/README-es.md)
 
 **Welcome to AtlasBooks!** 🎉
 
