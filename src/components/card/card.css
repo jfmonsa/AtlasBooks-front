@@ -9,6 +9,13 @@ main {
 
 .cardSection--notFullWidth {
   width: 80%;
+  max-width: 1000px;
+}
+
+@media (max-width: 600px) {
+  .cardSection--notFullWidth {
+    width: 100%;
+  }
 }
 
 .cardSection {
