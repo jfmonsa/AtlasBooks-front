@@ -1,108 +1,65 @@
-# AtlasBooks
+# AtlasBooks 📚
+[![en](https://img.shields.io/badge/lang-en-red.svg)](https://github.com/jfmonsa/AtlasBooks-front/blob/main/README.md)
 
-![GitHub repo size](https://img.shields.io/github/repo-size/jfmonsa/AtlasBooks-front)
-![GitHub contributors](https://img.shields.io/github/contributors/jfmonsa/AtlasBooks-front)
-![GitHub last commit](https://img.shields.io/github/last-commit/jfmonsa/AtlasBooks-front)
+**Welcome to AtlasBooks!** 🎉
 
-Welcome to AtlasBooks! This is an academic project developed by a group of systems engineering students, AtlasBooks is a web application that allows users to upload, download, comment on, and rate books freely. Inspired by [Z-Library](https://singlelogin.re/), we believe in their mission and have taken on the challenge to develop this project to showcase our skills in both frontend and backend development.
-PERN stack
+AtlasBooks is a web-based library platform designed to let users upload, download, rate, and comment on books in a seamless and collaborative environment. Inspired by Z-Library, this project demonstrates our skills in full-stack development, emphasizing quality, usability, and performance.
 
-> [!NOTE]  
-> This repo contains the frontend part of AtlasBooks.
-
+This repository contains the frontend code for AtlasBooks, built with the PERN stack (PostgreSQL, Express, React, and Node.js).
+<!--
 <p align="center">
   <img alt="" src="./public/home-screenshot.png"  style="height:400px">
 </p>
+-->
+<!-- https://github.com/jfmonsa/AtlasBooks-front/assets/81452967/8dd09f11-87a3-45e9-8479-ac7943c542ac -->
 
-## Demo Video
+## 🚀 Key Features
 
-https://github.com/jfmonsa/AtlasBooks-front/assets/81452967/8dd09f11-87a3-45e9-8479-ac7943c542ac
+### 📄 User Profiles
 
-## Table of Contents
++ **User Registration & Authentication**: Secure login with JWT.
++ **Personalized Profiles**: Manage name, email, country, and more.
++ **Download History**: View all previously downloaded books.
 
-1. [Project Overview](#1-project-overview)
-2. [Features (Include videos)](#2-features)
-3. [Technologies Used](#3-technologies-used-tech-stack)
-4. [Methodology](#4-methodology)
-5. [Future Improvements](#5-future-improvements-todo)
-6. [Installation and Contributing Guide](#6-installation-and-contributing-guide)
-7. [Team Members](#7-team-members)
+### 🏠 Home Page
++ **Recommended Books Feed**: Curated suggestions based on user preferences.
++ **Advanced Search**: Filter books by author, title, genre, and publication date.
 
-## 1. Project Overview
+### 📚 Book Management
++ **Upload Books**: Drag-and-drop functionality for book files and cover images.
++ **Book Pages**: Download, rate, comment, and share books directly from their dedicated pages.
++ **Recommendations**: Personalized suggestions based on your downloads and book lists.
++ **Report Books**: Flag inappropriate content to maintain a quality library
 
-The technical implementation of the PERN stack allowed us to structure and develop our virtual library project efficiently and organized. This combination facilitated a clear division between frontend and backend, promoting agile and collaborative development that resulted in a robust and scalable product. Our project highlighted the importance and benefits of teamwork and effective communication through the Scrum methodology, ensuring continuous delivery of value.
-
-We hope you find AtlasBooks a useful and inspiring project. Thank you for your interest!
-
-## 2. Features
-
-### User Profiles
-
-- **Registration and Authentication**: Users can sign up and authenticate using JWT.
-- **Profile Information**: Each user has a profile with personal information (name, email, country, etc.).
-- **Download History**: Users can view a history of the books they have downloaded.
-
-### Home Page
-
-- **Recommended feed**: 50 books recommended by the backend algorithm.
-- **Searcher**: Users can search for books using filters like author, title, publication date, and categories.
-
-### Book Uploads
-
-- **Add New Books**: Users can upload books to the library.
-- **Upload Form**: Includes fields such as title, author, description, cover, and category also Drag and Drop custom inputs for book files and path cover files
-
-### In the Page of each book
-
-- **Download**: Users can download a book in the available formats
-- **Add book to a list**: Users can add a book to a list.
-- **Recommendations**: Based on users' book lists and download history, the application suggests books that might interest them.
-- **Comments**: Users can comment on books to share their opinions.
-- **Book Ratings**: Users can rate the books they have read.
-- **Share**: Users can share a book page in the main social networks
-- **Report a book**: Users can report a book to the atlasBooks' staff if there is inappropriate content.
-
-### Book List Management
-
-- **Create Lists**: Users can create personalized book lists.
-- **View Lists**: Users can view their lists and the books they've added.
-- **Public Lists**: Lists can be made visible to all users on the platform, users can search them by a Searcher.
+### 📋 List Management
++ **Create Lists**: Organize your reading journey with custom book lists.
++ **Public Lists**: Share your lists with the community or explore others' collections.
 
 ### Admin options
++ **User Management**: Ban/unban users violating platform policies.
++ **Reports Dashboard**: Address flagged books and user issues effectively.
 
-- **Manage Users**: Admins have additional sections in its profile page that allow them to search for users and ban/un-ban also to look reports made by users
+## 🛠 Tech Stack
 
-## 3. Technologies Used (Tech Stack)
-
-- **Frontend**: Developed with React.js using Vite, along with CSS (Responsive design), HTML, and JavaScript.
-- **Backend**: Built using Node.js and Express.
-- **Database**: PostgreSQL for efficient data storage and retrieval.
++ **Frontend**: Built with React.js and Vite, emphasizing responsive and accessible design using modern CSS techniques.
++ **Backend**: Developed using Node.js and Express for robust API handling.
++ **Database**: PostgreSQL powers efficient data storage and management.
 
 ### Other Tools
+- **Jira**: Agile project management to track progress.
+- **Figma**: UI/UX design tools for creating an intuitive user interface. Explore the design  [here](https://www.figma.com/design/mgwoKhiK6PWJEddFpD78te/AtlasBooks?node-id=0-1&t=AN7QX4QfWvHQWtBI-1)
 
-- **Jira**: Used for managing user stories and tasks.
-- **Figma**: Utilized for UI/UX design. you can see the desing [here](https://www.figma.com/design/mgwoKhiK6PWJEddFpD78te/AtlasBooks?node-id=0-1&t=AN7QX4QfWvHQWtBI-1)
+## 📝 Installation & Contribution
+We welcome contributions to enhance AtlasBooks! 🚀
+Please review our [contributing guidelines](CONTRIBUTING.md) for detailed instructions on setting up the project and submitting pull requests.
 
-## 4. Methodology
+## 👩‍💻 Team Members
+Meet the passionate team behind AtlasBooks:
 
-We used agile methodologies, specifically Scrum, to manage our project and Jira as the management tool for the project
-
-## 5. Future Improvements (TODO)
-
-- Proper deployment: Mainly due to backend issues with dynamic storage for books.
-- Replace cookies with local storage due to chrome third-party cookies policy.
-- Discover list page pending (backend + frontend implementation).
-
-## 6. Installation and Contributing Guide
-
-We welcome contributions! Please read our [contributing guidelines](CONTRIBUTING.md) before you start.
-
-## 7. Team Members
-
-If you have any questions, feel free to reach out to us at:
-
+- [Isabella Rebellón Medina](https://github.com/Issabella09) - [Email](mailto:isabella.rebellon@correounivalle.edu.co)
 - [Juan Felipe Monsalve Vargas](https://github.com/jfmonsa) - [Email](mailto:juan.felipe.monsalve@correounivalle.edu.co)
 - [Jose Luis Ramos Arango](https://github.com/RamSterB) - [Email](mailto:jose.luis.ramos@correounivalle.edu.co)
 - [Juan Sebastian Marin Serna](https://github.com/JSebastianMarin) - [Email](mailto:juan.marin.serna@correounivalle.edu.co)
 - [Juan Pablo Idarraga](https://github.com/JuanPidarraga) - [Email](mailto:idarraga.juan@correounivalle.edu.co)
 - [Leider Santiago Cortes](https://github.com/LeiderCortes) - [Email](mailto:cortes.leider@correounivalle.edu.co)
+- [Nicolás Prado León](https://github.com/NicolasPL64) - [Email](mailto:nicolas.prado@correounivalle.edu.co)
