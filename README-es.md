@@ -24,6 +24,10 @@ Este repositorio contiene el código frontend de AtlasBooks, construido con el s
 - **Feed de Libros Recomendados**: Sugerencias curadas basadas en las preferencias del usuario.
 - **Búsqueda Avanzada**: Filtra libros por autor, título, género y fecha de publicación.
 
+### 🔍 Búsqueda de Texto Completo (Full-Text Search)
+
+**Elastic Search**: Implementamos Elastic Search para realizar búsquedas rápidas y precisas en el contenido de libros subidos. Los usuarios pueden buscar palabras o frases dentro del texto completo de los libros para encontrar exactamente lo que necesitan.
+
 ### 📚 Gestión de Libros
 
 - **Subir Libros**: Funcionalidad de arrastrar y soltar para archivos de libros e imágenes de portada.
@@ -46,6 +50,7 @@ Este repositorio contiene el código frontend de AtlasBooks, construido con el s
 - **Frontend**: Construido con React.js y Vite, enfatizando un diseño receptivo y accesible utilizando técnicas modernas de CSS.
 - **Backend**: Desarrollado usando Node.js y Express para un manejo robusto de API.
 - **Base de Datos**: PostgreSQL potencia el almacenamiento y la gestión eficiente de datos.
+- **Motor de Búsqueda**: Elastic Search permite realizar búsquedas de texto completo en los libros subidos.
 
 ### Otras Herramientas
 
