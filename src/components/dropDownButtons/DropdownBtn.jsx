@@ -1,8 +1,8 @@
 import "./dropdownButton.sass";
 import { FaChevronLeft } from "react-icons/fa";
 import { FaChevronDown } from "react-icons/fa";
-import { useState } from "react";
 import DropMenu from "../dropMenu/DropMenu";
+import { useToggleState } from "../../hooks/useToggleState";
 
 const DropdownBtn = ({
   text,
@@ -10,22 +10,18 @@ const DropdownBtn = ({
   boxCssClasses,
   textCssClasses,
   cssClassMenuContainer = " btnDropdown__menu--avg",
-  OnclickOptions = null,
 }) => {
-  const [open, setOpen] = useState(false);
+  const [isDropDownOpen, toggleDropDown] = useToggleState();
+
   return (
-    <div className={boxCssClasses} onClick={() => setOpen(!open)}>
+    <div className={boxCssClasses} onClick={toggleDropDown}>
       <span className={textCssClasses}>{text}</span>
       <div className="btnDropDown__icon">
         {open ? <FaChevronDown /> : <FaChevronLeft />}
       </div>
 
-      {open && (
-        <DropMenu
-          customOnclickOptions={OnclickOptions}
-          options={options}
-          cssClassContainer={cssClassMenuContainer}
-        />
+      {isDropDownOpen && (
+        <DropMenu options={options} cssClassContainer={cssClassMenuContainer} />
       )}
     </div>
   );

@@ -173,9 +173,6 @@ const SectionOtherOpts = () => {
       iconPath: IconShieldPass,
       text: "Cambiar contraseña",
     },
-  ];
-
-  const onClickOptions = [
     {
       onClick: handleLogout,
       iconPath: IconLogout,
@@ -191,7 +188,6 @@ const SectionOtherOpts = () => {
   return (
     <Card h1Text="Opciones">
       <DropMenu
-        customOnclickOptions={onClickOptions}
         options={SectionOtherOptsOptions}
         cssClassContainer=" nonFloating"
       />

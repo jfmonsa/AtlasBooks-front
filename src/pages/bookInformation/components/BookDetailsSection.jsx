@@ -41,7 +41,17 @@ const shareOptions = [
   { toLink: "#", iconPath: Instagram, text: "Instagram" },
   { toLink: "#", iconPath: Telegram, text: "Telegram" },
   { toLink: "#", iconPath: WhatsApp, text: "WhatsApp" },
-  { toLink: "#", iconPath: Enlace, text: "Copiar enlace" },
+  {
+    toLink: "#",
+    iconPath: Enlace,
+    text: "Copiar enlace",
+    onClick: () => {
+      const currentUrl = window.location.href;
+      navigator.clipboard.writeText(currentUrl).then(() => {
+        alert("Enlace copiado al portapapeles");
+      });
+    },
+  },
 ];
 
 export function BookDetailsSection({
@@ -49,15 +59,15 @@ export function BookDetailsSection({
   bookName,
   authorName,
   rank,
-  bookDescription = "None",
-  categories = "None",
-  editory = "None",
-  isbn = "None",
-  fileType = "None",
-  year = "None",
-  language = "None",
-  pages = "None",
-  vol = 1,
+  bookDescription,
+  categories,
+  editory,
+  isbn,
+  fileType,
+  year,
+  language,
+  pages,
+  vol,
   bookImg,
   numComments,
   bookFiles,
@@ -80,8 +90,11 @@ export function BookDetailsSection({
         const urlFile = response.data.data.fileCloudUrl;
         window.open(urlFile, "_blank");
       } catch (error) {
-        console.error("Error downloading file:", error);
-        alert("An error occurred while downloading the file.");
+        console.error("Error downloading file:", error.response.data);
+        alert(
+          "An error occurred while downloading the file." +
+            error.response.data.error,
+        );
       }
     },
     [bookId, fileName, user],
@@ -117,7 +130,7 @@ export function BookDetailsSection({
             <a className="relevantInfo__subCont" href="#rate-stars">
               <AiOutlineStar className="relevantInfo__icon1" />
               <span className="rank__real">{rank}</span>
-              <span className="rank__total">5.0</span>
+              <span className="rank__total">/5.0</span>
             </a>
 
             <div className="relevantInfo__subCont">
@@ -142,22 +155,34 @@ export function BookDetailsSection({
           <div className="bookInfo__specs">
             <ul className="specs">
               <BookInfoSectionSpecs left="Categorias:" right={categories} />
-              <BookInfoSectionSpecs left="Publicador:" right={editory} />
-              <BookInfoSectionSpecs left="ISBN:" right={isbn} />
+              <BookInfoSectionSpecs
+                left="Publicador:"
+                right={editory ?? "Desconocido"}
+              />
+              <BookInfoSectionSpecs
+                left="ISBN:"
+                right={isbn ?? "Desconocido"}
+              />
               <BookInfoSectionSpecs left="Archivo:" right={fileType} />
             </ul>
             <ul className="specs">
-              <BookInfoSectionSpecs left="Año:" right={year} />
+              <BookInfoSectionSpecs left="Año:" right={year ?? "Desconocido"} />
               <BookInfoSectionSpecs left="Lenguaje:" right={language} />
-              <BookInfoSectionSpecs left="Paginas:" right={pages} />
-              <BookInfoSectionSpecs left="Volumen:" right={vol} />
+              <BookInfoSectionSpecs
+                left="Paginas:"
+                right={pages ?? "Desconocido"}
+              />
+              <BookInfoSectionSpecs
+                left="Volumen:"
+                right={vol ?? "Desconocido"}
+              />
             </ul>
           </div>
         </div>
       </div>
       <div className="bookInfo-btns">
         <DropdownBtn
-          OnclickOptions={generateDownloadOptions(bookFiles)}
+          options={generateDownloadOptions(bookFiles)}
           text="Descargar"
           boxCssClasses="btnDropDown btnDropDown--black"
           textCssClasses="btnDropDown__text"

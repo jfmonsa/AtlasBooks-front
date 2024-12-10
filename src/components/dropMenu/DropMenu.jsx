@@ -18,12 +18,10 @@ const DropMenuItemOnclick = ({
       onClick={onClick}
       className={`dropMenu__item--${itemSize} dropMenu__item  navHover  ${cssClassItemCont}`}
     >
-      {/* <button> */}
       <span className="dropMenu__item__icon">
         <img src={iconPath} alt={alticon + " " + text}></img>
       </span>
       <span className="dropMenu__item__text">{text}</span>
-      {/* </button> */}
     </li>
   );
 };
@@ -50,42 +48,33 @@ const DropMenuItem = ({
     </li>
   );
 };
-
-const DropMenu = ({
-  customOnclickOptions = null,
-  options,
-  cssClassContainer = "",
-  cssClassItemContainer = "",
-  itemSizep = "avg",
-}) => {
-  /* Item size acepta valores de: avg, small
-   + Las clases custom pasadas como argumentos, poener sus estilos en el menuItem.sass
-   */
-
+/** Item size acepta valores de: avg, small
+ *  Las clases custom pasadas como argumentos, poener sus estilos en el menuItem.sass
+ */
+const DropMenu = ({ options, cssClassContainer }) => {
   return (
-    <ul className={"dropMenu " + cssClassContainer}>
-      {options &&
-        options.map((option, index) => (
-          <DropMenuItem
-            key={index}
-            toLink={option.toLink}
-            iconPath={option.iconPath}
-            text={option.text}
-            cssClassItemCont={cssClassItemContainer}
-            itemSize={itemSizep}
-          />
-        ))}
-      {customOnclickOptions &&
-        customOnclickOptions.map((option, index) => (
+    <ul className={`dropMenu ${cssClassContainer}`}>
+      {options.map((option, index) =>
+        option.onClick ? (
           <DropMenuItemOnclick
             key={index}
+            text={option.text}
             onClick={option.onClick}
             iconPath={option.iconPath}
-            text={option.text}
-            cssClassItemCont={cssClassItemContainer}
-            itemSize={itemSizep}
+            cssClassItemCont={option.cssClassItemCont}
+            itemSize={option.itemSize}
           />
-        ))}
+        ) : (
+          <DropMenuItem
+            key={index}
+            text={option.text}
+            toLink={option.toLink}
+            iconPath={option.iconPath}
+            cssClassItemCont={option.cssClassItemCont}
+            itemSize={option.itemSize}
+          />
+        ),
+      )}
     </ul>
   );
 };

@@ -12,15 +12,15 @@ import MenuRecommendedIcon from "../../../assets/icons/menu-recommended.svg";
 import MenuSearchIcon from "../../../assets/icons/menu-search.svg";
 import MenuSingupIcon from "../../../assets/icons/menu-singup.svg";
 
-import { useState } from "react";
 import { useAuth } from "../../../hooks/useAuth.js";
 
 import { NavLink } from "react-router-dom";
 import DropMenu from "../../dropMenu/DropMenu.jsx";
 import { useNavigate } from "react-router-dom";
+import { useToggleState } from "../../../hooks/useToggleState.js";
 
 // Aux functions
-const userConditionalRenderingMenu = (userData) => {
+const userConditionalRenderingMenu = (userData, logout, navigate) => {
   let menuOptions = [
     {
       toLink: "/",
@@ -59,6 +59,14 @@ const userConditionalRenderingMenu = (userData) => {
         text: "Mi cuenta",
       });
     }
+    menuOptions.push({
+      onClick: () => {
+        logout();
+        navigate("/login");
+      },
+      iconPath: MenuLogoutIcon,
+      text: "Salir",
+    });
   } else {
     menuOptions.push({
       toLink: "/login",
@@ -105,25 +113,7 @@ const Header = () => {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
   // const context = contextValue;
-  const [isOpen, setIsOpen] = useState(false);
-  const setOpenedState = () => {
-    setIsOpen(!isOpen);
-  };
-
-  const handleLogout = () => {
-    logout();
-    navigate("/login");
-  };
-
-  let closeSession = user
-    ? [
-        {
-          onClick: handleLogout,
-          iconPath: MenuLogoutIcon,
-          text: "Salir",
-        },
-      ]
-    : null;
+  const [isSidebarOpen, toggleSidebar] = useToggleState();
 
   return (
     <header className="navbar">
@@ -146,16 +136,15 @@ const Header = () => {
           />
         </ul>
         <div
-          className={isOpen ? "menu-button-opened" : "menu-button"}
-          onClick={() => setOpenedState()}
+          className={isSidebarOpen ? "menu-button-opened" : "menu-button"}
+          onClick={toggleSidebar}
         >
           <div className="menu-button-burger"></div>
         </div>
       </div>
-      {isOpen && (
+      {isSidebarOpen && (
         <DropMenu
-          options={userConditionalRenderingMenu(user)}
-          customOnclickOptions={closeSession}
+          options={userConditionalRenderingMenu(user, logout, navigate)}
         />
       )}
     </header>
