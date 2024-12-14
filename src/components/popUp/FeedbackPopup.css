@@ -1,0 +1,79 @@
+/* FeedbackPopup.css */
+
+/* Estilo del contenedor del pop-up */
+.feedback-popup {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    text-align: center;
+}
+
+/* Espaciado entre elementos */
+.feedback-popup h3 {
+    margin-bottom: 16px; /* Espacio debajo del título */
+    font-size: 1.5rem;
+}
+
+.feedback-popup p {
+    margin-bottom: 24px; /* Espacio debajo de la descripción */
+    font-size: 1rem;
+    color: #333;
+}
+
+/* Contenedor para alinear los botones horizontalmente */
+.feedback-popup-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px; /* Espaciado entre los botones */
+}
+
+/* Estilo del botón con diseño personalizado */
+.gradient-button {
+    position: relative;
+    cursor: pointer;
+    opacity: 0.9;
+    transition: opacity 0.2s ease, transform 0.1s ease;
+    padding: 2px;
+    background: black;
+    border-radius: 16px;
+    background-image: linear-gradient(to top, #8122b0, #dc98fd);
+}
+
+.gradient-button:hover {
+    opacity: 1;
+}
+
+.gradient-button:active {
+    transform: scale(0.95);
+}
+
+.gradient-button span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 32px;
+    background-color: #b931fc;
+    color: white;
+    border-radius: 14px;
+    background-image: linear-gradient(to top, #a62ce2, #c045fc);
+}
+
+/* Estilo del botón de cerrar */
+.close-button {
+    background: gray;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.close-button:hover {
+    background: #555;
+}
