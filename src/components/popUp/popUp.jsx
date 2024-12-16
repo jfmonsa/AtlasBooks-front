@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./FeedbackPopup.css"; // Importar los estilos
 
 const FeedbackPopup = () => {
