@@ -8,7 +8,7 @@ import PrimaryBtnLink from "../../../components/buttons/primaryBtn/PrimaryBtnLin
 import { HeartButton } from "./HeartButton.jsx";
 import { AiOutlineStar } from "react-icons/ai";
 import Card from "../../../components/card/Card.jsx";
-import FeedbackPopup from "../../../components/popUp/popUp.jsx";
+// import FeedbackPopup from "../../../components/popUp/popUp.jsx";
 
 // icons
 // -- Download option's icon
@@ -117,7 +117,7 @@ export function BookDetailsSection({
 
   return (
     <Card h1Text="Inicio / libro" notFullWidth>
-      <FeedbackPopup />
+      {/* <FeedbackPopup /> */}
       <div className="bookInfo">
         <img
           className="bookInfo__img"
