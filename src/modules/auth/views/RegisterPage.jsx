@@ -1,20 +1,20 @@
-import "./account.css";
-import { NAME, NICK, EMAIL, PASSWD } from "../../utils/placeholder.js";
-import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm.jsx";
-import InputText from "../../components/inputText/InputText.jsx";
 import { useEffect, useState } from "react";
-import ErrorFormAccountMsg from "../../components/errorFormAccountMsg/ErrorFormAccountMsg.jsx";
+import "../base-form.css";
+import { NAME, NICK, EMAIL, PASSWD } from "@utils/placeholder.js";
+import PrimaryBtnForm from "@components/buttons/primaryBtn/PrimaryBtnForm.jsx";
+import InputText from "@components/inputText/InputText.jsx";
+import ErrorFormAccountMsg from "@components/errorFormAccountMsg/ErrorFormAccountMsg.jsx";
 import {
   valEmail,
   valNickname,
   valNoEmpty,
   valPassword,
-} from "../../utils/validateFormFields.js";
-import { useAuth } from "../../hooks/useAuth.js";
+} from "@utils/validateFormFields.js";
+import { useAuth } from "@/hooks/useAuth.js";
 import { useNavigate } from "react-router-dom";
-import PrimaryBtnLink from "../../components/buttons/primaryBtn/PrimaryBtnLink.jsx";
+import PrimaryBtnLink from "@components/buttons/primaryBtn/PrimaryBtnLink.jsx";
 
-const NewAccount = () => {
+export function RegisterPage() {
   const [userName, setUserName] = useState("");
   const [userNick, setUserNick] = useState("");
   const [userEmail, setUserEmail] = useState("");
@@ -141,6 +141,4 @@ const NewAccount = () => {
       </div>
     </>
   );
-};
-
-export default NewAccount;
+}

@@ -1,15 +1,15 @@
-import "./account.css";
-import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm.jsx";
-import InputText from "../../components/inputText/InputText.jsx";
-import { useNavigate } from "react-router-dom";
-import { PASSWD } from "../../utils/placeholder.js";
+import { useParams, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { valNoEmpty, valPassword } from "../../utils/validateFormFields.js";
-import ErrorFormAccountMsg from "../../components/errorFormAccountMsg/ErrorFormAccountMsg.jsx";
-import { createRecoveryAccount } from "../../api/apiRecoveyAccount.js";
-import { useParams } from "react-router-dom";
 
-const NewPassword = () => {
+import "../base-form.css";
+import PrimaryBtnForm from "@components/buttons/primaryBtn/PrimaryBtnForm.jsx";
+import InputText from "@components/inputText/InputText.jsx";
+import { PASSWD } from "@utils/placeholder.js";
+import { valNoEmpty, valPassword } from "@utils/validateFormFields.js";
+import ErrorFormAccountMsg from "@components/errorFormAccountMsg/ErrorFormAccountMsg.jsx";
+import { createRecoveryAccount } from "../../../api/apiRecoveyAccount.js";
+
+export function NewPasswordRecoveryPage() {
   const [pass2, setPass2] = useState("");
   const [pass3, setPass3] = useState("");
   const [error, setError] = useState(null);
@@ -71,6 +71,4 @@ const NewPassword = () => {
       />
     </form>
   );
-};
-
-export default NewPassword;
+}

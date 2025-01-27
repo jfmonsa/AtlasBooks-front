@@ -1,26 +1,21 @@
-import "./account.css";
-import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm.jsx";
-import InputText from "../../components/inputText/InputText.jsx";
-import { UseChangePass } from "../../contexts/ChangePassContext.jsx";
 import { useNavigate } from "react-router-dom";
-import { PASSWD } from "../../utils/placeholder.js";
 import { useState } from "react";
-import { valNoEmpty, valPassword } from "../../utils/validateFormFields.js";
-import ErrorFormAccountMsg from "../../components/errorFormAccountMsg/ErrorFormAccountMsg.jsx";
 
-const ChangePass = () => {
+import "../base-form.css";
+import PrimaryBtnForm from "@components/buttons/primaryBtn/PrimaryBtnForm.jsx";
+import InputText from "@components/inputText/InputText.jsx";
+import { UseChangePass } from "@contexts/ChangePassContext.jsx";
+import { PASSWD } from "@utils/placeholder.js";
+import { valNoEmpty, valPassword } from "@utils/validateFormFields.js";
+import ErrorFormAccountMsg from "@components/errorFormAccountMsg/ErrorFormAccountMsg.jsx";
+
+export function ChangePasswordPage() {
   const [pass1, setPass1] = useState("");
   const [pass2, setPass2] = useState("");
   const [pass3, setPass3] = useState("");
   const [error, setError] = useState(null);
   const { createChangePass } = UseChangePass();
   const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   if(params){
-  //     getChangePass(params.currentPassword, params.newPassword, params.confirmPassword);
-  //   }
-  // }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -95,6 +90,4 @@ const ChangePass = () => {
       />
     </form>
   );
-};
-
-export default ChangePass;
+}

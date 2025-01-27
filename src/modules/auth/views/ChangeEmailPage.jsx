@@ -1,14 +1,15 @@
-import "./account.css";
-import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm.jsx";
-import InputText from "../../components/inputText/InputText.jsx";
-import { UseChangeEmail } from "../../contexts/ChangeEmailContext.jsx";
 import { useNavigate } from "react-router-dom";
-import { EMAIL } from "../../utils/placeholder.js";
 import { useState } from "react";
-import { valEmail, valNoEmpty } from "../../utils/validateFormFields.js";
-import ErrorFormAccountMsg from "../../components/errorFormAccountMsg/ErrorFormAccountMsg.jsx";
 
-const ChangeEmail = () => {
+import "../base-form.css";
+import PrimaryBtnForm from "@components/buttons/primaryBtn/PrimaryBtnForm.jsx";
+import InputText from "@components/inputText/InputText.jsx";
+import { UseChangeEmail } from "@contexts/ChangeEmailContext.jsx";
+import { EMAIL } from "@utils/placeholder.js";
+import { valEmail, valNoEmpty } from "@utils/validateFormFields.js";
+import ErrorFormAccountMsg from "@components/errorFormAccountMsg/ErrorFormAccountMsg.jsx";
+
+export function ChangeEmailPage() {
   const [mail1, setMail1] = useState("");
   const [mail2, setMail2] = useState("");
   const [error, setError] = useState(null);
@@ -69,6 +70,4 @@ const ChangeEmail = () => {
       />
     </form>
   );
-};
-
-export default ChangeEmail;
+}

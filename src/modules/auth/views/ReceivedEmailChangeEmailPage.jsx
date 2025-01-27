@@ -1,11 +1,11 @@
-import "./account.css";
-import icon_mail from "../../assets/icons/icon-mail.svg";
-import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm.jsx";
-import { GetChangeEmailToken } from "../../api/apiChangeEmail.js";
+import "../base-form.css";
+import icon_mail from "@assets/icons/icon-mail.svg";
+import PrimaryBtnForm from "@components/buttons/primaryBtn/PrimaryBtnForm.jsx";
 import { Link, useParams } from "react-router-dom";
-import { verifyTokenEmail } from "../../api/auth.js";
+import { GetChangeEmailToken } from "../../../api/apiChangeEmail.js";
+import { verifyTokenEmail } from "../../../api/auth.js";
 
-const ReceivedEmail = () => {
+export function ReceivedEmailChangeEmailPage() {
   const { token } = useParams();
 
   const OnClick = async () => {
@@ -41,5 +41,4 @@ const ReceivedEmail = () => {
       </p>
     </>
   );
-};
-export default ReceivedEmail;
+}

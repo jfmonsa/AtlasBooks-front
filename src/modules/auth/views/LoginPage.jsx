@@ -1,20 +1,20 @@
-import "./account.css";
-import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm.jsx";
-import PrimaryBtnLink from "../../components/buttons/primaryBtn/PrimaryBtnLink.jsx";
-import InputText from "../../components/inputText/InputText.jsx";
-import { EMAIL, PASSWD, NICK } from "../../utils/placeholder.js";
-import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+
+import "../base-form.css";
+import PrimaryBtnForm from "@components/buttons/primaryBtn/PrimaryBtnForm.jsx";
+import PrimaryBtnLink from "@components/buttons/primaryBtn/PrimaryBtnLink.jsx";
+import InputText from "@components/inputText/InputText.jsx";
+import { EMAIL, PASSWD, NICK } from "@utils/placeholder.js";
 import {
   valEmail,
   valNickname,
   valNoEmpty,
-} from "../../utils/validateFormFields.js";
-import ErrorFormAccountMsg from "../../components/errorFormAccountMsg/ErrorFormAccountMsg.jsx";
-import { useAuth } from "../../hooks/useAuth.js";
-import { useNavigate } from "react-router-dom";
+} from "@utils/validateFormFields.js";
+import ErrorFormAccountMsg from "@components/errorFormAccountMsg/ErrorFormAccountMsg.jsx";
+import { useAuth } from "@hooks/useAuth.js";
 
-export const Login = () => {
+export function LoginPage() {
   const [userNickname, setUserNickname] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const navigate = useNavigate();
@@ -99,4 +99,4 @@ export const Login = () => {
       />
     </div>
   );
-};
+}

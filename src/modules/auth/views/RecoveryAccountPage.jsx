@@ -1,13 +1,14 @@
-import "./account.css";
-import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm.jsx";
-import InputText from "../../components/inputText/InputText.jsx";
+import "../base-form.css";
+import PrimaryBtnForm from "@components/buttons/primaryBtn/PrimaryBtnForm.jsx";
+import InputText from "@components/inputText/InputText.jsx";
 import { useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
-import { EMAIL } from "../../utils/placeholder.js";
-import ErrorFormAccountMsg from "../../components/errorFormAccountMsg/ErrorFormAccountMsg.jsx";
-import { valEmail, valNoEmpty } from "../../utils/validateFormFields.js";
-import { verifyEmail } from "../../api/apiRecoveyAccount.js";
-const RecoveryAccount = () => {
+import { EMAIL } from "@utils/placeholder.js";
+import ErrorFormAccountMsg from "@components/errorFormAccountMsg/ErrorFormAccountMsg.jsx";
+import { valEmail, valNoEmpty } from "@utils/validateFormFields.js";
+import { verifyEmail } from "../../../api/apiRecoveyAccount.js";
+
+export function RecoveryAccountPage() {
   const [userEmail, setUserEmail] = useState("");
   const [error, setError] = useState(null);
   const navigate = useNavigate();
@@ -49,5 +50,4 @@ const RecoveryAccount = () => {
       <ErrorFormAccountMsg error={error} />
     </>
   );
-};
-export default RecoveryAccount;
+}

@@ -13,15 +13,15 @@ import UploadBook from "./pages/uploadBook/UploadBook.jsx";
 import NewList from "./pages/myaccount/NewList.jsx";
 
 //Login related and recovery account
-import { Login } from "./pages/account/Login.jsx";
-import NewAccount from "./pages/account/NewAccount.jsx";
-import RecoveryAccount from "./pages/account/RecoveryAccount.jsx";
-import SendEmail from "./pages/account/SendEmail.jsx";
-import ChangePass from "./pages/account/ChangePass.jsx";
+import { LoginPage } from "./modules/auth/views/LoginPage.jsx";
+import { RegisterPage } from "./modules/auth/views/RegisterPage.jsx";
+import { RecoveryAccountPage } from "./modules/auth/views/RecoveryAccountPage.jsx";
+import { ReceivedEmailRecoveryPassword } from "./modules/auth/views/ReceivedEmailRecoveryPassword.jsx";
+import { ChangePasswordPage } from "./modules/auth/views/ChangePasswordPage.jsx";
 import { BookDetailsPage } from "./pages/bookInformation/BookDetailsPage.jsx";
-import ReceivedEmail from "./pages/account/ReceivedEmail.jsx";
-import ChangeEmail from "./pages/account/ChangeEmail.jsx";
-import NewPassword from "./pages/account/CreateNewPass.jsx";
+import { ReceivedEmailChangeEmailPage } from "./modules/auth/views/ReceivedEmailChangeEmailPage.jsx";
+import { ChangeEmailPage } from "./modules/auth/views/ChangeEmailPage.jsx";
+import { NewPasswordRecoveryPage } from "./modules/auth/views/NewPasswordRecoveryPage.jsx";
 
 //My Account related
 import MyAccount from "./pages/myaccount/MyAccount.jsx";
@@ -37,14 +37,6 @@ import Categories from "./pages/categories/Categories.jsx";
 //layouts
 import RootLayout from "./RootLayout.jsx";
 
-// TODO: revisar esto no se esta usando
-// const LoggedAdminRouting = () => {
-//   const {contextValue} = useAuth();
-//   const context = contextValue;
-//   if (context.admin) return <AdminResults />;
-//   else return <Error />;
-// };
-
 const router = createBrowserRouter([
   {
     path: "/",
@@ -56,25 +48,25 @@ const router = createBrowserRouter([
       },
       {
         path: "login",
-        element: <Login />,
+        element: <LoginPage />,
       },
       {
         path: "new-account",
-        element: <NewAccount />,
+        element: <RegisterPage />,
       },
       {
         path: "recovery-account",
-        element: <RecoveryAccount />,
+        element: <RecoveryAccountPage />,
       },
       {
         path: "send-email",
-        element: <SendEmail />,
+        element: <ReceivedEmailRecoveryPassword />,
       },
       {
         path: "changePass",
         element: (
           <ProtectedRoute>
-            <ChangePass />
+            <ChangePasswordPage />
           </ProtectedRoute>
         ),
       },
@@ -160,19 +152,19 @@ const router = createBrowserRouter([
       },
       {
         path: "received-email/:token",
-        element: <ReceivedEmail />,
+        element: <ReceivedEmailChangeEmailPage />,
       },
       {
         path: "changeEmail",
         element: (
           <ProtectedRoute>
-            <ChangeEmail />
+            <ChangeEmailPage />
           </ProtectedRoute>
         ),
       },
       {
         path: "newPassword/:token",
-        element: <NewPassword />,
+        element: <NewPasswordRecoveryPage />,
       },
       // {
       //   path: "*",

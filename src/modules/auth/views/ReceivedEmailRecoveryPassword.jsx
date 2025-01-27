@@ -1,9 +1,9 @@
-import "./account.css";
-import icon_mail from "../../assets/icons/icon-mail.svg";
-import PrimaryBtnForm from "../../components/buttons/primaryBtn/PrimaryBtnForm.jsx";
+import "../base-form.css";
+import icon_mail from "@assets/icons/icon-mail.svg";
+import PrimaryBtnForm from "@components/buttons/primaryBtn/PrimaryBtnForm.jsx";
 import { Link } from "react-router-dom";
 
-const SendEmail = () => {
+export function ReceivedEmailRecoveryPassword() {
   return (
     <>
       <h1 className="account__title">Un correo ha sido enviado</h1>
@@ -29,5 +29,4 @@ const SendEmail = () => {
       </p>
     </>
   );
-};
-export default SendEmail;
+}
