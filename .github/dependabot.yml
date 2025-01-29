@@ -5,7 +5,19 @@
 
 version: 2
 updates:
-  - package-ecosystem: "" # See documentation for possible values
-    directory: "/" # Location of package manifests
+  - package-ecosystem: "npm"
+    directory: "/" # location of package.json
     schedule:
       interval: "weekly"
+      day: "monday"
+    target-branch: "main"
+    commit-message:
+      prefix: "chore(dependant-bot) "
+    automerged_updates:
+      - match:
+          dependency_type: "all"
+    labels:
+      - "dependencies"
+      - "automated"
+    "pull-request-branch-name.separator": "/"
+    "versioning-strategy": "widen"
