@@ -12,12 +12,8 @@ updates:
       day: "monday"
     target-branch: "main"
     commit-message:
-      prefix: "chore(dependant-bot) "
-    automerged_updates:
-      - match:
-          dependency_type: "all"
+      prefix: "chore(dependant-bot)"
     labels:
       - "dependencies"
       - "automated"
-    "pull-request-branch-name.separator": "/"
-    "versioning-strategy": "widen"
+    versioning-strategy: "widen"
