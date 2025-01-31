@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import axios from "../api/axios.js";
+import axios from "@config/axios-instance.js";
 
 /**
  * Custom hook to fetch data from a given URL.

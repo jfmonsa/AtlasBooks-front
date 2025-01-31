@@ -8,7 +8,8 @@
       "@hooks/*": ["hooks/*"],
       "@contexts/*": ["contexts/*"],
       "@utils/*": ["utils/*"],
-      "@assets/*": ["assets/*"]
+      "@config/*": ["config/*"],
+      "@services/*": ["services/*"]
     }
   },
   "include": ["src"]

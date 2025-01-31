@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import { GetChangeEmail } from "../api/apiChangeEmail";
+import { GetChangeEmail } from "../modules/auth/services/apiChangeEmail";
 
 const ChangeEmailContext = createContext();
 

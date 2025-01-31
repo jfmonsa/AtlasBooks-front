@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import { GetChangePass } from "../api/apiChangePass";
+import { GetChangePass } from "../modules/auth/services/apiChangePass";
 
 const ChangePassContext = createContext();
 

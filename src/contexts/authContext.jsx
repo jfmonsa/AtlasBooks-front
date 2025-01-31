@@ -4,7 +4,7 @@ import {
   loginRequest,
   verifyTokenRequest,
   logoutRequest,
-} from "../api/auth.js";
+} from "../services/auth.js";
 import { AuthContext } from "../contexts/authContextCreated.js";
 
 /**
