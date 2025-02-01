@@ -13,14 +13,16 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, 'src'),
-      '@modules': path.resolve(__dirname, 'src/modules'),
-      '@components': path.resolve(__dirname, 'src/components'),
-      '@hooks': path.resolve(__dirname, 'src/hooks'),
-      "@contexts": path.resolve(__dirname, 'src/contexts'),
-      "@services": path.resolve(__dirname, 'src/services'),
-      '@utils': path.resolve(__dirname, 'src/utils'),
-      '@assets': path.resolve(__dirname, 'src/assets'),
-      '@config': path.resolve(__dirname, 'src/config')
+      // this aliases live under src/shared/*, are meant for global use
+      '@assets': path.resolve(__dirname, 'src/shared/assets'),
+      '@components': path.resolve(__dirname, 'src/shared/components'),
+      '@contexts': path.resolve(__dirname, 'src/shared/contexts'),
+      '@hooks': path.resolve(__dirname, 'src/shared/hooks'),
+      '@lib': path.resolve(__dirname, 'src/shared/lib'),
+      '@utils': path.resolve(__dirname, 'src/shared/utils'),
     }
+
+    // NOTE: there is not alias for `@shared`, `@features`, `@app` because they always should be place in `/src` root
+    //       then, the team is forced to import as `@/shared`, `@/features`, `@/app`
   }
 });

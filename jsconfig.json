@@ -3,13 +3,12 @@
     "baseUrl": "src",
     "paths": {
       "@/*": ["*"],
-      "@modules/*": ["modules/*"],
-      "@components/*": ["components/*"],
-      "@hooks/*": ["hooks/*"],
-      "@contexts/*": ["contexts/*"],
-      "@utils/*": ["utils/*"],
-      "@config/*": ["config/*"],
-      "@services/*": ["services/*"]
+      "@assets/*": ["shared/assets/*"],
+      "@components/*": ["shared/components/*"],
+      "@contexts/*": ["shared/contexts/*"],
+      "@hooks/*": ["shared/hooks/*"],
+      "@lib/*": ["shared/lib/*"],
+      "@utils/*": ["shared/utils/*"],
     }
   },
   "include": ["src"]
