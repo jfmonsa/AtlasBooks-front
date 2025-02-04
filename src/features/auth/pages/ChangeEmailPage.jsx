@@ -2,7 +2,7 @@ import "../styles/base-form.css";
 
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { UseChangeEmail } from "@/app/contexts/ChangeEmailContext.jsx";
+import { UseChangeEmail } from "@/app/providers/ChangeEmailContext.jsx";
 
 import { PrimaryBtnForm } from "@components/PrimaryBtn/PrimaryBtnForm.jsx";
 import { InputText } from "@components/forms/InputText/InputText.jsx";

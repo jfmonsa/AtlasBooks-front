@@ -16,7 +16,6 @@ export const UseChangePass = () => {
 export const ChangePassProvider = ({ children }) => {
   const [changePass, setChangePass] = useState([]);
 
-  // TODO: revisar esto
   const createChangePass = async (passwords) => {
     const res = GetChangePass(passwords);
     setChangePass(res);

@@ -2,7 +2,7 @@ import "../styles/base-form.css";
 
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { UseChangePass } from "@/app/contexts/ChangePassContext.jsx";
+import { UseChangePass } from "@/app/providers/ChangePassContext.jsx";
 
 import { PrimaryBtnForm } from "@components/PrimaryBtn/PrimaryBtnForm.jsx";
 import { InputText } from "@components/forms/InputText/InputText.jsx";

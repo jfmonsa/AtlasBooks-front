@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    // code quality
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "usernamehw.errorlens",
+    "biomejs.biome"
+  ]
+}

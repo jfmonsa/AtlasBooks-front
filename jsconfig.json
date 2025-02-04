@@ -8,7 +8,7 @@
       "@contexts/*": ["shared/contexts/*"],
       "@hooks/*": ["shared/hooks/*"],
       "@lib/*": ["shared/lib/*"],
-      "@utils/*": ["shared/utils/*"],
+      "@utils/*": ["shared/utils/*"]
     }
   },
   "include": ["src"]

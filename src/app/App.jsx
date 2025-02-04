@@ -2,9 +2,9 @@ import "@/app/styles/base.css";
 import "@/app/styles/variables.css";
 
 //contexts
-import { ChangePassProvider } from "@/app/contexts/ChangePassContext.jsx";
-import { ChangeEmailProvider } from "@/app/contexts/ChangeEmailContext.jsx";
-import { AuthProvider } from "@/app/contexts/AuthContextProvider.jsx";
+import { ChangePassProvider } from "@/app/providers/ChangePassContext.jsx";
+import { ChangeEmailProvider } from "@/app/providers/ChangeEmailContext.jsx";
+import { AuthProvider } from "@/app/providers/AuthContextProvider.jsx";
 import { AppRouter } from "./config/AppRouter";
 
 export default function App() {

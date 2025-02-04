@@ -31,7 +31,7 @@ export const AuthProvider = ({ children }) => {
           return;
         }
         setUser(response.data.data.user);
-      } catch (error) {
+      } catch {
         setUser(null);
       }
     };

@@ -61,6 +61,8 @@ main {
   --searcher__buttonSize: 100px;
   /* -- Grid Books and searcher sizes */
   --gridAndSearcher__size: calc(
-    var(--searcher__inputSize) + var(--spacing-3) + var(--searcher__buttonSize)
+    var(--searcher__inputSize) +
+    var(--spacing-3) +
+    var(--searcher__buttonSize)
   );
 }
