@@ -8,19 +8,21 @@ export const ARCHITECTURAL_BOUNDARIES_SETUP = {
     "boundaries/include": ["src/**/*.{js,jsx,css,sass,svg}"],
     "boundaries/elements": [
       {
-        mode: "full",
+        mode: "file",
         type: "app",
         pattern: ["src/app/**/*", "src/main.jsx", "src/app/App.jsx"],
       },
       {
+        mode: "file",
         type: "feature",
         // capture the name of each feature folder
         capture: ["featureName"],
-        pattern: ["src/features/*/**/*"],
+        pattern: "src/features/*/**",
       },
       {
+        mode: "full",
         type: "shared",
-        pattern: "src/shared/**/*",
+        pattern: "src/shared/**",
       },
     ],
   },
