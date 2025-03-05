@@ -3,17 +3,17 @@
 # Please see the documentation for all configuration options:
 # https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
 
-version: 2
-updates:
-  - package-ecosystem: "npm"
-    directory: "/" # location of package.json
-    schedule:
-      interval: "weekly"
-      day: "monday"
-    target-branch: "main"
-    commit-message:
-      prefix: "chore(dependant-bot)"
-    labels:
-      - "dependencies"
-      - "automated"
-    versioning-strategy: "widen"
+#version: 2
+#updates:
+#  - package-ecosystem: "npm"
+#    directory: "/" # location of package.json
+#    schedule:
+#      interval: "weekly"
+#      day: "monday"
+#    target-branch: "main"
+#    commit-message:
+#      prefix: "chore(dependant-bot)"
+#    labels:
+#      - "dependencies"
+#      - "automated"
+#    versioning-strategy: "widen"
